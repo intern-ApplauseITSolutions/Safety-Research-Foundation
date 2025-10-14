@@ -286,15 +286,15 @@ export default function TwoWheelerOrganization() {
     <section className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Shield Logo */}
-        <div className="flex items-center justify-center mb-10 sm:mb-12 md:mb-16">
-          <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary to-primary"></div>
-          <div className="mx-4 sm:mx-6 flex items-center gap-2 sm:gap-3">
-            <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={2} />
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-brand-black text-center">
+        <div className="flex items-center justify-center mb-10 sm:mb-12 md:mb-16 gap-4">
+          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-primary flex-shrink-0" strokeWidth={2} />
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-brand-black whitespace-nowrap">
               Road Safety Initiatives
             </h2>
           </div>
-          <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
+          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
         </div>
 
         {/* Two Column Layout */}

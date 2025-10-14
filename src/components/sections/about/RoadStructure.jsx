@@ -125,15 +125,15 @@ const RoadStructure = () => {
       <div className="py-8 sm:py-12 lg:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           {/* Header with Construction Logo - matching TwoWheelerOrg style */}
-          <div className="flex items-center justify-center mb-6 sm:mb-8">
-            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary to-primary hidden sm:block"></div>
-            <div className="mx-2 sm:mx-4 lg:mx-6 flex items-center gap-2 sm:gap-3">
-              <Construction className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-primary" strokeWidth={2} />
-              <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 text-center">
+          <div className="flex items-center justify-center mb-6 sm:mb-8 gap-4">
+            <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+              <Construction className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-primary flex-shrink-0" strokeWidth={2} />
+              <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 whitespace-nowrap">
                 Road Safety Rules
               </h2>
             </div>
-            <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary hidden sm:block"></div>
+            <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
           </div>
 
           {/* Subtitle with decorative elements */}
