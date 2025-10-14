@@ -24,7 +24,7 @@ export default function AboutPage() {
     <div className="overflow-x-hidden w-full">
       <Banner />
       <TwoWheelerOrg />
-      <RoadStructure />
+      {/* <RoadStructure /> */}
       <CreativeTeam />
     </div>
   );
