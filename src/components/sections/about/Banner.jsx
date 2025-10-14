@@ -7,7 +7,7 @@ import family from '../../../assets/truckanimationpng/family.png';
 
 export default function Banner() {
   return (
-    <section className="relative w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 overflow-hidden bg-gradient-primary z-30" style={{overflowX: 'hidden'}}>
+    <section className="relative w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[28rem] xl:h-[32rem] overflow-hidden bg-gradient-primary z-30" style={{overflowX: 'hidden'}}>
       {/* Road at the bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-16 xs:h-20 sm:h-24 md:h-28 lg:h-32 bg-gray-700">
         {/* Road Surface */}
@@ -47,8 +47,8 @@ export default function Banner() {
         </div>
       </div>
       
-      {/* Traffic Signal - Positioned on top of the road */}
-      <div className="absolute bottom-16 xs:bottom-20 sm:bottom-24 md:bottom-28 lg:bottom-32 right-4 sm:right-6 md:right-8 lg:right-10 xl:right-12 z-[40]">
+      {/* Traffic Signal - Positioned on top of the road - Hidden on mobile */}
+      <div className="hidden sm:block absolute bottom-16 xs:bottom-20 sm:bottom-24 md:bottom-28 lg:bottom-32 right-4 sm:right-6 md:right-8 lg:right-10 xl:right-12 z-[40]">
         <img 
           src={trafficSignal} 
           alt="Traffic Signal" 
@@ -56,8 +56,8 @@ export default function Banner() {
         />
       </div>
       
-      {/* Family - Positioned above zebra crossing, right side */}
-      <div className="absolute bottom-16 xs:bottom-20 sm:bottom-24 md:bottom-28 lg:bottom-32 right-1 sm:right-2 md:right-3 lg:right-4 xl:right-5 z-[40]">
+      {/* Family - Positioned above zebra crossing, right side - Hidden on mobile */}
+      <div className="hidden sm:block absolute bottom-16 xs:bottom-20 sm:bottom-24 md:bottom-28 lg:bottom-32 right-1 sm:right-2 md:right-3 lg:right-4 xl:right-5 z-[40]">
         <img 
           src={family} 
           alt="Family" 
@@ -67,7 +67,7 @@ export default function Banner() {
       
       {/* Moving Vehicles with increased sizes */}
       {/* Top Lane (above dashes) - Truck */}
-      <div className="absolute bottom-5 xs:bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-12 xl:bottom-14 left-0 animate-[moveRight_12s_linear_infinite] z-50">
+      <div className="absolute bottom-5 xs:bottom-6 sm:bottom-8 md:bottom-10 lg:bottom-12 xl:bottom-14 left-0 animate-[moveRight_12s_linear_infinite] z-50" style={{ animationDelay: '-6s' }}>
         <img 
           src={truck1} 
           alt="Truck" 
@@ -75,8 +75,8 @@ export default function Banner() {
         />
       </div>
       
-      {/* Bottom Lane (below dashes) - Car - Increased size */}
-      <div className="absolute bottom-2 xs:bottom-3 sm:bottom-4 md:bottom-5 lg:bottom-6 xl:bottom-8 left-0 animate-[moveRight_12s_linear_infinite] delay-[-6s] z-50">
+      {/* Bottom Lane (below dashes) - Car - Starts at beginning when truck is at middle */}
+      <div className="absolute bottom-1 xs:bottom-1 sm:bottom-2 md:bottom-2 lg:bottom-3 xl:bottom-4 left-0 animate-[moveRight_12s_linear_infinite] z-50">
         <img 
           src={car} 
           alt="Car" 
@@ -94,12 +94,12 @@ export default function Banner() {
       </div>
       
       {/* Content Overlay */}
-      <div className="relative z-[60] h-full flex flex-col items-center justify-start pt-4 xs:pt-6 sm:pt-8 md:pt-10 lg:pt-12 xl:pt-16 pb-20 xs:pb-24 sm:pb-28 md:pb-32 lg:pb-36 xl:pb-40 text-center px-2 xs:px-3 sm:px-4 md:px-6 lg:px-8">
-        <div className="animate-[slideUp_1.5s_ease-out_forwards] opacity-0 translate-y-10 max-w-xs xs:max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto">
-          <h1 className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-1 xs:mb-1.5 sm:mb-2 md:mb-3 leading-tight">
+      <div className="relative z-[60] h-full flex flex-col items-center justify-start pt-4 xs:pt-6 sm:pt-8 md:pt-10 lg:pt-12 xl:pt-16 pb-20 xs:pb-24 sm:pb-28 md:pb-32 lg:pb-36 xl:pb-40 text-center px-3 xs:px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="animate-[slideUp_1.5s_ease-out_forwards] opacity-0 translate-y-10 max-w-[280px] xs:max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto">
+          <h1 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-1.5 xs:mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 leading-tight">
             Vision
           </h1>
-          <p className="text-[9px] xs:text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg text-white leading-tight xs:leading-snug sm:leading-normal md:leading-relaxed">
+          <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white leading-snug xs:leading-normal sm:leading-relaxed md:leading-relaxed">
             Improve the safety and sustainability of all road transportation across Indian subcontinent through research, evaluation, recommendation and improvement to reduce fatalities, injuries and property damage from roadway crashes over the next decade. This will be carried out through scientific studies to collect and analyze data and make data driven decisions for making the big impact.
           </p>
         </div>
