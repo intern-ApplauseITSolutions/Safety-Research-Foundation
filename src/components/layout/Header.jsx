@@ -1,14 +1,31 @@
-import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart } from 'lucide-react';
+import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart, ChevronDown } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import logo from '../../assets/logo/logo.png';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileDropdown, setMobileDropdown] = useState(null);
   const navigate = useNavigate();
+  const closeTimeoutRef = useRef(null);
 
-  const navigateToDonate = () => {
-    navigate('/donate');
+  const handleMouseEnter = (dropdown) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setOpenDropdown(dropdown);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 200);
+  };
+
+  const navigateToGetInvolved = () => {
+    navigate('/get-involved');
     setIsMenuOpen(false);
   };
 
@@ -25,27 +42,8 @@ export default function Header() {
         <div className="flex flex-col">
           {/* Saffron Stripe */}
           <div className="bg-brand-orange h-2"></div>
-          {/* White Stripe with Ashoka Chakra */}
+          {/* White Stripe */}
           <div className="bg-white h-10 relative flex items-center">
-            {/* Ashoka Chakra */}
-            <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <svg width="36" height="36" viewBox="0 0 100 100" className="text-gray-600/70">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="3"/>
-                {/* 24 spokes */}
-                {Array.from({ length: 24 }, (_, i) => {
-                  const angle = (i * 15) * Math.PI / 180;
-                  const x1 = 50 + 18 * Math.cos(angle);
-                  const y1 = 50 + 18 * Math.sin(angle);
-                  const x2 = 50 + 43 * Math.cos(angle);
-                  const y2 = 50 + 43 * Math.sin(angle);
-                  return (
-                    <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="currentColor" strokeWidth="2.5"/>
-                  );
-                })}
-                <circle cx="50" cy="50" r="8" fill="currentColor"/>
-              </svg>
-            </div>
-            
             {/* Contact Info and Social Media */}
             <div className="w-full px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center text-sm relative z-10">
               <div className="flex items-center gap-4">
@@ -95,28 +93,58 @@ export default function Header() {
             </Link>
             
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-6">
-              <NavLink to="/" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
+            <nav className="hidden lg:flex items-baseline gap-4 xl:gap-5 text-sm xl:text-base">
+              <NavLink to="/" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 Home
               </NavLink>
-              <NavLink to="/about" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
+              <NavLink to="/about" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 About
               </NavLink>
-              <NavLink to="/focus" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
-                Our Focus
+              
+              {/* Our Focus Area Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => handleMouseEnter('focus')}
+                onMouseLeave={handleMouseLeave}
+              >
+                <NavLink 
+                  to="/focus"
+                  className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} inline-flex items-center gap-1`}
+                >
+                  Focus Area
+                  <ChevronDown size={14} className={`transition-transform ${openDropdown === 'focus' ? 'rotate-180' : ''}`} />
+                </NavLink>
+                {openDropdown === 'focus' && (
+                  <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-lg py-2 border border-gray-100 z-50">
+                    <NavLink 
+                      to="/core-intervention" 
+                      className="block px-4 py-2 text-brand-black hover:bg-primary/10 hover:text-primary transition"
+                    >
+                      Core Intervention
+                    </NavLink>
+                    <NavLink 
+                      to="/current-project" 
+                      className="block px-4 py-2 text-brand-black hover:bg-primary/10 hover:text-primary transition"
+                    >
+                      Current Project
+                    </NavLink>
+                  </div>
+                )}
+              </div>
+              
+              <NavLink to="/events" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
+                Spotlight
               </NavLink>
-              <NavLink to="/events" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
-                News & Events
-              </NavLink>
-              <NavLink to="/contact" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
+
+              <NavLink to="/contact" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 Contact Us
               </NavLink>
-              <button onClick={navigateToDonate} className="bg-brand-green hover:bg-brand-green/90 text-white px-5 py-2 rounded-full font-semibold transition flex items-center gap-2 shadow-md">
-                <Heart size={16} fill="currentColor" />
-                Donate
+              <button onClick={navigateToGetInvolved} className="bg-brand-green hover:bg-brand-green/90 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition inline-flex items-center gap-1.5 shadow-md whitespace-nowrap">
+                <Heart size={14} fill="currentColor" />
+                Get Involved
               </button>
-              <button onClick={navigateToPledge} className="bg-brand-green hover:bg-brand-green/90 text-white px-5 py-2 rounded-full font-semibold transition flex items-center gap-2 shadow-md">
-                <HandHeart size={16} />
+              <button onClick={navigateToPledge} className="bg-brand-green hover:bg-brand-green/90 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition inline-flex items-center gap-1.5 shadow-md whitespace-nowrap">
+                <HandHeart size={14} />
                 Take a Pledge
               </button>
             </nav>
@@ -137,18 +165,59 @@ export default function Header() {
                 <NavLink to="/about" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   About
                 </NavLink>
-                <NavLink to="/focus" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
-                  Our Focus
-                </NavLink>
+                
+                {/* Mobile Our Focus Area Dropdown */}
+                <div>
+                  <NavLink 
+                    to="/focus"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setMobileDropdown(null);
+                    }}
+                    className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} flex items-center gap-1 w-full justify-between`}
+                  >
+                    <span>Focus Area</span>
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setMobileDropdown(mobileDropdown === 'focus' ? null : 'focus');
+                      }}
+                      className="p-1"
+                    >
+                      <ChevronDown size={16} className={`transition-transform ${mobileDropdown === 'focus' ? 'rotate-180' : ''}`} />
+                    </button>
+                  </NavLink>
+                  {mobileDropdown === 'focus' && (
+                    <div className="ml-4 mt-2 flex flex-col gap-2">
+                      <NavLink 
+                        to="/core-intervention" 
+                        onClick={() => setIsMenuOpen(false)}
+                        className="text-brand-black hover:text-primary transition py-1"
+                      >
+                        Core Intervention
+                      </NavLink>
+                      <NavLink 
+                        to="/current-project" 
+                        onClick={() => setIsMenuOpen(false)}
+                        className="text-brand-black hover:text-primary transition py-1"
+                      >
+                        Current Project
+                      </NavLink>
+                    </div>
+                  )}
+                </div>
+                
                 <NavLink to="/events" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
-                  News & Events
+                  Spotlight
                 </NavLink>
+
                 <NavLink to="/contact" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   Contact Us
                 </NavLink>
-                <button onClick={navigateToDonate} className="bg-brand-green hover:bg-brand-green/90 text-white px-4 py-2 rounded-full font-semibold transition flex items-center justify-center gap-1">
+                <button onClick={navigateToGetInvolved} className="bg-brand-green hover:bg-brand-green/90 text-white px-4 py-2 rounded-full font-semibold transition flex items-center justify-center gap-1">
                   <Heart size={16} fill="currentColor" />
-                  Donate
+                  Get Involved
                 </button>
                 <button onClick={navigateToPledge} className="bg-brand-green hover:bg-brand-green/90 text-white px-4 py-2 rounded-full font-semibold transition flex items-center justify-center gap-1">
                   <HandHeart size={16} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { GraduationCap, Construction, Users, Smartphone, Shield, Car, Building2, MapPin, BookOpen, Eye, BarChart3, UserCheck, Award, Target } from 'lucide-react';
+import { GraduationCap, Construction, Users, Smartphone, Shield, Car, Building2, MapPin, BookOpen, Eye, BarChart3, UserCheck, Award, Target, Wrench, BookText, Megaphone } from 'lucide-react';
 
 // Import actual images
 import roadSafetyTrainingImg from '../../../assets/images/Road_Safety_Training.jpg';
@@ -101,6 +101,120 @@ const RoadSafetyFocus = () => {
               </h2>
             </div>
             <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
+          </div>
+
+          {/* 3 E's Section */}
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl sm:text-3xl font-bold text-brand-black mb-4">Our Approach: The 3 E's</h3>
+              <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Safety Research Foundation follows a comprehensive approach to road safety through Engineering, Education, and Advocacy
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Engineering */}
+              <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
+                <div className="flex justify-center mb-6">
+                  <div className="bg-primary/10 p-4 rounded-full">
+                    <Wrench className="w-12 h-12 text-primary" />
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-brand-black text-center mb-4">Engineering</h4>
+                <p className="text-gray-600 text-center leading-relaxed mb-4">
+                  Scientific approach to road safety through data analysis, crash investigation, and infrastructure improvements.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Road safety audits and assessments</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Scientific crash investigation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Data-driven infrastructure solutions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-primary mr-2">•</span>
+                    <span>Evidence-based recommendations</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Education */}
+              <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
+                <div className="flex justify-center mb-6">
+                  <div className="bg-brand-green/10 p-4 rounded-full">
+                    <BookText className="w-12 h-12 text-brand-green" />
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-brand-black text-center mb-4">Education</h4>
+                <p className="text-gray-600 text-center leading-relaxed mb-4">
+                  Comprehensive training and awareness programs for all road users to build a culture of safety.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-brand-green mr-2">•</span>
+                    <span>School and college awareness programs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-brand-green mr-2">•</span>
+                    <span>Driver training and skill development</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-brand-green mr-2">•</span>
+                    <span>Police and enforcement training</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-brand-green mr-2">•</span>
+                    <span>Community outreach initiatives</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Advocacy */}
+              <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
+                <div className="flex justify-center mb-6">
+                  <div className="bg-blue-100 p-4 rounded-full">
+                    <Megaphone className="w-12 h-12 text-blue-600" />
+                  </div>
+                </div>
+                <h4 className="text-xl font-bold text-brand-black text-center mb-4">Advocacy</h4>
+                <p className="text-gray-600 text-center leading-relaxed mb-4">
+                  Policy recommendations and public campaigns to influence road safety legislation and practices.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Policy advisory and recommendations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Government collaboration and support</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Public awareness campaigns</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span>Stakeholder engagement initiatives</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center justify-center my-16">
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-gray-300"></div>
+            <div className="mx-6">
+              <h3 className="text-2xl font-bold text-brand-black">Focus Areas</h3>
+            </div>
+            <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-gray-300 to-gray-300"></div>
           </div>
 
           {/* Section 1 - Road Safety Training */}

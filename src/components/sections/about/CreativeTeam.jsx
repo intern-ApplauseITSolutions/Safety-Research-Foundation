@@ -11,7 +11,8 @@ import sandipImage from '../../../assets/team/Sandip Nawale.png';
 const teamMembers = [
   {
     name: "Jeya Padmanaban",
-    position: "Trustee, Safety Research Foundation",
+    position: "Founding Trustee",
+    organization: "Safety Research Foundation",
     title: "President and Founder, JP Research",
     image: jeyaImage,
     id: 1,
@@ -20,7 +21,8 @@ const teamMembers = [
   },
   {
     name: "Ajit Dandapani",
-    position: "Trustee, Safety Research Foundation",
+    position: "Trustee",
+    organization: "Safety Research Foundation",
     title: "Founder and CEO, JP Research",
     image: ajitImage,
     id: 2,
@@ -29,7 +31,8 @@ const teamMembers = [
   },
   {
     name: "Chitra Subramaniam",
-    position: "Trustee, Safety Research Foundation",
+    position: "Trustee",
+    organization: "Safety Research Foundation",
     title: "Director, JP Research",
     image: chitraImage,
     id: 3,
@@ -38,7 +41,8 @@ const teamMembers = [
   },
   {
     name: "Sesh Subramaniam",
-    position: "Trustee, Safety Research Foundation",
+    position: "Trustee",
+    organization: "Safety Research Foundation",
     title: "Director, JP Research",
     image: seshImage,
     id: 4,
@@ -47,7 +51,8 @@ const teamMembers = [
   },
   {
     name: "Sandip Nawale",
-    position: "Head - Operations, Safety Research Foundation",
+    position: "Head - Operations",
+    organization: "Safety Research Foundation",
     title: "Head - Operations, SRF",
     image: sandipImage,
     id: 5,
@@ -146,9 +151,10 @@ export default function CreativeTeam() {
                 
                 {/* Member Info */}
                 <div className="text-center flex-1 flex flex-col justify-between">
-                  <div className="min-h-[80px] flex flex-col justify-center">
+                  <div className="min-h-[90px] flex flex-col justify-center">
                     <h4 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{member.name}</h4>
-                    <p className="text-primary font-semibold text-sm mb-3 leading-tight">{member.position}</p>
+                    <p className="text-primary font-semibold text-sm leading-tight mb-1">{member.position}</p>
+                    <p className="text-gray-600 text-xs leading-tight">{member.organization}</p>
                   </div>
                   
                   <div className="mt-auto">

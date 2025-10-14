@@ -1,14 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, Shield, Users, FileText, Award, CheckCircle, ExternalLink, Eye, X, Copy, Phone, Mail, Building } from 'lucide-react';
+import { Heart, Shield, Users, FileText, Award, CheckCircle, ExternalLink, Eye, X, Copy, Phone, Mail, Building, Briefcase, HandHeart, Landmark, Globe } from 'lucide-react';
 import donateImage from '../assets/images/donate/updesh-raj-MBFqUfiD8vU-unsplash.jpg';
 
-export default function DonatePage() {
+export default function GetInvolvedPage() {
   const navigate = useNavigate();
   const [copiedText, setCopiedText] = React.useState('');
   const [showDonationForm, setShowDonationForm] = React.useState(false);
   const [showThankYou, setShowThankYou] = React.useState(false);
   const [activeTab, setActiveTab] = React.useState('individual');
+  const [selectedOption, setSelectedOption] = React.useState('csr');
   const [formData, setFormData] = React.useState({
     // Individual form data
     individual: {
@@ -139,19 +140,313 @@ export default function DonatePage() {
               </div>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Support Road Safety in India
+              Get Involved with SRF
             </h1>
             <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-              Safety Research Foundation is committed to Road Safety and reduction of fatalities on Indian Roads. 
-              Your contribution will go a long way in achieving this objective.
+              Join us in making Indian roads safer. Partner with us through CSR projects, volunteering, 
+              government collaborations, or NGO partnerships.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Registration Details Section */}
+      {/* 4 Options Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-brand-black mb-12 text-center">
+          Choose How You Want to Get Involved
+        </h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {/* CSR Opportunities */}
+          <button
+            onClick={() => setSelectedOption('csr')}
+            className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
+              selectedOption === 'csr'
+                ? 'border-primary bg-primary/5 shadow-lg scale-105'
+                : 'border-gray-200 hover:border-primary/50 hover:shadow-md'
+            }`}
+          >
+            <div className="bg-primary/10 p-3 rounded-lg w-fit mb-4">
+              <Briefcase className="w-8 h-8 text-primary" />
+            </div>
+            <h3 className="text-lg font-bold text-brand-black mb-2">CSR Opportunities</h3>
+            <p className="text-sm text-gray-600">Partner with us for Corporate Social Responsibility projects</p>
+          </button>
+
+          {/* Volunteering */}
+          <button
+            onClick={() => setSelectedOption('volunteering')}
+            className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
+              selectedOption === 'volunteering'
+                ? 'border-primary bg-primary/5 shadow-lg scale-105'
+                : 'border-gray-200 hover:border-primary/50 hover:shadow-md'
+            }`}
+          >
+            <div className="bg-brand-green/10 p-3 rounded-lg w-fit mb-4">
+              <HandHeart className="w-8 h-8 text-brand-green" />
+            </div>
+            <h3 className="text-lg font-bold text-brand-black mb-2">Volunteering</h3>
+            <p className="text-sm text-gray-600">Individuals, Corporates & Institutions can volunteer</p>
+          </button>
+
+          {/* Government Organizations */}
+          <button
+            onClick={() => setSelectedOption('government')}
+            className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
+              selectedOption === 'government'
+                ? 'border-primary bg-primary/5 shadow-lg scale-105'
+                : 'border-gray-200 hover:border-primary/50 hover:shadow-md'
+            }`}
+          >
+            <div className="bg-blue-100 p-3 rounded-lg w-fit mb-4">
+              <Landmark className="w-8 h-8 text-blue-600" />
+            </div>
+            <h3 className="text-lg font-bold text-brand-black mb-2">Government Organizations</h3>
+            <p className="text-sm text-gray-600">Collaborate with government agencies</p>
+          </button>
+
+          {/* NGOs */}
+          <button
+            onClick={() => setSelectedOption('ngos')}
+            className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
+              selectedOption === 'ngos'
+                ? 'border-primary bg-primary/5 shadow-lg scale-105'
+                : 'border-gray-200 hover:border-primary/50 hover:shadow-md'
+            }`}
+          >
+            <div className="bg-purple-100 p-3 rounded-lg w-fit mb-4">
+              <Globe className="w-8 h-8 text-purple-600" />
+            </div>
+            <h3 className="text-lg font-bold text-brand-black mb-2">NGOs</h3>
+            <p className="text-sm text-gray-600">Partner with us as an NGO organization</p>
+          </button>
+        </div>
+
+        {/* Content Based on Selected Option */}
+        {selectedOption === 'csr' && (
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-brand-black mb-6">CSR Opportunities: Projects</h3>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Partner with Safety Research Foundation for impactful Corporate Social Responsibility projects focused on road safety. 
+              We offer customized CSR programs that align with your company's values and create measurable social impact.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-primary/5 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Road Safety Awareness Programs</h4>
+                <p className="text-sm text-gray-600">Conduct awareness sessions in schools, colleges, and communities</p>
+              </div>
+              <div className="bg-primary/5 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Safety Equipment Distribution</h4>
+                <p className="text-sm text-gray-600">Provide helmets, reflective jackets, and safety gear to vulnerable road users</p>
+              </div>
+              <div className="bg-primary/5 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Road Safety Audits</h4>
+                <p className="text-sm text-gray-600">Scientific assessment of road infrastructure and safety measures</p>
+              </div>
+              <div className="bg-primary/5 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Data-Driven Research</h4>
+                <p className="text-sm text-gray-600">Support evidence-based road safety research and analysis</p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-brand-black mb-4">Contact Us for CSR Partnership</h4>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:info@safetyresearchfoundation.org" className="flex items-center gap-2 text-primary hover:text-primary/80">
+                  <Mail className="w-5 h-5" />
+                  info@safetyresearchfoundation.org
+                </a>
+                <a href="tel:+918806943991" className="flex items-center gap-2 text-primary hover:text-primary/80">
+                  <Phone className="w-5 h-5" />
+                  +91 88 0694 3991
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {selectedOption === 'volunteering' && (
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-brand-black mb-6">Volunteering: Individuals / Corporates / Institutions</h3>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Join our mission as a volunteer and contribute your time, skills, and passion to make Indian roads safer. 
+              We welcome individuals, corporate groups, and institutions to participate in our various road safety initiatives.
+            </p>
+            
+            <div className="space-y-6 mb-8">
+              <div className="border-l-4 border-brand-green pl-6">
+                <h4 className="font-semibold text-brand-black mb-2">Individual Volunteers</h4>
+                <p className="text-sm text-gray-600 mb-3">
+                  Participate in awareness campaigns, event organization, content creation, social media outreach, and field activities.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                  <li>Awareness campaign volunteers</li>
+                  <li>Event coordinators and support staff</li>
+                  <li>Content creators and designers</li>
+                  <li>Social media ambassadors</li>
+                </ul>
+              </div>
+
+              <div className="border-l-4 border-primary pl-6">
+                <h4 className="font-semibold text-brand-black mb-2">Corporate Volunteers</h4>
+                <p className="text-sm text-gray-600 mb-3">
+                  Engage your employees in meaningful CSR activities through corporate volunteering programs.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                  <li>Team volunteering for awareness drives</li>
+                  <li>Skill-based volunteering (tech, design, legal, etc.)</li>
+                  <li>Employee engagement programs</li>
+                  <li>Pro-bono professional services</li>
+                </ul>
+              </div>
+
+              <div className="border-l-4 border-blue-600 pl-6">
+                <h4 className="font-semibold text-brand-black mb-2">Institutional Volunteers</h4>
+                <p className="text-sm text-gray-600 mb-3">
+                  Educational institutions can partner with us for student engagement and community service programs.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                  <li>Student volunteer programs</li>
+                  <li>Internship opportunities</li>
+                  <li>Research collaborations</li>
+                  <li>Campus awareness initiatives</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-brand-green/10 p-6 rounded-lg">
+              <h4 className="font-semibold text-brand-black mb-4">Ready to Volunteer?</h4>
+              <p className="text-sm text-gray-700 mb-4">
+                Fill out our volunteer form or contact us directly to start making a difference.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:volunteer@safetyresearchfoundation.org" className="flex items-center gap-2 text-brand-green hover:text-brand-green/80">
+                  <Mail className="w-5 h-5" />
+                  volunteer@safetyresearchfoundation.org
+                </a>
+                <a href="tel:+917030910122" className="flex items-center gap-2 text-brand-green hover:text-brand-green/80">
+                  <Phone className="w-5 h-5" />
+                  +91 7030910122
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {selectedOption === 'government' && (
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-brand-black mb-6">Government Organizations</h3>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Safety Research Foundation actively collaborates with government agencies, traffic police departments, 
+              and municipal corporations to implement data-driven road safety solutions and policy recommendations.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Traffic Police Collaboration</h4>
+                <p className="text-sm text-gray-600">
+                  Support traffic enforcement with scientific crash investigation, data analysis, and safety equipment distribution.
+                </p>
+              </div>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Municipal Partnerships</h4>
+                <p className="text-sm text-gray-600">
+                  Work with municipal corporations on road safety audits, infrastructure improvements, and public awareness campaigns.
+                </p>
+              </div>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Policy Advisory</h4>
+                <p className="text-sm text-gray-600">
+                  Provide evidence-based recommendations for road safety policies and regulations.
+                </p>
+              </div>
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Training Programs</h4>
+                <p className="text-sm text-gray-600">
+                  Conduct specialized training for government officials on crash investigation and road safety management.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-brand-black mb-4">Partner with Us</h4>
+              <p className="text-sm text-gray-700 mb-4">
+                Government agencies interested in collaboration can reach out to discuss partnership opportunities.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:info@safetyresearchfoundation.org" className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+                  <Mail className="w-5 h-5" />
+                  info@safetyresearchfoundation.org
+                </a>
+                <a href="tel:+918806943991" className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+                  <Phone className="w-5 h-5" />
+                  +91 88 0694 3991
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {selectedOption === 'ngos' && (
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-2xl font-bold text-brand-black mb-6">NGO Partnerships</h3>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              We believe in collaborative action for road safety. Partner with Safety Research Foundation to amplify impact, 
+              share resources, and work together towards reducing road traffic injuries and fatalities across India.
+            </p>
+            
+            <div className="space-y-6 mb-8">
+              <div className="bg-purple-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Joint Awareness Campaigns</h4>
+                <p className="text-sm text-gray-600">
+                  Collaborate on large-scale awareness programs, combining resources and expertise for greater reach and impact.
+                </p>
+              </div>
+
+              <div className="bg-purple-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Resource Sharing</h4>
+                <p className="text-sm text-gray-600">
+                  Share research data, educational materials, best practices, and technical expertise to strengthen road safety initiatives.
+                </p>
+              </div>
+
+              <div className="bg-purple-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Capacity Building</h4>
+                <p className="text-sm text-gray-600">
+                  Joint training programs and workshops to enhance organizational capabilities in road safety interventions.
+                </p>
+              </div>
+
+              <div className="bg-purple-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-brand-black mb-3">Advocacy & Policy</h4>
+                <p className="text-sm text-gray-600">
+                  Work together on advocacy initiatives and policy recommendations to influence road safety legislation.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-purple-100 p-6 rounded-lg">
+              <h4 className="font-semibold text-brand-black mb-4">Explore Partnership Opportunities</h4>
+              <p className="text-sm text-gray-700 mb-4">
+                NGOs working in road safety, public health, or community development can connect with us for collaboration.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="mailto:partnerships@safetyresearchfoundation.org" className="flex items-center gap-2 text-purple-600 hover:text-purple-700">
+                  <Mail className="w-5 h-5" />
+                  partnerships@safetyresearchfoundation.org
+                </a>
+                <a href="tel:+918806943991" className="flex items-center gap-2 text-purple-600 hover:text-purple-700">
+                  <Phone className="w-5 h-5" />
+                  +91 88 0694 3991
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Registration Details Section */}
+        <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mt-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-brand-black mb-8 text-center">
             Registration Details
           </h2>

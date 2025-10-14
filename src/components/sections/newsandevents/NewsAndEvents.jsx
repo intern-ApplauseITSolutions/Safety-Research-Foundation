@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Calendar, MapPin, Users, ArrowRight, Clock, Tag } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Import Child Safety Seat Awareness Session images
@@ -769,146 +769,477 @@ Glimpses of Program`,
 
 const NewsAndEvents = () => {
   const navigate = useNavigate();
+  const [mainSection, setMainSection] = useState('events'); // 'events', 'media', or 'testimonials'
+  const [eventTab, setEventTab] = useState('upcoming'); // 'upcoming' or 'completed'
   const [filter, setFilter] = useState('all');
+  
+  // Testimonials carousel state
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const autoPlayRef = useRef(null);
   
   const categories = ['all', 'School Program', 'Awareness Session', 'Public Awareness', 'Webinar', 'Safety Audit', 'Police Support'];
   
-  const filteredEvents = filter === 'all' 
-    ? eventsData 
-    : eventsData.filter(event => event.category === filter);
+  // Parse dates and separate upcoming vs completed events
+  const parseEventDate = (dateStr) => {
+    const monthMap = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
+      'July': 6, 'August': 7, 'September': 8, 'Sep': 8, 'October': 9, 'November': 10, 'December': 11, 'Feb': 1
+    };
+    
+    const parts = dateStr.split(' ');
+    let year, month, day;
+    
+    year = parseInt(parts.find(p => p.length === 4));
+    for (let part of parts) {
+      if (monthMap[part] !== undefined) {
+        month = monthMap[part];
+        break;
+      }
+    }
+    for (let part of parts) {
+      const dayMatch = part.match(/^(\d+)/);
+      if (dayMatch) {
+        day = parseInt(dayMatch[1]);
+        break;
+      }
+    }
+    
+    return new Date(year, month, day);
+  };
+  
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  const upcomingEvents = eventsData.filter(event => {
+    const eventDate = parseEventDate(event.date);
+    return eventDate >= today;
+  });
+  
+  const completedEvents = eventsData.filter(event => {
+    const eventDate = parseEventDate(event.date);
+    return eventDate < today;
+  });
+  
+  const displayEvents = eventTab === 'upcoming' ? upcomingEvents : completedEvents;
+  const filteredEvents = filter === 'all' ? displayEvents : displayEvents.filter(event => event.category === filter);
+
+  // Media Data
+  const videos = [
+    {
+      id: 1,
+      title: "Road Safety Awareness Campaign",
+      videoId: "dQw4w9WgXcQ",
+      description: "Comprehensive road safety awareness campaign highlighting key safety measures.",
+      date: "January 2024"
+    },
+    {
+      id: 2,
+      title: "Child Safety Seat Installation",
+      videoId: "dQw4w9WgXcQ",
+      description: "Step-by-step guide on proper installation of child safety seats.",
+      date: "December 2023"
+    },
+    {
+      id: 3,
+      title: "School Road Safety Program",
+      videoId: "dQw4w9WgXcQ",
+      description: "Highlights from our school road safety awareness programs.",
+      date: "November 2023"
+    }
+  ];
+
+  const publications = [
+    {
+      id: 1,
+      title: "Road Safety Audit Report - NH 48",
+      description: "Comprehensive safety audit of Katraj-Navale section identifying critical zones.",
+      date: "March 2021",
+      type: "Research Report"
+    },
+    {
+      id: 2,
+      title: "Annual Road Safety Report 2023",
+      description: "Detailed analysis of road safety initiatives and impact assessment.",
+      date: "January 2024",
+      type: "Annual Report"
+    },
+    {
+      id: 3,
+      title: "Child Safety Seat Guidelines",
+      description: "Guidelines on selecting and using child safety seats for different age groups.",
+      date: "December 2023",
+      type: "Guidelines"
+    }
+  ];
+
+  // Testimonials Data
+  const testimonials = [
+    {
+      id: 1,
+      name: "Dr. Rajesh Kumar",
+      role: "Principal, St Joseph Boys High School, Kirkee, Pune",
+      rating: 5,
+      text: "The Road Safety Awareness Program conducted by Safety Research Foundation was highly impactful. Our students learned crucial safety practices that they can apply in their daily lives. The interactive sessions and practical demonstrations made the learning experience memorable."
+    },
+    {
+      id: 2,
+      name: "Inspector P. Masalkar",
+      role: "Senior Police Inspector, Pune University Traffic Police Station",
+      rating: 5,
+      text: "SRF's Go Yellow campaign was a remarkable initiative that created significant awareness among road users. The team's dedication and systematic approach to road safety education is commendable. We look forward to more such collaborative efforts."
+    },
+    {
+      id: 3,
+      name: "Mrs. Priya Sharma",
+      role: "Parent, Tuljabhavani Housing Society, Ravet",
+      rating: 5,
+      text: "The Child Safety Seat Awareness session was eye-opening. I never realized how crucial proper installation is for my child's safety. The hands-on demonstration in my own car helped me understand the correct usage. Thank you SRF for this valuable session!"
+    },
+    {
+      id: 4,
+      name: "Father Joyce Kurian",
+      role: "School Administrator, St Arnolds School, Wadgaon Shari",
+      rating: 5,
+      text: "Safety Research Foundation's program was well-structured and age-appropriate for our students. The emphasis on traffic rules, pedestrian safety, and helmet usage resonated well with the children. This is exactly the kind of education our youth needs."
+    },
+    {
+      id: 5,
+      name: "Mr. Chandrakant Madane",
+      role: "Police Inspector, Kuhi Police Station, Nagpur",
+      rating: 5,
+      text: "The reflective safety jacket distribution by SRF was a thoughtful gesture that shows their commitment to the safety of those who serve on the roads. These jackets significantly improve our visibility during night duties, enhancing our safety while we ensure public safety."
+    },
+    {
+      id: 6,
+      name: "Prof. Anil Deshmukh",
+      role: "Faculty, Data Science Department, Symbiosis Open Skills University",
+      rating: 5,
+      text: "The session on data-driven road safety was perfectly tailored for our data science students. It demonstrated real-world applications of data analytics in solving critical social issues. SRF's evidence-based approach is truly inspiring."
+    }
+  ];
 
   const handleReadMore = (eventId) => {
     navigate(`/event/${eventId}`);
   };
 
+  // Testimonials carousel auto-play functionality
+  useEffect(() => {
+    if (mainSection === 'testimonials' && !isPaused) {
+      autoPlayRef.current = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      }, 4000); // Change slide every 4 seconds
+    }
+
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [isPaused, mainSection, testimonials.length]);
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center mb-4">
-            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary to-primary"></div>
-            <div className="mx-4 sm:mx-6 flex items-center gap-2 sm:gap-3">
-              <Calendar className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={2} />
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center">
-                News & Events
-              </h2>
+    <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        {/* Header with decorative lines */}
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <div className="flex items-center justify-center mb-6 sm:mb-8">
+            <div className="hidden sm:block flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary to-primary"></div>
+            <div className="flex items-center gap-3 sm:gap-4 mx-3 sm:mx-4 md:mx-6">
+              <div className="bg-primary/10 p-2 sm:p-3 rounded-full">
+                <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-primary" strokeWidth={2.5} />
+              </div>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-black whitespace-nowrap">Our Events</h2>
             </div>
-            <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
+            <div className="hidden sm:block flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
           </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Stay updated with our latest road safety initiatives, awareness programs, and community outreach activities
-          </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                filter === category
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-              }`}
-            >
-              {category === 'all' ? 'All Events' : category}
-            </button>
-          ))}
+        {/* Main Section Tabs (Events / Media / Testimonials) */}
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto sm:max-w-none">
+          <button
+            onClick={() => setMainSection('events')}
+            className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
+              mainSection === 'events'
+                ? 'bg-primary text-white shadow-xl sm:scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+            }`}
+          >
+            <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
+            Events
+          </button>
+          <button
+            onClick={() => setMainSection('media')}
+            className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
+              mainSection === 'media'
+                ? 'bg-primary text-white shadow-xl sm:scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+            }`}
+          >
+            <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />
+            Media
+          </button>
+          <button
+            onClick={() => setMainSection('testimonials')}
+            className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
+              mainSection === 'testimonials'
+                ? 'bg-primary text-white shadow-xl sm:scale-105'
+                : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+            }`}
+          >
+            <Quote className="w-5 h-5 sm:w-6 sm:h-6" />
+            Testimonials
+          </button>
         </div>
 
-        {/* Featured Events */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Featured Events</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {filteredEvents.filter(event => event.featured).slice(0, 2).map((event) => (
-              <div key={event.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-dashed border-brand-black hover:border-primary">
-                <div className="relative">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {event.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {event.date}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      {event.location}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{event.title}</h3>
-                  <p className="text-gray-600 mb-6 line-clamp-3">{event.excerpt}</p>
+        {/* EVENTS SECTION */}
+        {mainSection === 'events' && (
+          <>
+            
+            {/* Event Type Tabs (Upcoming/Completed) */}
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-lg mx-auto sm:max-w-none">
+              <button
+                onClick={() => setEventTab('upcoming')}
+                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  eventTab === 'upcoming'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                Upcoming Events ({upcomingEvents.length})
+              </button>
+              <button
+                onClick={() => setEventTab('completed')}
+                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  eventTab === 'completed'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                Completed Events ({completedEvents.length})
+              </button>
+            </div>
+
+            {/* Filter Tabs - Only show for completed events */}
+            {eventTab === 'completed' && (
+              <div className="flex flex-wrap justify-center gap-2 mb-8 sm:mb-10 md:mb-12 px-2">
+                {categories.map((category) => (
                   <button
-                    onClick={() => handleReadMore(event.id)}
-                    className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors duration-200 font-medium"
+                    key={category}
+                    onClick={() => setFilter(category)}
+                    className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
+                      filter === category
+                        ? 'bg-primary text-white shadow-lg'
+                        : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                    }`}
                   >
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
+                    {category === 'all' ? 'All Categories' : category}
                   </button>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            )}
 
-        {/* All Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEvents.map((event) => (
-            <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-brand-black hover:border-primary">
-              <div className="relative">
-                <img 
-                  src={event.image} 
-                  alt={event.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="bg-white/90 text-primary px-2 py-1 rounded-full text-xs font-medium">
-                    {event.category}
-                  </span>
-                </div>
+            {/* No Events Message */}
+            {filteredEvents.length === 0 && (
+              <div className="text-center py-12 sm:py-16 px-4">
+                <Calendar className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-600 mb-2">
+                  {eventTab === 'upcoming' ? 'No Upcoming Events' : 'No Completed Events'}
+                </h3>
+                <p className="text-sm sm:text-base text-gray-500">
+                  {eventTab === 'upcoming' ? 'Check back soon for new events!' : 'No completed events in this category.'}
+                </p>
               </div>
-              <div className="p-6">
-                <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    {event.date}
+            )}
+
+            {/* Events Grid */}
+            {filteredEvents.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                {filteredEvents.map((event) => (
+                  <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-brand-black hover:border-primary">
+                    <div className="relative">
+                      <img 
+                        src={event.image} 
+                        alt={event.title}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-white/90 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                          {event.category}
+                        </span>
+                      </div>
+                      {eventTab === 'completed' && (
+                        <div className="absolute top-3 right-3">
+                          <span className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            Completed
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 text-xs text-gray-500 mb-3">
+                        <div className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {event.date}
+                        </div>
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">{event.title}</h3>
+                      <div className="flex items-center gap-1 text-sm text-gray-500 mb-3">
+                        <MapPin className="w-4 h-4" />
+                        <span className="line-clamp-1">{event.location}</span>
+                      </div>
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.excerpt}</p>
+                      <button
+                        onClick={() => handleReadMore(event.id)}
+                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 font-medium text-sm"
+                      >
+                        Read More
+                        <ArrowRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* MEDIA SECTION */}
+        {mainSection === 'media' && (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+              {videos.map((video) => (
+                <div key={video.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-brand-black hover:border-primary">
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="bg-primary/10 p-3 rounded-lg">
+                        <Youtube className="w-8 h-8 text-primary" />
+                      </div>
+                    </div>
+                    <div className="text-xs text-gray-500 mb-2">{video.date}</div>
+                    <h3 className="text-lg font-bold text-brand-black mb-3 line-clamp-2">{video.title}</h3>
+                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{video.description}</p>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${video.videoId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 font-medium text-sm"
+                    >
+                      Watch Video
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">{event.title}</h3>
-                <div className="flex items-center gap-1 text-sm text-gray-500 mb-3">
-                  <MapPin className="w-4 h-4" />
-                  <span className="line-clamp-1">{event.location}</span>
-                </div>
-                <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.excerpt}</p>
-                <button
-                  onClick={() => handleReadMore(event.id)}
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 font-medium text-sm"
-                >
-                  Read More
-                  <ArrowRight className="w-3 h-3" />
-                </button>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* TESTIMONIALS SECTION */}
+        {mainSection === 'testimonials' && (
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Navigation Buttons */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-primary hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="text-primary group-hover:text-white transition-colors" size={24} />
+            </button>
+
+            <button
+              onClick={goToNext}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-primary hover:shadow-xl transition-all duration-300 hover:scale-110 group"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="text-primary group-hover:text-white transition-colors" size={24} />
+            </button>
+
+            {/* Testimonials Container */}
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${(currentIndex % testimonials.length) * (100 / 3)}%)` }}
+              >
+                {/* Duplicate testimonials for infinite loop effect */}
+                {[...testimonials, ...testimonials].map((testimonial, index) => (
+                  <div
+                    key={`${testimonial.id}-${index}`}
+                    className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border-2 border-dashed border-brand-black hover:border-primary h-full group">
+                      {/* Quote Icon */}
+                      <div className="flex justify-between items-start mb-4">
+                        <Quote className="text-primary/20 group-hover:text-primary/40 transition-colors duration-300" size={40} />
+                        <div className="flex gap-1">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <Star
+                              key={i}
+                              size={16}
+                              className="text-primary fill-primary"
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Testimonial Text */}
+                      <p className="text-brand-black/80 mb-6 leading-relaxed line-clamp-4">
+                        "{testimonial.text}"
+                      </p>
+
+                      {/* Author Info */}
+                      <div className="flex items-center gap-4 pt-4 border-t border-primary/20">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/20 group-hover:border-primary transition-colors flex items-center justify-center">
+                          <span className="text-primary font-bold text-lg">
+                            {testimonial.name.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-brand-black group-hover:text-primary transition-colors">
+                            {testimonial.name}
+                          </h4>
+                          <p className="text-sm text-brand-black/60">{testimonial.role}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* Load More Button */}
-        {filteredEvents.length > 9 && (
-          <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-medium">
-              Load More Events
-            </button>
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    index === currentIndex
+                      ? 'w-8 h-3 bg-primary'
+                      : 'w-3 h-3 bg-gray-300 hover:bg-primary/50'
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>

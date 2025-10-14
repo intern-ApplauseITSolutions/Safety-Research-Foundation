@@ -6,7 +6,7 @@ import AboutPage from './pages/AboutPage';
 import FocusPage from './pages/FocusPage';
 import EventsPage from './pages/EventsPage';
 import ContactPage from './pages/ContactPage';
-import DonatePage from './pages/DonatePage';
+import GetInvolvedPage from './pages/GetInvolvedPage';
 import PledgePage from './pages/PledgePage';
 import EventDetail from './components/pages/EventDetail';
 import TeamDetail from './components/pages/TeamDetail';
@@ -23,7 +23,7 @@ function App() {
             <Route path="/focus" element={<FocusPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/donate" element={<DonatePage />} />
+            <Route path="/get-involved" element={<GetInvolvedPage />} />
             <Route path="/pledge" element={<PledgePage />} />
             <Route path="/event/:id" element={<EventDetail />} />
             <Route path="/team/:id" element={<TeamDetail />} />
