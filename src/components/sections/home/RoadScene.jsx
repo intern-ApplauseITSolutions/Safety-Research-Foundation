@@ -56,7 +56,7 @@ export default function RoadScene() {
         {/* Zebra Crossing at the end of road */}
         <div className="absolute top-0 right-4 sm:right-6 md:right-8 lg:right-10 w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 h-full">
           <div className="w-full h-full flex flex-col justify-evenly">
-            <div className="w-full h-1 sm:h-1.5 md:h-2 bg-white"> </div>
+            <div className="w-full h-1 sm:h-1.5 md:h-2 bg-white"></div>
             <div className="w-full h-1 sm:h-1.5 md:h-2 bg-white"></div>
             <div className="w-full h-1 sm:h-1.5 md:h-2 bg-white"></div>
             <div className="w-full h-1 sm:h-1.5 md:h-2 bg-white"></div>
