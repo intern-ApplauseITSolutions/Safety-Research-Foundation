@@ -109,7 +109,7 @@ const RoadSafetyFocus = () => {
               ref={(el) => (sectionRefs.current[0] = el)}
               className="md:w-1/2 mb-6 md:mb-0 md:pr-6 animate-fade-in-left"
             >
-              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
                 <div className="mb-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
@@ -137,7 +137,7 @@ const RoadSafetyFocus = () => {
             >
               <img 
                 src={roadSafetyTrainingImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-gray-100" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
                 alt="Road Safety Training" 
                 loading="lazy"
               />
@@ -150,7 +150,7 @@ const RoadSafetyFocus = () => {
               ref={(el) => (sectionRefs.current[2] = el)}
               className="md:w-1/2 mb-6 md:mb-0 md:pl-6 animate-fade-in-right animate-delay-200"
             >
-              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
                 <div className="mb-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
@@ -186,7 +186,7 @@ const RoadSafetyFocus = () => {
             >
               <img 
                 src={roadInfrastructureImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-gray-100" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
                 alt="Road Infrastructure Improvements" 
                 loading="lazy"
               />
@@ -199,7 +199,7 @@ const RoadSafetyFocus = () => {
               ref={(el) => (sectionRefs.current[4] = el)}
               className="md:w-1/2 mb-6 md:mb-0 md:pr-6 animate-fade-in-left animate-delay-400"
             >
-              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
                 <div className="mb-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
@@ -235,7 +235,7 @@ const RoadSafetyFocus = () => {
             >
               <img 
                 src={publicAwarenessImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-gray-100" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
                 alt="Road Safety Awareness" 
                 loading="lazy"
               />
@@ -248,7 +248,7 @@ const RoadSafetyFocus = () => {
               ref={(el) => (sectionRefs.current[6] = el)}
               className="md:w-1/2 mb-6 md:mb-0 md:pl-6 animate-fade-in-right animate-delay-600"
             >
-              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
                 <div className="mb-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
@@ -290,7 +290,7 @@ const RoadSafetyFocus = () => {
             >
               <img 
                 src={driverTrainingImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-gray-100" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
                 alt="People/Driver Training" 
                 loading="lazy"
               />

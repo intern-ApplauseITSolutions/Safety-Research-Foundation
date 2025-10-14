@@ -823,7 +823,7 @@ const NewsAndEvents = () => {
           <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Featured Events</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {filteredEvents.filter(event => event.featured).slice(0, 2).map((event) => (
-              <div key={event.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-dashed border-primary/40 hover:border-primary/60">
+              <div key={event.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-dashed border-brand-black hover:border-primary">
                 <div className="relative">
                   <img 
                     src={event.image} 
@@ -865,7 +865,7 @@ const NewsAndEvents = () => {
         {/* All Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredEvents.map((event) => (
-            <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-primary/40 hover:border-primary/60">
+            <div key={event.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-brand-black hover:border-primary">
               <div className="relative">
                 <img 
                   src={event.image} 

@@ -7,7 +7,7 @@ export default function Contact() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Get In Touch</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div>
+            <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
               <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <p>📧 Email: info@roadsafety.org</p>
@@ -15,7 +15,7 @@ export default function Contact() {
                 <p>🏢 Address: 123 Safety Street, Pune, Maharashtra, India</p>
               </div>
             </div>
-            <div>
+            <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
               <h3 className="text-xl font-semibold mb-4">Send us a Message</h3>
               <form className="space-y-4">
                 <div>

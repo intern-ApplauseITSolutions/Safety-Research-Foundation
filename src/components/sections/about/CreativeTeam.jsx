@@ -117,11 +117,11 @@ export default function CreativeTeam() {
         {/* Team Members */}
         <div>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">Meet Our Team</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 items-stretch">
             {teamMembers.map((member) => (
               <div
                 key={member.id}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer border-2 border-dashed border-primary/40 hover:border-primary/60"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group cursor-pointer border-2 border-dashed border-brand-black hover:border-primary h-full flex flex-col"
                 onClick={() => handleTeamMemberClick(member.id)}
               >
                 {/* Team Member Photo */}
@@ -145,17 +145,21 @@ export default function CreativeTeam() {
                 </div>
                 
                 {/* Member Info */}
-                <div className="text-center">
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">{member.name}</h4>
-                  <p className="text-primary font-semibold text-sm mb-3">{member.position}</p>
-                  
-                  {/* Click to view indicator */}
-                  <div className="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Click to view details
+                <div className="text-center flex-1 flex flex-col justify-between">
+                  <div className="min-h-[80px] flex flex-col justify-center">
+                    <h4 className="text-lg font-bold text-gray-900 mb-2 leading-tight">{member.name}</h4>
+                    <p className="text-primary font-semibold text-sm mb-3 leading-tight">{member.position}</p>
                   </div>
                   
-                  {/* Decorative Element */}
-                  <div className="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mt-2"></div>
+                  <div className="mt-auto">
+                    {/* Click to view indicator */}
+                    <div className="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-2">
+                      Click to view details
+                    </div>
+                    
+                    {/* Decorative Element */}
+                    <div className="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto"></div>
+                  </div>
                 </div>
               </div>
             ))}

@@ -902,7 +902,7 @@ Glimpses of Program`,
                       className="relative rounded-2xl overflow-hidden shadow-2xl group cursor-pointer"
                       onClick={() => openLightbox(mainImageIndex)}
                     >
-                      <div className="aspect-[16/9] sm:aspect-[16/9] bg-gray-100">
+                      <div className="aspect-[4/3] sm:aspect-[3/2] bg-gray-100">
                         <img
                           src={event.images[mainImageIndex]}
                           alt={`${event.title} - Main Image`}

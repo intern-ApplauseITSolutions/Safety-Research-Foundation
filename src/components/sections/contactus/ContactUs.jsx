@@ -55,7 +55,7 @@ const ContactUs = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
             {/* Find Us */}
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-6">
@@ -133,7 +133,7 @@ const ContactUs = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 flex flex-col h-full">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                 <Send className="w-6 h-6 text-white" />
@@ -257,16 +257,22 @@ const ContactUs = () => {
 
         {/* Map Section */}
         <div className="mt-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border-2 border-dashed border-primary/40 hover:border-primary/60 hover:shadow-xl transition-all duration-300">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Our Location</h3>
+          {/* Our Location Header - Outside the border */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="flex-1 h-0.5 bg-gradient-to-r from-transparent via-primary to-primary"></div>
+            <div className="mx-4 sm:mx-6 flex items-center gap-2 sm:gap-3">
+              <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={2} />
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 text-center">
+                Our Location
+              </h3>
             </div>
+            <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
+          </div>
+          
+          <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
             
             {/* Map Container */}
-            <div className="w-full h-96 bg-gray-100 rounded-xl overflow-hidden border-2 border-dashed border-primary/30">
+            <div className="w-full h-96 bg-gray-100 rounded-xl overflow-hidden border-2 border-dashed border-brand-black">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2613173278896!2d73.8067!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sAundh%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin"
                 width="100%"
