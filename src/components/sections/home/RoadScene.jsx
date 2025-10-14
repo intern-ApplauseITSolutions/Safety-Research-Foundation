@@ -4,11 +4,11 @@ import bike from '../../../assets/truckanimationpng/bike1.png';
 import car from '../../../assets/truckanimationpng/car.png';
 import horizontalSignal from '../../../assets/png/horizontal-traffic-light-hanging-260nw-480913231-removebg-preview.png';
 import family from '../../../assets/truckanimationpng/family.png';
-import mountainsBg from '../../../assets/png/2206.i518.013.S.m005.c13.mountains landcape.jpg';
+import natureBg from '../../../assets/png/nature.webp';
 
 export default function RoadScene() {
   return (
-    <section className="relative w-full h-32 sm:h-40 md:h-48 lg:h-56 overflow-hidden" style={{overflowX: 'hidden', backgroundImage: `url(${mountainsBg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+    <section className="relative w-full h-32 sm:h-40 md:h-48 lg:h-56 overflow-hidden" style={{overflowX: 'hidden', backgroundImage: `url(${natureBg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
       
       {/* Horizontal Traffic Signal hanging from pole - Left side of family */}
       <div className="absolute top-0 right-12 sm:right-16 md:right-20 lg:right-24 xl:right-28 z-[40]">
