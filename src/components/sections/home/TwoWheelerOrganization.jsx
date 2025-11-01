@@ -257,7 +257,7 @@ export default function TwoWheelerOrganization() {
       }
     };
 
-    // Pause on hover with better control
+    // Pause on hover/touch with better control
     const handleMouseEnter = () => {
       stopScrolling();
     };
@@ -266,18 +266,30 @@ export default function TwoWheelerOrganization() {
       startScrolling();
     };
 
+    const handleTouchStart = () => {
+      stopScrolling();
+    };
+
+    const handleTouchEnd = () => {
+      startScrolling();
+    };
+
     // Start initial scrolling
     startScrolling();
 
-    // Add event listeners
+    // Add event listeners for both mouse and touch
     scrollContainer.addEventListener('mouseenter', handleMouseEnter);
     scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+    scrollContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+    scrollContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     return () => {
       stopScrolling();
       if (scrollContainer) {
         scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
         scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+        scrollContainer.removeEventListener('touchstart', handleTouchStart);
+        scrollContainer.removeEventListener('touchend', handleTouchEnd);
       }
     };
   }, []);
@@ -286,15 +298,15 @@ export default function TwoWheelerOrganization() {
     <section className="py-12 sm:py-14 md:py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with Shield Logo */}
-        <div className="flex items-center justify-center mb-10 sm:mb-12 md:mb-16 gap-4">
-          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
+        <div className="flex items-center justify-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 gap-2 sm:gap-3 md:gap-4 px-2">
+          <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-primary max-w-[50px] sm:max-w-[100px] md:max-w-[150px] lg:max-w-[200px]"></div>
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-            <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-primary flex-shrink-0" strokeWidth={2} />
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-brand-black whitespace-nowrap">
+            <Shield className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 text-primary flex-shrink-0" strokeWidth={2} />
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-brand-black text-center leading-tight px-1 sm:px-0">
               Road Safety Initiatives
             </h2>
           </div>
-          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
+          <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/50 to-primary max-w-[50px] sm:max-w-[100px] md:max-w-[150px] lg:max-w-[200px]"></div>
         </div>
 
         {/* Two Column Layout */}
@@ -336,7 +348,8 @@ export default function TwoWheelerOrganization() {
             </h3>
             <div 
               ref={scrollContainerRef}
-              className="space-y-3 sm:space-y-4 max-h-[500px] sm:max-h-[600px] overflow-y-hidden cursor-pointer"
+              className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] md:max-h-[600px] overflow-y-hidden overflow-x-hidden cursor-pointer"
+              style={{ overscrollBehavior: 'contain' }}
             >
               {/* First set of events */}
               {events.map((event, index) => (

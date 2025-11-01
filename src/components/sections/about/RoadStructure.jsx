@@ -42,7 +42,7 @@ const RoadStructure = () => {
 
   return (
     <>
-      <style jsx>{`
+      <style>{`
         @keyframes rotate-clockwise {
           from {
             transform: translate(-50%, -50%) rotate(0deg);

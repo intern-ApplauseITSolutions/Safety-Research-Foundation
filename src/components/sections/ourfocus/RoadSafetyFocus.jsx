@@ -31,7 +31,7 @@ const RoadSafetyFocus = () => {
 
   return (
     <>
-      <style jsx>{`
+      <style>{`
         @keyframes fadeInLeft {
           from {
             opacity: 0;

@@ -106,7 +106,7 @@ export default function Banner() {
       </div>
       
       {/* Custom Animation */}
-      <style jsx global>{`
+      <style>{`
         @keyframes slideUp {
           from {
             opacity: 0;
@@ -117,10 +117,7 @@ export default function Banner() {
             transform: translateY(0);
           }
         }
-      `}</style>
-      
-      {/* Custom Animation Styles */}
-      <style jsx>{`
+        
         @keyframes moveRight {
           0% { transform: translateX(-150px); }
           100% { transform: translateX(calc(100vw + 50px)); }

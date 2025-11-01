@@ -104,7 +104,7 @@ export default function RoadScene() {
       </div>
       
       {/* Custom Animation Styles */}
-      <style jsx>{`
+      <style>{`
         @keyframes moveRight {
           0% { transform: translateX(-150px); }
           100% { transform: translateX(calc(100vw + 50px)); }

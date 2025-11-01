@@ -7,7 +7,7 @@ import outerCity from '../../../assets/about/outer_city.jpg';
 const TwoWheelerOrg = () => {
   return (
     <>
-      <style jsx>{`
+      <style>{`
         @keyframes fadeInLeft {
           from {
             opacity: 0;

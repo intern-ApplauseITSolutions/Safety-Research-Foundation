@@ -79,15 +79,15 @@ export default function Training() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header with decorative lines */}
-          <div className="flex items-center justify-center mb-8 sm:mb-12 gap-4">
-            <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
+          <div className="flex items-center justify-center mb-8 sm:mb-12 gap-2 sm:gap-3 md:gap-4 px-2">
+            <div className="flex-1 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-primary max-w-[50px] sm:max-w-[100px] md:max-w-[150px] lg:max-w-[200px]"></div>
             <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-              <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-primary flex-shrink-0" strokeWidth={2} />
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 whitespace-nowrap">
+              <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 text-primary flex-shrink-0" strokeWidth={2} />
+              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-gray-900 text-center leading-tight px-1 sm:px-0">
                 Our Training Programs
               </h2>
             </div>
-            <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/50 to-primary min-w-[50px] max-w-[200px]"></div>
+            <div className="flex-1 h-[2px] bg-gradient-to-l from-transparent via-primary/50 to-primary max-w-[50px] sm:max-w-[100px] md:max-w-[150px] lg:max-w-[200px]"></div>
           </div>
 
           {/* Subtitle with decorative elements */}
