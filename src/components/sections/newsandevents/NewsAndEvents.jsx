@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, ChevronLeft, ChevronRight, Image, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Import Child Safety Seat Awareness Session images
@@ -771,7 +771,12 @@ const NewsAndEvents = () => {
   const navigate = useNavigate();
   const [mainSection, setMainSection] = useState('events'); // 'events', 'media', or 'testimonials'
   const [eventTab, setEventTab] = useState('upcoming'); // 'upcoming' or 'completed'
+  const [mediaTab, setMediaTab] = useState('images'); // 'images', 'videos', or 'documents'
+  const [documentTab, setDocumentTab] = useState('brace'); // 'brace' or 'msia'
   const [filter, setFilter] = useState('all');
+  const [lightboxImage, setLightboxImage] = useState(null); // For image lightbox
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [imagesToShow, setImagesToShow] = useState(12); // Show 12 images initially
   
   // Testimonials carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -824,54 +829,121 @@ const NewsAndEvents = () => {
   const displayEvents = eventTab === 'upcoming' ? upcomingEvents : completedEvents;
   const filteredEvents = filter === 'all' ? displayEvents : displayEvents.filter(event => event.category === filter);
 
-  // Media Data
+  // Media Data - Traffic Awareness Images (lazy loading for better performance)
+  const trafficAwarenessModules = import.meta.glob('../../../assets/events/Traffic Awareness/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: false, import: 'default' });
+  const [loadedImages, setLoadedImages] = useState([]);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
+
+  // Load images progressively when Images tab is active
+  useEffect(() => {
+    if (mainSection === 'media' && mediaTab === 'images' && loadedImages.length === 0) {
+      setIsLoadingImages(true);
+      const loadImages = async () => {
+        const entries = Object.entries(trafficAwarenessModules);
+        const images = [];
+        
+        // Load images in batches for better performance
+        for (let i = 0; i < entries.length; i++) {
+          const [path, importFn] = entries[i];
+          const image = await importFn();
+          images.push({
+            id: i + 1,
+            image: image,
+            path: path
+          });
+          
+          // Update state after each batch of 6 images
+          if ((i + 1) % 6 === 0 || i === entries.length - 1) {
+            setLoadedImages([...images]);
+          }
+        }
+        setIsLoadingImages(false);
+      };
+      loadImages();
+    }
+  }, [mainSection, mediaTab]);
+
+  const trafficAwarenessImagesList = loadedImages;
+  const displayedImages = trafficAwarenessImagesList.slice(0, imagesToShow);
+  const hasMoreImages = imagesToShow < trafficAwarenessImagesList.length;
+
+  const loadMoreImages = () => {
+    setImagesToShow(prev => Math.min(prev + 12, trafficAwarenessImagesList.length));
+  };
+
+  // Reset pagination when leaving images tab
+  useEffect(() => {
+    if (mainSection !== 'media' || mediaTab !== 'images') {
+      setImagesToShow(12);
+    }
+  }, [mainSection, mediaTab]);
+
   const videos = [
     {
       id: 1,
-      title: "Road Safety Awareness Campaign",
-      videoId: "dQw4w9WgXcQ",
-      description: "Comprehensive road safety awareness campaign highlighting key safety measures.",
-      date: "January 2024"
-    },
-    {
-      id: 2,
-      title: "Child Safety Seat Installation",
-      videoId: "dQw4w9WgXcQ",
-      description: "Step-by-step guide on proper installation of child safety seats.",
-      date: "December 2023"
-    },
-    {
-      id: 3,
-      title: "School Road Safety Program",
-      videoId: "dQw4w9WgXcQ",
-      description: "Highlights from our school road safety awareness programs.",
-      date: "November 2023"
+      title: "Traffic Safety Awareness Video",
+      videoId: "T68HpBF-di0",
+      description: "Important traffic safety awareness and education video.",
+      date: "2024"
     }
   ];
 
-  const publications = [
-    {
-      id: 1,
-      title: "Road Safety Audit Report - NH 48",
-      description: "Comprehensive safety audit of Katraj-Navale section identifying critical zones.",
-      date: "March 2021",
-      type: "Research Report"
-    },
-    {
-      id: 2,
-      title: "Annual Road Safety Report 2023",
-      description: "Detailed analysis of road safety initiatives and impact assessment.",
-      date: "January 2024",
-      type: "Annual Report"
-    },
-    {
-      id: 3,
-      title: "Child Safety Seat Guidelines",
-      description: "Guidelines on selecting and using child safety seats for different age groups.",
-      date: "December 2023",
-      type: "Guidelines"
+  // Load BRACE News PDFs
+  const braceNewsModules = import.meta.glob('../../../assets/events/BRACE News/**/*.{pdf,PDF}', { eager: false, import: 'default' });
+  const [braceNewsDocuments, setBraceNewsDocuments] = useState([]);
+  
+  // Load MSIA Award images
+  const msiaAwardModules = import.meta.glob('../../../assets/events/MSIA Award/**/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: false, import: 'default' });
+  const [msiaAwardDocuments, setMsiaAwardDocuments] = useState([]);
+
+  // Load documents when Documents tab is active
+  useEffect(() => {
+    if (mainSection === 'media' && mediaTab === 'documents') {
+      // Load BRACE News PDFs
+      if (braceNewsDocuments.length === 0) {
+        const loadBraceNews = async () => {
+          const docs = await Promise.all(
+            Object.entries(braceNewsModules).map(async ([path, importFn], index) => {
+              const file = await importFn();
+              const filename = path.split('/').pop().replace(/\.(pdf|PDF)$/, '');
+              return {
+                id: `brace-${index + 1}`,
+                title: filename,
+                file: file,
+                type: 'PDF',
+                path: path
+              };
+            })
+          );
+          setBraceNewsDocuments(docs);
+        };
+        loadBraceNews();
+      }
+      
+      // Load MSIA Award images
+      if (msiaAwardDocuments.length === 0) {
+        const loadMsiaAward = async () => {
+          const docs = await Promise.all(
+            Object.entries(msiaAwardModules).map(async ([path, importFn], index) => {
+              const file = await importFn();
+              const filename = path.split('/').pop().replace(/\.(jpg|JPG|jpeg|JPEG|png|PNG)$/, '');
+              const city = path.includes('Bangalore') ? 'Bangalore' : path.includes('Mumbai') ? 'Mumbai' : 'Pune';
+              return {
+                id: `msia-${index + 1}`,
+                title: filename,
+                file: file,
+                type: 'Image',
+                city: city,
+                path: path
+              };
+            })
+          );
+          setMsiaAwardDocuments(docs);
+        };
+        loadMsiaAward();
+      }
     }
-  ];
+  }, [mainSection, mediaTab]);
 
   // Testimonials Data
   const testimonials = [
@@ -951,6 +1023,41 @@ const NewsAndEvents = () => {
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
+
+  // Lightbox functions
+  const openLightbox = (image, index) => {
+    setLightboxImage(image);
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  const goToPreviousImage = () => {
+    const newIndex = lightboxIndex === 0 ? trafficAwarenessImagesList.length - 1 : lightboxIndex - 1;
+    setLightboxIndex(newIndex);
+    setLightboxImage(trafficAwarenessImagesList[newIndex].image);
+  };
+
+  const goToNextImage = () => {
+    const newIndex = (lightboxIndex + 1) % trafficAwarenessImagesList.length;
+    setLightboxIndex(newIndex);
+    setLightboxImage(trafficAwarenessImagesList[newIndex].image);
+  };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (!lightboxImage) return;
+    
+    const handleKeyPress = (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goToPreviousImage();
+      if (e.key === 'ArrowRight') goToNextImage();
+    };
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [lightboxImage, lightboxIndex, trafficAwarenessImagesList]);
 
   return (
     <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white">
@@ -1121,31 +1228,251 @@ const NewsAndEvents = () => {
         {/* MEDIA SECTION */}
         {mainSection === 'media' && (
           <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-              {videos.map((video) => (
-                <div key={video.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-brand-black hover:border-primary">
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-primary/10 p-3 rounded-lg">
-                        <Youtube className="w-8 h-8 text-primary" />
+            {/* Media Subsection Tabs (Images / Videos / Documents) */}
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-xl mx-auto sm:max-w-none">
+              <button
+                onClick={() => setMediaTab('images')}
+                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'images'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <Image className="w-4 h-4 sm:w-5 sm:h-5" />
+                Images
+              </button>
+              <button
+                onClick={() => setMediaTab('videos')}
+                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'videos'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <Youtube className="w-4 h-4 sm:w-5 sm:h-5" />
+                Videos
+              </button>
+              <button
+                onClick={() => setMediaTab('documents')}
+                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'documents'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+                Documents
+              </button>
+            </div>
+
+            {/* Images Tab Content */}
+            {mediaTab === 'images' && (
+              <div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+                  {displayedImages.map((item) => (
+                    <div 
+                      key={item.id} 
+                      className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group"
+                      onClick={() => openLightbox(item.image, item.id - 1)}
+                    >
+                      <img 
+                        src={item.image} 
+                        alt={`Traffic Awareness ${item.id}`}
+                        className="w-full h-full object-cover aspect-square"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
+                          <ArrowRight className="w-5 h-5 text-primary" />
+                        </div>
                       </div>
                     </div>
-                    <div className="text-xs text-gray-500 mb-2">{video.date}</div>
-                    <h3 className="text-lg font-bold text-brand-black mb-3 line-clamp-2">{video.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{video.description}</p>
+                  ))}
+                </div>
+
+                {/* Load More Button */}
+                {hasMoreImages && (
+                  <div className="flex justify-center mt-8">
+                    <button
+                      onClick={loadMoreImages}
+                      className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                      Load More Images
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                )}
+
+                {/* Loading Indicator */}
+                {isLoadingImages && displayedImages.length === 0 && (
+                  <div className="flex flex-col items-center justify-center py-12">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+                    <p className="mt-4 text-gray-600">Loading images...</p>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Videos Tab Content */}
+            {mediaTab === 'videos' && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                {videos.map((video) => (
+                  <div key={video.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-2 border-dashed border-brand-black hover:border-primary">
+                    {/* YouTube Thumbnail */}
                     <a
                       href={`https://www.youtube.com/watch?v=${video.videoId}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 font-medium text-sm"
+                      className="relative group/thumb block cursor-pointer"
                     >
-                      Watch Video
-                      <ExternalLink className="w-3 h-3" />
+                      <img 
+                        src={`https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`}
+                        alt={video.title}
+                        className="w-full h-48 object-cover"
+                        onError={(e) => {
+                          // Fallback to standard quality if maxresdefault is not available
+                          e.target.src = `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`;
+                        }}
+                      />
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover/thumb:bg-black/50 transition-colors duration-300">
+                        <div className="bg-primary rounded-full p-4 group-hover/thumb:scale-110 transition-transform duration-300">
+                          <Play className="w-8 h-8 text-white fill-white" />
+                        </div>
+                      </div>
                     </a>
                   </div>
+                ))}
+              </div>
+            )}
+
+            {/* Documents Tab Content */}
+            {mediaTab === 'documents' && (
+              <div>
+                {/* Document Subsection Tabs */}
+                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-xl mx-auto sm:max-w-none">
+                  <button
+                    onClick={() => setDocumentTab('brace')}
+                    className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                      documentTab === 'brace'
+                        ? 'bg-brand-green text-white shadow-lg'
+                        : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                    }`}
+                  >
+                    <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+                    BRACE News
+                  </button>
+                  <button
+                    onClick={() => setDocumentTab('msia')}
+                    className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                      documentTab === 'msia'
+                        ? 'bg-brand-green text-white shadow-lg'
+                        : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                    }`}
+                  >
+                    <Image className="w-4 h-4 sm:w-5 sm:h-5" />
+                    MSIA Award
+                  </button>
                 </div>
-              ))}
-            </div>
+
+                {/* BRACE News Section */}
+                {documentTab === 'brace' && braceNewsDocuments.length > 0 && (
+                  <div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                      {braceNewsDocuments.map((doc) => (
+                        <a
+                          key={doc.id}
+                          href={doc.file}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group bg-white border-2 border-gray-200"
+                        >
+                          {/* PDF Preview */}
+                          <div className="w-full aspect-[3/4] bg-gray-50 relative">
+                            <iframe
+                              src={`${doc.file}#toolbar=0&navpanes=0&scrollbar=0&page=1&view=FitH&zoom=page-fit`}
+                              className="w-full h-full pointer-events-none absolute inset-0"
+                              title={doc.title}
+                              loading="lazy"
+                            />
+                            {/* Overlay on hover */}
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-primary rounded-full p-3">
+                                <FileText className="w-6 h-6 text-white" />
+                              </div>
+                            </div>
+                          </div>
+                          {/* PDF Title */}
+                          <div className="p-3 bg-white">
+                            <p className="text-sm text-gray-800 line-clamp-2 font-medium">{doc.title}</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">PDF</span>
+                              <ExternalLink className="w-3 h-3 text-gray-400" />
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* MSIA Award Section */}
+                {documentTab === 'msia' && msiaAwardDocuments.length > 0 && (
+                  <div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                      {msiaAwardDocuments.map((doc) => (
+                        <a
+                          key={doc.id}
+                          href={doc.file}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group bg-white border-2 border-gray-200"
+                        >
+                          <div className="w-full aspect-[3/4] bg-gray-50 relative flex items-center justify-center p-2">
+                            <img 
+                              src={doc.file} 
+                              alt={doc.title}
+                              className="max-w-full max-h-full w-auto h-auto object-contain"
+                              loading="lazy"
+                            />
+                            <div className="absolute top-2 left-2">
+                              <span className="bg-primary/90 text-white px-2 py-1 rounded text-xs font-medium shadow-lg">
+                                {doc.city}
+                              </span>
+                            </div>
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                          </div>
+                          <div className="p-3 bg-white">
+                            <p className="text-sm text-gray-800 line-clamp-2 font-medium">{doc.title}</p>
+                            <div className="flex items-center gap-2 mt-2">
+                              <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">Image</span>
+                              <ExternalLink className="w-3 h-3 text-gray-400" />
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Loading state for BRACE News */}
+                {documentTab === 'brace' && braceNewsDocuments.length === 0 && (
+                  <div className="flex flex-col items-center justify-center py-12">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+                    <p className="mt-4 text-gray-600">Loading BRACE News...</p>
+                  </div>
+                )}
+
+                {/* Loading state for MSIA Award */}
+                {documentTab === 'msia' && msiaAwardDocuments.length === 0 && (
+                  <div className="flex flex-col items-center justify-center py-12">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+                    <p className="mt-4 text-gray-600">Loading MSIA Award...</p>
+                  </div>
+                )}
+              </div>
+            )}
           </>
         )}
 
@@ -1239,6 +1566,63 @@ const NewsAndEvents = () => {
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Image Lightbox Modal */}
+        {lightboxImage && (
+          <div 
+            className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-2 sm:p-4"
+            onClick={closeLightbox}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 z-[10000] backdrop-blur-sm touch-manipulation"
+              aria-label="Close lightbox"
+            >
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPreviousImage();
+              }}
+              className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-sm touch-manipulation"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNextImage();
+              }}
+              className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-sm touch-manipulation"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
+            </button>
+
+            {/* Image Container */}
+            <div className="w-full h-full flex items-center justify-center p-8 sm:p-12 md:p-16">
+              <img
+                src={lightboxImage}
+                alt={`Traffic Awareness ${lightboxIndex + 1}`}
+                className="max-w-full max-h-full w-auto h-auto object-contain"
+                onClick={(e) => e.stopPropagation()}
+                style={{ maxHeight: 'calc(100vh - 8rem)' }}
+              />
+            </div>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
+              {lightboxIndex + 1} / {trafficAwarenessImagesList.length}
             </div>
           </div>
         )}
