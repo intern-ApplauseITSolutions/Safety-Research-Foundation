@@ -112,9 +112,9 @@ export default function Header() {
                   className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} inline-flex items-center gap-1`}
                 >
                   Focus Area
-                  <ChevronDown size={14} className={`transition-transform ${openDropdown === 'focus' ? 'rotate-180' : ''}`} />
+                  {/* <ChevronDown size={14} className={`transition-transform ${openDropdown === 'focus' ? 'rotate-180' : ''}`} /> */}
                 </NavLink>
-                {openDropdown === 'focus' && (
+                {/* {openDropdown === 'focus' && (
                   <div className="absolute top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-lg py-2 border border-gray-100 z-50">
                     <NavLink 
                       to="/core-intervention" 
@@ -129,7 +129,7 @@ export default function Header() {
                       Current Project
                     </NavLink>
                   </div>
-                )}
+                )} */}
               </div>
               
               <NavLink to="/events" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>

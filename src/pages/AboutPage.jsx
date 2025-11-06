@@ -3,6 +3,8 @@ import Banner from '../components/sections/about/Banner';
 import TwoWheelerOrg from '../components/sections/about/TwoWheelerOrg';
 import RoadStructure from '../components/sections/about/RoadStructure';
 import CreativeTeam from '../components/sections/about/CreativeTeam';
+import TechnicalExpertise from '../components/sections/about/TechnicalExpertise';
+import Objectives from '../components/sections/about/Objectives';
 
 export default function AboutPage() {
   // Scroll to top when component mounts
@@ -23,9 +25,11 @@ export default function AboutPage() {
   return (
     <div className="overflow-x-hidden w-full">
       <Banner />
+      <CreativeTeam />
+      <TechnicalExpertise />
+      <Objectives />
       <TwoWheelerOrg />
       {/* <RoadStructure /> */}
-      <CreativeTeam />
     </div>
   );
 }

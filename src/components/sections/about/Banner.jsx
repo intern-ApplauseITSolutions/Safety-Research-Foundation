@@ -100,7 +100,7 @@ export default function Banner() {
             Vision
           </h1>
           <p className="text-[10px] xs:text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white leading-snug xs:leading-normal sm:leading-relaxed md:leading-relaxed">
-            Improve the safety and sustainability of all road transportation across Indian subcontinent through research, evaluation, recommendation and improvement to reduce fatalities, injuries and property damage from roadway crashes over the next decade. This will be carried out through scientific studies to collect and analyze data and make data driven decisions for making the big impact.
+           Our Vision is to mitigate roadway crashes, fatalities and injuries on Indian roads through evaluation, recommendation. Conduct studies and make data driven decision to improve road safety in India.  
           </p>
         </div>
       </div>

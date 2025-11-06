@@ -78,7 +78,7 @@ export default function HeroBanner() {
 
             {/* Main Heading */}
             <div className="space-y-1 mb-3 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-[0.85] tracking-tight">
+              <h1 className="text-3xl sm:text-3xl lg:text-3xl font-black text-white leading-[0.85] tracking-tight">
                 Safety<br />
                 Research<br />
                 Foundation
@@ -87,8 +87,10 @@ export default function HeroBanner() {
             </div>
 
             {/* Subtitle */}
-            <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              Safety Research Foundation works to promote awareness, education, and training for road safety, driver behavior, and accident prevention. It focuses on research, community programs, and campaigns to reduce risks and save lives.
+            <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              Safety Research Foundation is dedicated to promoting safer roads through education, research, and community engagement. We focus on improving driver behavior, enhancing road safety awareness, and advancing accident prevention strategies. 
+
+              Through our research initiatives, training programs, and public awareness campaigns, we strive to build a culture of road safety, reduce risks, prevent accidents, and ultimately save lives. 
             </p>
 
             {/* Spacer to maintain banner height */}
@@ -97,16 +99,20 @@ export default function HeroBanner() {
             {/* Bottom Stats */}
             <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
               <div className="text-center">
-                <div className="text-xl font-black text-white">10K+</div>
-                <div className="text-[9px] text-white/80 font-medium">Lives Impacted</div>
+                <div className="text-xl font-black text-white">10L+</div>
+                <div className="text-[9px] text-white/80 font-medium">Students Reached</div>
               </div>
               <div className="text-center border-x border-white/20">
-                <div className="text-xl font-black text-white">500+</div>
-                <div className="text-[9px] text-white/80 font-medium">Programs</div>
+                <div className="text-xl font-black text-white">2k+</div>
+                <div className="text-[9px] text-white/80 font-medium">Parents</div>
               </div>
               <div className="text-center">
-                <div className="text-xl font-black text-white">25+</div>
-                <div className="text-[9px] text-white/80 font-medium">Years</div>
+                <div className="text-xl font-black text-white">200+</div>
+                <div className="text-[9px] text-white/80 font-medium">Schools</div>
+              </div>
+               <div className="text-center">
+                <div className="text-xl font-black text-white">1500+</div>
+                <div className="text-[9px] text-white/80 font-medium">School Bus Drivers</div>
               </div>
             </div>
           </div>

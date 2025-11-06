@@ -1,5 +1,6 @@
 import React from 'react';
 import RoadSafetyFocus from '../components/sections/ourfocus/RoadSafetyFocus';
+import CoreInterventions from '../components/sections/ourfocus/CoreInterventions';
 
 export default function FocusPage() {
   // Scroll to top when component mounts
@@ -10,6 +11,7 @@ export default function FocusPage() {
   return (
     <div className="overflow-x-hidden">
       <RoadSafetyFocus />
+      <CoreInterventions />
     </div>
   );
 }
