@@ -318,20 +318,13 @@ export default function TwoWheelerOrganization() {
             </h3>
             <div className="prose prose-sm sm:prose-base lg:prose-lg text-brand-black leading-relaxed">
               <p className="mb-4">
-                More than 400+ people die every day in Indian roads due to traffic related accidents. 
-                The number is ever so slightly increasing over the past decade. We do not anticipate 
-                the trend to change unless drastic actions are taken to make scientific decisions based on data.
+                Every day, more than 400 people lose their lives on Indian roads due to traffic-related accidents — a number that has been steadily rising over the past decade. Without decisive, data-driven action, this tragic trend is unlikely to change. 
               </p>
               <p className="mb-4">
-                After having driven in-depth accident data collection in India through our RASSI initiative 
-                with various OEMs participations, we have decided to start a foundation/NGO called 
-                SafetyResearchFoundation (SRF) to help address the problems specific to road safety 
-                deaths/injuries in India.
+              Building on years of in-depth accident data collection in India through our RASSI initiative in collaboration with various OEMs, we established Safety Research Foundation (SRF) — a non-profit organization dedicated to tackling the urgent challenges of road safety, injuries, and fatalities across the country. 
               </p>
               <p className="mb-4">
-                SRF has been created to collect/ Police reported accidents, Surveys and other means of 
-                data collection from public sources, Industries to help make scientific data driven 
-                decisions to help save lives and reduce injuries in Indian roads.
+              SRF focuses on collecting and analyzing data from police-reported accidents, surveys, public databases, and industry partners. By turning this data into actionable insights, we aim to enable scientific, evidence-based decisions that can save lives and reduce road injuries in India. 
               </p>
               <p className="font-semibold text-primary">
                 Orchestrate a decade of data driven decisions to help address and bend the death/injury 
