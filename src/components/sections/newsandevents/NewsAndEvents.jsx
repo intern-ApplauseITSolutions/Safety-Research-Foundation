@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, ChevronLeft, ChevronRight, Image, X } from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, Image, Video, Newspaper, Headphones, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Import Child Safety Seat Awareness Session images
@@ -771,12 +771,9 @@ const NewsAndEvents = () => {
   const navigate = useNavigate();
   const [mainSection, setMainSection] = useState('events'); // 'events', 'media', or 'testimonials'
   const [eventTab, setEventTab] = useState('upcoming'); // 'upcoming' or 'completed'
-  const [mediaTab, setMediaTab] = useState('images'); // 'images', 'videos', or 'documents'
+  const [mediaTab, setMediaTab] = useState('videos'); // 'videos', 'documents', 'printmedia', 'audio', or 'ebook'
   const [documentTab, setDocumentTab] = useState('brace'); // 'brace' or 'msia'
   const [filter, setFilter] = useState('all');
-  const [lightboxImage, setLightboxImage] = useState(null); // For image lightbox
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-  const [imagesToShow, setImagesToShow] = useState(12); // Show 12 images initially
   
   // Testimonials carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -829,55 +826,7 @@ const NewsAndEvents = () => {
   const displayEvents = eventTab === 'upcoming' ? upcomingEvents : completedEvents;
   const filteredEvents = filter === 'all' ? displayEvents : displayEvents.filter(event => event.category === filter);
 
-  // Media Data - Traffic Awareness Images (lazy loading for better performance)
-  const trafficAwarenessModules = import.meta.glob('../../../assets/events/Traffic Awareness/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: false, import: 'default' });
-  const [loadedImages, setLoadedImages] = useState([]);
-  const [isLoadingImages, setIsLoadingImages] = useState(false);
-
-  // Load images progressively when Images tab is active
-  useEffect(() => {
-    if (mainSection === 'media' && mediaTab === 'images' && loadedImages.length === 0) {
-      setIsLoadingImages(true);
-      const loadImages = async () => {
-        const entries = Object.entries(trafficAwarenessModules);
-        const images = [];
-        
-        // Load images in batches for better performance
-        for (let i = 0; i < entries.length; i++) {
-          const [path, importFn] = entries[i];
-          const image = await importFn();
-          images.push({
-            id: i + 1,
-            image: image,
-            path: path
-          });
-          
-          // Update state after each batch of 6 images
-          if ((i + 1) % 6 === 0 || i === entries.length - 1) {
-            setLoadedImages([...images]);
-          }
-        }
-        setIsLoadingImages(false);
-      };
-      loadImages();
-    }
-  }, [mainSection, mediaTab]);
-
-  const trafficAwarenessImagesList = loadedImages;
-  const displayedImages = trafficAwarenessImagesList.slice(0, imagesToShow);
-  const hasMoreImages = imagesToShow < trafficAwarenessImagesList.length;
-
-  const loadMoreImages = () => {
-    setImagesToShow(prev => Math.min(prev + 12, trafficAwarenessImagesList.length));
-  };
-
-  // Reset pagination when leaving images tab
-  useEffect(() => {
-    if (mainSection !== 'media' || mediaTab !== 'images') {
-      setImagesToShow(12);
-    }
-  }, [mainSection, mediaTab]);
-
+  // Media Data
   const videos = [
     {
       id: 1,
@@ -886,6 +835,21 @@ const NewsAndEvents = () => {
       description: "Important traffic safety awareness and education video.",
       date: "2024"
     }
+  ];
+
+  // Print Media Data (placeholder - to be added later)
+  const printMedia = [
+    // Add print media items here
+  ];
+
+  // Audio Data (placeholder - to be added later)
+  const audioFiles = [
+    // Add audio files here
+  ];
+
+  // eBook Data (placeholder - to be added later)
+  const ebooks = [
+    // Add ebooks here
   ];
 
   // Load BRACE News PDFs
@@ -1023,41 +987,6 @@ const NewsAndEvents = () => {
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
-
-  // Lightbox functions
-  const openLightbox = (image, index) => {
-    setLightboxImage(image);
-    setLightboxIndex(index);
-  };
-
-  const closeLightbox = () => {
-    setLightboxImage(null);
-  };
-
-  const goToPreviousImage = () => {
-    const newIndex = lightboxIndex === 0 ? trafficAwarenessImagesList.length - 1 : lightboxIndex - 1;
-    setLightboxIndex(newIndex);
-    setLightboxImage(trafficAwarenessImagesList[newIndex].image);
-  };
-
-  const goToNextImage = () => {
-    const newIndex = (lightboxIndex + 1) % trafficAwarenessImagesList.length;
-    setLightboxIndex(newIndex);
-    setLightboxImage(trafficAwarenessImagesList[newIndex].image);
-  };
-
-  // Keyboard navigation for lightbox
-  useEffect(() => {
-    if (!lightboxImage) return;
-    
-    const handleKeyPress = (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') goToPreviousImage();
-      if (e.key === 'ArrowRight') goToNextImage();
-    };
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [lightboxImage, lightboxIndex, trafficAwarenessImagesList]);
 
   return (
     <section className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-gray-50 to-white">
@@ -1228,33 +1157,22 @@ const NewsAndEvents = () => {
         {/* MEDIA SECTION */}
         {mainSection === 'media' && (
           <>
-            {/* Media Subsection Tabs (Images / Videos / Documents) */}
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-xl mx-auto sm:max-w-none">
-              <button
-                onClick={() => setMediaTab('images')}
-                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
-                  mediaTab === 'images'
-                    ? 'bg-brand-green text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
-                }`}
-              >
-                <Image className="w-4 h-4 sm:w-5 sm:h-5" />
-                Images
-              </button>
+            {/* Media Sub-Tabs */}
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-5xl mx-auto">
               <button
                 onClick={() => setMediaTab('videos')}
-                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
                   mediaTab === 'videos'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
-                <Youtube className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Video className="w-4 h-4 sm:w-5 sm:h-5" />
                 Videos
               </button>
               <button
                 onClick={() => setMediaTab('documents')}
-                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
                   mediaTab === 'documents'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
@@ -1263,56 +1181,40 @@ const NewsAndEvents = () => {
                 <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
                 Documents
               </button>
+              <button
+                onClick={() => setMediaTab('printmedia')}
+                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'printmedia'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <Newspaper className="w-4 h-4 sm:w-5 sm:h-5" />
+                Print Media
+              </button>
+              <button
+                onClick={() => setMediaTab('audio')}
+                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'audio'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <Headphones className="w-4 h-4 sm:w-5 sm:h-5" />
+                Audio
+              </button>
+              <button
+                onClick={() => setMediaTab('ebook')}
+                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'ebook'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                eBooks
+              </button>
             </div>
-
-            {/* Images Tab Content */}
-            {mediaTab === 'images' && (
-              <div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
-                  {displayedImages.map((item) => (
-                    <div 
-                      key={item.id} 
-                      className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group"
-                      onClick={() => openLightbox(item.image, item.id - 1)}
-                    >
-                      <img 
-                        src={item.image} 
-                        alt={`Traffic Awareness ${item.id}`}
-                        className="w-full h-full object-cover aspect-square"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
-                          <ArrowRight className="w-5 h-5 text-primary" />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Load More Button */}
-                {hasMoreImages && (
-                  <div className="flex justify-center mt-8">
-                    <button
-                      onClick={loadMoreImages}
-                      className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                      Load More Images
-                      <ArrowRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                )}
-
-                {/* Loading Indicator */}
-                {isLoadingImages && displayedImages.length === 0 && (
-                  <div className="flex flex-col items-center justify-center py-12">
-                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
-                    <p className="mt-4 text-gray-600">Loading images...</p>
-                  </div>
-                )}
-              </div>
-            )}
 
             {/* Videos Tab Content */}
             {mediaTab === 'videos' && (
@@ -1473,6 +1375,33 @@ const NewsAndEvents = () => {
                 )}
               </div>
             )}
+
+            {/* Print Media Tab Content */}
+            {mediaTab === 'printmedia' && (
+              <div className="text-center py-16">
+                <Newspaper className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">Print Media Coming Soon</h3>
+                <p className="text-gray-500">Newspaper articles, press releases, and print coverage will be added here.</p>
+              </div>
+            )}
+
+            {/* Audio Tab Content */}
+            {mediaTab === 'audio' && (
+              <div className="text-center py-16">
+                <Headphones className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">Audio Content Coming Soon</h3>
+                <p className="text-gray-500">Podcasts, interviews, and audio recordings will be added here.</p>
+              </div>
+            )}
+
+            {/* eBook Tab Content */}
+            {mediaTab === 'ebook' && (
+              <div className="text-center py-16">
+                <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-600 mb-2">eBooks Coming Soon</h3>
+                <p className="text-gray-500">Digital books, guides, and educational materials will be added here.</p>
+              </div>
+            )}
           </>
         )}
 
@@ -1566,63 +1495,6 @@ const NewsAndEvents = () => {
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}
-            </div>
-          </div>
-        )}
-
-        {/* Image Lightbox Modal */}
-        {lightboxImage && (
-          <div 
-            className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-2 sm:p-4"
-            onClick={closeLightbox}
-          >
-            {/* Close Button */}
-            <button
-              onClick={closeLightbox}
-              className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 z-[10000] backdrop-blur-sm touch-manipulation"
-              aria-label="Close lightbox"
-            >
-              <X className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
-
-            {/* Previous Button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goToPreviousImage();
-              }}
-              className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-sm touch-manipulation"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
-            </button>
-
-            {/* Next Button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                goToNextImage();
-              }}
-              className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 active:bg-white/30 text-white rounded-full p-2 sm:p-3 transition-all duration-300 backdrop-blur-sm touch-manipulation"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
-            </button>
-
-            {/* Image Container */}
-            <div className="w-full h-full flex items-center justify-center p-8 sm:p-12 md:p-16">
-              <img
-                src={lightboxImage}
-                alt={`Traffic Awareness ${lightboxIndex + 1}`}
-                className="max-w-full max-h-full w-auto h-auto object-contain"
-                onClick={(e) => e.stopPropagation()}
-                style={{ maxHeight: 'calc(100vh - 8rem)' }}
-              />
-            </div>
-
-            {/* Image Counter */}
-            <div className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-sm text-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium">
-              {lightboxIndex + 1} / {trafficAwarenessImagesList.length}
             </div>
           </div>
         )}
