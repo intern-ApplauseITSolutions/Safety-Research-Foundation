@@ -1,4 +1,4 @@
-import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart, ChevronDown } from 'lucide-react';
+import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart, ChevronDown, DollarSign } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import logo from '../../assets/logo/logo.png';
@@ -31,6 +31,11 @@ export default function Header() {
 
   const navigateToPledge = () => {
     navigate('/pledge');
+    setIsMenuOpen(false);
+  };
+
+  const navigateToDonate = () => {
+    navigate('/donate');
     setIsMenuOpen(false);
   };
 
@@ -139,9 +144,14 @@ export default function Header() {
               <NavLink to="/contact" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 Contact Us
               </NavLink>
-              <button onClick={navigateToGetInvolved} className="bg-brand-green hover:bg-brand-green/90 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition inline-flex items-center gap-1.5 shadow-md whitespace-nowrap">
-                <Heart size={14} fill="currentColor" />
+
+              <NavLink to="/get-involved" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 Get Involved
+              </NavLink>
+
+              <button onClick={navigateToDonate} className="bg-primary hover:bg-primary/90 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition inline-flex items-center gap-1.5 shadow-md whitespace-nowrap">
+                <Heart size={14} fill="currentColor" />
+                Donate
               </button>
               <button onClick={navigateToPledge} className="bg-brand-green hover:bg-brand-green/90 text-white px-3 py-1.5 rounded-full text-sm font-semibold transition inline-flex items-center gap-1.5 shadow-md whitespace-nowrap">
                 <HandHeart size={14} />
@@ -215,9 +225,14 @@ export default function Header() {
                 <NavLink to="/contact" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   Contact Us
                 </NavLink>
-                <button onClick={navigateToGetInvolved} className="bg-brand-green hover:bg-brand-green/90 text-white px-4 py-2 rounded-full font-semibold transition flex items-center justify-center gap-1">
-                  <Heart size={16} fill="currentColor" />
+
+                <NavLink to="/get-involved" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   Get Involved
+                </NavLink>
+
+                <button onClick={navigateToDonate} className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full font-semibold transition flex items-center justify-center gap-1">
+                  <Heart size={16} fill="currentColor" />
+                  Donate
                 </button>
                 <button onClick={navigateToPledge} className="bg-brand-green hover:bg-brand-green/90 text-white px-4 py-2 rounded-full font-semibold transition flex items-center justify-center gap-1">
                   <HandHeart size={16} />
