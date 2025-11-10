@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, Image, Video, Newspaper, Headphones, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin, Users, ArrowRight, Clock, Tag, Youtube, FileText, Play, ExternalLink, Quote, Star, Image, Video, Newspaper, Headphones, BookOpen, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
+// Import eBooks
+import braceHandbook from '../../../assets/ebooks/BRACE-Handbook.pdf';
 
 // Import Child Safety Seat Awareness Session images
 import childSafety1 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0001.jpg';
@@ -771,9 +774,14 @@ const NewsAndEvents = () => {
   const navigate = useNavigate();
   const [mainSection, setMainSection] = useState('events'); // 'events', 'media', or 'testimonials'
   const [eventTab, setEventTab] = useState('upcoming'); // 'upcoming' or 'completed'
-  const [mediaTab, setMediaTab] = useState('videos'); // 'videos', 'documents', 'printmedia', 'audio', or 'ebook'
+  const [mediaTab, setMediaTab] = useState('videos'); // 'videos', 'images', 'documents', 'printmedia', 'audio', or 'ebook'
   const [documentTab, setDocumentTab] = useState('brace'); // 'brace' or 'msia'
   const [filter, setFilter] = useState('all');
+  
+  // Image gallery state
+  const [imagesToShow, setImagesToShow] = useState(12);
+  const [loadedImages, setLoadedImages] = useState([]);
+  const [isLoadingImages, setIsLoadingImages] = useState(false);
   
   // Testimonials carousel state
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -837,6 +845,56 @@ const NewsAndEvents = () => {
     }
   ];
 
+  // Traffic Awareness Images
+  const trafficAwarenessModules = import.meta.glob('../../../assets/events/Traffic Awareness/*.{jpg,JPG,jpeg,JPEG,png,PNG}', { eager: false, import: 'default' });
+  
+  // Shared Images
+  const sharedImagesModules = import.meta.glob('../../../assets/images/shared image*.{jpg,JPG,jpeg,JPEG,png,PNG,jfif,JFIF}', { eager: false, import: 'default' });
+
+  // Load images when Images tab is active
+  useEffect(() => {
+    if (mainSection === 'media' && mediaTab === 'images' && loadedImages.length === 0) {
+      setIsLoadingImages(true);
+      const loadImages = async () => {
+        // Combine both image sources
+        const trafficEntries = Object.entries(trafficAwarenessModules);
+        const sharedEntries = Object.entries(sharedImagesModules);
+        const allEntries = [...trafficEntries, ...sharedEntries];
+        const images = [];
+        
+        for (let i = 0; i < allEntries.length; i++) {
+          const [path, importFn] = allEntries[i];
+          const image = await importFn();
+          images.push({
+            id: i + 1,
+            image: image,
+            path: path
+          });
+          
+          if ((i + 1) % 6 === 0 || i === allEntries.length - 1) {
+            setLoadedImages([...images]);
+          }
+        }
+        setIsLoadingImages(false);
+      };
+      loadImages();
+    }
+  }, [mainSection, mediaTab]);
+
+  // Reset pagination when leaving images tab
+  useEffect(() => {
+    if (mediaTab !== 'images') {
+      setImagesToShow(12);
+    }
+  }, [mediaTab]);
+
+  const displayedImages = loadedImages.slice(0, imagesToShow);
+  const hasMoreImages = imagesToShow < loadedImages.length;
+
+  const loadMoreImages = () => {
+    setImagesToShow(prev => Math.min(prev + 12, loadedImages.length));
+  };
+
   // Print Media Data (placeholder - to be added later)
   const printMedia = [
     // Add print media items here
@@ -847,9 +905,16 @@ const NewsAndEvents = () => {
     // Add audio files here
   ];
 
-  // eBook Data (placeholder - to be added later)
+  // eBook Data
   const ebooks = [
-    // Add ebooks here
+    {
+      id: 1,
+      title: "BRACE Handbook",
+      description: "Comprehensive guide on road safety best practices and awareness",
+      file: braceHandbook,
+      fileSize: "PDF",
+      category: "Road Safety Guide"
+    }
   ];
 
   // Load BRACE News PDFs
@@ -1006,38 +1071,38 @@ const NewsAndEvents = () => {
         </div>
 
         {/* Main Section Tabs (Events / Media / Testimonials) */}
-        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12 max-w-2xl mx-auto sm:max-w-none">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 max-w-2xl mx-auto">
           <button
             onClick={() => setMainSection('events')}
-            className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
+            className={`flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
               mainSection === 'events'
-                ? 'bg-primary text-white shadow-xl sm:scale-105'
+                ? 'bg-primary text-white shadow-lg'
                 : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
             }`}
           >
-            <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
             Events
           </button>
           <button
             onClick={() => setMainSection('media')}
-            className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
+            className={`flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
               mainSection === 'media'
-                ? 'bg-primary text-white shadow-xl sm:scale-105'
+                ? 'bg-primary text-white shadow-lg'
                 : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
             }`}
           >
-            <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Youtube className="w-4 h-4 sm:w-5 sm:h-5" />
             Media
           </button>
           <button
             onClick={() => setMainSection('testimonials')}
-            className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-bold transition-all duration-300 ${
+            className={`flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
               mainSection === 'testimonials'
-                ? 'bg-primary text-white shadow-xl sm:scale-105'
+                ? 'bg-primary text-white shadow-lg'
                 : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
             }`}
           >
-            <Quote className="w-5 h-5 sm:w-6 sm:h-6" />
+            <Quote className="w-4 h-4 sm:w-5 sm:h-5" />
             Testimonials
           </button>
         </div>
@@ -1171,6 +1236,17 @@ const NewsAndEvents = () => {
                 Videos
               </button>
               <button
+                onClick={() => setMediaTab('images')}
+                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                  mediaTab === 'images'
+                    ? 'bg-brand-green text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
+                }`}
+              >
+                <Image className="w-4 h-4 sm:w-5 sm:h-5" />
+                Images
+              </button>
+              <button
                 onClick={() => setMediaTab('documents')}
                 className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
                   mediaTab === 'documents'
@@ -1179,17 +1255,6 @@ const NewsAndEvents = () => {
                 }`}
               >
                 <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
-                Documents
-              </button>
-              <button
-                onClick={() => setMediaTab('printmedia')}
-                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
-                  mediaTab === 'printmedia'
-                    ? 'bg-brand-green text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
-                }`}
-              >
-                <Newspaper className="w-4 h-4 sm:w-5 sm:h-5" />
                 Print Media
               </button>
               <button
@@ -1246,6 +1311,54 @@ const NewsAndEvents = () => {
                     </a>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {/* Images Tab Content */}
+            {mediaTab === 'images' && (
+              <div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+                  {displayedImages.map((item) => (
+                    <div
+                      key={item.id}
+                      className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group"
+                    >
+                      <img 
+                        src={item.image} 
+                        alt={`Traffic Awareness ${item.id}`}
+                        className="w-full h-full object-cover aspect-square"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-2">
+                          <ArrowRight className="w-5 h-5 text-primary" />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Load More Button */}
+                {hasMoreImages && (
+                  <div className="flex justify-center mt-8">
+                    <button
+                      onClick={loadMoreImages}
+                      className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                    >
+                      Load More Images
+                      <ArrowRight className="w-5 h-5" />
+                    </button>
+                  </div>
+                )}
+
+                {/* Loading Indicator */}
+                {isLoadingImages && displayedImages.length === 0 && (
+                  <div className="flex flex-col items-center justify-center py-12">
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent"></div>
+                    <p className="mt-4 text-gray-600">Loading images...</p>
+                  </div>
+                )}
               </div>
             )}
 
@@ -1376,15 +1489,6 @@ const NewsAndEvents = () => {
               </div>
             )}
 
-            {/* Print Media Tab Content */}
-            {mediaTab === 'printmedia' && (
-              <div className="text-center py-16">
-                <Newspaper className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">Print Media Coming Soon</h3>
-                <p className="text-gray-500">Newspaper articles, press releases, and print coverage will be added here.</p>
-              </div>
-            )}
-
             {/* Audio Tab Content */}
             {mediaTab === 'audio' && (
               <div className="text-center py-16">
@@ -1396,10 +1500,54 @@ const NewsAndEvents = () => {
 
             {/* eBook Tab Content */}
             {mediaTab === 'ebook' && (
-              <div className="text-center py-16">
-                <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">eBooks Coming Soon</h3>
-                <p className="text-gray-500">Digital books, guides, and educational materials will be added here.</p>
+              <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {ebooks.map((ebook) => (
+                    <div
+                      key={ebook.id}
+                      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-dashed border-brand-black hover:border-primary group"
+                    >
+                      <div className="p-6">
+                        {/* eBook Icon */}
+                        <div className="flex items-center justify-center mb-4">
+                          <div className="bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
+                            <BookOpen className="w-12 h-12 text-primary" />
+                          </div>
+                        </div>
+
+                        {/* eBook Details */}
+                        <div className="text-center mb-4">
+                          <h4 className="text-lg font-bold text-brand-black mb-2 group-hover:text-primary transition-colors duration-300">
+                            {ebook.title}
+                          </h4>
+                          <p className="text-sm text-gray-600 mb-2">{ebook.description}</p>
+                          <span className="inline-block bg-brand-green/10 text-brand-green px-3 py-1 rounded-full text-xs font-semibold">
+                            {ebook.category}
+                          </span>
+                        </div>
+
+                        {/* Download Button */}
+                        <a
+                          href={ebook.file}
+                          download
+                          className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg w-full"
+                        >
+                          <Download className="w-5 h-5" />
+                          Download {ebook.fileSize}
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Empty State if no ebooks */}
+                {ebooks.length === 0 && (
+                  <div className="text-center py-16">
+                    <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-gray-600 mb-2">No eBooks Available</h3>
+                    <p className="text-gray-500">Digital books, guides, and educational materials will be added here.</p>
+                  </div>
+                )}
               </div>
             )}
           </>

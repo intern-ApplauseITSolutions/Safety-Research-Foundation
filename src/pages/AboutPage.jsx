@@ -28,7 +28,7 @@ export default function AboutPage() {
       <CreativeTeam />
       <TechnicalExpertise />
       <Objectives />
-      <TwoWheelerOrg />
+      {/* <TwoWheelerOrg /> */}
       {/* <RoadStructure /> */}
     </div>
   );

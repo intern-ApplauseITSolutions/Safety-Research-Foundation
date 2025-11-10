@@ -99,7 +99,7 @@ export default function HeroBanner() {
             {/* Bottom Stats */}
             <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
               <div className="text-center">
-                <div className="text-xl font-black text-white">10L+</div>
+                <div className="text-xl font-black text-white">1L+</div>
                 <div className="text-[9px] text-white/80 font-medium">Students Reached</div>
               </div>
               <div className="text-center border-x border-white/20">
