@@ -4,21 +4,21 @@ const objectives = [
   {
     icon: Users,
     title: "Multi-Stakeholder Engagement",
-    description: "Collaborate with schools, parents, transport departments, traffic police, hospitals, and local authorities for shared ownership of road safety outcomes.",
+    description: "Partnering with schools, parents, transport departments, police, hospitals, and civic bodies to ensure collective ownership of road safety outcomes.",
     color: "from-blue-500 to-blue-600",
     bgColor: "from-blue-50 to-blue-100"
   },
   {
     icon: BarChart3,
     title: "Integrated Strategy",
-    description: "Blend advocacy, capacity building, and data-driven insights to drive sustainable change.",
+    description: "Combining advocacy, capacity building, and data-driven insights to foster lasting behaviour change and safer mobility systems.",
     color: "from-green-500 to-green-600",
     bgColor: "from-green-50 to-green-100"
   },
   {
     icon: Globe,
     title: "Scalable & Replicable",
-    description: "Model designed for easy replication across geographies with context-specific customization.",
+    description: "Developing models that are adaptable and easy to replicate across diverse geographies with context-specific customization.",
     color: "from-purple-500 to-purple-600",
     bgColor: "from-purple-50 to-purple-100"
   }

@@ -52,7 +52,8 @@ export default function CoreInterventions() {
             <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
-            Strategic initiatives designed to create lasting impact on road safety
+           Safety Research Foundation is proposing and executing diverse road safety interventions aimed at achieving our vision of safer roads for all. Through education, engineering, and community engagement, SRF reaches every age group and sensitizes all categories of road users — students, parents, drivers, and pedestrians — to reduce accidents and promote responsible road behaviour.
+
           </p>
         </div>
 

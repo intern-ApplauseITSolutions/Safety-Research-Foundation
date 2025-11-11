@@ -113,7 +113,7 @@ export default function CreativeTeam() {
           </div>
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-gray-700 leading-relaxed">
-              Our team will be guided by <span className="font-semibold text-primary">Innovation</span>, <span className="font-semibold text-primary">Collaboration</span>, <span className="font-semibold text-primary">Independence</span>, <span className="font-semibold text-primary">Honesty</span> and <span className="font-semibold text-primary">high Integrity</span> to help serve our clients, customers and people of India to advance this social cause.
+              Our team is driven by <span className="font-semibold text-primary">Innovation</span>, <span className="font-semibold text-primary">Collaboration</span>, <span className="font-semibold text-primary">Independence</span>, <span className="font-semibold text-primary">Honesty</span> and <span className="font-semibold text-primary">high Integrity</span> working together to serve our partners and communities across India in advancing the shared mission of safer roads and responsible mobility.
             </p>
           </div>
         </div>
