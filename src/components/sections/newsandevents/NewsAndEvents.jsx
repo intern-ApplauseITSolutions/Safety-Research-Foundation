@@ -5,6 +5,16 @@ import { useNavigate } from 'react-router-dom';
 // Import eBooks
 import braceHandbook from '../../../assets/ebooks/BRACE-Handbook.pdf';
 
+// Import Audio files
+import audio1 from '../../../assets/audios/AUD-20251111-WA0009.mp3';
+import audio2 from '../../../assets/audios/AUD-20251111-WA0010.mp3';
+import audio3 from '../../../assets/audios/AUD-20251111-WA0012.mp3';
+import audio4 from '../../../assets/audios/AUD-20251111-WA0013.mp3';
+import audio5 from '../../../assets/audios/AUD-20251111-WA0014.mp3';
+import audio6 from '../../../assets/audios/AUD-20251111-WA0016.mp3';
+import audio7 from '../../../assets/audios/AUD-20251111-WA0018.mp3';
+import audio8 from '../../../assets/audios/AUD-20251111-WA0019.mp3';
+
 // Import Child Safety Seat Awareness Session images
 import childSafety1 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0001.jpg';
 import childSafety2 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0003.jpg';
@@ -1491,10 +1501,48 @@ const NewsAndEvents = () => {
 
             {/* Audio Tab Content */}
             {mediaTab === 'audio' && (
-              <div className="text-center py-16">
-                <Headphones className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">Audio Content Coming Soon</h3>
-                <p className="text-gray-500">Podcasts, interviews, and audio recordings will be added here.</p>
+              <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {[
+                    { id: 1, title: "Road Safety Audio 1", file: audio1 },
+                    { id: 2, title: "Road Safety Audio 2", file: audio2 },
+                    { id: 3, title: "Road Safety Audio 3", file: audio3 },
+                    { id: 4, title: "Road Safety Audio 4", file: audio4 },
+                    { id: 5, title: "Road Safety Audio 5", file: audio5 },
+                    { id: 6, title: "Road Safety Audio 6", file: audio6 },
+                    { id: 7, title: "Road Safety Audio 7", file: audio7 },
+                    { id: 8, title: "Road Safety Audio 8", file: audio8 }
+                  ].map((audio) => (
+                    <div
+                      key={audio.id}
+                      className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-dashed border-brand-black hover:border-primary group"
+                    >
+                      <div className="p-6">
+                        <div className="flex items-center justify-center mb-4">
+                          <div className="bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
+                            <Headphones className="w-12 h-12 text-primary" />
+                          </div>
+                        </div>
+                        <div className="text-center mb-4">
+                          <h4 className="text-lg font-bold text-brand-black mb-2 group-hover:text-primary transition-colors duration-300">
+                            {audio.title}
+                          </h4>
+                          <span className="inline-block bg-brand-green/10 text-brand-green px-3 py-1 rounded-full text-xs font-semibold">
+                            Audio Recording
+                          </span>
+                        </div>
+                        <audio
+                          controls
+                          className="w-full"
+                          preload="metadata"
+                        >
+                          <source src={audio.file} type="audio/mpeg" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 

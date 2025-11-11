@@ -3,9 +3,12 @@ import { GraduationCap, Construction, Users, Smartphone, Shield, Car, Building2,
 
 // Import actual images
 import roadSafetyTrainingImg from '../../../assets/images/Road_Safety_Training.jpg';
-import roadInfrastructureImg from '../../../assets/images/Road_Infrastructure.jpg';
+import roadInfrastructureImg from '../../../assets/images/shared image (23).jfif';
 import publicAwarenessImg from '../../../assets/images/Create_Public_awareness.jpg';
 import driverTrainingImg from '../../../assets/images/People_Driver_Training.jpg';
+import childSafetyImg from '../../../assets/images/shared image (21).jfif';
+import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
+import communityAwarenessImg from '../../../assets/images/shared image (20).jfif';
 
 const RoadSafetyFocus = () => {
   const sectionRefs = useRef([]);
@@ -122,16 +125,19 @@ const RoadSafetyFocus = () => {
                 </div>
                 <h4 className="text-xl font-bold text-brand-black text-center mb-4">Engineering</h4>
                 <p className="text-gray-600 text-center leading-relaxed mb-4">
-                  Scientific approach to road safety through data analysis, crash investigation, and infrastructure improvements.
+                  Scientific approach to road safety through data analysis, crash investigation, and 
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
-                    <span>Road safety audits and assessments</span>
+                    <span>infrastructure improvements.
+Road safety audits and assessments
+</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
-                    <span>Scientific crash investigation</span>
+                    <span>Scientific crash investigation
+</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
@@ -182,26 +188,27 @@ const RoadSafetyFocus = () => {
                     <Megaphone className="w-12 h-12 text-blue-600" />
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-brand-black text-center mb-4">Advocacy</h4>
+                <h4 className="text-xl font-bold text-brand-black text-center mb-4">Enforcement</h4>
                 <p className="text-gray-600 text-center leading-relaxed mb-4">
-                  Policy recommendations and public campaigns to influence road safety legislation and practices.
+                  Strengthening road safety through partnerships with enforcement agencies and promotion of safer driving behavior.
+
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Policy advisory and recommendations</span>
+                    <span>Support for police-led enforcement and awareness drives</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Government collaboration and support</span>
+                    <span>Identification and analysis of high-risk crash locations</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Public awareness campaigns</span>
+                    <span>Recommendations for improved traffic management</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-600 mr-2">•</span>
-                    <span>Stakeholder engagement initiatives</span>
+                    <span>Data sharing and evidence-based decision support for authorities</span>
                   </li>
                 </ul>
               </div>
@@ -234,13 +241,14 @@ const RoadSafetyFocus = () => {
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Offer road safety training for the police and truck/bus drivers in various states and municipalities based on our knowledge of the type of accidents that occur and how to avoid them.
+                    SRF conducts structured training programs for students, commercial drivers, police, and community members to promote responsible behaviour and safer mobility.
+
+Using real crash data, case studies, and expert-designed modules, SRF blends classroom learning with field-based demonstrations and simulations.
+
                   </p>
                   <div className="flex items-start">
-                    <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
-                      <Shield className="w-3 h-3 text-primary" />
-                    </div>
-                    <span className="text-gray-600 text-sm">Once a month event offered at various states</span>
+                    
+                   
                   </div>
                 </div>
               </div>
@@ -270,26 +278,28 @@ const RoadSafetyFocus = () => {
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
                       <Construction className="w-6 h-6" />
                     </div>
-                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">Road Infrastructure Improvements</h4>
+                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">Road Safety Audits & Infrastructure</h4>
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    Will work with various companies as part of their CSR activity to help measure accidents and the patterns and come up with improvement plans and help implement the changes and help measure the effectiveness.
+                  Our technical experts perform scientific road safety audits to identify blackspots and recommend engineering improvements such as signages, pedestrian crossings, and speed-calming measures.
+These data-driven interventions ensure safer road environments for all users and guide civic authorities for sustainable infrastructure upgrades.
+
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-start">
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <BarChart3 className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Accident pattern analysis and measurement</span>
-                    </div>
-                    <div className="flex items-start">
+                    </div> */}
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <MapPin className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Focus on accident-prone locations</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -319,26 +329,29 @@ const RoadSafetyFocus = () => {
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
                       <Users className="w-6 h-6" />
                     </div>
-                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">Road Safety Awareness</h4>
+                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">Employee Engagement</h4>
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We will be focused on training the vulnerable users on how to foresee the dangers of various intersections and offer training on how to handle them.
+                   We empower corporate employees to become “Road Safety Ambassadors” by involving them in awareness drives, school sessions, and wall-painting activities.
+
+Through structured volunteering frameworks, employees contribute directly to community safety and corporate social responsibility goals.
+
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-start">
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <BookOpen className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Training at schools/colleges and social venues</span>
-                    </div>
-                    <div className="flex items-start">
+                    </div> */}
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <Smartphone className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Develop applications and social media training</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -348,15 +361,15 @@ const RoadSafetyFocus = () => {
               className="md:w-1/2 text-center md:pl-6 animate-fade-in-right animate-delay-400"
             >
               <img 
-                src={publicAwarenessImg} 
+                src={employeeEngagementImg} 
                 className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
-                alt="Road Safety Awareness" 
+                alt="Employee Engagement" 
                 loading="lazy"
               />
             </div>
           </div>
 
-          {/* Section 4 - People/Driver Training */}
+          {/* Section 4 - Community Awareness */}
           <div className="flex flex-col md:flex-row-reverse items-stretch mb-12">
             <div 
               ref={(el) => (sectionRefs.current[6] = el)}
@@ -368,32 +381,35 @@ const RoadSafetyFocus = () => {
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
                       <UserCheck className="w-6 h-6" />
                     </div>
-                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">People/Driver Training</h4>
+                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">Community Awareness</h4>
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
                   <p className="text-gray-700 leading-relaxed mb-4">
-                    We will offer application to help people do a self-assessment on their driving ability in terms of awareness of the environment.
+                    We will offer application to help people do a self-assessment on their driving ability in terms of awareness of the environment.SRF designs interactive campaigns, Radio Jingles, Street Plays and Street outreach activities that encourage safe road behaviour and shared responsibility.
+
+These initiatives make road safety a community movement by engaging citizens, local leaders, and enforcement agencies.
+
                   </p>
                   <div className="space-y-2">
-                    <div className="flex items-start">
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <Shield className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Safety equipment awareness (seatbelts, helmets etc.)</span>
-                    </div>
-                    <div className="flex items-start">
+                    </div> */}
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <BookOpen className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Road safety rules/laws/signs understanding</span>
-                    </div>
-                    <div className="flex items-start">
+                    </div> */}
+                    {/* <div className="flex items-start">
                       <div className="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
                         <Smartphone className="w-3 h-3 text-primary" />
                       </div>
                       <span className="text-gray-600 text-sm">Smart applications to score driving behavior</span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -403,13 +419,49 @@ const RoadSafetyFocus = () => {
               className="md:w-1/2 text-center md:pr-6 animate-fade-in-left animate-delay-600"
             >
               <img 
-                src={driverTrainingImg} 
+                src={communityAwarenessImg} 
                 className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
-                alt="People/Driver Training" 
+                alt="Community Awareness" 
                 loading="lazy"
               />
             </div>
           </div>
+
+          {/* Section 5 - Child Safety Awareness */}
+          <div className="flex flex-col md:flex-row items-stretch mb-12">
+            <div 
+              ref={(el) => (sectionRefs.current[8] = el)}
+              className="md:w-1/2 mb-6 md:mb-0 md:pr-6 animate-fade-in-left animate-delay-800"
+            >
+              <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300 h-full">
+                <div className="mb-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white mr-4 flex-shrink-0">
+                      <Shield className="w-6 h-6" />
+                    </div>
+                    <h4 className="text-xl sm:text-2xl font-bold text-primary leading-tight">Child Safety Awareness</h4>
+                  </div>
+                </div>
+                <div className="border-l-4 border-primary/30 pl-6">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Dedicated programs educate parents, caregivers, and school staff on child restraint systems, school bus safety, and safe commuting practices. Through practical demonstrations and IEC materials, SRF promotes a culture of safety starting from the family level.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div 
+              ref={(el) => (sectionRefs.current[9] = el)}
+              className="md:w-1/2 text-center md:pl-6 animate-fade-in-right animate-delay-800"
+            >
+              <img 
+                src={childSafetyImg} 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
+                alt="Child Safety Awareness" 
+                loading="lazy"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
     </>
