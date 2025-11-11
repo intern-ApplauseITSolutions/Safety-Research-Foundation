@@ -1112,10 +1112,10 @@ const NewsAndEvents = () => {
           <>
             
             {/* Event Type Tabs (Upcoming/Completed) */}
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-lg mx-auto sm:max-w-none">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-5 sm:mb-6 max-w-lg mx-auto">
               <button
                 onClick={() => setEventTab('upcoming')}
-                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   eventTab === 'upcoming'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
@@ -1125,7 +1125,7 @@ const NewsAndEvents = () => {
               </button>
               <button
                 onClick={() => setEventTab('completed')}
-                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   eventTab === 'completed'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
@@ -1137,7 +1137,7 @@ const NewsAndEvents = () => {
 
             {/* Filter Tabs - Only show for completed events */}
             {eventTab === 'completed' && (
-              <div className="flex flex-wrap justify-center gap-2 mb-8 sm:mb-10 md:mb-12 px-2">
+              <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-6 sm:mb-8 px-2">
                 {categories.map((category) => (
                   <button
                     key={category}
@@ -1223,60 +1223,60 @@ const NewsAndEvents = () => {
         {mainSection === 'media' && (
           <>
             {/* Media Sub-Tabs */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-5xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-5 sm:mb-6 max-w-4xl mx-auto">
               <button
                 onClick={() => setMediaTab('videos')}
-                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   mediaTab === 'videos'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
-                <Video className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Videos
               </button>
               <button
                 onClick={() => setMediaTab('images')}
-                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   mediaTab === 'images'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
-                <Image className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Image className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Images
               </button>
               <button
                 onClick={() => setMediaTab('documents')}
-                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   mediaTab === 'documents'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
-                <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+                <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Print Media
               </button>
               <button
                 onClick={() => setMediaTab('audio')}
-                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   mediaTab === 'audio'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
-                <Headphones className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Headphones className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Audio
               </button>
               <button
                 onClick={() => setMediaTab('ebook')}
-                className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   mediaTab === 'ebook'
                     ? 'bg-brand-green text-white shadow-lg'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                 }`}
               >
-                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 eBooks
               </button>
             </div>
@@ -1366,27 +1366,27 @@ const NewsAndEvents = () => {
             {mediaTab === 'documents' && (
               <div>
                 {/* Document Subsection Tabs */}
-                <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 max-w-xl mx-auto sm:max-w-none">
+                <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mb-5 sm:mb-6 max-w-md mx-auto">
                   <button
                     onClick={() => setDocumentTab('brace')}
-                    className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                    className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                       documentTab === 'brace'
                         ? 'bg-brand-green text-white shadow-lg'
                         : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                     }`}
                   >
-                    <FileText className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <FileText className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     BRACE News
                   </button>
                   <button
                     onClick={() => setDocumentTab('msia')}
-                    className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${
+                    className={`flex items-center justify-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
                       documentTab === 'msia'
                         ? 'bg-brand-green text-white shadow-lg'
                         : 'bg-white text-gray-600 hover:bg-gray-100 border-2 border-gray-200'
                     }`}
                   >
-                    <Image className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Image className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     MSIA Award
                   </button>
                 </div>

@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
 // Static imports as fallback
-import img1 from '../../../assets/images/banner/1.jpg';
-import img2 from '../../../assets/images/banner/2.jpg';
-import img3 from '../../../assets/images/banner/IMG_2239.jpg';
+import img1 from '../../../assets/images/IMG_4907.jpg';
+import img2 from '../../../assets/images/DSC_9725.JPG';
+import img3 from '../../../assets/images/DSC_9071.JPG';
+import img4 from '../../../assets/images/DSC_8908.JPG';
 
-const staticImages = [img1, img2, img3];
+const staticImages = [img1, img2, img3, img4];
 const slideDuration = 5000; // 5 seconds
 
 // Debug: Log static images
