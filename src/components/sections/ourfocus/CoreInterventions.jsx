@@ -1,10 +1,17 @@
 import { Lightbulb, BarChart3, Construction, Users, CheckCircle } from 'lucide-react';
 
+// Import intervention images
+import awarenessImg from '../../../assets/images/Awareness Programs 3.png';
+import dataDrivenImg from '../../../assets/images/Data-Driven Solutions 3.png';
+import infrastructureImg from '../../../assets/images/Infrastructure Improvements 3.png';
+import communityImg from '../../../assets/images/Community Engagement 3.png';
+
 const interventions = [
   {
     icon: Users,
     title: "Awareness Programs",
     description: "We conduct engaging sessions across schools, colleges, communities, and corporate organizations to promote road safety awareness and encourage responsible driving behavior.",
+    image: awarenessImg,
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
     iconBg: "bg-blue-100"
@@ -13,6 +20,7 @@ const interventions = [
     icon: BarChart3,
     title: "Data-Driven Solutions",
     description: "Using comprehensive accident data, we identify high-risk areas and develop targeted safety measures to prevent crashes and save lives.",
+    image: dataDrivenImg,
     color: "from-green-500 to-green-600",
     bgColor: "bg-green-50",
     iconBg: "bg-green-100"
@@ -21,6 +29,7 @@ const interventions = [
     icon: Construction,
     title: "Infrastructure Improvements",
     description: "Through safety audits and on-ground assessments, we work to enhance road and intersection design, recommending and supporting corrective actions that make roads safer for everyone.",
+    image: infrastructureImg,
     color: "from-orange-500 to-orange-600",
     bgColor: "bg-orange-50",
     iconBg: "bg-orange-100"
@@ -29,6 +38,7 @@ const interventions = [
     icon: Users,
     title: "Community Engagement",
     description: "We actively mobilize citizens, organizations, and corporates to participate in impactful road safety initiatives, fostering a collective culture of responsibility and care on our roads.",
+    image: communityImg,
     color: "from-purple-500 to-purple-600",
     bgColor: "bg-purple-50",
     iconBg: "bg-purple-100"
@@ -57,44 +67,55 @@ export default function CoreInterventions() {
           </p>
         </div>
 
-        {/* Interventions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {/* Interventions Sections */}
+        <div className="space-y-16">
           {interventions.map((intervention, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-dashed border-brand-black hover:border-primary overflow-hidden"
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-12`}
             >
-              {/* Colored Top Bar */}
-              <div className={`h-2 bg-gradient-to-r ${intervention.color}`}></div>
-              
-              {/* Content */}
-              <div className="p-6 sm:p-8">
-                {/* Icon and Title */}
-                <div className="flex items-start gap-4 mb-4">
-                  <div className={`${intervention.iconBg} p-4 rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                    <intervention.icon className="w-8 h-8 text-gray-700" strokeWidth={2} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                      {intervention.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="text-gray-600 leading-relaxed">
-                  {intervention.description}
-                </p>
-
-                {/* Decorative Element */}
-                <div className="mt-6 flex items-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <CheckCircle className="w-5 h-5" />
-                  <span className="text-sm font-semibold">Making Roads Safer</span>
+              {/* Image Section */}
+              <div className="w-full lg:w-1/2">
+                <div className="relative">
+                  <img
+                    src={intervention.image}
+                    alt={intervention.title}
+                    className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-dashed border-brand-black hover:border-primary"
+                  />
                 </div>
               </div>
 
-              {/* Background Pattern */}
-              <div className={`absolute top-0 right-0 w-32 h-32 ${intervention.bgColor} rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-300 -z-10`}></div>
+              {/* Content Section */}
+              <div className="w-full lg:w-1/2">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 lg:p-10 border-2 border-dashed border-brand-black hover:border-primary relative overflow-hidden h-80 lg:h-96 flex flex-col justify-center">
+                  {/* Colored Top Bar */}
+                  <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${intervention.color}`}></div>
+                  
+                  {/* Icon and Title */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`${intervention.iconBg} p-4 rounded-xl shadow-md`}>
+                      <intervention.icon className="w-8 h-8 text-gray-700" strokeWidth={2} />
+                    </div>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
+                      {intervention.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-600 leading-relaxed text-lg mb-6 text-justify">
+                    {intervention.description}
+                  </p>
+
+                  {/* Action Element */}
+                  <div className="flex items-center gap-3 text-primary">
+                    <CheckCircle className="w-6 h-6" />
+                    <span className="text-base font-semibold">Making Roads Safer</span>
+                  </div>
+
+                  {/* Background Pattern */}
+                  <div className={`absolute -bottom-16 -right-16 w-32 h-32 ${intervention.bgColor} rounded-full blur-3xl opacity-30`}></div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

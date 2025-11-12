@@ -10,6 +10,11 @@ import childSafetyImg from '../../../assets/images/shared image (21).jfif';
 import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
 import communityAwarenessImg from '../../../assets/images/shared image (20).jfif';
 
+// Import 3 E's images
+import engineeringImg from '../../../assets/images/engineering 2.png';
+import educationImg from '../../../assets/images/education 5.png';
+import enforcementImg from '../../../assets/images/enforcement 5.png';
+
 const RoadSafetyFocus = () => {
   const sectionRefs = useRef([]);
   
@@ -119,9 +124,11 @@ const RoadSafetyFocus = () => {
               {/* Engineering */}
               <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
                 <div className="flex justify-center mb-6">
-                  <div className="bg-primary/10 p-4 rounded-full">
-                    <Wrench className="w-12 h-12 text-primary" />
-                  </div>
+                  <img 
+                    src={engineeringImg} 
+                    alt="Engineering" 
+                    className="w-20 h-20 object-contain"
+                  />
                 </div>
                 <h4 className="text-xl font-bold text-brand-black text-center mb-4">Engineering</h4>
                 <p className="text-gray-600 text-center leading-relaxed mb-4">
@@ -153,9 +160,11 @@ Road safety audits and assessments
               {/* Education */}
               <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
                 <div className="flex justify-center mb-6">
-                  <div className="bg-brand-green/10 p-4 rounded-full">
-                    <BookText className="w-12 h-12 text-brand-green" />
-                  </div>
+                  <img 
+                    src={educationImg} 
+                    alt="Education" 
+                    className="w-20 h-20 object-contain"
+                  />
                 </div>
                 <h4 className="text-xl font-bold text-brand-black text-center mb-4">Education</h4>
                 <p className="text-gray-600 text-center leading-relaxed mb-4">
@@ -181,12 +190,14 @@ Road safety audits and assessments
                 </ul>
               </div>
 
-              {/* Advocacy */}
+              {/* Enforcement */}
               <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
                 <div className="flex justify-center mb-6">
-                  <div className="bg-blue-100 p-4 rounded-full">
-                    <Megaphone className="w-12 h-12 text-blue-600" />
-                  </div>
+                  <img 
+                    src={enforcementImg} 
+                    alt="Enforcement" 
+                    className="w-20 h-20 object-contain"
+                  />
                 </div>
                 <h4 className="text-xl font-bold text-brand-black text-center mb-4">Enforcement</h4>
                 <p className="text-gray-600 text-center leading-relaxed mb-4">
@@ -240,7 +251,7 @@ Road safety audits and assessments
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                     SRF conducts structured training programs for students, commercial drivers, police, and community members to promote responsible behaviour and safer mobility.
 
 Using real crash data, case studies, and expert-designed modules, SRF blends classroom learning with field-based demonstrations and simulations.
@@ -259,7 +270,7 @@ Using real crash data, case studies, and expert-designed modules, SRF blends cla
             >
               <img 
                 src={roadSafetyTrainingImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover" 
                 alt="Road Safety Training" 
                 loading="lazy"
               />
@@ -282,7 +293,7 @@ Using real crash data, case studies, and expert-designed modules, SRF blends cla
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                   Our technical experts perform scientific road safety audits to identify blackspots and recommend engineering improvements such as signages, pedestrian crossings, and speed-calming measures.
 These data-driven interventions ensure safer road environments for all users and guide civic authorities for sustainable infrastructure upgrades.
 
@@ -310,7 +321,7 @@ Using real crash data, case studies, and expert-designed modules, SRF blends cla
             >
               <img 
                 src={roadInfrastructureImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover" 
                 alt="Road Infrastructure Improvements" 
                 loading="lazy"
               />
@@ -333,7 +344,7 @@ Using real crash data, case studies, and expert-designed modules, SRF blends cla
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                    We empower corporate employees to become “Road Safety Ambassadors” by involving them in awareness drives, school sessions, and wall-painting activities.
 
 Through structured volunteering frameworks, employees contribute directly to community safety and corporate social responsibility goals.
@@ -362,7 +373,7 @@ Through structured volunteering frameworks, employees contribute directly to com
             >
               <img 
                 src={employeeEngagementImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover" 
                 alt="Employee Engagement" 
                 loading="lazy"
               />
@@ -385,7 +396,7 @@ Through structured volunteering frameworks, employees contribute directly to com
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                     We will offer application to help people do a self-assessment on their driving ability in terms of awareness of the environment.SRF designs interactive campaigns, Radio Jingles, Street Plays and Street outreach activities that encourage safe road behaviour and shared responsibility.
 
 These initiatives make road safety a community movement by engaging citizens, local leaders, and enforcement agencies.
@@ -420,7 +431,7 @@ These initiatives make road safety a community movement by engaging citizens, lo
             >
               <img 
                 src={communityAwarenessImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover" 
                 alt="Community Awareness" 
                 loading="lazy"
               />
@@ -443,7 +454,7 @@ These initiatives make road safety a community movement by engaging citizens, lo
                   </div>
                 </div>
                 <div className="border-l-4 border-primary/30 pl-6">
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4 text-justify">
                     Dedicated programs educate parents, caregivers, and school staff on child restraint systems, school bus safety, and safe commuting practices. Through practical demonstrations and IEC materials, SRF promotes a culture of safety starting from the family level.
                   </p>
                 </div>
@@ -455,7 +466,7 @@ These initiatives make road safety a community movement by engaging citizens, lo
             >
               <img 
                 src={childSafetyImg} 
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black" 
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover" 
                 alt="Child Safety Awareness" 
                 loading="lazy"
               />

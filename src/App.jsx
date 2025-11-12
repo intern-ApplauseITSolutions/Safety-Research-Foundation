@@ -23,7 +23,7 @@ function App() {
     >
       <div className="min-h-screen bg-white">
         <Header />
-        <main>
+        <main className="pt-20">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

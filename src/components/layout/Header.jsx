@@ -90,7 +90,7 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <header className="bg-white shadow-lg sticky top-0 z-[100] w-full">
+      <header className="bg-white shadow-lg fixed top-0 z-[100] w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
