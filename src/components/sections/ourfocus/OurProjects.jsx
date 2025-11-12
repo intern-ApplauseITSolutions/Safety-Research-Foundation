@@ -1,10 +1,19 @@
 import { Briefcase, Users, GraduationCap, Car, MapPin, Megaphone, Sparkles, CheckCircle, ArrowRight } from 'lucide-react';
 
+// Import activity images
+import studentWorkshopImg from '../../../assets/images/RoadSafetyAwarenessProgram –01&02Sep2022/IMG_20220901_134547-scaled.jpg';
+import parentSessionImg from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0001.jpg';
+import driverTrainingImg from '../../../assets/images/People_Driver_Training.jpg';
+import safeSchoolZoneImg from '../../../assets/images/shared image (23).jfif';
+import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
+import massOutreachImg from '../../../assets/images/GoYellowRoadSafetyAwareness25th&26thFeb2022/1.jpg';
+
 const projectActivities = [
   {
     icon: GraduationCap,
     title: "Student Workshops",
     description: "Interactive sessions for Classes 7–9 students, conducted twice a year, reaching over 5,000 students. These workshops build awareness about child safety, seatbelt use, and proper child restraints through engaging and practical learning.",
+    image: studentWorkshopImg,
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
     stats: "5,000+ Students"
@@ -13,6 +22,7 @@ const projectActivities = [
     icon: Users,
     title: "Parent Sessions",
     description: "Dedicated sessions for 200+ parents focused on safe travel habits, responsible road behavior, and child passenger safety to ensure every journey is a safe one.",
+    image: parentSessionImg,
     color: "from-purple-500 to-purple-600",
     bgColor: "bg-purple-50",
     stats: "200+ Parents"
@@ -21,6 +31,7 @@ const projectActivities = [
     icon: Car,
     title: "Driver Training",
     description: "Comprehensive training for 200+ school bus drivers and attendants on safe transport practices, emergency response, and maintaining high safety standards in daily school commutes.",
+    image: driverTrainingImg,
     color: "from-green-500 to-green-600",
     bgColor: "bg-green-50",
     stats: "200+ Drivers"
@@ -29,6 +40,7 @@ const projectActivities = [
     icon: MapPin,
     title: "Safe School Zones",
     description: "Conducted technical safety audits across 5+ school zones, offering data-driven recommendations to improve road design, signage, and traffic flow for safer school environments.",
+    image: safeSchoolZoneImg,
     color: "from-orange-500 to-orange-600",
     bgColor: "bg-orange-50",
     stats: "5+ School Zones"
@@ -37,6 +49,7 @@ const projectActivities = [
     icon: Sparkles,
     title: "Employee Engagement",
     description: "Encouraging Bosch employees to take the lead in school sessions, awareness drives, and community outreach, strengthening a shared culture of road safety and responsibility.",
+    image: employeeEngagementImg,
     color: "from-pink-500 to-pink-600",
     bgColor: "bg-pink-50",
     stats: "Active Participation"
@@ -45,6 +58,7 @@ const projectActivities = [
     icon: Megaphone,
     title: "Mass Outreach",
     description: "Large-scale public campaigns and events that inspire communities to adopt safer road practices and build collective responsibility for saving lives on our roads.",
+    image: massOutreachImg,
     color: "from-red-500 to-red-600",
     bgColor: "bg-red-50",
     stats: "Community Wide"
@@ -96,7 +110,7 @@ export default function OurProjects() {
               </div>
               
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border-2 border-white/20">
-                <p className="text-white/95 text-base sm:text-lg leading-relaxed">
+                <p className="text-white/95 text-base sm:text-lg leading-relaxed text-justify">
                   A comprehensive road safety initiative in partnership with Bosch Limited, focusing on student education, 
                   parent awareness, driver training, and infrastructure improvements to create safer communities around schools.
                 </p>
@@ -116,6 +130,15 @@ export default function OurProjects() {
                 key={index}
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-dashed border-brand-black hover:border-primary overflow-hidden"
               >
+                {/* Image */}
+                <div className="relative">
+                  <img
+                    src={activity.image}
+                    alt={activity.title}
+                    className="w-full h-48 object-cover"
+                  />
+                </div>
+
                 {/* Colored Top Bar */}
                 <div className={`h-2 bg-gradient-to-r ${activity.color}`}></div>
                 
@@ -130,14 +153,11 @@ export default function OurProjects() {
                       <h4 className="text-lg font-bold text-gray-900 mb-1">
                         {activity.title}
                       </h4>
-                      <span className={`inline-block bg-gradient-to-r ${activity.color} text-white px-3 py-1 rounded-full text-xs font-bold`}>
-                        {activity.stats}
-                      </span>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     {activity.description}
                   </p>
 

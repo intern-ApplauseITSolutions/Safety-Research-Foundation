@@ -8,6 +8,8 @@ import TwoWheelerOrganization from '../components/sections/home/TwoWheelerOrgani
 import Training from '../components/sections/home/Training';
 import RoadScene from '../components/sections/home/RoadScene';
 import Testimonials from '../components/sections/Testimonials';
+import AboutPreview from '../components/sections/home/AboutPreview';
+import FocusAreasPreview from '../components/sections/home/FocusAreasPreview';
 
 export default function HomePage() {
   // Scroll to top when component mounts
@@ -20,8 +22,10 @@ export default function HomePage() {
       <HeroBanner />
       <RoadScene />
       <TwoWheelerOrganization />
-      <Training />
-      <Testimonials />
+      <AboutPreview />
+      <FocusAreasPreview />
+      {/* <Training />
+      <Testimonials /> */}
       {/* <Stats />
       <Mission />
       <QuickLinks />
