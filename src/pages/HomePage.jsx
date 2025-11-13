@@ -19,7 +19,9 @@ export default function HomePage() {
 
   return (
     <div>
-      <HeroBanner />
+      <div className="-mt-14">
+        <HeroBanner />
+      </div>
       <RoadScene />
       <TwoWheelerOrganization />
       <AboutPreview />
