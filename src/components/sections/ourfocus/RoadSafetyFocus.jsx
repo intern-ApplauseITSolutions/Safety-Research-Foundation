@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { GraduationCap, Construction, Users, Smartphone, Shield, Car, Building2, MapPin, BookOpen, Eye, BarChart3, UserCheck, Award, Target, Wrench, BookText, Megaphone } from 'lucide-react';
 
 // Import actual images
-import roadSafetyTrainingImg from '../../../assets/images/Road_Safety_Training.jpg';
+import roadSafetyTrainingImg from '../../../assets/images/shared image (20).jfif';
 import roadInfrastructureImg from '../../../assets/images/shared image (23).jfif';
 import publicAwarenessImg from '../../../assets/images/Create_Public_awareness.jpg';
 import driverTrainingImg from '../../../assets/images/People_Driver_Training.jpg';
