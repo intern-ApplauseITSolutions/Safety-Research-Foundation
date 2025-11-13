@@ -3,7 +3,7 @@ import { GraduationCap, Construction, Users, Shield, ArrowRight, Target } from '
 import { Link } from 'react-router-dom';
 
 // Import focus area images
-import roadSafetyTrainingImg from '../../../assets/images/Road_Safety_Training.jpg';
+import roadSafetyTrainingImg from '../../../assets/images/shared image (12).jfif';
 import roadInfrastructureImg from '../../../assets/images/shared image (23).jfif';
 import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
 import communityAwarenessImg from '../../../assets/images/shared image (20).jfif';
