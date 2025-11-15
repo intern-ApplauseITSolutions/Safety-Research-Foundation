@@ -105,4 +105,4 @@ Private and proprietary to Safety Research Foundation.
 ---
 
 **Version:** 0.1.0  
-**Last Updated:** 2025 
+**Last Updated:** 2025

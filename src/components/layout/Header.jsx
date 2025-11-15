@@ -116,7 +116,7 @@ export default function Header() {
                   to="/focus"
                   className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} inline-flex items-center gap-1`}
                 >
-                  Focus Area
+                  Our Approach
                   {/* <ChevronDown size={14} className={`transition-transform ${openDropdown === 'focus' ? 'rotate-180' : ''}`} /> */}
                 </NavLink>
                 {/* {openDropdown === 'focus' && (

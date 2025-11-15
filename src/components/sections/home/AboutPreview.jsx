@@ -3,10 +3,10 @@ import { Shield, Users, Target, Award, ArrowRight, Heart, Globe, Lightbulb } fro
 import { Link } from 'react-router-dom';
 
 const stats = [
-  { number: '10+', label: 'Years Experience', icon: Award },
-  { number: '5000+', label: 'Lives Impacted', icon: Heart },
-  { number: '50+', label: 'Projects Completed', icon: Target },
-  { number: '100+', label: 'Partners', icon: Globe }
+  { number: '1L+', label: 'Students Reached', icon: Award },
+  { number: '2K+', label: 'Parents', icon: Heart },
+  { number: '200+', label: 'Schools', icon: Target },
+  { number: '1500+', label: 'School Bus Drivers', icon: Globe }
 ];
 
 const highlights = [
