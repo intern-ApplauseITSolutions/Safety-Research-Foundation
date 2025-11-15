@@ -22,7 +22,7 @@ const teamMembers = [
   },
   {
     name: "Ajit Dandapani",
-    position: "Trustee",
+    position: "Founding Trustee",
     organization: "Safety Research Foundation",
     title: "Founder and CEO, JP Research",
     image: ajitImage,
