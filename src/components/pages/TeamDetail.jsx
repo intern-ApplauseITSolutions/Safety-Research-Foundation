@@ -128,6 +128,10 @@ const teamMembers = [
     bio: "With nearly 18 years of experience in the development and CSR sectors, Sandip Nawale brings a wealth of expertise in Project Management, Monitoring and Evaluation, Corporate Social Responsibility, and Community Development. He holds a Master degree in Social Work with a focus on Urban and Rural Community Development, and he is certified in CSR from the Indian Institute of Corporate Affairs (IICA).",
     details:
       "Sandip has effectively led impactful programs with various organizations, including Vestas Wind Technology and BAIF Development Research Foundation, where he championed initiatives in areas such as child safety, environmental conservation, Health & Education and rural livelihoods.\n\nAt the Safety Research Foundation, Sandip heads the operations with a strong commitment to road safety and public awareness, especially focused on vulnerable road users. His role encompasses not only program execution but also strategic planning and stakeholder engagement, CSR Partnerships aiming to expand SRF's reach and enhance the impact of its initiatives. His vision for SRF is to foster a safe, informed, and responsible community through sustainable and data-driven solutions.",
+    education: [
+      "Master degree in Social Work (Urban and Rural Community Development)",
+      "Certified in CSR from Indian Institute of Corporate Affairs (IICA)",
+    ],
     achievements: [
       "18+ years in development and CSR sectors",
       "Led programs at Vestas Wind Technology",
