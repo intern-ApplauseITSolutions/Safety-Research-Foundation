@@ -7,6 +7,7 @@ import ajitImage from '../../../assets/team/Mr-Ajit-Dandapani.jpg';
 import chitraImage from '../../../assets/team/Chitra Subramaniam.png';
 import seshImage from '../../../assets/team/Sesh Subramaniam.png';
 import sandipImage from '../../../assets/team/Sandip Nawale.png';
+import ananthanarayananImage from '../../../assets/images/image2.jpeg';
 
 const teamMembers = [
   {
@@ -21,7 +22,7 @@ const teamMembers = [
   },
   {
     name: "Ajit Dandapani",
-    position: "Trustee",
+    position: "Founding Trustee",
     organization: "Safety Research Foundation",
     title: "Founder and CEO, JP Research",
     image: ajitImage,
@@ -58,6 +59,16 @@ const teamMembers = [
     id: 5,
     bio: "With nearly 18 years of experience in the development and CSR sectors, Sandip Nawale brings a wealth of expertise in Project Management, Monitoring and Evaluation, Corporate Social Responsibility, and Community Development. He holds a Master degree in Social Work with a focus on Urban and Rural Community Development, and he is certified in CSR from the Indian Institute of Corporate Affairs (IICA).",
     details: "Sandip has effectively led impactful programs with various organizations, including Vestas Wind Technology and BAIF Development Research Foundation, where he championed initiatives in areas such as child safety, environmental conservation, Health & Education and rural livelihoods.\n\nAt the Safety Research Foundation, Sandip heads the operations with a strong commitment to road safety and public awareness, especially focused on vulnerable road users. His role encompasses not only program execution but also strategic planning and stakeholder engagement, CSR Partnerships aiming to expand SRF's reach and enhance the impact of its initiatives. His vision for SRF is to foster a safe, informed, and responsible community through sustainable and data-driven solutions."
+  },
+  {
+    name: "S Ananthanarayanan",
+    position: "Trustee",
+    organization: "Safety Research Foundation",
+    title: "Trustee, SRF",
+    image: ananthanarayananImage,
+    id: 6,
+    bio: "MR. S Ananthanarayanan is an Alumnus of College of Engineering, Guindy in Chennai. He is also a qualified Cost Accountant besides being a Fellow of the Indian Institution of Industrial Engineering. He has over thirty years experience in Manufacturing, Production Engineering and General Management in both Government and Private sectors.",
+    details: "He has been associated with CII (Confederation of Indian Industries) since long and has held the positions of Chairman of Karnataka State and of the Southern Zone. Until recently, he was an Independent Director in a large company."
   }
 ];
 
@@ -122,7 +133,7 @@ export default function CreativeTeam() {
         {/* Team Members */}
         <div>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">Meet Our Team</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-stretch">
             {teamMembers.map((member) => (
               <div
                 key={member.id}
@@ -158,11 +169,6 @@ export default function CreativeTeam() {
                   </div>
                   
                   <div className="mt-auto">
-                    {/* Click to view indicator */}
-                    <div className="text-xs text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mb-2">
-                      Click to view details
-                    </div>
-                    
                     {/* Decorative Element */}
                     <div className="w-12 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto"></div>
                   </div>

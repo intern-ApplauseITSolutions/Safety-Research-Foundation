@@ -98,7 +98,7 @@ export default function HeroBanner() {
             <div className="h-16"></div>
 
             {/* Bottom Stats */}
-            <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+            {/* <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
               <div className="text-center">
                 <div className="text-xl font-black text-white">1L+</div>
                 <div className="text-[9px] text-white/80 font-medium">Students Reached</div>
@@ -115,7 +115,7 @@ export default function HeroBanner() {
                 <div className="text-xl font-black text-white">1500+</div>
                 <div className="text-[9px] text-white/80 font-medium">School Bus Drivers</div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Side - Image Carousel */}
