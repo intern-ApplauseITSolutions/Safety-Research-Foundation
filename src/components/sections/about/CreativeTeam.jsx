@@ -51,24 +51,24 @@ const teamMembers = [
     details: "Has been involved with several green field projects in India consisting of state of the art manufacturing techniques and thus have contributed further rapid growth of metal forming industries. In one of the successful projects, he has developed high technology manufacturing constant velocity joint items using warm/cold metal processing techniques, in conjunction with international organizations from Germany, UK, and Spain. The hands-on experience with failure analysis enabled him to publish numerous articles on the subject. Travelled extensively overseas for transfer of technology, machinery selection and marketing.\n\nCareer Summary:\nIndia: At present resident Board of Director for JP Research India Ltd. Served as CEO/Executive Director (working Board of Director) at India Forge and Drop Stampings Ltd., past 10 years, and at Amforge Industries Ltd for 4 years. Involved in development of various auto components and assembly for car manufacturers namely Maruti Suzuki India Ltd., Honda Motors Ltd. Mahindra & Mahindra Ltd., Tata Motors Ltd. and HST Germany and also several Greenfield Projects.\n\nOverseas: Plant Manager at Colorado Forge Ltd, USA and Chief Quality Manager at Precision Metals Inc. Sandiego, USA. The company was involved in manufacturing Air craft for Boeing industries.\n\nProfessional Memberships: Past Chairman – American Society for Materials – Pune Chapter, India. Life Member – International Association of Business Leaders Inc. – Newbern, NC, USA"
   },
   {
-    name: "Sandip Nawale",
-    position: "Head - Operations",
-    organization: "Safety Research Foundation",
-    title: "Head - Operations, SRF",
-    image: sandipImage,
-    id: 5,
-    bio: "With nearly 18 years of experience in the development and CSR sectors, Sandip Nawale brings a wealth of expertise in Project Management, Monitoring and Evaluation, Corporate Social Responsibility, and Community Development. He holds a Master degree in Social Work with a focus on Urban and Rural Community Development, and he is certified in CSR from the Indian Institute of Corporate Affairs (IICA).",
-    details: "Sandip has effectively led impactful programs with various organizations, including Vestas Wind Technology and BAIF Development Research Foundation, where he championed initiatives in areas such as child safety, environmental conservation, Health & Education and rural livelihoods.\n\nAt the Safety Research Foundation, Sandip heads the operations with a strong commitment to road safety and public awareness, especially focused on vulnerable road users. His role encompasses not only program execution but also strategic planning and stakeholder engagement, CSR Partnerships aiming to expand SRF's reach and enhance the impact of its initiatives. His vision for SRF is to foster a safe, informed, and responsible community through sustainable and data-driven solutions."
-  },
-  {
     name: "S Ananthanarayanan",
     position: "Trustee",
     organization: "Safety Research Foundation",
     title: "Trustee, SRF",
     image: ananthanarayananImage,
-    id: 6,
+    id: 5,
     bio: "MR. S Ananthanarayanan is an Alumnus of College of Engineering, Guindy in Chennai. He is also a qualified Cost Accountant besides being a Fellow of the Indian Institution of Industrial Engineering. He has over thirty years experience in Manufacturing, Production Engineering and General Management in both Government and Private sectors.",
     details: "He has been associated with CII (Confederation of Indian Industries) since long and has held the positions of Chairman of Karnataka State and of the Southern Zone. Until recently, he was an Independent Director in a large company."
+  },
+  {
+    name: "Sandip Nawale",
+    position: "Head - Operations",
+    organization: "Safety Research Foundation",
+    title: "Head - Operations, SRF",
+    image: sandipImage,
+    id: 6,
+    bio: "With nearly 18 years of experience in the development and CSR sectors, Sandip Nawale brings a wealth of expertise in Project Management, Monitoring and Evaluation, Corporate Social Responsibility, and Community Development. He holds a Master degree in Social Work with a focus on Urban and Rural Community Development, and he is certified in CSR from the Indian Institute of Corporate Affairs (IICA).",
+    details: "Sandip has effectively led impactful programs with various organizations, including Vestas Wind Technology and BAIF Development Research Foundation, where he championed initiatives in areas such as child safety, environmental conservation, Health & Education and rural livelihoods.\n\nAt the Safety Research Foundation, Sandip heads the operations with a strong commitment to road safety and public awareness, especially focused on vulnerable road users. His role encompasses not only program execution but also strategic planning and stakeholder engagement, CSR Partnerships aiming to expand SRF's reach and enhance the impact of its initiatives. His vision for SRF is to foster a safe, informed, and responsible community through sustainable and data-driven solutions."
   }
 ];
 

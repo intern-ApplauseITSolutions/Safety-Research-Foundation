@@ -120,37 +120,11 @@ const teamMembers = [
     ],
   },
   {
-    name: "Sandip Nawale",
-    position: "Head - Operations, Safety Research Foundation",
-    title: "Head - Operations, SRF",
-    image: sandipImage,
-    id: 5,
-    bio: "With nearly 18 years of experience in the development and CSR sectors, Sandip Nawale brings a wealth of expertise in Project Management, Monitoring and Evaluation, Corporate Social Responsibility, and Community Development. He holds a Master degree in Social Work with a focus on Urban and Rural Community Development, and he is certified in CSR from the Indian Institute of Corporate Affairs (IICA).",
-    details:
-      "Sandip has effectively led impactful programs with various organizations, including Vestas Wind Technology and BAIF Development Research Foundation, where he championed initiatives in areas such as child safety, environmental conservation, Health & Education and rural livelihoods.\n\nAt the Safety Research Foundation, Sandip heads the operations with a strong commitment to road safety and public awareness, especially focused on vulnerable road users. His role encompasses not only program execution but also strategic planning and stakeholder engagement, CSR Partnerships aiming to expand SRF's reach and enhance the impact of its initiatives. His vision for SRF is to foster a safe, informed, and responsible community through sustainable and data-driven solutions.",
-    education: [
-      "Master degree in Social Work (Urban and Rural Community Development)",
-      "Certified in CSR from Indian Institute of Corporate Affairs (IICA)",
-    ],
-    achievements: [
-      "18+ years in development and CSR sectors",
-      "Led programs at Vestas Wind Technology",
-      "Program leadership at BAIF Development Research Foundation",
-    ],
-    expertise: [
-      "Project Management",
-      "Corporate Social Responsibility",
-      "Community Development",
-      "Road Safety",
-      "Stakeholder Engagement",
-    ],
-  },
-  {
     name: "S Ananthanarayanan",
     position: "Trustee, Safety Research Foundation",
     title: "Trustee, SRF",
     image: ananthanarayananImage,
-    id: 6,
+    id: 5,
     bio: "MR. S Ananthanarayanan is an Alumnus of College of Engineering, Guindy in Chennai. He is also a qualified Cost Accountant besides being a Fellow of the Indian Institution of Industrial Engineering. He has over thirty years experience in Manufacturing, Production Engineering and General Management in both Government and Private sectors.",
     details:
       "He has been associated with CII (Confederation of Indian Industries) since long and has held the positions of Chairman of Karnataka State and of the Southern Zone. Until recently, he was an Independent Director in a large company.",
@@ -171,6 +145,32 @@ const teamMembers = [
       "General Management",
       "Cost Accounting",
       "Industrial Engineering",
+    ],
+  },
+  {
+    name: "Sandip Nawale",
+    position: "Head - Operations, Safety Research Foundation",
+    title: "Head - Operations, SRF",
+    image: sandipImage,
+    id: 6,
+    bio: "With nearly 18 years of experience in the development and CSR sectors, Sandip Nawale brings a wealth of expertise in Project Management, Monitoring and Evaluation, Corporate Social Responsibility, and Community Development. He holds a Master degree in Social Work with a focus on Urban and Rural Community Development, and he is certified in CSR from the Indian Institute of Corporate Affairs (IICA).",
+    details:
+      "Sandip has effectively led impactful programs with various organizations, including Vestas Wind Technology and BAIF Development Research Foundation, where he championed initiatives in areas such as child safety, environmental conservation, Health & Education and rural livelihoods.\n\nAt the Safety Research Foundation, Sandip heads the operations with a strong commitment to road safety and public awareness, especially focused on vulnerable road users. His role encompasses not only program execution but also strategic planning and stakeholder engagement, CSR Partnerships aiming to expand SRF's reach and enhance the impact of its initiatives. His vision for SRF is to foster a safe, informed, and responsible community through sustainable and data-driven solutions.",
+    education: [
+      "Master degree in Social Work (Urban and Rural Community Development)",
+      "Certified in CSR from Indian Institute of Corporate Affairs (IICA)",
+    ],
+    achievements: [
+      "18+ years in development and CSR sectors",
+      "Led programs at Vestas Wind Technology",
+      "Program leadership at BAIF Development Research Foundation",
+    ],
+    expertise: [
+      "Project Management",
+      "Corporate Social Responsibility",
+      "Community Development",
+      "Road Safety",
+      "Stakeholder Engagement",
     ],
   },
 ];
