@@ -1,30 +1,42 @@
-import React from 'react';
-import { Shield, Users, Target, Award, ArrowRight, Heart, Globe, Lightbulb } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  Shield,
+  Users,
+  Target,
+  Award,
+  ArrowRight,
+  Heart,
+  Globe,
+  Lightbulb,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const stats = [
-  { number: '1L+', label: 'Students Reached', icon: Award },
-  { number: '2K+', label: 'Parents', icon: Heart },
-  { number: '200+', label: 'Schools', icon: Target },
-  { number: '1500+', label: 'School Bus Drivers', icon: Globe }
+  { number: "1L+", label: "Students Reached", icon: Award },
+  { number: "2K+", label: "Parents", icon: Heart },
+  { number: "200+", label: "Schools", icon: Target },
+  { number: "1500+", label: "School Bus Drivers", icon: Globe },
 ];
 
 const highlights = [
   {
     icon: Shield,
-    title: 'Safety First',
-    description: 'Committed to creating safer roads through evidence-based interventions and community engagement.'
+    title: "Safety First",
+    description:
+      "Committed to creating safer roads through evidence-based interventions and community engagement.",
   },
   {
     icon: Users,
-    title: 'Community Driven',
-    description: 'Working hand-in-hand with communities, schools, and organizations to build a culture of road safety.'
+    title: "Community Driven",
+    description:
+      "Working hand-in-hand with communities, schools, and organizations to build a culture of road safety.",
   },
   {
     icon: Lightbulb,
-    title: 'Innovation',
-    description: 'Leveraging cutting-edge research and technology to develop effective road safety solutions.'
-  }
+    title: "Innovation",
+    description:
+      "Leveraging cutting-edge research and technology to develop effective road safety solutions.",
+  },
 ];
 
 export default function AboutPreview() {
@@ -42,14 +54,19 @@ export default function AboutPreview() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
             <Shield className="w-5 h-5 text-primary" />
-            <span className="text-primary font-semibold text-sm">About Safety Research Foundation</span>
+            <span className="text-primary font-semibold text-sm">
+              About Safety Research Foundation
+            </span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Pioneering Road Safety <span className="text-primary">For a Safer Tomorrow</span>
+            Pioneering Road Safety{" "}
+            <span className="text-primary">For a Safer Tomorrow</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Safety Research Foundation is dedicated to reducing road traffic injuries and fatalities through 
-            comprehensive research, innovative solutions, and community-driven initiatives that create lasting impact.
+            Safety Research Foundation is dedicated to reducing road traffic
+            injuries and fatalities through comprehensive research, innovative
+            solutions, and community-driven initiatives that create lasting
+            impact.
           </p>
         </div>
 
@@ -80,7 +97,8 @@ export default function AboutPreview() {
               What Sets Us Apart
             </h3>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover the unique approach that makes us a leader in road safety innovation
+              Discover the unique approach that makes us a leader in road safety
+              innovation
             </p>
           </div>
 
@@ -92,11 +110,14 @@ export default function AboutPreview() {
               >
                 {/* Background Pattern */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/5 to-brand-green/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
-                
+
                 {/* Icon */}
                 <div className="relative mb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary to-brand-green rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                    <highlight.icon className="w-8 h-8 text-white" strokeWidth={2} />
+                    <highlight.icon
+                      className="w-8 h-8 text-white"
+                      strokeWidth={2}
+                    />
                   </div>
                 </div>
 
@@ -105,7 +126,7 @@ export default function AboutPreview() {
                   <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary transition-colors duration-300">
                     {highlight.title}
                   </h4>
-                  <p className="text-gray-600 leading-relaxed text-justify">
+                  <p className="text-gray-600 leading-relaxed text-left">
                     {highlight.description}
                   </p>
                 </div>
@@ -123,7 +144,8 @@ export default function AboutPreview() {
                 Ready to Learn More?
               </h4>
               <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-                Discover our complete story, mission, and the impact we're making in road safety across communities.
+                Discover our complete story, mission, and the impact we're
+                making in road safety across communities.
               </p>
               <Link
                 to="/about"
@@ -135,7 +157,6 @@ export default function AboutPreview() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import RoadSafetyFocus from '../components/sections/ourfocus/RoadSafetyFocus';
 import CoreInterventions from '../components/sections/ourfocus/CoreInterventions';
-import OurProjects from '../components/sections/ourfocus/OurProjects';
 
 export default function FocusPage() {
   const sectionRefs = useRef([]);
@@ -56,12 +55,6 @@ export default function FocusPage() {
         className="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-200"
       >
         <CoreInterventions />
-      </div>
-      <div 
-        ref={(el) => (sectionRefs.current[2] = el)}
-        className="opacity-0 translate-y-8 transition-all duration-700 ease-out delay-400"
-      >
-        <OurProjects />
       </div>
     </div>
   );
