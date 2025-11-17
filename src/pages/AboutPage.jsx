@@ -23,7 +23,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden w-full">
+    <div className="overflow-x-hidden w-full -mt-10 md:-mt-20">
       <Banner />
       <CreativeTeam />
       <TechnicalExpertise />

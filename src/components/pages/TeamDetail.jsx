@@ -120,7 +120,7 @@ const teamMembers = [
     ],
   },
   {
-    name: "S Ananthanarayanan",
+    name: "anarayanan",
     position: "Trustee, Safety Research Foundation",
     title: "Trustee, SRF",
     image: ananthanarayananImage,
