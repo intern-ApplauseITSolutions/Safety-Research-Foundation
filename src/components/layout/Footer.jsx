@@ -118,14 +118,14 @@ export default function Footer() {
                     <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
                   </div>
                   <p className="text-white text-xs sm:text-sm">
-                    Office No.504, S.No.128, Seasons Business Square, Seasons Road, Sanewadi, Aundh, Pune – 411007 Maharashtra
+                    OFFICE NO. 138, # 11, First Floor, Global Tech Park, O'Shaughnessy Road, Langford Town, Bengaluru, Karnataka 560025
                   </p>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3 group">
                   <div className="bg-white/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-white/30 transition">
                     <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
                   </div>
-                  <a href="mailto:contact@safetyresearchfoundation.org" className="text-white hover:text-brand-orange transition text-xs sm:text-sm break-all">
+                  <a href="mailto:contact@safetyresearchfoundation.org" className="text-white hover:text-brand-orange transition text-xs sm:text-sm whitespace-nowrap">
                     contact@safetyresearchfoundation.org
                   </a>
                 </div>
@@ -145,7 +145,7 @@ export default function Footer() {
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Find Us</h3>
               <div className="bg-white/10 rounded-lg overflow-hidden w-full h-32 sm:h-40 md:h-48">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2613173278896!2d73.80974731490212!3d18.558729987408227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sSeason%27s%20Business%20Square!5e0!3m2!1sen!2sin!4v1696234567890!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5991351!3d12.9622691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15db5f616a8b%3A0x7b2b0b0b0b0b0b0b!2sRegus%20Global%20Tech%20Park!5e0!3m2!1sen!2sin!4v1696234567890!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
