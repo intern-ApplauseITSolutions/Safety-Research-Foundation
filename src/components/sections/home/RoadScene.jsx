@@ -11,14 +11,16 @@ export default function RoadScene() {
   const [truckMoving, setTruckMoving] = useState(true);
   const [carMoving, setCarMoving] = useState(true);
   const [bikeMoving, setBikeMoving] = useState(true);
-  
+  const [familyPosition, setFamilyPosition] = useState("top"); // 'top' or 'bottom'
+  const [familyVisible, setFamilyVisible] = useState(true);
+
   const truckRef = useRef(null);
   const carRef = useRef(null);
   const bikeRef = useRef(null);
 
   useEffect(() => {
     let checkInterval = null;
-    
+
     const runCycle = () => {
       // GREEN LIGHT - All vehicles moving (6 seconds)
       setLightState("green");
@@ -33,33 +35,34 @@ export default function RoadScene() {
         setTimeout(() => {
           // RED LIGHT - Stop vehicles at zebra crossing
           setLightState("red");
-          
+
           let truckStopped = false;
           let carStopped = false;
           let bikeStopped = false;
-          
+
           // Check vehicle positions and stop them when they reach the stop line
           checkInterval = setInterval(() => {
-            if (!truckRef.current || !carRef.current || !bikeRef.current) return;
-            
+            if (!truckRef.current || !carRef.current || !bikeRef.current)
+              return;
+
             const screenWidth = window.innerWidth;
             const stopLinePosition = screenWidth * 0.78; // Stop line at 78% (the red line you marked)
-            
+
             // Get actual positions of vehicles (right edge of each vehicle)
             const truckRect = truckRef.current.getBoundingClientRect();
             const carRect = carRef.current.getBoundingClientRect();
             const bikeRect = bikeRef.current.getBoundingClientRect();
-            
+
             // Use right edge of vehicle to determine when to stop
             const truckRightEdge = truckRect.right;
             const carRightEdge = carRect.right;
             const bikeRightEdge = bikeRect.right;
-            
+
             // All vehicles stop at the same stop line
             const truckStopPosition = stopLinePosition;
             const carStopPosition = stopLinePosition;
             const bikeStopPosition = stopLinePosition;
-            
+
             // Stop each vehicle when its right edge reaches the stop position
             if (truckRightEdge >= truckStopPosition && !truckStopped) {
               setTruckMoving(false);
@@ -73,15 +76,25 @@ export default function RoadScene() {
               setBikeMoving(false);
               bikeStopped = true;
             }
-            
+
             // Check if all vehicles have stopped
             if (truckStopped && carStopped && bikeStopped) {
               clearInterval(checkInterval);
-              
-              // After all vehicles stopped, wait 3 seconds then turn green
+
+              // Start family crossing animation
+              setFamilyVisible(true);
+              setFamilyPosition("bottom");
+
+              // After family crosses (5 seconds), hide and reset position
               setTimeout(() => {
-                runCycle();
-              }, 3000);
+                setFamilyVisible(false); // Disappear at bottom
+                setFamilyPosition("top"); // Reset to top instantly (while invisible)
+
+                setTimeout(() => {
+                  setFamilyVisible(true); // Reappear at top
+                  runCycle();
+                }, 200);
+              }, 5000);
             }
           }, 50);
         }, 2000);
@@ -89,7 +102,7 @@ export default function RoadScene() {
     };
 
     runCycle();
-    
+
     return () => {
       if (checkInterval) clearInterval(checkInterval);
     };
@@ -179,8 +192,15 @@ export default function RoadScene() {
         </div>
       </div>
 
-      {/* Family - Positioned above zebra crossing, right side */}
-      <div className="absolute bottom-16 xs:bottom-20 sm:bottom-24 md:bottom-28 lg:bottom-32 right-1 sm:right-2 md:right-3 lg:right-4 xl:right-5 z-[40]">
+      {/* Family - Crossing the zebra vertically when red light */}
+      <div
+        className="absolute right-4 sm:right-6 md:right-8 lg:right-10 z-[40] ease-linear"
+        style={{
+          bottom: familyPosition === "bottom" ? "0px" : "calc(100% - 80px)",
+          transition: familyVisible ? "bottom 5000ms linear" : "none",
+          opacity: familyVisible ? 1 : 0,
+        }}
+      >
         <img
           src={family}
           alt="Family"
