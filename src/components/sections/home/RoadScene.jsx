@@ -194,9 +194,10 @@ export default function RoadScene() {
 
       {/* Family - Crossing the zebra vertically when red light */}
       <div
-        className="absolute right-4 sm:right-6 md:right-8 lg:right-10 z-[40] ease-linear"
+        className="absolute z-[40] ease-linear"
         style={{
-          bottom: familyPosition === "bottom" ? "0px" : "calc(100% - 80px)",
+          right: "3%",
+          bottom: familyPosition === "bottom" ? "0%" : "calc(100% - 100px)",
           transition: familyVisible ? "bottom 5000ms linear" : "none",
           opacity: familyVisible ? 1 : 0,
         }}
