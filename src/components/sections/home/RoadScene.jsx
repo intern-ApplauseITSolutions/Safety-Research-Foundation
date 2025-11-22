@@ -19,7 +19,8 @@ export default function RoadScene() {
   const bikeRef = useRef(null);
 
   useEffect(() => {
-    let checkInterval = null;
+    let animationFrameId = null;
+    let isChecking = false;
 
     const runCycle = () => {
       // GREEN LIGHT - All vehicles moving (6 seconds)
@@ -39,14 +40,19 @@ export default function RoadScene() {
           let truckStopped = false;
           let carStopped = false;
           let bikeStopped = false;
+          isChecking = true;
 
-          // Check vehicle positions and stop them when they reach the stop line
-          checkInterval = setInterval(() => {
-            if (!truckRef.current || !carRef.current || !bikeRef.current)
+          // Check vehicle positions using requestAnimationFrame for smooth checking
+          const checkPositions = () => {
+            if (!isChecking) return;
+            
+            if (!truckRef.current || !carRef.current || !bikeRef.current) {
+              animationFrameId = requestAnimationFrame(checkPositions);
               return;
+            }
 
             const screenWidth = window.innerWidth;
-            const stopLinePosition = screenWidth * 0.78; // Stop line at 78% (the red line you marked)
+            const stopLinePosition = screenWidth * 0.78;
 
             // Get actual positions of vehicles (right edge of each vehicle)
             const truckRect = truckRef.current.getBoundingClientRect();
@@ -79,7 +85,7 @@ export default function RoadScene() {
 
             // Check if all vehicles have stopped
             if (truckStopped && carStopped && bikeStopped) {
-              clearInterval(checkInterval);
+              isChecking = false;
 
               // Start family crossing animation
               setFamilyVisible(true);
@@ -87,16 +93,20 @@ export default function RoadScene() {
 
               // After family crosses (5 seconds), hide and reset position
               setTimeout(() => {
-                setFamilyVisible(false); // Disappear at bottom
-                setFamilyPosition("top"); // Reset to top instantly (while invisible)
+                setFamilyVisible(false);
+                setFamilyPosition("top");
 
                 setTimeout(() => {
-                  setFamilyVisible(true); // Reappear at top
+                  setFamilyVisible(true);
                   runCycle();
                 }, 200);
               }, 5000);
+            } else {
+              animationFrameId = requestAnimationFrame(checkPositions);
             }
-          }, 50);
+          };
+
+          animationFrameId = requestAnimationFrame(checkPositions);
         }, 2000);
       }, 6000);
     };
@@ -104,7 +114,8 @@ export default function RoadScene() {
     runCycle();
 
     return () => {
-      if (checkInterval) clearInterval(checkInterval);
+      isChecking = false;
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -194,12 +205,13 @@ export default function RoadScene() {
 
       {/* Family - Crossing the zebra vertically when red light */}
       <div
-        className="absolute z-[40] ease-linear"
+        className="absolute z-[40]"
         style={{
           right: "3%",
           bottom: familyPosition === "bottom" ? "0%" : "calc(100% - 100px)",
           transition: familyVisible ? "bottom 5000ms linear" : "none",
           opacity: familyVisible ? 1 : 0,
+          willChange: "bottom, opacity",
         }}
       >
         <img
@@ -218,6 +230,7 @@ export default function RoadScene() {
           animation: "moveRight 15s linear infinite",
           animationDelay: "-7.5s",
           animationPlayState: truckMoving ? "running" : "paused",
+          willChange: "transform",
         }}
       >
         <img
@@ -235,6 +248,7 @@ export default function RoadScene() {
           animation: "moveRight 12s linear infinite",
           animationDelay: "-9s",
           animationPlayState: carMoving ? "running" : "paused",
+          willChange: "transform",
         }}
       >
         <img
@@ -252,6 +266,7 @@ export default function RoadScene() {
           animation: "moveRight 8s linear infinite",
           animationDelay: "-5s",
           animationPlayState: bikeMoving ? "running" : "paused",
+          willChange: "transform",
         }}
       >
         <img
@@ -264,8 +279,16 @@ export default function RoadScene() {
       {/* Custom Animation Styles */}
       <style>{`
         @keyframes moveRight {
-          0% { transform: translateX(-150px); }
-          100% { transform: translateX(calc(100vw + 50px)); }
+          0% { transform: translate3d(-150px, 0, 0); }
+          100% { transform: translate3d(calc(100vw + 50px), 0, 0); }
+        }
+        
+        /* Optimize rendering performance */
+        img {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
       `}</style>
     </section>
