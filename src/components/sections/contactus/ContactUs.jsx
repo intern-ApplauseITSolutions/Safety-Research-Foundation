@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { MapPin, Phone, Mail, Send, Clock, Building2, User, MessageSquare } from 'lucide-react';
 
 const ContactUs = () => {
@@ -20,10 +20,19 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add your form submission logic here
-    alert('Thank you for your message! We will get back to you soon.');
+    
+    // Create mailto link with form data
+    const mailtoLink = `mailto:contact@safetyresearchfoundation.org?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone || 'Not provided'}\n\n` +
+      `Message:\n${formData.message}`
+    )}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Reset form
     setFormData({
       name: '',
       email: '',
