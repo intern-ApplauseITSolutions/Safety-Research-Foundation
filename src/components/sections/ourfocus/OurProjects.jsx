@@ -270,7 +270,7 @@ export default function OurProjects() {
 
         {/* Second Project - CCTV Surveillance */}
         <div className="mt-16 mb-12">
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl shadow-2xl overflow-hidden border-4 border-dashed border-white">
+          <div className="bg-gradient-to-br from-primary to-brand-green rounded-3xl shadow-2xl overflow-hidden border-4 border-dashed border-white">
             <div className="p-8 sm:p-10 md:p-12">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
                 <div className="text-center md:text-left">
@@ -357,7 +357,7 @@ export default function OurProjects() {
         </div>
 
         {/* CCTV Project Impact Summary */}
-        <div className="bg-gradient-to-r from-blue-600/10 via-indigo-600/10 to-purple-600/10 rounded-2xl p-8 border-2 border-dashed border-blue-600">
+        <div className="bg-gradient-to-r from-primary/10 via-brand-green/10 to-secondary/10 rounded-2xl p-8 border-2 border-dashed border-primary">
           <div className="text-center mb-6">
             <h4 className="text-2xl font-bold text-gray-900 mb-2">Project Impact</h4>
             <p className="text-gray-600">Enhancing safety through technology</p>
@@ -365,19 +365,19 @@ export default function OurProjects() {
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-black text-blue-600 mb-1">30</div>
+              <div className="text-3xl font-black text-primary mb-1">30</div>
               <div className="text-sm text-gray-600 font-medium">Intersections Covered</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-black text-indigo-600 mb-1">84</div>
+              <div className="text-3xl font-black text-brand-green mb-1">84</div>
               <div className="text-sm text-gray-600 font-medium">IP-Based Cameras</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-black text-purple-600 mb-1">100%</div>
+              <div className="text-3xl font-black text-secondary mb-1">100%</div>
               <div className="text-sm text-gray-600 font-medium">Project Completion</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-black text-cyan-600 mb-1">24/7</div>
+              <div className="text-3xl font-black text-orange-500 mb-1">24/7</div>
               <div className="text-sm text-gray-600 font-medium">Surveillance Coverage</div>
             </div>
           </div>

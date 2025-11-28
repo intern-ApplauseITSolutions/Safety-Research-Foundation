@@ -145,7 +145,7 @@ export default function Footer() {
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-white">Find Us</h3>
               <div className="bg-white/10 rounded-lg overflow-hidden w-full h-32 sm:h-40 md:h-48">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0!2d77.5991351!3d12.9622691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15db5f616a8b%3A0x7b2b0b0b0b0b0b0b!2sRegus%20Global%20Tech%20Park!5e0!3m2!1sen!2sin!4v1696234567890!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.4293459429446!2d73.80011198885501!3d18.554672499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfd2aecbe735%3A0x9b56fc17760f358b!2sSafety%20Research%20Foundation!5e0!3m2!1sen!2sin!4v1764329960678!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

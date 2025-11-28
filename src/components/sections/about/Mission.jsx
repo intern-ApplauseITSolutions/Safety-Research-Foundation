@@ -5,6 +5,23 @@ export default function Mission() {
   return (
     <section className="py-16 bg-gradient-to-br from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Tagline Section - Before Mission */}
+        <div className="mb-12">
+          <div className="relative max-w-6xl mx-auto">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 rounded-2xl transform -rotate-1"></div>
+            <div className="relative bg-gradient-to-r from-primary to-secondary rounded-2xl shadow-xl p-6 sm:p-8 border-2 border-dashed border-white">
+              <div className="text-center">
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+                  <span className="text-3xl sm:text-4xl">🚸</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight">
+                  "If we teach children today, we save families tomorrow."
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
