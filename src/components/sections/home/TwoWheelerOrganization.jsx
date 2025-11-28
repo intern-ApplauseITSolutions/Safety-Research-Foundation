@@ -318,19 +318,18 @@ export default function TwoWheelerOrganization() {
             </h3>
             <div className="prose prose-sm sm:prose-base lg:prose-lg text-brand-black leading-relaxed">
               <p className="mb-4">
-                Every day, more than 400 people lose their lives on Indian roads due to traffic-related accidents — a number that has been steadily rising over the past decade. Without decisive, data-driven action, this tragic trend is unlikely to change. 
+Road crashes in India claim over 500 lives every day—many involving preventable causes such as speeding, distracted driving, poor pedestrian behavior, unsafe two-wheeler riding, and lack of child restraint systems. 
               </p>
               <p className="mb-4">
-              Building on years of in-depth accident data collection in India through our RASSI initiative in collaboration with various OEMs, we established Safety Research Foundation (SRF) — a non-profit organization dedicated to tackling the urgent challenges of road safety, injuries, and fatalities across the country. 
+              Recognizing the urgent need for scientifically grounded action, the Safety Research Foundation (SRF) was established in 2016 as a nonprofit committed to reducing road injuries and fatalities across India. 
               </p>
               <p className="mb-4">
-              SRF focuses on collecting and analyzing data from police-reported accidents, surveys, public databases, and industry partners. By turning this data into actionable insights, we aim to enable scientific, evidence-based decisions that can save lives and reduce road injuries in India. 
+             Guided by trustees and experts with decades of experience in road safety engineering, crash research, and policy advisory—including technical strength from JP Research India’s pioneering work in crash investigation and road-safety analytics—SRF works to identify root causes of crashes and translate findings into practical solutions. 
               </p>
               <p className="font-semibold text-primary">
-                Orchestrate a decade of data driven decisions to help address and bend the death/injury 
-                curve in India by working with the key stake holders to change infrastructures, vehicle 
-                safety adaptations and people behavior in terms of safety training and laws to enforce safety.
+               SRF is a nonprofit dedicated to making India’s roads safer through research-based solutions, community engagement, and technical interventions. Our work prioritizes children, vulnerable road users, and safer mobility systems to reduce preventable crashes and save lives.
               </p>
+               <p className="mb-4">Our work focuses on strengthening safe mobility for all—particularly children, pedestrians, two-wheeler riders, and public transport users. Through awareness programs, school safety initiatives, community engagement, technical audits, and support to authorities in improving blackspots, SRF aims to build a culture of responsibility and save lives through evidence-based, scalable, and sustainable road safety interventions.</p>
             </div>
           </div>
 
@@ -341,7 +340,7 @@ export default function TwoWheelerOrganization() {
             </h3>
             <div 
               ref={scrollContainerRef}
-              className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] md:max-h-[600px] overflow-y-hidden overflow-x-hidden cursor-pointer"
+              className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] md:max-h-[800px] overflow-y-hidden overflow-x-hidden cursor-pointer"
               style={{ overscrollBehavior: 'contain' }}
             >
               {/* First set of events */}

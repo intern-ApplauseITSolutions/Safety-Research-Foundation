@@ -7,8 +7,9 @@ import img1 from '../../../assets/images/IMG_4907.jpg';
 import img2 from '../../../assets/images/DSC_9725.JPG';
 import img3 from '../../../assets/images/DSC_9071.JPG';
 import img4 from '../../../assets/images/DSC_8908.JPG';
+import img5 from '../../../assets/images/shared image (9).jfif';
 
-const staticImages = [img1, img2, img3, img4];
+const staticImages = [img1, img2, img3, img4, img5];
 const slideDuration = 5000; // 5 seconds
 
 // Debug: Log static images
@@ -89,9 +90,9 @@ export default function HeroBanner() {
 
             {/* Subtitle */}
             <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              Safety Research Foundation is dedicated to promoting safer roads through education, research, and community engagement. We focus on improving driver behavior, enhancing road safety awareness, and advancing accident prevention strategies. 
+ Safety Research Foundation is dedicated to promoting safer roads through education, research, and community engagement. Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and
 
-              Through our research initiatives, training programs, and public awareness campaigns, we strive to build a culture of road safety, reduce risks, prevent accidents, and ultimately save lives. 
+ultimately save lives. 
             </p>
 
             {/* Spacer to maintain banner height */}
