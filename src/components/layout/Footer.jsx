@@ -118,7 +118,7 @@ export default function Footer() {
                     <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-white flex-shrink-0" />
                   </div>
                   <p className="text-white text-xs sm:text-sm">
-                    OFFICE NO. 138, # 11, First Floor, Global Tech Park, O'Shaughnessy Road, Langford Town, Bengaluru, Karnataka 560025
+                   Office No.504, S.No.128 Seasons Business Square, Seasons Road, Sanewadi, Aundh, Pune – 411007 Maharashtra.
                   </p>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3 group">
@@ -162,7 +162,7 @@ export default function Footer() {
           {/* Bottom Bar */}
           <div className="border-t border-white/20 pt-6 sm:pt-8 text-center">
             <p className="text-white text-xs sm:text-sm">
-              &copy; {new Date().getFullYear()} Safety Research Foundation. All rights reserved. | 
+              &copy; 2025-2026 Safety Research Foundation. All rights reserved. | 
               <span className="text-white font-medium"> Committed to making Indian roads safer.</span>
             </p>
           </div>

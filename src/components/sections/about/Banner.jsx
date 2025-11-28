@@ -7,12 +7,12 @@ export default function Banner() {
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-tight">
             Vision
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white leading-relaxed">
-           Our Vision is to mitigate roadway crashes, fatalities and injuries on Indian roads through evaluation, recommendation. Conduct studies and make data driven decision to improve road safety in India.  
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-xl text-white leading-relaxed">
+            Our Vision is to make India’s roads safer by reducing crashes, injuries, and fatalities through research, strategic recommendations, and data-driven decisions — while empowering children and young citizens to become the next generation of road safety ambassadors.
           </p>
         </div>
       </div>
-      
+
       {/* Custom Animation */}
       <style>{`
         @keyframes slideUp {

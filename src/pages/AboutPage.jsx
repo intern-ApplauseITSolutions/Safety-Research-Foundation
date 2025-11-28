@@ -1,6 +1,7 @@
 import React from "react";
 import Banner from "../components/sections/about/Banner";
 import RoadScene from "../components/sections/home/RoadScene";
+import Mission from "../components/sections/about/Mission";
 import CreativeTeam from "../components/sections/about/CreativeTeam";
 import TechnicalExpertise from "../components/sections/about/TechnicalExpertise";
 import Objectives from "../components/sections/about/Objectives";
@@ -25,6 +26,7 @@ export default function AboutPage() {
     <div className="overflow-x-hidden w-full -mt-10 md:-mt-20">
       <Banner />
       <RoadScene />
+      <Mission />
       <CreativeTeam />
       <TechnicalExpertise />
       <Objectives />
