@@ -20,7 +20,7 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Create mailto link with form data
     const mailtoLink = `mailto:contact@safetyresearchfoundation.org?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\n` +
@@ -28,10 +28,10 @@ const ContactUs = () => {
       `Phone: ${formData.phone || 'Not provided'}\n\n` +
       `Message:\n${formData.message}`
     )}`;
-    
+
     // Open default email client
     window.location.href = mailtoLink;
-    
+
     // Reset form
     setFormData({
       name: '',
@@ -75,12 +75,11 @@ const ContactUs = () => {
               </div>
               <div className="text-gray-700 leading-relaxed">
                 <p className="font-semibold text-primary mb-2">Office Address:</p>
-                <p>OFFICE NO. 138, </p>
-                <p># 11, First Floor ,</p>
-                <p>Global Tech Park,</p>
-                <p>O'Shaughnessy Road, Langford Town,</p>
-                <p>Bengaluru,
-                  Karnataka 560025</p>
+                <p>Office No.504, </p>
+                <p>S.No.128 Seasons Business Square,</p>
+                <p>Seasons Road,</p>
+                <p>Sanewadi, Aundh,</p>
+                <p> Pune – 411007 Maharashtra.</p>
               </div>
             </div>
 
