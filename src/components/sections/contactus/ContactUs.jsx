@@ -20,7 +20,7 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Create mailto link with form data
     const mailtoLink = `mailto:contact@safetyresearchfoundation.org?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\n` +
@@ -28,10 +28,10 @@ const ContactUs = () => {
       `Phone: ${formData.phone || 'Not provided'}\n\n` +
       `Message:\n${formData.message}`
     )}`;
-    
+
     // Open default email client
     window.location.href = mailtoLink;
-    
+
     // Reset form
     setFormData({
       name: '',
