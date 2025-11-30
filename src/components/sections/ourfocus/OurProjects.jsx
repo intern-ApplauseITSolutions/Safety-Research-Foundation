@@ -1,4 +1,4 @@
-import { Briefcase, Users, GraduationCap, Car, MapPin, Megaphone, Sparkles, CheckCircle, ArrowRight } from 'lucide-react';
+import { Briefcase, Users, GraduationCap, Car, MapPin, Megaphone, Sparkles, CheckCircle, ArrowRight, Search, Settings, Handshake, Camera, Network, UserCheck, TestTube } from 'lucide-react';
 
 // Import BRACE activity images
 import studentWorkshopImg from '../../../assets/images/WhatsApp Image 2025-11-20 at 14.55.25_2cbf2880.jpg';
@@ -14,6 +14,9 @@ import cctvImg2 from '../../../assets/images/2.png';
 import cctvImg3 from '../../../assets/images/3.png';
 import cctvImg4 from '../../../assets/images/4.png';
 import cctvImg5 from '../../../assets/images/5.png';
+import cctvImg6 from '../../../assets/images/shared image (20).jfif';
+import cctvImg7 from '../../../assets/images/shared image (21).jfif';
+import cctvImg8 from '../../../assets/images/shared image (22).jfif';
 
 const braceActivities = [
   {
@@ -74,58 +77,76 @@ const braceActivities = [
 
 const cctvActivities = [
   {
-    icon: CheckCircle,
-    title: "Enhance Public Safety",
-    description: "Install CCTV cameras at critical intersections within the Bhadrakali Police Station jurisdiction to deter criminal activities and promote a safer environment for residents and visitors.",
+    icon: Search,
+    title: "Site Survey & Location Identification",
+    description: "Identified key junctions, blackspots, school zones, and high-traffic corridors across Nashik city using accident records and police insights to determine optimal camera locations.",
     image: cctvImg1,
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
-    stats: "30 Intersections"
+    stats: "100+ Locations"
   },
   {
-    icon: Users,
-    title: "Support Law Enforcement",
-    description: "Provide the Bhadrakali Police Department with advanced surveillance tools to monitor public areas effectively, respond promptly to incidents, and gather valuable evidence for investigations.",
+    icon: Settings,
+    title: "Technical Feasibility Assessment",
+    description: "Assessed each proposed site for camera mounting suitability, network signal strength, power access, elevation, and visibility to ensure complete area coverage without blind spots.",
     image: cctvImg2,
     color: "from-purple-500 to-purple-600",
     bgColor: "bg-purple-50",
-    stats: "84 Cameras"
+    stats: "Complete Coverage"
   },
   {
-    icon: Sparkles,
-    title: "Efficient Handover",
-    description: "Ensure the seamless installation, testing, and commissioning of the CCTV system, followed by comprehensive training for police personnel to manage and utilize the system independently.",
+    icon: Handshake,
+    title: "Stakeholder Coordination",
+    description: "Worked closely with Nashik Police, Municipal Corporation, electricity departments, and local community representatives to secure permissions, enable support systems, and streamline implementation.",
     image: cctvImg3,
     color: "from-green-500 to-green-600",
     bgColor: "bg-green-50",
-    stats: "Complete Training"
+    stats: "Multi-Agency"
   },
   {
-    icon: MapPin,
-    title: "Strategic Coverage",
-    description: "Detailed site surveys conducted to ensure optimal camera placement at high-risk and high-traffic zones for maximum surveillance effectiveness and coverage.",
+    icon: Camera,
+    title: "Procurement & Installation",
+    description: "Installed 100+ wireless HD CCTV cameras with night vision, wide-angle coverage, recording capability, and motion detection to strengthen surveillance and rapid response capacity.",
     image: cctvImg4,
     color: "from-orange-500 to-orange-600",
     bgColor: "bg-orange-50",
-    stats: "Strategic Placement"
+    stats: "100+ Cameras"
   },
   {
-    icon: CheckCircle,
-    title: "Community Trust",
-    description: "Enhance public confidence in local law enforcement by demonstrating a commitment to leveraging technology for improved safety and security.",
+    icon: Network,
+    title: "Networking & System Integration",
+    description: "Connected all installed units to the central Police Command & Control Room through a secure network with uninterrupted backup power and data retention mechanisms.",
     image: cctvImg5,
     color: "from-pink-500 to-pink-600",
     bgColor: "bg-pink-50",
-    stats: "Enhanced Security"
+    stats: "Centralized System"
   },
   {
-    icon: Megaphone,
-    title: "Technology Integration",
-    description: "Advanced IP-based camera systems integrated with police infrastructure to enable real-time monitoring, incident response, and evidence collection for investigations.",
-    image: cctvImg1,
+    icon: Users,
+    title: "Community Participation Model",
+    description: "Implemented a collaborative model where local residents and shop owners supported power supply and custody of selected camera points, ensuring ownership and sustainability.",
+    image: cctvImg6,
+    color: "from-cyan-500 to-cyan-600",
+    bgColor: "bg-cyan-50",
+    stats: "Community Driven"
+  },
+  {
+    icon: TestTube,
+    title: "Testing & Quality Assurance",
+    description: "Conducted live testing for camera clarity, night performance, motion capture, backup storage, and network connectivity to validate operational readiness under real conditions.",
+    image: cctvImg7,
+    color: "from-indigo-500 to-indigo-600",
+    bgColor: "bg-indigo-50",
+    stats: "Quality Verified"
+  },
+  {
+    icon: UserCheck,
+    title: "Training & Handover Workshops",
+    description: "Delivered hands-on training for police personnel on monitoring, incident review, maintenance protocols, and footage documentation before formal handover.",
+    image: cctvImg8,
     color: "from-red-500 to-red-600",
     bgColor: "bg-red-50",
-    stats: "Real-time Monitoring"
+    stats: "Police Trained"
   }
 ];
 
@@ -164,7 +185,7 @@ export default function OurProjects() {
                     BRACE (Bosch’s Road Safety Awareness and Community Engagement)
                   </h2>
                   <p className="text-xl text-white/90 font-semibold">
-                   Road Safety Awareness program-An initiatives by BOSCH Limited
+                    Road Safety Awareness program-An initiatives by BOSCH Limited
                   </p>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 text-center">
@@ -172,10 +193,10 @@ export default function OurProjects() {
                   <p className="text-white text-sm font-medium">Active Partnership</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border-2 border-white/20">
                 <p className="text-white/95 text-base sm:text-lg leading-relaxed text-justify">
-                  A comprehensive road safety initiative in partnership with Bosch Limited, focusing on student education, 
+                  A comprehensive road safety initiative in partnership with Bosch Limited, focusing on student education,
                   parent awareness, driver training, and infrastructure improvements to create safer communities around schools.
                 </p>
               </div>
@@ -205,7 +226,7 @@ export default function OurProjects() {
 
                 {/* Colored Top Bar */}
                 <div className={`h-2 bg-gradient-to-r ${activity.color}`}></div>
-                
+
                 {/* Content */}
                 <div className="p-6">
                   {/* Icon and Title */}
@@ -245,7 +266,7 @@ export default function OurProjects() {
             <h4 className="text-2xl font-bold text-gray-900 mb-2">Project Impact</h4>
             <p className="text-gray-600">Creating measurable change in road safety</p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-3xl font-black text-primary mb-1">5,000+</div>
@@ -290,7 +311,7 @@ export default function OurProjects() {
                   <p className="text-white text-sm font-medium">Completed Project</p>
                 </div>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border-2 border-white/20">
                 <p className="text-white/95 text-base sm:text-lg leading-relaxed text-justify">
                   The project involved the successful installation and commissioning of a comprehensive CCTV surveillance network across 30 intersections under the Bhadrakali Police Station in Nashik. A total of 84 IP-based cameras were strategically placed based on detailed site surveys, ensuring optimal coverage of high-risk and high-traffic zones.
@@ -303,7 +324,7 @@ export default function OurProjects() {
         {/* CCTV Project Activities Grid */}
         <div className="mb-12">
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8">
-            Project Activities
+            Nashik CCTV Surveillance Project – Key Activities
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {cctvActivities.map((activity, index) => (
@@ -322,7 +343,7 @@ export default function OurProjects() {
 
                 {/* Colored Top Bar */}
                 <div className={`h-2 bg-gradient-to-r ${activity.color}`}></div>
-                
+
                 {/* Content */}
                 <div className="p-6">
                   {/* Icon and Title */}
@@ -362,7 +383,7 @@ export default function OurProjects() {
             <h4 className="text-2xl font-bold text-gray-900 mb-2">Project Impact</h4>
             <p className="text-gray-600">Enhancing safety through technology</p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-3xl font-black text-primary mb-1">30</div>
