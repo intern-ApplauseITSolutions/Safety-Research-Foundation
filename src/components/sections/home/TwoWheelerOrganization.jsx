@@ -326,10 +326,10 @@ Road crashes in India claim over 500 lives every day—many involving preventabl
               <p className="mb-4">
              Guided by trustees and experts with decades of experience in road safety engineering, crash research, and policy advisory—including technical strength from JP Research India’s pioneering work in crash investigation and road-safety analytics—SRF works to identify root causes of crashes and translate findings into practical solutions. 
               </p>
-              <p className="font-semibold text-primary">
+               <p className="mb-4">Our work focuses on strengthening safe mobility for all—particularly children, pedestrians, two-wheeler riders, and public transport users. Through awareness programs, school safety initiatives, community engagement, technical audits, and support to authorities in improving blackspots, SRF aims to build a culture of responsibility and save lives through evidence-based, scalable, and sustainable road safety interventions.</p>
+                <p className="font-semibold text-primary">
                SRF is a nonprofit dedicated to making India’s roads safer through research-based solutions, community engagement, and technical interventions. Our work prioritizes children, vulnerable road users, and safer mobility systems to reduce preventable crashes and save lives.
               </p>
-               <p className="mb-4">Our work focuses on strengthening safe mobility for all—particularly children, pedestrians, two-wheeler riders, and public transport users. Through awareness programs, school safety initiatives, community engagement, technical audits, and support to authorities in improving blackspots, SRF aims to build a culture of responsibility and save lives through evidence-based, scalable, and sustainable road safety interventions.</p>
             </div>
           </div>
 
