@@ -3,7 +3,7 @@ import { Briefcase, Users, GraduationCap, Car, MapPin, Megaphone, Sparkles, Chec
 // Import BRACE activity images
 import studentWorkshopImg from '../../../assets/images/WhatsApp Image 2025-11-20 at 14.55.25_2cbf2880.jpg';
 import parentSessionImg from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0001.jpg';
-import driverTrainingImg from '../../../assets/images/WhatsApp Image 2025-11-20 at 14.55.37_a97479e9.jpg';
+import driverTrainingImg from '../../../assets/images/Driver Training.jpg';
 import safeSchoolZoneImg from '../../../assets/images/shared image (23).jfif';
 import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
 import massOutreachImg from '../../../assets/images/GoYellowRoadSafetyAwareness25th&26thFeb2022/1.jpg';
