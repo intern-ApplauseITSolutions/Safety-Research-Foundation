@@ -8,7 +8,7 @@ import publicAwarenessImg from '../../../assets/images/Create_Public_awareness.j
 import driverTrainingImg from '../../../assets/images/People_Driver_Training.jpg';
 import childSafetyImg from '../../../assets/images/shared image (21).jfif';
 import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
-import communityAwarenessImg from '../../../assets/images/shared image (20).jfif';
+import communityAwarenessImg from '../../../assets/images/IMG_8270.JPG';
 
 // Import 3 E's images
 import engineeringImg from '../../../assets/images/engineering 2.png';
