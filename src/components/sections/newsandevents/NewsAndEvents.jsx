@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 // Import eBooks
 import braceHandbook from '../../../assets/ebooks/BRACE-Handbook.pdf';
+import roadwiseKannada from '../../../assets/ebooks/ROADWISE-Kannada.pdf';
 
 // Import Audio files
 import audio1 from '../../../assets/audios/AUD-20251111-WA0009.mp3';
@@ -780,11 +781,11 @@ Glimpses of Program`,
   }
 ];
 
-const NewsAndEvents = () => {
+const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }) => {
   const navigate = useNavigate();
-  const [mainSection, setMainSection] = useState('events'); // 'events', 'media', or 'testimonials'
+  const [mainSection, setMainSection] = useState(initialSection); // 'events', 'media', or 'testimonials'
   const [eventTab, setEventTab] = useState('upcoming'); // 'upcoming' or 'completed'
-  const [mediaTab, setMediaTab] = useState('videos'); // 'videos', 'images', 'documents', 'printmedia', 'audio', or 'ebook'
+  const [mediaTab, setMediaTab] = useState(initialMediaTab); // 'videos', 'images', 'documents', 'printmedia', 'audio', or 'ebook'
   const [documentTab, setDocumentTab] = useState('brace'); // 'brace' or 'msia'
   const [filter, setFilter] = useState('all');
   
@@ -922,6 +923,14 @@ const NewsAndEvents = () => {
       title: "BRACE Handbook",
       description: "Comprehensive guide on road safety best practices and awareness",
       file: braceHandbook,
+      fileSize: "PDF",
+      category: "Road Safety Guide"
+    },
+    {
+      id: 2,
+      title: "ROADWISE - Kannada",
+      description: "Road safety awareness guide in Kannada language",
+      file: roadwiseKannada,
       fileSize: "PDF",
       category: "Road Safety Guide"
     }

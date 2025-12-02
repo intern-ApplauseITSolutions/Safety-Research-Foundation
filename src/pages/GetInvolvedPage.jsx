@@ -649,8 +649,14 @@ export default function GetInvolvedPage() {
               <button 
                 className="group bg-white text-primary border-2 border-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary hover:text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
                 onClick={() => {
-                  // Navigate to events/activities page using React Router
-                  navigate('/events');
+                  // Navigate to events page with images tab open
+                  navigate('/events', { 
+                    state: { 
+                      tab: 'events',
+                      section: 'media', 
+                      mediaTab: 'images' 
+                    } 
+                  });
                 }}
               >
                 <Eye className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />

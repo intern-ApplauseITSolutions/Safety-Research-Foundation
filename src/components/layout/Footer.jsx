@@ -10,9 +10,9 @@ export default function Footer() {
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-full mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-300">
             {/* About */}
-            <div>
+            <div className="pt-6 sm:pt-0 sm:pr-6 lg:pr-8">
               <div className="mb-3 sm:mb-4">
                 <img src={footerLogo} alt="Safety Research Foundation" className="h-12 sm:h-14 md:h-16 w-auto" />
               </div>
@@ -22,7 +22,7 @@ export default function Footer() {
 
               {/* Social Media Icons */}
               <div className="flex gap-2 sm:gap-3">
-                <a href="https://www.linkedin.com/in/safety-research-foundation-397695183/" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://www.linkedin.com/company/safety-research-foundation/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="group">
                   <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition">
                     <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
@@ -43,7 +43,7 @@ export default function Footer() {
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className="pt-6 sm:pt-0 sm:px-6 lg:px-8">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Quick Links</h3>
               <ul className="space-y-1.5 sm:space-y-2">
                 <li>
@@ -105,28 +105,28 @@ export default function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div>
+            <div className="pt-6 sm:pt-0 sm:px-6 lg:px-8">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Contact Info</h3>
               <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-start gap-2 sm:gap-3 group">
-                  <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition">
-                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+                  <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition flex-shrink-0">
+                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                   </div>
-                  <p className="text-gray-700 text-xs sm:text-sm">
+                  <p className="text-gray-700 text-xs sm:text-sm break-words">
                     Office No.504, S.No.128 Seasons Business Square, Seasons Road, Sanewadi, Aundh, Pune – 411007 Maharashtra.
                   </p>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3 group">
-                  <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition">
-                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+                <div className="flex items-start gap-2 sm:gap-3 group">
+                  <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition flex-shrink-0">
+                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                   </div>
-                  <a href="mailto:contact@safetyresearchfoundation.org" className="text-gray-700 hover:text-primary transition text-xs sm:text-sm whitespace-nowrap">
+                  <a href="mailto:contact@safetyresearchfoundation.org" className="text-gray-700 hover:text-primary transition text-xs sm:text-sm break-all">
                     contact@safetyresearchfoundation.org
                   </a>
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3 group">
-                  <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition">
-                    <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
+                <div className="flex items-start gap-2 sm:gap-3 group">
+                  <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition flex-shrink-0">
+                    <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                   </div>
                   <a href="tel:+917030910122" className="text-gray-700 hover:text-primary transition text-xs sm:text-sm">
                     +91 7030910122
@@ -136,7 +136,7 @@ export default function Footer() {
             </div>
 
             {/* Small Map - Added on Right */}
-            <div>
+            <div className="pt-6 sm:pt-0 sm:pl-6 lg:pl-8">
               <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900">Find Us</h3>
               <div className="bg-white/10 rounded-lg overflow-hidden w-full h-32 sm:h-40 md:h-48">
                 <iframe

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Briefcase, Calendar } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import OurProjects from '../components/sections/ourfocus/OurProjects';
 import NewsAndEvents from '../components/sections/newsandevents/NewsAndEvents';
 
 export default function EventsPage() {
-  const [activeTab, setActiveTab] = useState('projects');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.tab || 'projects');
 
   // Scroll to top when component mounts
   React.useEffect(() => {
@@ -46,7 +48,7 @@ export default function EventsPage() {
       {/* Tab Content */}
       <div>
         {activeTab === 'projects' && <OurProjects />}
-        {activeTab === 'events' && <NewsAndEvents />}
+        {activeTab === 'events' && <NewsAndEvents initialSection={location.state?.section} initialMediaTab={location.state?.mediaTab} />}
       </div>
     </div>
   );
