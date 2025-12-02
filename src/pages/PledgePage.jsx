@@ -145,7 +145,6 @@ const PledgePage = () => {
             Join thousands of Indians in our commitment to make roads safer for everyone. 
             Your pledge matters, your actions save lives.
           </p>
-          
         </div>
       </section>
 
