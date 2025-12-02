@@ -22,7 +22,7 @@ export default function Footer() {
 
               {/* Social Media Icons */}
               <div className="flex gap-2 sm:gap-3">
-                <a href="https://www.linkedin.com/in/safety-research-foundation-397695183/" target="_blank" rel="noopener noreferrer" className="group">
+                <a href="https://www.linkedin.com/company/safety-research-foundation/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="group">
                   <div className="bg-primary/20 p-1.5 sm:p-2 rounded-lg group-hover:bg-primary/30 transition">
                     <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                   </div>
