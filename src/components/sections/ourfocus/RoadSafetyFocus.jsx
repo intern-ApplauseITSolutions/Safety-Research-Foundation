@@ -105,7 +105,7 @@ const RoadSafetyFocus = () => {
             <div className="mx-4 sm:mx-6 flex items-center gap-2 sm:gap-3">
               <Target className="w-8 h-8 sm:w-10 sm:h-10 text-primary" strokeWidth={2} />
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center">
-                Our Focus Areas
+                Our Approach: The 3 E's
               </h2>
             </div>
             <div className="flex-1 h-0.5 bg-gradient-to-l from-transparent via-primary to-primary"></div>
@@ -114,7 +114,7 @@ const RoadSafetyFocus = () => {
           {/* 3 E's Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h3 className="text-2xl sm:text-3xl font-bold text-brand-black mb-4">Our Approach: The 3 E's</h3>
+            
               <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Safety Research Foundation follows a comprehensive approach to road safety through Engineering, Education, and Advocacy
               </p>

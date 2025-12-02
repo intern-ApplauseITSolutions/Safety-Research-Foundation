@@ -5,7 +5,7 @@ import awarenessImg from '../../../assets/images/Awareness Programs 3.png';
 import dataDrivenImg from '../../../assets/images/Data-Driven Solutions 3.png';
 import infrastructureImg from '../../../assets/images/Infrastructure Improvements 3.png';
 import communityImg from '../../../assets/images/Community Engagement 3.png';
-import childSafetyImg from '../../../assets/images/Child Safety Awarness 1.png';
+import childSafetyImg from '../../../assets/images/23.png';
 import safeSchoolZoneImg from '../../../assets/images/Safe School Zone 1.png';
 
 const interventions = [
