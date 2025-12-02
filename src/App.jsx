@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import FloatingTranslate from './components/common/FloatingTranslate';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import FocusPage from './pages/FocusPage';
@@ -39,6 +40,9 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        
+        {/* Floating Translate Button */}
+        <FloatingTranslate />
       </div>
     </Router>
   );
