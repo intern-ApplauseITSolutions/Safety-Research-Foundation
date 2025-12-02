@@ -5,6 +5,7 @@ import car from "../../../assets/truckanimationpng/car.png";
 import horizontalSignal from "../../../assets/png/horizontal-traffic-light-hanging-260nw-480913231-removebg-preview.png";
 import family from "../../../assets/truckanimationpng/family.png";
 import natureBg from "../../../assets/png/nature.webp";
+import signage from "../../../assets/images/signage.png";
 
 export default function RoadScene() {
   const [lightState, setLightState] = useState("green"); // 'red', 'yellow', 'green'
@@ -45,7 +46,7 @@ export default function RoadScene() {
           // Check vehicle positions using requestAnimationFrame for smooth checking
           const checkPositions = () => {
             if (!isChecking) return;
-            
+
             if (!truckRef.current || !carRef.current || !bikeRef.current) {
               animationFrameId = requestAnimationFrame(checkPositions);
               return;
@@ -139,27 +140,24 @@ export default function RoadScene() {
         <div className="absolute left-1/2 transform -translate-x-1/2 top-3 sm:top-4 md:top-5 bg-gray-900 rounded p-1 sm:p-1.5 flex gap-1 sm:gap-1.5 shadow-lg border border-gray-700">
           {/* Red Light */}
           <div
-            className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
-              lightState === "red"
-                ? "bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.8)]"
-                : "bg-red-900 opacity-30"
-            }`}
+            className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${lightState === "red"
+              ? "bg-red-600 shadow-[0_0_10px_rgba(220,38,38,0.8)]"
+              : "bg-red-900 opacity-30"
+              }`}
           ></div>
           {/* Yellow Light */}
           <div
-            className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
-              lightState === "yellow"
-                ? "bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.8)]"
-                : "bg-yellow-700 opacity-30"
-            }`}
+            className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${lightState === "yellow"
+              ? "bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.8)]"
+              : "bg-yellow-700 opacity-30"
+              }`}
           ></div>
           {/* Green Light */}
           <div
-            className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${
-              lightState === "green"
-                ? "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]"
-                : "bg-green-900 opacity-30"
-            }`}
+            className={`w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full transition-all duration-300 ${lightState === "green"
+              ? "bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]"
+              : "bg-green-900 opacity-30"
+              }`}
           ></div>
         </div>
       </div>
@@ -201,6 +199,15 @@ export default function RoadScene() {
             <div className="w-full h-1 sm:h-1.5 md:h-2 bg-white"></div>
           </div>
         </div>
+      </div>
+
+      {/* Zebra Crossing Signage - Right side, just before zebra crossing */}
+      <div className="absolute bottom-30 z-[40]" style={{ right: "15%" }}>
+        <img
+          src={signage}
+          alt="Zebra Crossing Sign"
+          className="h-16 xs:h-15 sm:h-14 md:h-28 lg:h-15 xl:h-15 w-auto object-contain"
+        />
       </div>
 
       {/* Family - Crossing the zebra vertically when red light */}
