@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import roadSafetyTrainingImg from '../../../assets/images/shared image (12).jfif';
 import roadInfrastructureImg from '../../../assets/images/shared image (23).jfif';
 import employeeEngagementImg from '../../../assets/images/shared image (24).jfif';
-import communityAwarenessImg from '../../../assets/images/shared image (20).jfif';
+import communityAwarenessImg from '../../../assets/images/IMG_8270.JPG';
 
 const focusAreas = [
   {
