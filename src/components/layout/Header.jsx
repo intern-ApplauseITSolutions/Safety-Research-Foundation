@@ -1,7 +1,7 @@
 import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart, ChevronDown, DollarSign } from 'lucide-react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
-import logo from '../../assets/logo/logo.png';
+import logo from '../../assets/images/SRF logo.png';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

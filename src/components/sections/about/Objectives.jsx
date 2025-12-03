@@ -105,39 +105,7 @@ export default function Objectives() {
           ))}
         </div>
 
-        {/* Enhanced Bottom CTA */}
-        <div className="text-center">
-          <div className="relative bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 shadow-2xl overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-brand-green/10 opacity-50"></div>
-            
-            <div className="relative">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="p-3 bg-primary/20 rounded-full">
-                  <Target className="w-8 h-8 text-white" />
-                </div>
-                <h4 className="text-3xl font-bold text-white">Our Commitment to Excellence</h4>
-              </div>
-              
-              <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-                We are dedicated to creating sustainable, data-driven solutions that can be adapted 
-                and implemented across diverse communities to make roads safer for everyone. 
-                Our objectives guide every initiative we undertake.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                  <Sparkles className="w-5 h-5" />
-                  Explore Our Work
-                </button>
-                <button className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-2 border-white/30 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">
-                  Join Our Mission
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
   );

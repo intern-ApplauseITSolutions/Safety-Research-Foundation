@@ -9,14 +9,24 @@ import employeeEngagementImg from '../../../assets/images/shared image (24).jfif
 import massOutreachImg from '../../../assets/images/GoYellowRoadSafetyAwareness25th&26thFeb2022/1.jpg';
 
 // Import CCTV project images
-import cctvImg1 from '../../../assets/images/1.png';
-import cctvImg2 from '../../../assets/images/2.png';
-import cctvImg3 from '../../../assets/images/3.png';
-import cctvImg4 from '../../../assets/images/4.png';
-import cctvImg5 from '../../../assets/images/5.png';
-import cctvImg6 from '../../../assets/images/shared image (20).jfif';
-import cctvImg7 from '../../../assets/images/shared image (21).jfif';
-import cctvImg8 from '../../../assets/images/shared image (22).jfif';
+import cctvImg1 from '../../../assets/images/Site Survey & Location Identification.png';
+import cctvImg2 from '../../../assets/images/Technical Feasibility Assessment.png';
+import cctvImg3 from '../../../assets/images/Stakeholder Coordination.png';
+import cctvImg4 from '../../../assets/images/Procurement & Installation.png';
+import cctvImg5 from '../../../assets/images/Networking & System Integration.png';
+import cctvImg6 from '../../../assets/images/Community Participation Model.png';
+import cctvImg7 from '../../../assets/images/Testing & Quality Assurance.png';
+import cctvImg8 from '../../../assets/images/Training & Handover Workshops.png';
+
+// Import old CCTV gallery images
+import cctvGallery1 from '../../../assets/images/1.png';
+import cctvGallery2 from '../../../assets/images/2.png';
+import cctvGallery3 from '../../../assets/images/3.png';
+import cctvGallery4 from '../../../assets/images/4.png';
+import cctvGallery5 from '../../../assets/images/5.png';
+import cctvGallery6 from '../../../assets/images/shared image (20).jfif';
+import cctvGallery7 from '../../../assets/images/shared image (21).jfif';
+import cctvGallery8 from '../../../assets/images/shared image (22).jfif';
 
 const braceActivities = [
   {
@@ -333,11 +343,11 @@ export default function OurProjects() {
                 className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-2 border-dashed border-brand-black hover:border-primary overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative">
+                <div className="relative overflow-hidden">
                   <img
                     src={activity.image}
                     alt={activity.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-56 object-cover object-center"
                   />
                 </div>
 
@@ -402,8 +412,26 @@ export default function OurProjects() {
               <div className="text-sm text-gray-600 font-medium">Surveillance Coverage</div>
             </div>
           </div>
+        </div>
 
-
+        {/* Auto-Scrolling Gallery */}
+        <div className="mt-12">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8">
+            Project Gallery
+          </h3>
+          <div className="relative overflow-hidden">
+            <div className="flex gap-6 animate-scroll">
+              {[cctvGallery1, cctvGallery2, cctvGallery3, cctvGallery4, cctvGallery5, cctvGallery6, cctvGallery7, cctvGallery8, cctvGallery1, cctvGallery2, cctvGallery3, cctvGallery4, cctvGallery5, cctvGallery6, cctvGallery7, cctvGallery8].map((img, index) => (
+                <div key={index} className="flex-shrink-0 w-80 h-60 rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={img}
+                    alt={`CCTV Project ${index + 1}`}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

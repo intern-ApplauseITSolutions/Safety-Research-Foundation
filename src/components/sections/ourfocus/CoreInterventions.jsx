@@ -30,7 +30,7 @@ const interventions = [
     description: "Building capacity and awareness among all categories of road users through targeted, data-driven training programs.",
     detailedDescription: "Using comprehensive accident data, we identify high-risk areas and develop targeted safety measures to prevent crashes and save lives.",
     keyInterventions: [
-      { title: "Content & Module Development", desc: "Creation of customized posters, booklets, training modules, games, and jingles in local languages." },
+      // { title: "Content & Module Development", desc: "Creation of customized posters, booklets, training modules, games, and jingles in local languages." },
       { title: "School & College Programs", desc: "Interactive sessions for students on traffic rules, safe commuting, and pedestrian discipline." },
       { title: "Driver Training Programs", desc: "Defensive and responsible driving workshops for truck, bus, and cab drivers." },
       { title: "Police & Enforcement Training", desc: "Skill-based modules for crash scene management, blackspot identification, and enforcement improvement." },
@@ -176,7 +176,7 @@ export default function CoreInterventions() {
                   {intervention.keyInterventions && (
                     <div className="mb-3 sm:mb-4">
                       <h5 className="text-xs sm:text-sm lg:text-xs font-bold text-gray-900 mb-2">Key Interventions:</h5>
-                      <ul className="space-y-1 sm:space-y-2 lg:space-y-1 text-xs sm:text-sm lg:text-xs text-gray-700">
+                      <ul className="space-y-1 sm:space-y-2 lg:space-y-1 text-xs sm:text-sm lg:text-sm text-gray-700">
                         {intervention.keyInterventions.map((item, idx) => (
                           <li key={idx} className="flex items-start">
                             <span className={`mr-1 mt-0.5 ${
