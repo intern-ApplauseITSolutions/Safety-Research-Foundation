@@ -9,8 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 // Import team member images
-import jeyaImage from "../../../assets/team/Ms-Jeya-Padmanaban-1.jpg";
-import ajitImage from "../../../assets/team/Mr-Ajit-Dandapani.jpg";
+import jeyaImage from "../../../assets/images/team1.png";
+import ajitImage from "../../../assets/images/team.png";
 import chitraImage from "../../../assets/team/Chitra Subramaniam.png";
 import seshImage from "../../../assets/team/Sesh Subramaniam.png";
 import sandipImage from "../../../assets/team/Sandip Nawale.png";

@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail, Shield, Linkedin, Facebook } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
-import footerLogo from '../../assets/logo/footer_logo.jpg';
+import footerLogo from '../../assets/images/SRF logo.png';
 
 export default function Footer() {
   return (
