@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import braceHandbook from '../../../assets/ebooks/BRACE-Handbook.pdf';
 import roadwiseKannada from '../../../assets/ebooks/ROADWISE-Kannada.pdf';
 
+// Import eBook cover images
+import braceHandbookCover from '../../../assets/images/Website  (1).png';
+import roadwiseKannadaCover from '../../../assets/images/srf-img.png';
+
 // Import Audio files - BOSCH Creatives
 import audio1 from '../../../assets/images/BOSCH creative 01 (15 secs) NEW rev.mp3';
 import audio2 from '../../../assets/images/BOSCH creative 02 (15 secs) NEW rev.mp3';
@@ -962,6 +966,7 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
       title: "BRACE Handbook",
       description: "Comprehensive guide on road safety best practices and awareness",
       file: braceHandbook,
+      cover: braceHandbookCover,
       fileSize: "PDF",
       category: "Road Safety Guide"
     },
@@ -970,13 +975,14 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
       title: "ROADWISE - Kannada",
       description: "Road safety awareness guide in Kannada language",
       file: roadwiseKannada,
+      cover: roadwiseKannadaCover,
       fileSize: "PDF",
       category: "Road Safety Guide"
     }
   ];
 
-  // Load BRACE News PDFs
-  const braceNewsModules = import.meta.glob('../../../assets/events/BRACE News/**/*.{pdf,PDF}', { eager: false, import: 'default' });
+  // Load BRACE News PDFs and Images
+  const braceNewsModules = import.meta.glob('../../../assets/events/BRACE News/**/*.{pdf,PDF,jpg,JPG,jpeg,JPEG,png,PNG}', { eager: false, import: 'default' });
   const [braceNewsDocuments, setBraceNewsDocuments] = useState([]);
   
   // Load MSIA Award images
@@ -992,12 +998,14 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
           const docs = await Promise.all(
             Object.entries(braceNewsModules).map(async ([path, importFn], index) => {
               const file = await importFn();
-              const filename = path.split('/').pop().replace(/\.(pdf|PDF)$/, '');
+              const filename = path.split('/').pop().replace(/\.(pdf|PDF|jpg|JPG|jpeg|JPEG|png|PNG)$/, '');
+              const fileExtension = path.split('.').pop().toLowerCase();
+              const isImage = ['jpg', 'jpeg', 'png'].includes(fileExtension);
               return {
                 id: `brace-${index + 1}`,
                 title: filename,
                 file: file,
-                type: 'PDF',
+                type: isImage ? 'image' : 'PDF',
                 path: path
               };
             })
@@ -1461,26 +1469,41 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
                           rel="noopener noreferrer"
                           className="relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group bg-white border-2 border-gray-200"
                         >
-                          {/* PDF Preview */}
+                          {/* Preview - PDF or Image */}
                           <div className="w-full aspect-[3/4] bg-gray-50 relative">
-                            <iframe
-                              src={`${doc.file}#toolbar=0&navpanes=0&scrollbar=0&page=1&view=FitH&zoom=page-fit`}
-                              className="w-full h-full pointer-events-none absolute inset-0"
-                              title={doc.title}
-                              loading="lazy"
-                            />
+                            {doc.type === 'image' ? (
+                              <img 
+                                src={doc.file} 
+                                alt={doc.title}
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <iframe
+                                src={`${doc.file}#toolbar=0&navpanes=0&scrollbar=0&page=1&view=FitH&zoom=page-fit`}
+                                className="w-full h-full pointer-events-none absolute inset-0"
+                                title={doc.title}
+                                loading="lazy"
+                              />
+                            )}
                             {/* Overlay on hover */}
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-primary rounded-full p-3">
-                                <FileText className="w-6 h-6 text-white" />
+                                {doc.type === 'image' ? (
+                                  <Image className="w-6 h-6 text-white" />
+                                ) : (
+                                  <FileText className="w-6 h-6 text-white" />
+                                )}
                               </div>
                             </div>
                           </div>
-                          {/* PDF Title */}
+                          {/* Title */}
                           <div className="p-3 bg-white">
                             <p className="text-sm text-gray-800 line-clamp-2 font-medium">{doc.title}</p>
                             <div className="flex items-center gap-2 mt-2">
-                              <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">PDF</span>
+                              <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
+                                {doc.type === 'image' ? 'Image' : 'PDF'}
+                              </span>
                               <ExternalLink className="w-3 h-3 text-gray-400" />
                             </div>
                           </div>
@@ -1607,14 +1630,19 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
                       key={ebook.id}
                       className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-dashed border-brand-black hover:border-primary group"
                     >
-                      <div className="p-6">
-                        {/* eBook Icon */}
-                        <div className="flex items-center justify-center mb-4">
-                          <div className="bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
-                            <BookOpen className="w-12 h-12 text-primary" />
-                          </div>
+                      {/* eBook Cover Image */}
+                      {ebook.cover && (
+                        <div className="relative overflow-hidden">
+                          <img 
+                            src={ebook.cover} 
+                            alt={ebook.title}
+                            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-
+                      )}
+                      
+                      <div className="p-6">
                         {/* eBook Details */}
                         <div className="text-center mb-4">
                           <h4 className="text-lg font-bold text-brand-black mb-2 group-hover:text-primary transition-colors duration-300">
