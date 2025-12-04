@@ -270,7 +270,7 @@ const RoadSafetyFocus = () => {
             >
               <img
                 src={roadSafetyTrainingImg}
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-80 object-cover"
                 alt="Road Safety Training"
                 loading="lazy"
               />
@@ -321,7 +321,7 @@ const RoadSafetyFocus = () => {
             >
               <img
                 src={roadInfrastructureImg}
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-80 object-cover"
                 alt="Road Infrastructure Improvements"
                 loading="lazy"
               />
@@ -373,7 +373,7 @@ const RoadSafetyFocus = () => {
             >
               <img
                 src={employeeEngagementImg}
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-80 object-cover"
                 alt="Employee Engagement"
                 loading="lazy"
               />
@@ -431,7 +431,7 @@ const RoadSafetyFocus = () => {
             >
               <img
                 src={communityAwarenessImg}
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-80 object-cover"
                 alt="Community Awareness"
                 loading="lazy"
               />
@@ -466,7 +466,7 @@ const RoadSafetyFocus = () => {
             >
               <img
                 src={childSafetyImg}
-                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-2 border-brand-black h-80 object-cover"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-80 object-cover"
                 alt="Child Safety Awareness"
                 loading="lazy"
               />
