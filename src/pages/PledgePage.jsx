@@ -45,7 +45,7 @@ const PledgePage = () => {
       setPledgeStep(1);
       setShowSuccess(true);
       setPledgeCount(prev => prev + 1);
-      
+
       // Reset form
       setPledgeData({
         title: '',
@@ -115,7 +115,7 @@ const PledgePage = () => {
   };
 
   const shareUrl = window.location.href;
-  const shareText = "Join me in taking the Road Safety Pledge 2024! Let's make Indian roads safer for everyone. 🚗🛡️";
+  const shareText = "Join me in taking the Road Safety Pledge 2025-26! Let's make Indian roads safer for everyone. 🚗🛡️";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -139,10 +139,10 @@ const PledgePage = () => {
             <Shield className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-            Road Safety Pledge 2024
+            Road Safety Pledge 2025-26
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2">
-            Join thousands of Indians in our commitment to make roads safer for everyone. 
+            Join thousands of Indians in our commitment to make roads safer for everyone.
             Your pledge matters, your actions save lives.
           </p>
         </div>
@@ -185,7 +185,7 @@ const PledgePage = () => {
             >
               <X className="w-6 h-6" />
             </button>
-            
+
             <div className="text-center mb-6">
               <Share2 className="w-12 h-12 text-primary mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Share the Pledge</h3>
@@ -258,7 +258,7 @@ const PledgePage = () => {
             >
               <X className="w-6 h-6" />
             </button>
-            
+
             {/* Step 1: Initial Options */}
             {pledgeStep === 1 && (
               <div className="text-center px-2 sm:px-4">
@@ -267,7 +267,7 @@ const PledgePage = () => {
                   <div className="text-lg sm:text-xl md:text-2xl">शपथ लीजिये</div>
                   <div className="text-base sm:text-lg md:text-xl text-gray-600">Take Pledge</div>
                 </h3>
-                
+
                 <div className="space-y-3 sm:space-y-4 mt-6 sm:mt-8">
                   <button
                     onClick={() => setPledgeStep(2)}
@@ -276,12 +276,12 @@ const PledgePage = () => {
                     <div className="text-base sm:text-lg">शपथ लीजिये</div>
                     <div className="text-xs sm:text-sm opacity-90">Take Pledge</div>
                   </button>
-                  
+
                   <button className="w-full bg-gray-100 text-gray-700 px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors text-left">
                     <div className="text-xs sm:text-sm leading-tight">यदि प्रतिज्ञा पहले ही ले ली है तो वचनबद्धता का प्रमाण-पत्र प्राप्त करें</div>
                     <div className="text-xs opacity-70 mt-1">If already taken Pledge, Get the Certificate of Commitment</div>
                   </button>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button className="bg-blue-100 text-blue-700 px-3 sm:px-4 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors">
                       <div className="text-xs sm:text-sm leading-tight">प्रमाणपत्र अपने ई-मेल | मोबाइल पर भेजें</div>

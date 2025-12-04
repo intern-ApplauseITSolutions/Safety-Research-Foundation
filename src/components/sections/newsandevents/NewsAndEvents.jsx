@@ -857,6 +857,41 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
       videoId: "T68HpBF-di0",
       description: "Important traffic safety awareness and education video.",
       date: "2024"
+    },
+    {
+      id: 2,
+      title: "Road Safety Campaign",
+      videoId: "7IJFsyF-WSk",
+      description: "Road safety awareness campaign video.",
+      date: "2024"
+    },
+    {
+      id: 3,
+      title: "Safe Driving Practices",
+      videoId: "846QOR32ERc",
+      description: "Educational video on safe driving practices.",
+      date: "2024"
+    },
+    {
+      id: 4,
+      title: "Pedestrian Safety Awareness",
+      videoId: "yCYrkRB05SQ",
+      description: "Important information about pedestrian safety.",
+      date: "2024"
+    },
+    {
+      id: 5,
+      title: "Traffic Rules and Regulations",
+      videoId: "N4qWOPNuLa8",
+      description: "Understanding traffic rules and regulations.",
+      date: "2024"
+    },
+    {
+      id: 6,
+      title: "Road Safety Education",
+      videoId: "qY7nl-0jW60",
+      description: "Comprehensive road safety education video.",
+      date: "2024"
     }
   ];
 

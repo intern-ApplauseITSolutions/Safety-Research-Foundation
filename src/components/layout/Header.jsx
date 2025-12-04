@@ -1,5 +1,5 @@
 import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart, ChevronDown, DollarSign } from 'lucide-react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import logo from '../../assets/images/SRF logo.png';
 
@@ -8,7 +8,11 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileDropdown, setMobileDropdown] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const closeTimeoutRef = useRef(null);
+  
+  // Check if we're on the home page
+  const isHomePage = location.pathname === '/';
 
   const handleMouseEnter = (dropdown) => {
     if (closeTimeoutRef.current) {
@@ -61,7 +65,7 @@ export default function Header() {
                   <span className="hidden md:inline">contact@safetyresearchfoundation.org</span>
                 </a>
               </div>
-              
+
               {/* Social Media Icons - Smaller on mobile */}
               <div className="flex items-center gap-1 sm:gap-3">
                 <a href="https://www.linkedin.com/in/safety-research-foundation-397695183/" target="_blank" rel="noopener noreferrer" className="group">
@@ -77,7 +81,7 @@ export default function Header() {
                 <a href="https://x.com/ResearchSafety" target="_blank" rel="noopener noreferrer" className="group">
                   <div className="bg-primary/10 p-1 sm:p-2 rounded-lg group-hover:bg-primary/20 transition">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                   </div>
                 </a>
@@ -96,7 +100,7 @@ export default function Header() {
             <Link to="/" className="flex items-center gap-3">
               <img src={logo} alt="Safety Research Foundation" className="h-12 md:h-16" />
             </Link>
-            
+
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-baseline gap-4 xl:gap-5 text-sm xl:text-base">
               <NavLink to="/" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
@@ -105,14 +109,14 @@ export default function Header() {
               <NavLink to="/about" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 About
               </NavLink>
-              
+
               {/* Our Focus Area Dropdown */}
-              <div 
+              <div
                 className="relative"
                 onMouseEnter={() => handleMouseEnter('focus')}
                 onMouseLeave={handleMouseLeave}
               >
-                <NavLink 
+                <NavLink
                   to="/focus"
                   className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} inline-flex items-center gap-1`}
                 >
@@ -136,7 +140,7 @@ export default function Header() {
                   </div>
                 )} */}
               </div>
-              
+
               <NavLink to="/events" className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed whitespace-nowrap ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                 Spotlight
               </NavLink>
@@ -175,10 +179,10 @@ export default function Header() {
                 <NavLink to="/about" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   About
                 </NavLink>
-                
+
                 {/* Mobile Our Focus Area Dropdown */}
                 <div>
-                  <NavLink 
+                  <NavLink
                     to="/focus"
                     onClick={() => {
                       setIsMenuOpen(false);
@@ -187,7 +191,7 @@ export default function Header() {
                     className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} flex items-center gap-1 w-full justify-between`}
                   >
                     <span>Focus Area</span>
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
@@ -200,15 +204,15 @@ export default function Header() {
                   </NavLink>
                   {mobileDropdown === 'focus' && (
                     <div className="ml-4 mt-2 flex flex-col gap-2">
-                      <NavLink 
-                        to="/core-intervention" 
+                      <NavLink
+                        to="/core-intervention"
                         onClick={() => setIsMenuOpen(false)}
                         className="text-brand-black hover:text-primary transition py-1"
                       >
                         Core Intervention
                       </NavLink>
-                      <NavLink 
-                        to="/current-project" 
+                      <NavLink
+                        to="/current-project"
                         onClick={() => setIsMenuOpen(false)}
                         className="text-brand-black hover:text-primary transition py-1"
                       >
@@ -217,7 +221,7 @@ export default function Header() {
                     </div>
                   )}
                 </div>
-                
+
                 <NavLink to="/events" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   Spotlight
                 </NavLink>
@@ -241,14 +245,21 @@ export default function Header() {
               </div>
             </nav>
           )}
-
-          {/* Tagline */}
-          <div className="hidden lg:block mt-3 pt-3 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-600 font-medium animate-fade-in">
-              Creating a culture of road safety through education, research, and community engagement
-            </p>
-          </div>
         </div>
+
+        {/* Organization Name Banner - Only show on home page */}
+        {isHomePage && (
+          <div className="bg-white border-t border-gray-200">
+            <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
+              <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
+                Safety Research Foundation
+              </h1>
+              <p className="text-center text-xs sm:text-sm text-gray-600 mt-2">
+                Creating a culture of road safety through education, research, and community engagement.
+              </p>
+            </div>
+          </div>
+        )}
       </header>
     </>
   );

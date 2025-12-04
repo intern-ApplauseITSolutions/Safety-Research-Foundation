@@ -302,7 +302,7 @@ const ContactUs = () => {
               {/* Map Container */}
               <div className="w-full h-80 bg-gray-100 rounded-xl overflow-hidden border-2 border-dashed border-brand-black">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.4296878922923!2d73.80207872417039!3d18.55465706813417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b1c9e770a7ef%3A0x891998608228d3b3!2sJP%20Research%20India%20Pvt%20Ltd%20-%20Registered%20Office!5e0!3m2!1sen!2sin!4v1764821902403!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3161.8757539069616!2d73.8018944!3d18.5546065!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfd2aecbe735%3A0x9b56fc17760f358b!2sSafety%20Research%20Foundation!5e1!3m2!1sen!2sin!4v1764851275918!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -332,7 +332,7 @@ const ContactUs = () => {
               {/* Map Container */}
               <div className="w-full h-80 bg-gray-100 rounded-xl overflow-hidden border-2 border-dashed border-brand-black">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1489221088805!2d77.5971294740504!3d12.962320865083685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15d6d82980cb%3A0xef6c3b6cb2d36125!2sGlobal%20Tech%20Park!5e0!3m2!1sen!2sin!4v1764822341155!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.6857563394396!2d77.5997002!3d12.9622811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15e99bfd3bf7%3A0x187f0a14c44e549c!2sSafety%20Research%20Foundation!5e1!3m2!1sen!2sin!4v1764851415499!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

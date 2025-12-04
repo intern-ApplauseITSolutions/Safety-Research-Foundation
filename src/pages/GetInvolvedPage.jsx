@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart, Shield, Users, FileText, Award, CheckCircle, ExternalLink, Eye, X, Copy, Phone, Mail, Building, Briefcase, HandHeart, Landmark, Globe } from 'lucide-react';
-import donateImage from '../assets/images/road safety image 1.png';
+import donateImage from '../assets/images/get involved-srf.png';
 
 export default function GetInvolvedPage() {
   const navigate = useNavigate();
@@ -98,33 +98,28 @@ export default function GetInvolvedPage() {
   const uspPoints = [
     {
       icon: <Users className="w-6 h-6 text-primary" />,
-      title: "Trustees with Strong Background",
-      description: "Extensive experience in Road Safety with proven track record"
+      title: "Expert Leadership",
+      description: "Led by trustees with strong academic and professional backgrounds in road safety research, policy, and engineering."
     },
     {
       icon: <Award className="w-6 h-6 text-primary" />,
       title: "Qualified Professional Team",
-      description: "Road safety experts with technical expertise and field experience"
+      description: "Driven by a skilled team of road safety specialists, researchers, and field practitioners with hands-on implementation experience."
     },
     {
       icon: <FileText className="w-6 h-6 text-primary" />,
-      title: "Data Driven Approach",
-      description: "Scientific methodology and evidence-based solutions for road safety"
+      title: "Data-Driven Solutions",
+      description: "All programs are designed using scientific crash data, research insights, and evidence-based models to create measurable impact."
     },
     {
       icon: <Shield className="w-6 h-6 text-primary" />,
-      title: "Government Coordination",
-      description: "Close coordination with Government agencies and departments"
+      title: "Strong Government Collaboration",
+      description: "Consistent coordination with traffic police, RTOs, transport departments, urban local bodies, and education institutions for effective execution."
     },
     {
       icon: <CheckCircle className="w-6 h-6 text-primary" />,
-      title: "Annual Summarized Reports",
-      description: "Transparent reporting to all donors for activities undertaken"
-    },
-    {
-      icon: <Heart className="w-6 h-6 text-primary" />,
-      title: "80G Tax Exemption",
-      description: "80G certificate to all donors for tax exemption under IT Act provisions"
+      title: "Proven Impact",
+      description: "Successfully delivered high-impact road safety projects across cities, improving awareness, training systems, and safer infrastructure on the ground."
     }
   ];
 
@@ -454,7 +449,7 @@ export default function GetInvolvedPage() {
                 <h3 className="text-lg font-semibold text-brand-black">12A Provisional Approval</h3>
               </div>
               <p className="text-brand-black/70 font-mono text-sm sm:text-base">
-                No. AATTS4811JE20206
+                80G: AATTS4811J25PN01
               </p>
             </div>
 
@@ -466,111 +461,8 @@ export default function GetInvolvedPage() {
                 <h3 className="text-lg font-semibold text-brand-black">80G Provisional Approval</h3>
               </div>
               <p className="text-brand-black/70 font-mono text-sm sm:text-base">
-                No. AATTS4811JF20206
+                12A: AATTS4811JE20206
               </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Donation Details Section */}
-        <div id="donation-details" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-white rounded-xl shadow-lg p-8 sm:p-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-brand-black mb-8 text-center flex items-center justify-center gap-3">
-              <div className="bg-primary/10 p-2 rounded-lg">
-                <Heart className="w-6 h-6 text-primary" />
-              </div>
-              Support Our Mission
-            </h2>
-
-            {/* Bank Transfer Details */}
-            <div className="bg-gray-50 rounded-lg p-6 sm:p-8 mb-8">
-              <h3 className="text-xl font-semibold text-brand-black mb-6 flex items-center gap-2">
-                <Building className="w-6 h-6 text-primary" />
-                Bank Transfer Details
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg border">
-                  <div>
-                    <p className="text-sm text-brand-black/60 mb-1">Account Name</p>
-                    <p className="font-medium text-brand-black">Safety Research Foundation</p>
-                  </div>
-                  <button
-                    onClick={() => copyToClipboard('Safety Research Foundation', 'Account Name')}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                  >
-                    <Copy className="w-4 h-4 text-gray-500" />
-                  </button>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg border">
-                  <div>
-                    <p className="text-sm text-brand-black/60 mb-1">Account Number</p>
-                    <p className="font-medium text-brand-black">50200031767840</p>
-                  </div>
-                  <button
-                    onClick={() => copyToClipboard('50200031767840', 'Account Number')}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                  >
-                    <Copy className="w-4 h-4 text-gray-500" />
-                  </button>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg border">
-                  <div>
-                    <p className="text-sm text-brand-black/60 mb-1">IFSC Code</p>
-                    <p className="font-medium text-brand-black">HDFC0003981</p>
-                  </div>
-                  <button
-                    onClick={() => copyToClipboard('HDFC0003981', 'IFSC Code')}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                  >
-                    <Copy className="w-4 h-4 text-gray-500" />
-                  </button>
-                </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg border">
-                  <div>
-                    <p className="text-sm text-brand-black/60 mb-1">Bank Name</p>
-                    <p className="font-medium text-brand-black">HDFC BANK BRANCH - AUNDH2</p>
-                  </div>
-                  <button
-                    onClick={() => copyToClipboard('HDFC BANK BRANCH - AUNDH2', 'Bank Name')}
-                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                  >
-                    <Copy className="w-4 h-4 text-gray-500" />
-                  </button>
-                </div>
-              </div>
-              {copiedText && (
-                <div className="mt-4 p-3 bg-brand-green/10 text-brand-green rounded-lg text-sm text-center">
-                  {copiedText} copied to clipboard!
-                </div>
-              )}
-            </div>
-
-            {/* Contact Information */}
-            <div className="bg-primary/10 rounded-lg p-6 sm:p-8">
-              <h3 className="text-xl font-semibold text-brand-black mb-6">Need Help?</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary/20 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-brand-black/60 mb-1">Email</p>
-                    <a href="mailto:info@safetyresearchfoundation.org" className="text-primary hover:text-primary/80 font-medium text-lg">
-                      contact@safetyresearchfoundation.org                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="bg-primary/20 p-3 rounded-lg">
-                    <Phone className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-brand-black/60 mb-1">Phone</p>
-                    <a href="tel:+91XXXXXXXXXX" className="text-primary hover:text-primary/80 font-medium text-lg">
-                      +91 7030910122
-                    </a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -681,7 +573,7 @@ export default function GetInvolvedPage() {
             With every contribution, you will be helping build a safer future—one where preventable road accidents are reduced, and more families reach home safely every day.
           </p>
           <div className="mt-8 text-center">
-            <p className="text-brand-black/60 font-semibold">
+            <p className="text-primary font-semibold text-lg">
               Together, we will create long-term, measurable change in road safety across the country.
             </p>
           </div>

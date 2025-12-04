@@ -89,7 +89,7 @@ const cctvActivities = [
   {
     icon: Search,
     title: "Site Survey & Location Identification",
-    description: "Identified key junctions, blackspots, school zones, and high-traffic corridors across Nashik city using accident records and police insights to determine optimal camera locations.",
+    description: "Each location was surveyed on ground, traffic flow was analysed, and camera positions were planned to ensure maximum visibility and coverage. The angle, height, and number of cameras at each site were finalised in consultation with police officers and based on actual road geometry and movement patterns.",
     image: cctvImg1,
     color: "from-blue-500 to-blue-600",
     bgColor: "bg-blue-50",
@@ -116,7 +116,7 @@ const cctvActivities = [
   {
     icon: Camera,
     title: "Procurement & Installation",
-    description: "Installed 100+ wireless HD CCTV cameras with night vision, wide-angle coverage, recording capability, and motion detection to strengthen surveillance and rapid response capacity.",
+    description: "84 cameras, 30 NVR 30 C5x radio and modular N5-X antennas, wide-angle coverage, recording capability, and motion detection to strengthen surveillance and rapid response capacity.",
     image: cctvImg4,
     color: "from-orange-500 to-orange-600",
     bgColor: "bg-orange-50",

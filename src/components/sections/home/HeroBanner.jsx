@@ -26,7 +26,7 @@ export default function HeroBanner() {
     console.log('HeroBanner: Using static images directly');
     setImages(staticImages);
     setIsLoading(false);
-    
+
     // Uncomment this to try dynamic loading
     // loadImages();
   }, []);
@@ -37,7 +37,7 @@ export default function HeroBanner() {
     try {
       const bannerImages = getAllBannerImages();
       console.log('HeroBanner: Received images:', bannerImages.length, bannerImages);
-      
+
       // Use dynamic images if available, otherwise fallback to static
       if (bannerImages.length > 0) {
         setImages(bannerImages);
@@ -46,7 +46,7 @@ export default function HeroBanner() {
         console.log('HeroBanner: Using static fallback images');
         setImages(staticImages);
       }
-      
+
       setCurrentImage(0); // Reset to first image
       setIsLoading(false);
       console.log('HeroBanner: Images loaded successfully');
@@ -61,7 +61,7 @@ export default function HeroBanner() {
   // Image carousel effect
   useEffect(() => {
     if (images.length === 0) return;
-    
+
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, slideDuration);
@@ -78,21 +78,11 @@ export default function HeroBanner() {
             <div className="absolute top-4 left-4 w-12 h-12 border-4 border-white/20 rounded-lg"></div>
             <div className="absolute bottom-4 right-4 w-16 h-16 border-4 border-white/20 rounded-full"></div>
 
-            {/* Main Heading */}
-            <div className="space-y-1 mb-3 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <h1 className="text-3xl sm:text-3xl lg:text-3xl font-black text-white leading-[0.85] tracking-tight">
-                Safety<br />
-                Research<br />
-                Foundation
-              </h1>
-              <div className="h-1 w-16 bg-white rounded-full"></div>
-            </div>
+
 
             {/* Subtitle */}
             <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
- Safety Research Foundation is dedicated to promoting safer roads through education, research, and community engagement. Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and
-
-ultimately save lives. 
+              Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
             </p>
 
             {/* Spacer to maintain banner height */}
@@ -151,13 +141,12 @@ ultimately save lives.
                   {images.map((image, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-                        index === currentImage ? 'opacity-100' : 'opacity-0'
-                      }`}>
+                      className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${index === currentImage ? 'opacity-100' : 'opacity-0'
+                        }`}>
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className="w-full h-full object-cover object-center"
+                        className={`w-full h-full object-cover ${index === 4 ? 'object-top' : 'object-center'}`}
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
                           e.target.style.display = 'none';
@@ -165,7 +154,7 @@ ultimately save lives.
                       />
                     </div>
                   ))}
-                  
+
                   {/* Subtle Overlay - Removed bluish gradient */}
                 </div>
 
@@ -175,17 +164,15 @@ ultimately save lives.
                     <button
                       key={index}
                       onClick={() => setCurrentImage(index)}
-                      className={`transition-all duration-300 ${
-                        index === currentImage ? 'w-12 h-3' : 'w-3 h-3'
-                      }`}
+                      className={`transition-all duration-300 ${index === currentImage ? 'w-12 h-3' : 'w-3 h-3'
+                        }`}
                     >
-                      <div className={`h-full rounded-full transition-all duration-300 ${
-                        index === currentImage 
-                          ? 'bg-primary' 
+                      <div className={`h-full rounded-full transition-all duration-300 ${index === currentImage
+                          ? 'bg-primary'
                           : 'bg-white/60 hover:bg-white/80'
-                      }`}>
+                        }`}>
                         {index === currentImage && (
-                          <div 
+                          <div
                             className="h-full bg-white rounded-full animate-progress-bar"
                             style={{ animationDuration: `${slideDuration}ms` }}
                           ></div>
