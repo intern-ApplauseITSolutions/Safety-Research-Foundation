@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom';
 import braceHandbook from '../../../assets/ebooks/BRACE-Handbook.pdf';
 import roadwiseKannada from '../../../assets/ebooks/ROADWISE-Kannada.pdf';
 
+// Import eBook cover images
+import braceHandbookCover from '../../../assets/images/Website  (1).png';
+import roadwiseKannadaCover from '../../../assets/images/srf-img.png';
+
 // Import Audio files - BOSCH Creatives
 import audio1 from '../../../assets/images/BOSCH creative 01 (15 secs) NEW rev.mp3';
 import audio2 from '../../../assets/images/BOSCH creative 02 (15 secs) NEW rev.mp3';
@@ -962,6 +966,7 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
       title: "BRACE Handbook",
       description: "Comprehensive guide on road safety best practices and awareness",
       file: braceHandbook,
+      cover: braceHandbookCover,
       fileSize: "PDF",
       category: "Road Safety Guide"
     },
@@ -970,6 +975,7 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
       title: "ROADWISE - Kannada",
       description: "Road safety awareness guide in Kannada language",
       file: roadwiseKannada,
+      cover: roadwiseKannadaCover,
       fileSize: "PDF",
       category: "Road Safety Guide"
     }
@@ -1624,14 +1630,19 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
                       key={ebook.id}
                       className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-dashed border-brand-black hover:border-primary group"
                     >
-                      <div className="p-6">
-                        {/* eBook Icon */}
-                        <div className="flex items-center justify-center mb-4">
-                          <div className="bg-primary/10 p-4 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
-                            <BookOpen className="w-12 h-12 text-primary" />
-                          </div>
+                      {/* eBook Cover Image */}
+                      {ebook.cover && (
+                        <div className="relative overflow-hidden">
+                          <img 
+                            src={ebook.cover} 
+                            alt={ebook.title}
+                            className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
-
+                      )}
+                      
+                      <div className="p-6">
                         {/* eBook Details */}
                         <div className="text-center mb-4">
                           <h4 className="text-lg font-bold text-brand-black mb-2 group-hover:text-primary transition-colors duration-300">
