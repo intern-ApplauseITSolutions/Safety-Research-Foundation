@@ -34,21 +34,20 @@ export default function DonatePage() {
         {/* Decorative Elements */}
         <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 animate-bounce">
               <Sparkles className="w-5 h-5 text-white" />
               <span className="text-white font-semibold text-sm">Make a Difference Today</span>
             </div>
-            
+
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Your Donation Saves Lives
             </h1>
-            
+
             <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-              Every contribution helps us create safer roads, educate communities, and prevent accidents. 
-              Join us in our mission to make Indian roads safer for everyone.
+              More than 99% of your donation supports the exact road safety cause it is contributed for, ensuring maximum impact, full transparency, and no commercial interest — only life-saving work.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -99,7 +98,7 @@ export default function DonatePage() {
                 Why Donate to Safety Research Foundation?
               </h2>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Your contribution directly supports evidence-based road safety initiatives that create lasting change. 
+                Your contribution directly supports evidence-based road safety initiatives that create lasting change.
                 We work with communities, schools, and government agencies to build a culture of road safety across India.
               </p>
               <div className="space-y-4">
@@ -114,7 +113,7 @@ export default function DonatePage() {
 
             <div className="bg-gradient-to-br from-primary/10 to-brand-green/10 rounded-2xl p-8 border-2 border-dashed border-primary">
               <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Quick Donate</h3>
-              
+
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {['₹1,000', '₹2,500', '₹5,000', '₹10,000'].map((amount) => (
                   <button
@@ -269,7 +268,7 @@ export default function DonatePage() {
             Every Contribution Counts
           </h2>
           <p className="text-lg text-white/90 mb-8 leading-relaxed">
-            Whether it's ₹500 or ₹50,000, your donation helps us save lives and create safer roads. 
+            Whether it's ₹500 or ₹50,000, your donation helps us save lives and create safer roads.
             Join hundreds of donors who believe in our mission.
           </p>
           <button className="bg-white hover:bg-gray-50 text-primary px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl inline-flex items-center gap-3">

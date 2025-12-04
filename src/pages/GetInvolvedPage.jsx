@@ -98,33 +98,28 @@ export default function GetInvolvedPage() {
   const uspPoints = [
     {
       icon: <Users className="w-6 h-6 text-primary" />,
-      title: "Trustees with Strong Background",
-      description: "Extensive experience in Road Safety with proven track record"
+      title: "Expert Leadership",
+      description: "Led by trustees with strong academic and professional backgrounds in road safety research, policy, and engineering."
     },
     {
       icon: <Award className="w-6 h-6 text-primary" />,
       title: "Qualified Professional Team",
-      description: "Road safety experts with technical expertise and field experience"
+      description: "Driven by a skilled team of road safety specialists, researchers, and field practitioners with hands-on implementation experience."
     },
     {
       icon: <FileText className="w-6 h-6 text-primary" />,
-      title: "Data Driven Approach",
-      description: "Scientific methodology and evidence-based solutions for road safety"
+      title: "Data-Driven Solutions",
+      description: "All programs are designed using scientific crash data, research insights, and evidence-based models to create measurable impact."
     },
     {
       icon: <Shield className="w-6 h-6 text-primary" />,
-      title: "Government Coordination",
-      description: "Close coordination with Government agencies and departments"
+      title: "Strong Government Collaboration",
+      description: "Consistent coordination with traffic police, RTOs, transport departments, urban local bodies, and education institutions for effective execution."
     },
     {
       icon: <CheckCircle className="w-6 h-6 text-primary" />,
-      title: "Annual Summarized Reports",
-      description: "Transparent reporting to all donors for activities undertaken"
-    },
-    {
-      icon: <Heart className="w-6 h-6 text-primary" />,
-      title: "80G Tax Exemption",
-      description: "80G certificate to all donors for tax exemption under IT Act provisions"
+      title: "Proven Impact",
+      description: "Successfully delivered high-impact road safety projects across cities, improving awareness, training systems, and safer infrastructure on the ground."
     }
   ];
 
@@ -454,7 +449,7 @@ export default function GetInvolvedPage() {
                 <h3 className="text-lg font-semibold text-brand-black">12A Provisional Approval</h3>
               </div>
               <p className="text-brand-black/70 font-mono text-sm sm:text-base">
-                No. AATTS4811JE20206
+                80G: AATTS4811J25PN01
               </p>
             </div>
 
@@ -466,7 +461,7 @@ export default function GetInvolvedPage() {
                 <h3 className="text-lg font-semibold text-brand-black">80G Provisional Approval</h3>
               </div>
               <p className="text-brand-black/70 font-mono text-sm sm:text-base">
-                No. AATTS4811JF20206
+                12A: AATTS4811JE20206
               </p>
             </div>
           </div>
