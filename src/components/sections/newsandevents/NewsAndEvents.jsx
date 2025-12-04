@@ -6,15 +6,19 @@ import { useNavigate } from 'react-router-dom';
 import braceHandbook from '../../../assets/ebooks/BRACE-Handbook.pdf';
 import roadwiseKannada from '../../../assets/ebooks/ROADWISE-Kannada.pdf';
 
-// Import Audio files
-import audio1 from '../../../assets/audios/AUD-20251111-WA0009.mp3';
-import audio2 from '../../../assets/audios/AUD-20251111-WA0010.mp3';
-import audio3 from '../../../assets/audios/AUD-20251111-WA0012.mp3';
-import audio4 from '../../../assets/audios/AUD-20251111-WA0013.mp3';
-import audio5 from '../../../assets/audios/AUD-20251111-WA0014.mp3';
-import audio6 from '../../../assets/audios/AUD-20251111-WA0016.mp3';
-import audio7 from '../../../assets/audios/AUD-20251111-WA0018.mp3';
-import audio8 from '../../../assets/audios/AUD-20251111-WA0019.mp3';
+// Import Audio files - BOSCH Creatives
+import audio1 from '../../../assets/images/BOSCH creative 01 (15 secs) NEW rev.mp3';
+import audio2 from '../../../assets/images/BOSCH creative 02 (15 secs) NEW rev.mp3';
+import audio3 from '../../../assets/images/BOSCH creative 03 (15 secs) NEW rev.mp3';
+import audio4 from '../../../assets/images/BOSCH creative 04 (15 secs) NEW rev.mp3';
+import audio5 from '../../../assets/images/BOSCH creative 05 (15 secs) NEW rev.mp3';
+import audio6 from '../../../assets/images/BOSCH creative 06 (15 secs) NEW rev.mp3';
+import audio7 from '../../../assets/images/BOSCH creative 07 (15 secs) NEW rev.mp3';
+import audio8 from '../../../assets/images/BOSCH creative 08 (15 secs) NEW rev.mp3';
+import audio9 from '../../../assets/images/BOSCH creative 09 (15 secs) NEW rev.mp3';
+import audio10 from '../../../assets/images/BOSCH creative 10 (15 secs) NEW rev.mp3';
+import audio11 from '../../../assets/images/BOSCH creative 11 (15 secs) NEW rev.mp3';
+import audio12 from '../../../assets/images/BOSCH creative 12 (15 secs) NEW rev.mp3';
 
 // Import Child Safety Seat Awareness Session images
 import childSafety1 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0001.jpg';
@@ -1513,14 +1517,18 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
               <div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
-                    { id: 1, title: "Road Safety Audio 1", file: audio1 },
-                    { id: 2, title: "Road Safety Audio 2", file: audio2 },
-                    { id: 3, title: "Road Safety Audio 3", file: audio3 },
-                    { id: 4, title: "Road Safety Audio 4", file: audio4 },
-                    { id: 5, title: "Road Safety Audio 5", file: audio5 },
-                    { id: 6, title: "Road Safety Audio 6", file: audio6 },
-                    { id: 7, title: "Road Safety Audio 7", file: audio7 },
-                    { id: 8, title: "Road Safety Audio 8", file: audio8 }
+                    { id: 1, title: "BOSCH Creative 01", file: audio1 },
+                    { id: 2, title: "BOSCH Creative 02", file: audio2 },
+                    { id: 3, title: "BOSCH Creative 03", file: audio3 },
+                    { id: 4, title: "BOSCH Creative 04", file: audio4 },
+                    { id: 5, title: "BOSCH Creative 05", file: audio5 },
+                    { id: 6, title: "BOSCH Creative 06", file: audio6 },
+                    { id: 7, title: "BOSCH Creative 07", file: audio7 },
+                    { id: 8, title: "BOSCH Creative 08", file: audio8 },
+                    { id: 9, title: "BOSCH Creative 09", file: audio9 },
+                    { id: 10, title: "BOSCH Creative 10", file: audio10 },
+                    { id: 11, title: "BOSCH Creative 11", file: audio11 },
+                    { id: 12, title: "BOSCH Creative 12", file: audio12 }
                   ].map((audio) => (
                     <div
                       key={audio.id}
