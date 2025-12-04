@@ -41,7 +41,7 @@ const highlights = [
 
 export default function AboutPreview() {
   return (
-    <section className="py-16 bg-gradient-to-br from-white via-blue-50/30 to-green-50/30 relative overflow-hidden">
+    <section className="pt-16 pb-2 bg-gradient-to-br from-white via-blue-50/30 to-green-50/30 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 bg-primary rounded-full blur-3xl"></div>
