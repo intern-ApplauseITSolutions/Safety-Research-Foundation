@@ -1,5 +1,5 @@
 import { Phone, Mail, Heart, Menu, X, Linkedin, Facebook, HandHeart, ChevronDown, DollarSign } from 'lucide-react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import logo from '../../assets/images/SRF logo.png';
 
@@ -8,7 +8,11 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileDropdown, setMobileDropdown] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const closeTimeoutRef = useRef(null);
+  
+  // Check if we're on the home page
+  const isHomePage = location.pathname === '/';
 
   const handleMouseEnter = (dropdown) => {
     if (closeTimeoutRef.current) {
@@ -243,17 +247,19 @@ export default function Header() {
           )}
         </div>
 
-        {/* Organization Name Banner */}
-        <div className="bg-white border-t border-gray-200">
-          <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
-            <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
-              Safety Research Foundation
-            </h1>
-            <p className="text-center text-xs sm:text-sm text-gray-600 mt-2">
-              Creating a culture of road safety through education, research, and community engagement.
-            </p>
+        {/* Organization Name Banner - Only show on home page */}
+        {isHomePage && (
+          <div className="bg-white border-t border-gray-200">
+            <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
+              <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
+                Safety Research Foundation
+              </h1>
+              <p className="text-center text-xs sm:text-sm text-gray-600 mt-2">
+                Creating a culture of road safety through education, research, and community engagement.
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </header>
     </>
   );
