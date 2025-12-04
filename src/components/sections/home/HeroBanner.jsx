@@ -18,6 +18,20 @@ console.log('Static images loaded:', staticImages);
 export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
+
+  // Add media query styles for 1440px screens
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media (min-width: 1440px) and (max-width: 1600px) {
+        .banner-image-5 {
+          object-position: 50% 70% !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
   const [isLoading, setIsLoading] = useState(true);
 
   // Load images dynamically
@@ -146,7 +160,7 @@ export default function HeroBanner() {
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className={index === 4 ? 'w-full h-full object-cover' : 'w-full h-full object-contain lg:object-cover lg:object-center'}
+                        className={index === 4 ? 'w-full h-full object-cover banner-image-5' : 'w-full h-full object-contain lg:object-cover lg:object-center'}
                         style={index === 4 ? { objectPosition: '50% 65%' } : {}}
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
