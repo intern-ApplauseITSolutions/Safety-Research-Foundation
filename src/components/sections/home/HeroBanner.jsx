@@ -146,7 +146,7 @@ export default function HeroBanner() {
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className="w-full h-full object-cover object-center"
+                        className={`w-full h-full object-cover ${index === 4 ? 'object-top' : 'object-center'}`}
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
                           e.target.style.display = 'none';
