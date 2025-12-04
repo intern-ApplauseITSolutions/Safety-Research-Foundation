@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Heart, Shield, Users, FileText, Award, CheckCircle, ExternalLink, Eye, X, Copy, Phone, Mail, Building, Briefcase, HandHeart, Landmark, Globe } from 'lucide-react';
+import { Heart, Shield, Users, FileText, Award, CheckCircle, ExternalLink, Eye, X, Copy, Phone, Mail, Building, Briefcase, HandHeart, Landmark, Globe, Handshake } from 'lucide-react';
 import donateImage from '../assets/images/get involved-srf.png';
 
 export default function GetInvolvedPage() {
@@ -131,7 +131,7 @@ export default function GetInvolvedPage() {
           <div className="text-center">
             <div className="flex justify-center mb-6">
               <div className="bg-white/20 p-4 rounded-full">
-                <Heart className="w-12 h-12 text-white" />
+                <Handshake className="w-12 h-12 text-white" />
               </div>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
@@ -311,9 +311,9 @@ export default function GetInvolvedPage() {
                 Fill out our volunteer form or contact us directly to start making a difference.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="mailto:volunteer@safetyresearchfoundation.org" className="flex items-center gap-2 text-brand-green hover:text-brand-green/80">
+                <a href="mailto:contact@safetyresearchfoundation.org" className="flex items-center gap-2 text-brand-green hover:text-brand-green/80">
                   <Mail className="w-5 h-5" />
-                  volunteer@safetyresearchfoundation.org
+                  contact@safetyresearchfoundation.org
                 </a>
                 <a href="tel:+917030910122" className="flex items-center gap-2 text-brand-green hover:text-brand-green/80">
                   <Phone className="w-5 h-5" />
@@ -421,9 +421,9 @@ export default function GetInvolvedPage() {
                 NGOs working in road safety, public health, or community development can connect with us for collaboration.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="mailto:partnerships@safetyresearchfoundation.org" className="flex items-center gap-2 text-purple-600 hover:text-purple-700">
+                <a href="mailto:contact@safetyresearchfoundation.org" className="flex items-center gap-2 text-purple-600 hover:text-purple-700">
                   <Mail className="w-5 h-5" />
-                  partnerships@safetyresearchfoundation.org
+                  contact@safetyresearchfoundation.org
                 </a>
                 <a href="tel:+918806943991" className="flex items-center gap-2 text-purple-600 hover:text-purple-700">
                   <Phone className="w-5 h-5" />
