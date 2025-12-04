@@ -241,13 +241,6 @@ export default function Header() {
               </div>
             </nav>
           )}
-
-          {/* Tagline */}
-          <div className="hidden lg:block mt-3 pt-3 border-t border-gray-200">
-            <p className="text-center text-sm text-gray-600 font-medium animate-fade-in">
-              Creating a culture of road safety through education, research, and community engagement
-            </p>
-          </div>
         </div>
       </header>
     </>
