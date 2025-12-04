@@ -578,7 +578,7 @@ export default function GetInvolvedPage() {
             With every contribution, you will be helping build a safer future—one where preventable road accidents are reduced, and more families reach home safely every day.
           </p>
           <div className="mt-8 text-center">
-            <p className="text-brand-black/60 font-semibold">
+            <p className="text-primary font-semibold text-lg">
               Together, we will create long-term, measurable change in road safety across the country.
             </p>
           </div>

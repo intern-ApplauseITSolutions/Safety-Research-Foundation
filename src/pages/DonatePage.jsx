@@ -223,6 +223,13 @@ export default function DonatePage() {
               )}
             </div>
 
+            {/* Tagline */}
+            <div className="mt-8 mb-8 text-center">
+              <p className="text-primary font-semibold text-lg">
+                Together, we will create long-term, measurable change in road safety across the country.
+              </p>
+            </div>
+
             {/* Contact Information */}
             <div className="bg-primary/10 rounded-lg p-6 sm:p-8">
               <h3 className="text-xl font-semibold text-brand-black mb-6">Need Help?</h3>
