@@ -175,7 +175,7 @@ export default function CoreInterventions() {
                   {/* Key Interventions */}
                   {intervention.keyInterventions && (
                     <div className="mb-3 sm:mb-4">
-                      <h5 className="text-xs sm:text-sm lg:text-xs font-bold text-gray-900 mb-2">Key Interventions:</h5>
+                      <h5 className="text-xs sm:text-sm lg:text-lg font-bold text-gray-900 mb-2">Key Interventions:</h5>
                       <ul className="space-y-1 sm:space-y-2 lg:space-y-1 text-xs sm:text-sm lg:text-sm text-gray-700">
                         {intervention.keyInterventions.map((item, idx) => (
                           <li key={idx} className="flex items-start">
