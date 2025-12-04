@@ -10,7 +10,7 @@ export default function Footer() {
 
       <div className="relative w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-full mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-300">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-500">
             {/* About */}
             <div className="pt-6 sm:pt-0 sm:pr-6 lg:pr-8">
               <div className="mb-3 sm:mb-4">
@@ -155,7 +155,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-gray-300 pt-6 sm:pt-8 text-center">
+          <div className="border-t border-gray-500 pt-6 sm:pt-8 text-center">
             <p className="text-gray-700 text-xs sm:text-sm">
               &copy; 2025-2026 Safety Research Foundation. All rights reserved. |
               <span className="text-gray-900 font-medium"> Committed to making Indian roads safer.</span>
