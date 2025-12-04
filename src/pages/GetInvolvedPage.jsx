@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Heart, Shield, Users, FileText, Award, CheckCircle, ExternalLink, Eye, X, Copy, Phone, Mail, Building, Briefcase, HandHeart, Landmark, Globe } from 'lucide-react';
-import donateImage from '../assets/images/road safety image 1.png';
+import donateImage from '../assets/images/get involved-srf.png';
 
 export default function GetInvolvedPage() {
   const navigate = useNavigate();

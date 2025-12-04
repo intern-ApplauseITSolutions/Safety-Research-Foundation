@@ -115,7 +115,7 @@ const PledgePage = () => {
   };
 
   const shareUrl = window.location.href;
-  const shareText = "Join me in taking the Road Safety Pledge 2024! Let's make Indian roads safer for everyone. 🚗🛡️";
+  const shareText = "Join me in taking the Road Safety Pledge 2025-26! Let's make Indian roads safer for everyone. 🚗🛡️";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -139,7 +139,7 @@ const PledgePage = () => {
             <Shield className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-            Road Safety Pledge 2024
+            Road Safety Pledge 2025-26
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2">
             Join thousands of Indians in our commitment to make roads safer for everyone. 
