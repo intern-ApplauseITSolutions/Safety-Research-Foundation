@@ -10,7 +10,7 @@ import img4 from '../../../assets/images/DSC_8908.JPG';
 import img5 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
 
 const staticImages = [img1, img2, img3, img4, img5];
-const slideDuration = 5000; // 5 seconds
+const slideDuration = 3000; // 3 seconds
 
 // Debug: Log static images
 console.log('Static images loaded:', staticImages);
