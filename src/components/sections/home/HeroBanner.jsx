@@ -40,7 +40,7 @@ export default function HeroBanner() {
           justify-content: flex-start !important;
         }
         .hero-banner-text {
-          font-size: 22px;
+          font-size: clamp(24px, 1.8vw, 22px);
           line-height: 1.55;
         }
         .hero-banner-text-spacer {
@@ -67,8 +67,8 @@ export default function HeroBanner() {
           justify-content: flex-start !important;
         }
         .hero-banner-text {
-          font-size: 24px;
-          line-height: 1.55;
+          font-size: clamp(26px, 1.6vw, 24px);
+          line-height: 1.6;
         }
         .hero-banner-text-spacer {
           display: none;
