@@ -19,13 +19,40 @@ export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
 
-  // Add media query styles for 1440px screens
+  // Add media query styles for specific desktop breakpoints
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
       @media (min-width: 1440px) and (max-width: 1600px) {
         .banner-image-5 {
           object-position: 50% 70% !important;
+        }
+      }
+      @media screen and (width: 1920px) and (height: 1080px) {
+        .hero-banner-carousel {
+          min-height: 620px;
+          height: 620px;
+        }
+        .hero-banner-text-panel {
+          min-height: 620px;
+          padding-top: 32px;
+          padding-bottom: 24px;
+          justify-content: flex-start !important;
+        }
+        .hero-banner-text {
+          font-size: 24px;
+          line-height: 1.55;
+        }
+        .hero-banner-text-spacer {
+          display: none;
+        }
+        .hero-banner-image {
+          object-fit: cover !important;
+          object-position: center center !important;
+        }
+        .hero-banner-image.banner-image-5 {
+          object-fit: cover !important;
+          object-position: 50% 56% !important;
         }
       }
     `;
@@ -87,7 +114,7 @@ export default function HeroBanner() {
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[28%_72%]">
           {/* Left Side - Primary Panel with Text */}
-          <div className="relative bg-primary py-10 sm:py-8 md:py-7 lg:py-6 px-6 sm:px-5 md:px-6 lg:px-8 flex flex-col justify-center order-2 lg:order-1">
+          <div className="relative bg-primary py-10 sm:py-8 md:py-7 lg:py-6 px-6 sm:px-5 md:px-6 lg:px-8 flex flex-col justify-center order-2 lg:order-1 hero-banner-text-panel">
             {/* Decorative Elements */}
             <div className="absolute top-4 left-4 w-12 h-12 border-4 border-white/20 rounded-lg"></div>
             <div className="absolute bottom-4 right-4 w-16 h-16 border-4 border-white/20 rounded-full"></div>
@@ -95,12 +122,12 @@ export default function HeroBanner() {
 
 
             {/* Subtitle */}
-            <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up hero-banner-text" style={{ animationDelay: '0.4s' }}>
               Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
             </p>
 
             {/* Spacer to maintain banner height */}
-            <div className="h-16"></div>
+            <div className="h-16 hero-banner-text-spacer"></div>
 
             {/* Bottom Stats */}
             {/* <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
@@ -124,7 +151,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Right Side - Image Carousel */}
-          <div className="relative h-[280px] sm:h-[320px] md:h-[340px] lg:min-h-[320px] lg:h-auto order-1 lg:order-2 bg-gray-100">
+          <div className="relative h-[280px] sm:h-[320px] md:h-[340px] lg:min-h-[320px] lg:h-auto order-1 lg:order-2 bg-gray-100 hero-banner-carousel">
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
@@ -160,7 +187,10 @@ export default function HeroBanner() {
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className={index === 4 ? 'w-full h-full object-cover banner-image-5' : 'w-full h-full object-contain lg:object-cover lg:object-center'}
+                        className={`hero-banner-image w-full h-full ${index === 4
+                            ? 'object-cover banner-image-5'
+                            : 'object-contain lg:object-cover lg:object-center'
+                          }`}
                         style={index === 4 ? { objectPosition: '50% 65%' } : {}}
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
