@@ -28,6 +28,33 @@ export default function HeroBanner() {
           object-position: 50% 70% !important;
         }
       }
+      @media screen and (min-width: 1440px) and (max-width: 1919px) and (min-height: 600px) and (max-height: 1080px) {
+        .hero-banner-carousel {
+          min-height: clamp(580px, 32vw, 700px);
+          height: clamp(580px, 32vw, 700px);
+        }
+        .hero-banner-text-panel {
+          min-height: clamp(580px, 32vw, 700px);
+          padding-top: 30px;
+          padding-bottom: 22px;
+          justify-content: flex-start !important;
+        }
+        .hero-banner-text {
+          font-size: 22px;
+          line-height: 1.55;
+        }
+        .hero-banner-text-spacer {
+          display: none;
+        }
+        .hero-banner-image {
+          object-fit: cover !important;
+          object-position: center center !important;
+        }
+        .hero-banner-image.banner-image-5 {
+          object-fit: cover !important;
+          object-position: 50% 68% !important;
+        }
+      }
       @media screen and (min-width: 1920px) and (max-width: 2560px) and (max-height: 1904px) {
         .hero-banner-carousel {
           min-height: clamp(620px, 32vw, 760px);
@@ -52,7 +79,7 @@ export default function HeroBanner() {
         }
         .hero-banner-image.banner-image-5 {
           object-fit: cover !important;
-          object-position: 50% 56% !important;
+          object-position: 50% 68% !important;
         }
       }
     `;
