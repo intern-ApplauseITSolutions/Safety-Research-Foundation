@@ -6,7 +6,7 @@ import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoa
 import img1 from '../../../assets/images/IMG_4907.jpg';
 import img2 from '../../../assets/images/DSC_9725.JPG';
 import img3 from '../../../assets/images/DSC_9071.JPG';
-import img4 from '../../../assets/images/DSC_8908.JPG';
+import img4 from '../../../assets/images/DSC_89081.JPG';
 import img5 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
 
 const staticImages = [img1, img2, img3, img4, img5];
@@ -28,13 +28,13 @@ export default function HeroBanner() {
           object-position: 50% 70% !important;
         }
       }
-      @media screen and (width: 1920px) and (height: 1080px) {
+      @media screen and (min-width: 1920px) and (max-width: 2560px) and (max-height: 1904px) {
         .hero-banner-carousel {
-          min-height: 620px;
-          height: 620px;
+          min-height: clamp(620px, 32vw, 760px);
+          height: clamp(620px, 32vw, 760px);
         }
         .hero-banner-text-panel {
-          min-height: 620px;
+          min-height: clamp(620px, 32vw, 760px);
           padding-top: 32px;
           padding-bottom: 24px;
           justify-content: flex-start !important;
