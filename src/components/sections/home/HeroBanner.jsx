@@ -23,6 +23,93 @@ export default function HeroBanner() {
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
+      /* Mobile responsive fixes */
+      @media screen and (max-width: 767px) {
+        #home {
+          padding-top: 0 !important;
+          margin-top: 0 !important;
+        }
+        #home > div {
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .hero-banner-carousel {
+          min-height: 400px !important;
+          height: 400px !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .hero-banner-carousel > div {
+          padding: 0 !important;
+          margin: 0 !important;
+          top: 0 !important;
+          bottom: 0 !important;
+        }
+        .hero-banner-image {
+          object-fit: contain !important;
+          object-position: center center !important;
+          width: 100% !important;
+          height: 100% !important;
+          display: block !important;
+        }
+        .hero-banner-image.banner-image-5 {
+          object-fit: contain !important;
+          object-position: center center !important;
+          width: 100% !important;
+          height: 100% !important;
+          display: block !important;
+        }
+        .hero-banner-text-panel {
+          padding-top: 24px !important;
+          padding-bottom: 24px !important;
+          min-height: auto !important;
+        }
+        .hero-banner-text {
+          font-size: 14px !important;
+          line-height: 1.5 !important;
+        }
+        .hero-banner-text-spacer {
+          display: none !important;
+        }
+      }
+      /* Small mobile devices */
+      @media screen and (max-width: 480px) {
+        #home {
+          padding-top: 0 !important;
+          margin-top: 0 !important;
+        }
+        #home > div {
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .hero-banner-carousel {
+          min-height: 350px !important;
+          height: 350px !important;
+          padding: 0 !important;
+          margin: 0 !important;
+        }
+        .hero-banner-carousel > div {
+          padding: 0 !important;
+          margin: 0 !important;
+          top: 0 !important;
+          bottom: 0 !important;
+        }
+        .hero-banner-text-panel {
+          padding-top: 20px !important;
+          padding-bottom: 20px !important;
+        }
+        .hero-banner-text {
+          font-size: 13px !important;
+          line-height: 1.4 !important;
+        }
+        .hero-banner-image.banner-image-5 {
+          object-fit: contain !important;
+          object-position: center center !important;
+          width: 100% !important;
+          height: 100% !important;
+          display: block !important;
+        }
+      }
       @media (min-width: 1440px) and (max-width: 1600px) {
         .banner-image-5 {
           object-position: 50% 70% !important;
@@ -239,13 +326,13 @@ export default function HeroBanner() {
                       className={`transition-all duration-300 ${index === currentImage ? 'w-12 h-3' : 'w-3 h-3'
                         }`}
                     >
-                      <div className={`h-full rounded-full transition-all duration-300 ${index === currentImage
+                      <div className={`h-full rounded-full transition-all duration-300 relative overflow-hidden ${index === currentImage
                           ? 'bg-primary'
                           : 'bg-white/60 hover:bg-white/80'
                         }`}>
                         {index === currentImage && (
                           <div
-                            className="h-full bg-white rounded-full animate-progress-bar"
+                            className="h-full bg-white rounded-full animate-progress-bar absolute left-0 top-0"
                             style={{ animationDuration: `${slideDuration}ms` }}
                           ></div>
                         )}
