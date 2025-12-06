@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
@@ -13,7 +14,68 @@ import DonatePage from './pages/DonatePage';
 import EventDetail from './components/pages/EventDetail';
 import TeamDetail from './components/pages/TeamDetail';
 
+// Component to reset Google Translate when not on pledge page
+function TranslationReset() {
+  const location = useLocation();
+  const prevPathRef = useRef(location.pathname);
+  const hasReloadedRef = useRef(false);
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const prevPath = prevPathRef.current;
+    
+    // If navigating away from pledge page, automatically reload to reset translation
+    if (prevPath === '/pledge' && currentPath !== '/pledge') {
+      // Check if we've already reloaded for this path
+      const reloadKey = `reload_${currentPath}`;
+      if (!hasReloadedRef.current && !sessionStorage.getItem(reloadKey)) {
+        hasReloadedRef.current = true;
+        sessionStorage.setItem(reloadKey, 'true');
+        // Automatically reload the page to ensure clean English state
+        window.location.reload();
+        return;
+      }
+    }
+
+    // Reset reload flag when on pledge page
+    if (currentPath === '/pledge') {
+      hasReloadedRef.current = false;
+      // Clear all reload flags when on pledge page
+      Object.keys(sessionStorage).forEach(key => {
+        if (key.startsWith('reload_')) {
+          sessionStorage.removeItem(key);
+        }
+      });
+    }
+
+    // If not on pledge page, hide translate widget
+    if (currentPath !== '/pledge') {
+      const translateElement = document.getElementById('google_translate_element');
+      if (translateElement) {
+        translateElement.style.display = 'none';
+      }
+      
+      // Hide translate elements
+      const iframe = document.querySelector('.goog-te-banner-frame');
+      if (iframe) {
+        iframe.style.display = 'none';
+      }
+      const translateBar = document.querySelector('.skiptranslate');
+      if (translateBar) {
+        translateBar.style.display = 'none';
+      }
+    }
+
+    // Update previous path
+    prevPathRef.current = currentPath;
+  }, [location.pathname]);
+
+  return null;
+}
+
 function App() {
+  // No need for click handler since we're using automatic reload
+
   return (
     <Router
       future={{
@@ -21,6 +83,7 @@ function App() {
         v7_relativeSplatPath: true
       }}
     >
+      <TranslationReset />
       <div className="min-h-screen bg-white">
         <Header />
         <main className="pt-20">
