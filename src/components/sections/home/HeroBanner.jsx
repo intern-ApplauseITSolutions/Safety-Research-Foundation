@@ -84,7 +84,7 @@ export default function HeroBanner() {
   }, [images]);
 
   return (
-    <section id="home" className="relative overflow-hidden bg-white">
+    <section id="home" className="relative overflow-hidden bg-white mt-8">
       <div className="w-full">
         <div className="relative">
           {/* Left Side - Primary Panel with Text (hidden) */}

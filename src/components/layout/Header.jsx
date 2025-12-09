@@ -10,7 +10,7 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const closeTimeoutRef = useRef(null);
-  
+
   // Check if we're on the home page
   const isHomePage = location.pathname === '/';
 
