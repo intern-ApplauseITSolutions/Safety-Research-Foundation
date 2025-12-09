@@ -173,25 +173,18 @@ export default function HeroBanner() {
                   {/* Subtle Overlay - Removed bluish gradient */}
                 </div>
 
-                {/* Progress Indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                {/* Progress Indicators - Dots on Right Bottom */}
+                <div className="absolute right-4 bottom-4 z-10 flex flex-col gap-3">
                   {images.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImage(index)}
-                      className={`transition-all duration-300 ${index === currentImage ? 'w-12 h-3' : 'w-3 h-3'
-                        }`}
+                      className="transition-all duration-300 w-2 h-2"
                     >
-                      <div className={`h-full rounded-full transition-all duration-300 relative overflow-hidden ${index === currentImage
-                        ? 'bg-primary'
+                      <div className={`w-full h-full rounded-full transition-all duration-300 ${index === currentImage
+                        ? 'bg-primary scale-150'
                         : 'bg-white/60 hover:bg-white/80'
                         }`}>
-                        {index === currentImage && (
-                          <div
-                            className="h-full bg-white rounded-full animate-progress-bar absolute left-0 top-0"
-                            style={{ animationDuration: `${slideDuration}ms` }}
-                          ></div>
-                        )}
                       </div>
                     </button>
                   ))}
