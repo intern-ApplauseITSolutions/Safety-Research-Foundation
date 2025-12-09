@@ -86,7 +86,7 @@ function App() {
       <TranslationReset />
       <div className="min-h-screen bg-white">
         <Header />
-        <main className="pt-20">
+        <main className={location.pathname === '/' ? 'pt-20' : 'pt-20'}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />

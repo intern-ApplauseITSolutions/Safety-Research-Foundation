@@ -2,14 +2,10 @@ import { Shield, ArrowRight, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
-// Static imports as fallback
-import img1 from '../../../assets/images/IMG_4907.jpg';
-import img2 from '../../../assets/images/DSC_9725.JPG';
-import img3 from '../../../assets/images/DSC_9071.JPG';
-import img4 from '../../../assets/images/DSC_89081.JPG';
-import img5 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
+// Single banner (1440x550)
+import singleBanner from '../../../assets/images/Banner-2.png';
 
-const staticImages = [img1, img2, img3, img4, img5];
+const staticImages = [singleBanner];
 const slideDuration = 3000; // 3 seconds
 
 // Debug: Log static images
@@ -19,11 +15,10 @@ export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
 
-  // Add media query styles for specific desktop breakpoints
+  // Minimal mobile adjustment for padding removal
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
-      /* Mobile responsive fixes */
       @media screen and (max-width: 767px) {
         #home {
           padding-top: 0 !important;
@@ -32,141 +27,6 @@ export default function HeroBanner() {
         #home > div {
           padding: 0 !important;
           margin: 0 !important;
-        }
-        .hero-banner-carousel {
-          min-height: 400px !important;
-          height: 400px !important;
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel > div {
-          padding: 0 !important;
-          margin: 0 !important;
-          top: 0 !important;
-          bottom: 0 !important;
-        }
-        .hero-banner-image {
-          object-fit: contain !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-          display: block !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: contain !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-          display: block !important;
-        }
-        .hero-banner-text-panel {
-          padding-top: 24px !important;
-          padding-bottom: 24px !important;
-          min-height: auto !important;
-        }
-        .hero-banner-text {
-          font-size: 14px !important;
-          line-height: 1.5 !important;
-        }
-        .hero-banner-text-spacer {
-          display: none !important;
-        }
-      }
-      /* Small mobile devices */
-      @media screen and (max-width: 480px) {
-        #home {
-          padding-top: 0 !important;
-          margin-top: 0 !important;
-        }
-        #home > div {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel {
-          min-height: 350px !important;
-          height: 350px !important;
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel > div {
-          padding: 0 !important;
-          margin: 0 !important;
-          top: 0 !important;
-          bottom: 0 !important;
-        }
-        .hero-banner-text-panel {
-          padding-top: 20px !important;
-          padding-bottom: 20px !important;
-        }
-        .hero-banner-text {
-          font-size: 13px !important;
-          line-height: 1.4 !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: contain !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-          display: block !important;
-        }
-      }
-      @media (min-width: 1440px) and (max-width: 1600px) {
-        .banner-image-5 {
-          object-position: 50% 70% !important;
-        }
-      }
-      @media screen and (min-width: 1440px) and (max-width: 1919px) and (min-height: 600px) and (max-height: 1080px) {
-        .hero-banner-carousel {
-          min-height: clamp(580px, 32vw, 700px);
-          height: clamp(500px, 32vw, 700px);
-        }
-        .hero-banner-text-panel {
-          min-height: clamp(580px, 32vw, 700px);
-          padding-top: 30px;
-          padding-bottom: 22px;
-          justify-content: flex-start !important;
-        }
-        .hero-banner-text {
-          font-size: clamp(20px, 1.8vw, 22px);
-          line-height: 1.55;
-        }
-        .hero-banner-text-spacer {
-          display: none;
-        }
-        .hero-banner-image {
-          object-fit: cover !important;
-          object-position: center center !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: cover !important;
-          object-position: 50% 60% !important;
-        }
-      }
-      @media screen and (min-width: 1920px) and (max-width: 2560px) and (max-height: 1904px) {
-        .hero-banner-carousel {
-          min-height: clamp(620px, 32vw, 760px);
-          height: clamp(620px, 32vw, 760px);
-        }
-        .hero-banner-text-panel {
-          min-height: clamp(620px, 32vw, 760px);
-          padding-top: 32px;
-          padding-bottom: 24px;
-          justify-content: flex-start !important;
-        }
-        .hero-banner-text {
-          font-size: clamp(18px, 1.6vw, 22px);
-          line-height: 1.6;
-        }
-        .hero-banner-text-spacer {
-          display: none;
-        }
-        .hero-banner-image {
-          object-fit: cover !important;
-          object-position: center center !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: cover !important;
-          object-position: 50% 60% !important;
         }
       }
     `;
@@ -226,9 +86,9 @@ export default function HeroBanner() {
   return (
     <section id="home" className="relative overflow-hidden bg-white">
       <div className="w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[28%_72%]">
-          {/* Left Side - Primary Panel with Text */}
-          <div className="relative bg-primary py-10 sm:py-8 md:py-7 lg:py-6 px-6 sm:px-5 md:px-6 lg:px-8 flex flex-col justify-center order-2 lg:order-1 hero-banner-text-panel">
+        <div className="relative">
+          {/* Left Side - Primary Panel with Text (hidden) */}
+          <div className="hidden">
             {/* Decorative Elements */}
             <div className="absolute top-4 left-4 w-12 h-12 border-4 border-white/20 rounded-lg"></div>
             <div className="absolute bottom-4 right-4 w-16 h-16 border-4 border-white/20 rounded-full"></div>
@@ -265,7 +125,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Right Side - Image Carousel */}
-          <div className="relative h-[280px] sm:h-[320px] md:h-[340px] lg:min-h-[320px] lg:h-auto order-1 lg:order-2 bg-gray-100 hero-banner-carousel">
+          <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px] bg-gray-100 hero-banner-carousel">
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
@@ -301,11 +161,7 @@ export default function HeroBanner() {
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className={`hero-banner-image w-full h-full ${index === 4
-                            ? 'object-cover banner-image-5'
-                            : 'object-contain lg:object-cover lg:object-center'
-                          }`}
-                        style={index === 4 ? { objectPosition: '50% 65%' } : {}}
+                        className="hero-banner-image w-full h-full object-fit"
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
                           e.target.style.display = 'none';
@@ -327,8 +183,8 @@ export default function HeroBanner() {
                         }`}
                     >
                       <div className={`h-full rounded-full transition-all duration-300 relative overflow-hidden ${index === currentImage
-                          ? 'bg-primary'
-                          : 'bg-white/60 hover:bg-white/80'
+                        ? 'bg-primary'
+                        : 'bg-white/60 hover:bg-white/80'
                         }`}>
                         {index === currentImage && (
                           <div
