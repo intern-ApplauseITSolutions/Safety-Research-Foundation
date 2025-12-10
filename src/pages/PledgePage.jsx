@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Share2, PenTool, Users, Calendar, Award, Heart, CheckCircle, Copy, Facebook, Twitter, Linkedin, X } from 'lucide-react';
-import GoogleTranslate from '../components/common/GoogleTranslate';
+import sampleCertificate from '../assets/images/Road Safety Pledge.png';
 
 const PledgePage = () => {
   const [showShareModal, setShowShareModal] = useState(false);
@@ -125,7 +125,7 @@ const PledgePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white -mt-10 md:-mt-20">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-0">
       {/* Success Message */}
       {showSuccess && (
         <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2">
@@ -138,11 +138,7 @@ const PledgePage = () => {
       <section className="py-8 sm:py-12 md:py-16 bg-gradient-primary text-white">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
           {/* Google Translate - Only on Pledge Page */}
-          <div className="flex justify-end mb-4">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2">
-              <GoogleTranslate showLabel={true} className="text-white" />
-            </div>
-          </div>
+
           <div className="flex items-center justify-center mb-4 sm:mb-6">
             <Shield className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
           </div>
@@ -163,20 +159,32 @@ const PledgePage = () => {
             {/* Take Pledge Button */}
             <button
               onClick={() => setShowPledgeForm(true)}
-              className="group bg-primary text-white px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg md:text-xl hover:bg-primary/90 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 md:gap-4"
+              className="group bg-primary text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-primary/90 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <PenTool className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-200" />
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl">Take Pledge</span>
+              <PenTool className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span>Take Pledge</span>
             </button>
 
             {/* Share Pledge Button */}
             <button
               onClick={() => setShowShareModal(true)}
-              className="group bg-white text-primary border-2 border-primary px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg md:text-xl hover:bg-primary hover:text-white hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 md:gap-4"
+              className="group bg-white text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold text-base hover:bg-primary hover:text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <Share2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-200" />
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl">Share Pledge</span>
+              <Share2 className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span>Share Pledge</span>
             </button>
+          </div>
+
+          {/* Sample Certificate */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Sample Pledge Certificate</h3>
+            <div className="bg-white rounded-2xl shadow-xl p-4 border-2 border-dashed border-primary">
+              <img
+                src={sampleCertificate}
+                alt="Sample Road Safety Pledge Certificate"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -23,7 +23,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden w-full -mt-10 md:-mt-20">
+    <div className="overflow-x-hidden w-full pt-4">
       <Banner />
       <RoadScene />
       <Mission />

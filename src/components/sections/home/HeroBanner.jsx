@@ -2,189 +2,47 @@ import { Shield, ArrowRight, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
-// Static imports as fallback
-import img1 from '../../../assets/images/IMG_4907.jpg';
-import img2 from '../../../assets/images/DSC_9725.JPG';
-import img3 from '../../../assets/images/DSC_9071.JPG';
-import img4 from '../../../assets/images/DSC_89081.JPG';
-import img5 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
+// Desktop banner images (new)
+import img1 from '../../../assets/images/SRF banner-1.png';
+import img2 from '../../../assets/images/SRF banner-2.png';
+import img3 from '../../../assets/images/SRF banner-3.png';
+import img4 from '../../../assets/images/SRF banner-4.png';
+import img5 from '../../../assets/images/SRF banner-5.png';
 
-const staticImages = [img1, img2, img3, img4, img5];
+// Mobile banner images (old simple banners)
+import mobileImg1 from '../../../assets/images/banner/1.jpg';
+import mobileImg2 from '../../../assets/images/banner/2.jpg';
+import mobileImg3 from '../../../assets/images/banner/IMG_2239.jpg';
+
+const desktopImages = [img1, img2, img3, img4, img5];
+const mobileImages = [mobileImg1, mobileImg2, mobileImg3];
 const slideDuration = 3000; // 3 seconds
-
-// Debug: Log static images
-console.log('Static images loaded:', staticImages);
 
 export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Add media query styles for specific desktop breakpoints
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = `
-      /* Mobile responsive fixes */
-      @media screen and (max-width: 767px) {
-        #home {
-          padding-top: 0 !important;
-          margin-top: 0 !important;
-        }
-        #home > div {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel {
-          min-height: 400px !important;
-          height: 400px !important;
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel > div {
-          padding: 0 !important;
-          margin: 0 !important;
-          top: 0 !important;
-          bottom: 0 !important;
-        }
-        .hero-banner-image {
-          object-fit: contain !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-          display: block !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: contain !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-          display: block !important;
-        }
-        .hero-banner-text-panel {
-          padding-top: 24px !important;
-          padding-bottom: 24px !important;
-          min-height: auto !important;
-        }
-        .hero-banner-text {
-          font-size: 14px !important;
-          line-height: 1.5 !important;
-        }
-        .hero-banner-text-spacer {
-          display: none !important;
-        }
-      }
-      /* Small mobile devices */
-      @media screen and (max-width: 480px) {
-        #home {
-          padding-top: 0 !important;
-          margin-top: 0 !important;
-        }
-        #home > div {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel {
-          min-height: 350px !important;
-          height: 350px !important;
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-        .hero-banner-carousel > div {
-          padding: 0 !important;
-          margin: 0 !important;
-          top: 0 !important;
-          bottom: 0 !important;
-        }
-        .hero-banner-text-panel {
-          padding-top: 20px !important;
-          padding-bottom: 20px !important;
-        }
-        .hero-banner-text {
-          font-size: 13px !important;
-          line-height: 1.4 !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: contain !important;
-          object-position: center center !important;
-          width: 100% !important;
-          height: 100% !important;
-          display: block !important;
-        }
-      }
-      @media (min-width: 1440px) and (max-width: 1600px) {
-        .banner-image-5 {
-          object-position: 50% 70% !important;
-        }
-      }
-      @media screen and (min-width: 1440px) and (max-width: 1919px) and (min-height: 600px) and (max-height: 1080px) {
-        .hero-banner-carousel {
-          min-height: clamp(580px, 32vw, 700px);
-          height: clamp(500px, 32vw, 700px);
-        }
-        .hero-banner-text-panel {
-          min-height: clamp(580px, 32vw, 700px);
-          padding-top: 30px;
-          padding-bottom: 22px;
-          justify-content: flex-start !important;
-        }
-        .hero-banner-text {
-          font-size: clamp(20px, 1.8vw, 22px);
-          line-height: 1.55;
-        }
-        .hero-banner-text-spacer {
-          display: none;
-        }
-        .hero-banner-image {
-          object-fit: cover !important;
-          object-position: center center !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: cover !important;
-          object-position: 50% 60% !important;
-        }
-      }
-      @media screen and (min-width: 1920px) and (max-width: 2560px) and (max-height: 1904px) {
-        .hero-banner-carousel {
-          min-height: clamp(620px, 32vw, 760px);
-          height: clamp(620px, 32vw, 760px);
-        }
-        .hero-banner-text-panel {
-          min-height: clamp(620px, 32vw, 760px);
-          padding-top: 32px;
-          padding-bottom: 24px;
-          justify-content: flex-start !important;
-        }
-        .hero-banner-text {
-          font-size: clamp(18px, 1.6vw, 22px);
-          line-height: 1.6;
-        }
-        .hero-banner-text-spacer {
-          display: none;
-        }
-        .hero-banner-image {
-          object-fit: cover !important;
-          object-position: center center !important;
-        }
-        .hero-banner-image.banner-image-5 {
-          object-fit: cover !important;
-          object-position: 50% 60% !important;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-    return () => document.head.removeChild(style);
-  }, []);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load images dynamically
+  // Detect mobile
   useEffect(() => {
-    // For now, just use static images directly
-    console.log('HeroBanner: Using static images directly');
-    setImages(staticImages);
-    setIsLoading(false);
-
-    // Uncomment this to try dynamic loading
-    // loadImages();
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Load appropriate images based on screen size
+  useEffect(() => {
+    setImages(isMobile ? mobileImages : desktopImages);
+    setIsLoading(false);
+    setCurrentImage(0);
+  }, [isMobile]);
 
   const loadImages = async () => {
     console.log('HeroBanner: Starting to load images...');
@@ -223,49 +81,76 @@ export default function HeroBanner() {
     return () => clearInterval(interval);
   }, [images]);
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <section id="home" className="relative overflow-hidden bg-white">
+        {/* Banner Carousel */}
+        <div className="relative h-[280px] bg-gray-100">
+          {!isLoading && images.length > 0 && (
+            <>
+              <div className="absolute inset-0">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${
+                      index === currentImage ? 'opacity-100' : 'opacity-0'
+                    }`}>
+                    <img
+                      src={image}
+                      alt={`Road Safety ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImage(index)}
+                    className={`transition-all duration-300 ${
+                      index === currentImage ? 'w-8 h-2' : 'w-2 h-2'
+                    }`}>
+                    <div className={`h-full rounded-full ${
+                      index === currentImage ? 'bg-primary' : 'bg-white/60'
+                    }`}></div>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Title and Tagline Below Banner */}
+        <div className="bg-white py-6 px-4 text-center">
+          <h1 className="text-3xl font-bold text-primary mb-3">
+            Safety Research Foundation
+          </h1>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Creating a culture of road safety through education, research, and community engagement.
+          </p>
+        </div>
+
+        {/* Blue Text Section */}
+        <div className="bg-primary py-8 px-6">
+          <p className="text-white text-sm leading-relaxed text-justify">
+            Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop Layout
   return (
-    <section id="home" className="relative overflow-hidden bg-white">
+    <section id="home" className="relative overflow-hidden bg-white mt-4">
       <div className="w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[28%_72%]">
-          {/* Left Side - Primary Panel with Text */}
-          <div className="relative bg-primary py-10 sm:py-8 md:py-7 lg:py-6 px-6 sm:px-5 md:px-6 lg:px-8 flex flex-col justify-center order-2 lg:order-1 hero-banner-text-panel">
-            {/* Decorative Elements */}
-            <div className="absolute top-4 left-4 w-12 h-12 border-4 border-white/20 rounded-lg"></div>
-            <div className="absolute bottom-4 right-4 w-16 h-16 border-4 border-white/20 rounded-full"></div>
-
-
-
-            {/* Subtitle */}
-            <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up hero-banner-text" style={{ animationDelay: '0.4s' }}>
-              Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
-            </p>
-
-            {/* Spacer to maintain banner height */}
-            <div className="h-16 hero-banner-text-spacer"></div>
-
-            {/* Bottom Stats */}
-            {/* <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-              <div className="text-center">
-                <div className="text-xl font-black text-white">1L+</div>
-                <div className="text-[9px] text-white/80 font-medium">Students Reached</div>
-              </div>
-              <div className="text-center border-x border-white/20">
-                <div className="text-xl font-black text-white">2k+</div>
-                <div className="text-[9px] text-white/80 font-medium">Parents</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xl font-black text-white">200+</div>
-                <div className="text-[9px] text-white/80 font-medium">Schools</div>
-              </div>
-               <div className="text-center">
-                <div className="text-xl font-black text-white">1500+</div>
-                <div className="text-[9px] text-white/80 font-medium">School Bus Drivers</div>
-              </div>
-            </div> */}
-          </div>
-
-          {/* Right Side - Image Carousel */}
-          <div className="relative h-[280px] sm:h-[320px] md:h-[340px] lg:min-h-[320px] lg:h-auto order-1 lg:order-2 bg-gray-100 hero-banner-carousel">
+        <div className="relative">
+          {/* Image Carousel */}
+          <div className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white">
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
@@ -301,11 +186,7 @@ export default function HeroBanner() {
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className={`hero-banner-image w-full h-full ${index === 4
-                            ? 'object-cover banner-image-5'
-                            : 'object-contain lg:object-cover lg:object-center'
-                          }`}
-                        style={index === 4 ? { objectPosition: '50% 65%' } : {}}
+                        className="hero-banner-image w-full h-full object-fit"
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
                           e.target.style.display = 'none';
@@ -317,25 +198,33 @@ export default function HeroBanner() {
                   {/* Subtle Overlay - Removed bluish gradient */}
                 </div>
 
-                {/* Progress Indicators */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                {/* Scroll Down Button */}
+                <div className="absolute bottom-24 left-[60%] -translate-x-1/2 z-10">
+                  <button
+                    onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+                    className="flex flex-col items-center gap-2 text-green-200 hover:text-blue-600 transition-colors duration-300 group"
+                  >
+                    <div className="animate-bounce">
+                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                    </div>
+                    <span className="text-sm font-semibold">Scroll Down</span>
+                  </button>
+                </div>
+
+                {/* Progress Indicators - Dots on Right Bottom */}
+                <div className="absolute right-4 bottom-4 z-10 flex flex-row gap-2">
                   {images.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentImage(index)}
-                      className={`transition-all duration-300 ${index === currentImage ? 'w-12 h-3' : 'w-3 h-3'
-                        }`}
+                      className="transition-all duration-300 w-2 h-2"
                     >
-                      <div className={`h-full rounded-full transition-all duration-300 relative overflow-hidden ${index === currentImage
-                          ? 'bg-primary'
-                          : 'bg-white/60 hover:bg-white/80'
+                      <div className={`w-full h-full rounded-full transition-all duration-300 ${index === currentImage
+                        ? 'bg-primary scale-150'
+                        : 'bg-white/60 hover:bg-white/80'
                         }`}>
-                        {index === currentImage && (
-                          <div
-                            className="h-full bg-white rounded-full animate-progress-bar absolute left-0 top-0"
-                            style={{ animationDuration: `${slideDuration}ms` }}
-                          ></div>
-                        )}
                       </div>
                     </button>
                   ))}

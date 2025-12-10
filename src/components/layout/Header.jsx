@@ -10,7 +10,7 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const closeTimeoutRef = useRef(null);
-  
+
   // Check if we're on the home page
   const isHomePage = location.pathname === '/';
 
@@ -45,56 +45,8 @@ export default function Header() {
 
   return (
     <>
-      {/* Indian Flag Top Bar */}
-      <div className="relative overflow-hidden">
-        {/* Flag Stripes */}
-        <div className="flex flex-col">
-          {/* Saffron Stripe */}
-          <div className="bg-brand-orange h-2"></div>
-          {/* White Stripe */}
-          <div className="bg-white h-10 relative flex items-center">
-            {/* Contact Info and Social Media */}
-            <div className="w-full px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center text-sm relative z-10">
-              <div className="flex items-center gap-4">
-                <a href="tel:+917030910122" className="flex items-center gap-1 hover:text-brand-orange text-brand-black transition-colors duration-300">
-                  <Phone size={14} />
-                  <span className="hidden sm:inline">+91 7030910122</span>
-                </a>
-                <a href="mailto:contact@safetyresearchfoundation.org" className="flex items-center gap-1 hover:text-brand-orange text-brand-black transition-colors duration-300">
-                  <Mail size={14} />
-                  <span className="hidden md:inline">contact@safetyresearchfoundation.org</span>
-                </a>
-              </div>
-
-              {/* Social Media Icons - Smaller on mobile */}
-              <div className="flex items-center gap-1 sm:gap-3">
-                <a href="https://www.linkedin.com/in/safety-research-foundation-397695183/" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="bg-primary/10 p-1 sm:p-2 rounded-lg group-hover:bg-primary/20 transition">
-                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                </a>
-                <a href="https://www.facebook.com/people/Safety-Research-Foundation/100069078591353/" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="bg-primary/10 p-1 sm:p-2 rounded-lg group-hover:bg-primary/20 transition">
-                    <Facebook className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-                  </div>
-                </a>
-                <a href="https://x.com/ResearchSafety" target="_blank" rel="noopener noreferrer" className="group">
-                  <div className="bg-primary/10 p-1 sm:p-2 rounded-lg group-hover:bg-primary/20 transition">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          {/* Green Stripe */}
-          <div className="bg-brand-green h-2"></div>
-        </div>
-      </div>
-
       {/* Main Header */}
-      <header className="bg-white shadow-lg fixed top-0 z-[100] w-full">
+      <header className="bg-white shadow-lg fixed top-0 z-[90] w-full">
         <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3">
@@ -247,19 +199,6 @@ export default function Header() {
           )}
         </div>
 
-        {/* Organization Name Banner - Only show on home page */}
-        {isHomePage && (
-          <div className="bg-white border-t border-gray-200">
-            <div className="w-full px-4 sm:px-6 lg:px-8 py-4">
-              <h1 className="text-center text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
-                Safety Research Foundation
-              </h1>
-              <p className="text-center text-xs sm:text-sm text-gray-600 mt-2">
-                Creating a culture of road safety through education, research, and community engagement.
-              </p>
-            </div>
-          </div>
-        )}
       </header>
     </>
   );

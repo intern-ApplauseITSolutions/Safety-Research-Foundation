@@ -19,7 +19,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className="mt-16">
+      <div className="mt-0">
         <HeroBanner />
       </div>
       <RoadScene />
