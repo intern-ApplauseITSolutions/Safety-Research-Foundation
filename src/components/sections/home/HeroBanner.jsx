@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
 // Desktop banner images (new)
-import img1 from '../../../assets/images/SRF banner-1.png';
-import img2 from '../../../assets/images/SRF banner-2.png';
-import img3 from '../../../assets/images/SRF banner-3.png';
-import img4 from '../../../assets/images/SRF banner-4.png';
-import img5 from '../../../assets/images/SRF banner-5.png';
+import img1 from '../../../assets/images/SRF banner-1.jpg';
+import img2 from '../../../assets/images/SRF banner-2.jpg';
+import img3 from '../../../assets/images/SRF banner-3.jpg';
+import img4 from '../../../assets/images/SRF banner-4.jpg';
+import img5 from '../../../assets/images/SRF banner-5.jpg';
 
 // Mobile banner images (old simple banners)
 import mobileImg1 from '../../../assets/images/banner/1.jpg';
