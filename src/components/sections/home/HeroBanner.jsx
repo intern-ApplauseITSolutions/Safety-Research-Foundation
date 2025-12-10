@@ -22,6 +22,7 @@ export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -85,15 +86,15 @@ export default function HeroBanner() {
   };
 
 
-  // Image carousel effect
+  // Image carousel effect with pause on hover
   useEffect(() => {
-    if (images.length === 0) return;
+    if (images.length === 0 || isPaused) return;
 
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, slideDuration);
     return () => clearInterval(interval);
-  }, [images]);
+  }, [images, isPaused]);
 
   // Mobile Layout
   if (isMobile) {
@@ -110,7 +111,11 @@ export default function HeroBanner() {
         </div>
 
         {/* Banner Carousel Below */}
-        <div className="relative h-[280px] bg-gray-100">
+        <div
+          className="relative h-[280px] bg-gray-100"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {!isLoading && images.length > 0 && (
             <>
               <div className="absolute inset-0">
@@ -161,7 +166,11 @@ export default function HeroBanner() {
       <div className="w-full">
         <div className="relative">
           {/* Image Carousel */}
-          <div className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white hero-banner-carousel">
+          <div
+            className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white hero-banner-carousel"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
