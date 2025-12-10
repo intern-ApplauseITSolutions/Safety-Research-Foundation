@@ -28,7 +28,7 @@ export default function DonatePage() {
   ];
 
   return (
-    <div className="overflow-x-hidden -mt-10 md:-mt-20">
+    <div className="overflow-x-hidden pt-4">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary via-brand-green to-secondary py-20 sm:py-24 md:py-28 overflow-hidden">
         {/* Decorative Elements */}
