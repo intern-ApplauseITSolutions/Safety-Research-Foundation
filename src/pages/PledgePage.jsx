@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Share2, PenTool, Users, Calendar, Award, Heart, CheckCircle, Copy, Facebook, Twitter, Linkedin, X } from 'lucide-react';
-import GoogleTranslate from '../components/common/GoogleTranslate';
 import sampleCertificate from '../assets/images/Road Safety Pledge.png';
 
 const PledgePage = () => {
@@ -139,11 +138,7 @@ const PledgePage = () => {
       <section className="py-8 sm:py-12 md:py-16 bg-gradient-primary text-white">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 text-center">
           {/* Google Translate - Only on Pledge Page */}
-          <div className="flex justify-end mb-4">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2">
-              <GoogleTranslate showLabel={true} className="text-white" />
-            </div>
-          </div>
+
           <div className="flex items-center justify-center mb-4 sm:mb-6">
             <Shield className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
           </div>
