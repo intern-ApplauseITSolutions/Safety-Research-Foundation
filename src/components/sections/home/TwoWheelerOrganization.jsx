@@ -223,21 +223,21 @@ export default function TwoWheelerOrganization() {
     let scrollAmount = 0;
     let isScrolling = true; // Flag to control animation
     const scrollSpeed = 0.2; // Even slower speed
-    
+
     const smoothScroll = () => {
       if (!isScrolling) return; // Stop if not scrolling
-      
+
       const containerHeight = scrollContainer.clientHeight;
       const contentHeight = scrollContainer.scrollHeight;
       const halfContent = contentHeight / 2; // Since we duplicate content
-      
+
       scrollAmount += scrollSpeed;
-      
+
       // When we reach halfway through the content, reset smoothly
       if (scrollAmount >= halfContent) {
         scrollAmount = 0;
       }
-      
+
       scrollContainer.scrollTop = scrollAmount;
       animationId = requestAnimationFrame(smoothScroll);
     };
@@ -261,7 +261,7 @@ export default function TwoWheelerOrganization() {
     const handleMouseEnter = () => {
       stopScrolling();
     };
-    
+
     const handleMouseLeave = () => {
       startScrolling();
     };
@@ -318,17 +318,17 @@ export default function TwoWheelerOrganization() {
             </h3>
             <div className="prose prose-sm sm:prose-base lg:prose-lg text-brand-black leading-relaxed">
               <p className="mb-4">
-Road crashes in India claim over 500 lives every day—many involving preventable causes such as speeding, distracted driving, poor pedestrian behavior, unsafe two-wheeler riding, and lack of child restraint systems. 
+                Road crashes in India claim over 500 lives every day—many involving preventable causes such as speeding, distracted driving, poor pedestrian behavior, unsafe two-wheeler riding, and lack of child restraint systems.
               </p>
               <p className="mb-4">
-              Recognizing the urgent need for scientifically grounded action, the Safety Research Foundation (SRF) was established in 2016 as a nonprofit committed to reducing road injuries and fatalities across India. 
+                Recognizing the urgent need for scientifically grounded action, the Safety Research Foundation (SRF) was established in 2016 as a nonprofit committed to reducing road injuries and fatalities across India.
               </p>
               <p className="mb-4">
-             Guided by trustees and experts with decades of experience in road safety engineering, crash research, and policy advisory—including technical strength from JP Research India’s pioneering work in crash investigation and road-safety analytics—SRF works to identify root causes of crashes and translate findings into practical solutions. 
+                Guided by trustees and experts with decades of experience in road safety engineering, crash research, and policy advisory—including technical strength from JP Research India’s pioneering work in crash investigation and road-safety analytics—SRF works to identify root causes of crashes and translate findings into practical solutions.
               </p>
-               <p className="mb-4">Our work focuses on strengthening safe mobility for all—particularly children, pedestrians, two-wheeler riders, and public transport users. Through awareness programs, school safety initiatives, community engagement, technical audits, and support to authorities in improving blackspots, SRF aims to build a culture of responsibility and save lives through evidence-based, scalable, and sustainable road safety interventions.</p>
-                <p className="font-semibold text-primary">
-               SRF is a nonprofit organization dedicated to making India’s roads safer through research-based solutions, community engagement, and technical interventions. Our work prioritizes children, vulnerable road users, and safer mobility systems to reduce preventable crashes and save lives.
+              <p className="mb-4">Our work focuses on strengthening safe mobility for all—particularly children, pedestrians, two-wheeler riders, and public transport users. Through awareness programs, school safety initiatives, community engagement, technical audits, and support to authorities in improving blackspots, SRF aims to build a culture of responsibility and save lives through evidence-based, scalable, and sustainable road safety interventions.</p>
+              <p className="font-semibold text-primary">
+                SRF is a nonprofit organization dedicated to making India’s roads safer through research-based solutions, community engagement, and technical interventions. Our work prioritizes children, vulnerable road users, and safer mobility systems to reduce preventable crashes and save lives.
               </p>
             </div>
           </div>
@@ -338,27 +338,27 @@ Road crashes in India claim over 500 lives every day—many involving preventabl
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-4 sm:mb-6">
               Recent Events
             </h3>
-            <div 
+            <div
               ref={scrollContainerRef}
               className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] md:max-h-[800px] overflow-y-hidden overflow-x-hidden cursor-pointer"
               style={{ overscrollBehavior: 'contain' }}
             >
               {/* First set of events */}
               {events.map((event, index) => (
-                <div 
+                <div
                   key={`event-1-${index}`}
                   onClick={() => handleEventClick(event)}
                   className="event-card relative bg-gradient-to-r from-primary/5 to-white p-4 sm:p-5 rounded-lg border-l-4 border-primary cursor-pointer group overflow-hidden"
                 >
                   {/* Animated background glow */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-brand-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   {/* Sliding accent bar enhancement */}
                   <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-brand-orange transform -translate-x-1 group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
-                  
+
                   {/* Floating indicator */}
                   <div className="absolute -right-2 -top-2 w-4 h-4 bg-gradient-to-br from-primary to-brand-orange rounded-full opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300 delay-200"></div>
-                  
+
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-2">
                       <h5 className="text-base sm:text-lg font-semibold text-brand-black group-hover:text-primary transform group-hover:translate-x-2 transition-all duration-300 leading-tight flex-1 pr-2">
@@ -379,30 +379,30 @@ Road crashes in India claim over 500 lives every day—many involving preventabl
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Subtle corner decoration */}
                   <div className="absolute bottom-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
                     <div className="w-full h-full bg-gradient-to-tl from-primary/30 to-transparent rounded-tl-full"></div>
                   </div>
                 </div>
               ))}
-              
+
               {/* Duplicate set for infinite scroll effect */}
               {events.map((event, index) => (
-                <div 
+                <div
                   key={`event-2-${index}`}
                   onClick={() => handleEventClick(event)}
                   className="event-card relative bg-gradient-to-r from-primary/5 to-white p-4 sm:p-5 rounded-lg border-l-4 border-primary cursor-pointer group overflow-hidden"
                 >
                   {/* Animated background glow */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-brand-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   {/* Sliding accent bar enhancement */}
                   <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-primary to-brand-orange transform -translate-x-1 group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
-                  
+
                   {/* Floating indicator */}
                   <div className="absolute -right-2 -top-2 w-4 h-4 bg-gradient-to-br from-primary to-brand-orange rounded-full opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-300 delay-200"></div>
-                  
+
                   <div className="relative z-10">
                     <div className="flex items-start justify-between mb-2">
                       <h5 className="text-base sm:text-lg font-semibold text-brand-black group-hover:text-primary transform group-hover:translate-x-2 transition-all duration-300 leading-tight flex-1 pr-2">
@@ -423,7 +423,7 @@ Road crashes in India claim over 500 lives every day—many involving preventabl
                       </p>
                     </div>
                   </div>
-                  
+
                   {/* Subtle corner decoration */}
                   <div className="absolute bottom-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-20 transition-opacity duration-500">
                     <div className="w-full h-full bg-gradient-to-tl from-primary/30 to-transparent rounded-tl-full"></div>
