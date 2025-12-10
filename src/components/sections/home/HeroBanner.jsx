@@ -30,10 +30,10 @@ export default function HeroBanner() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -43,6 +43,20 @@ export default function HeroBanner() {
     setIsLoading(false);
     setCurrentImage(0);
   }, [isMobile]);
+
+  // Media query for 2560x1140 - increase banner height
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media screen and (min-width: 2500px) and (max-width: 2600px) {
+        .hero-banner-carousel {
+          height: 1000px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   const loadImages = async () => {
     console.log('HeroBanner: Starting to load images...');
@@ -93,9 +107,8 @@ export default function HeroBanner() {
                 {images.map((image, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === currentImage ? 'opacity-100' : 'opacity-0'
-                    }`}>
+                    className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImage ? 'opacity-100' : 'opacity-0'
+                      }`}>
                     <img
                       src={image}
                       alt={`Road Safety ${index + 1}`}
@@ -104,19 +117,17 @@ export default function HeroBanner() {
                   </div>
                 ))}
               </div>
-              
+
               {/* Dots */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
                 {images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImage(index)}
-                    className={`transition-all duration-300 ${
-                      index === currentImage ? 'w-8 h-2' : 'w-2 h-2'
-                    }`}>
-                    <div className={`h-full rounded-full ${
-                      index === currentImage ? 'bg-primary' : 'bg-white/60'
-                    }`}></div>
+                    className={`transition-all duration-300 ${index === currentImage ? 'w-8 h-2' : 'w-2 h-2'
+                      }`}>
+                    <div className={`h-full rounded-full ${index === currentImage ? 'bg-primary' : 'bg-white/60'
+                      }`}></div>
                   </button>
                 ))}
               </div>
@@ -150,7 +161,7 @@ export default function HeroBanner() {
       <div className="w-full">
         <div className="relative">
           {/* Image Carousel */}
-          <div className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white">
+          <div className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white hero-banner-carousel">
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
