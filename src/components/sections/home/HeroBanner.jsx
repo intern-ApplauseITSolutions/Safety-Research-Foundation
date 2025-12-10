@@ -3,14 +3,13 @@ import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
 // Static imports as fallback
-import img1 from '../../../assets/images/Banner-2.png';
-import img2 from '../../../assets/images/IMG_4907.jpg';
-import img3 from '../../../assets/images/DSC_9725.JPG';
-import img4 from '../../../assets/images/DSC_9071.JPG';
-import img5 from '../../../assets/images/DSC_89081.JPG';
-import img6 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
+import img1 from '../../../assets/images/SRF banner-1.png';
+import img2 from '../../../assets/images/SRF banner-2.png';
+import img3 from '../../../assets/images/SRF banner-3.png';
+import img4 from '../../../assets/images/SRF banner-4.png';
+import img5 from '../../../assets/images/SRF banner-5.png';
 
-const staticImages = [img1, img2, img3, img4, img5, img6];
+const staticImages = [img1, img2, img3, img4, img5];
 const slideDuration = 3000; // 3 seconds
 
 // Debug: Log static images
