@@ -198,21 +198,6 @@ export default function HeroBanner() {
                   {/* Subtle Overlay - Removed bluish gradient */}
                 </div>
 
-                {/* Scroll Down Button */}
-                <div className="absolute bottom-24 left-[60%] -translate-x-1/2 z-10">
-                  <button
-                    onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                    className="flex flex-col items-center gap-2 text-green-200 hover:text-blue-600 transition-colors duration-300 group"
-                  >
-                    <div className="animate-bounce">
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                    </div>
-                    <span className="text-sm font-semibold">Scroll Down</span>
-                  </button>
-                </div>
-
                 {/* Progress Indicators - Dots on Right Bottom */}
                 <div className="absolute right-4 bottom-4 z-10 flex flex-row gap-2">
                   {images.map((_, index) => (
