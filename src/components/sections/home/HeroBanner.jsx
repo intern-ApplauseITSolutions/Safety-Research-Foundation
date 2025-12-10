@@ -99,7 +99,17 @@ export default function HeroBanner() {
   if (isMobile) {
     return (
       <section id="home" className="relative overflow-hidden bg-white">
-        {/* Banner Carousel */}
+        {/* Title and Tagline First */}
+        <div className="bg-white py-6 px-4 text-center">
+          <h1 className="text-3xl font-bold text-primary mb-3">
+            Safety Research Foundation
+          </h1>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Creating a culture of road safety through education, research, and community engagement.
+          </p>
+        </div>
+
+        {/* Banner Carousel Below */}
         <div className="relative h-[280px] bg-gray-100">
           {!isLoading && images.length > 0 && (
             <>
@@ -133,16 +143,6 @@ export default function HeroBanner() {
               </div>
             </>
           )}
-        </div>
-
-        {/* Title and Tagline Below Banner */}
-        <div className="bg-white py-6 px-4 text-center">
-          <h1 className="text-3xl font-bold text-primary mb-3">
-            Safety Research Foundation
-          </h1>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            Creating a culture of road safety through education, research, and community engagement.
-          </p>
         </div>
 
         {/* Blue Text Section */}
