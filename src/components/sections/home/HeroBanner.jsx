@@ -2,53 +2,47 @@ import { Shield, ArrowRight, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
-// Static imports as fallback
+// Desktop banner images (new)
 import img1 from '../../../assets/images/SRF banner-1.png';
 import img2 from '../../../assets/images/SRF banner-2.png';
 import img3 from '../../../assets/images/SRF banner-3.png';
 import img4 from '../../../assets/images/SRF banner-4.png';
 import img5 from '../../../assets/images/SRF banner-5.png';
 
-const staticImages = [img1, img2, img3, img4, img5];
-const slideDuration = 3000; // 3 seconds
+// Mobile banner images (old simple banners)
+import mobileImg1 from '../../../assets/images/banner/1.jpg';
+import mobileImg2 from '../../../assets/images/banner/2.jpg';
+import mobileImg3 from '../../../assets/images/banner/IMG_2239.jpg';
 
-// Debug: Log static images
-console.log('Static images loaded:', staticImages);
+const desktopImages = [img1, img2, img3, img4, img5];
+const mobileImages = [mobileImg1, mobileImg2, mobileImg3];
+const slideDuration = 3000; // 3 seconds
 
 export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Minimal mobile adjustment for padding removal
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = `
-      @media screen and (max-width: 767px) {
-        #home {
-          padding-top: 0 !important;
-          margin-top: 0 !important;
-        }
-        #home > div {
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-    return () => document.head.removeChild(style);
-  }, []);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load images dynamically
+  // Detect mobile
   useEffect(() => {
-    // For now, just use static images directly
-    console.log('HeroBanner: Using static images directly');
-    setImages(staticImages);
-    setIsLoading(false);
-
-    // Uncomment this to try dynamic loading
-    // loadImages();
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Load appropriate images based on screen size
+  useEffect(() => {
+    setImages(isMobile ? mobileImages : desktopImages);
+    setIsLoading(false);
+    setCurrentImage(0);
+  }, [isMobile]);
 
   const loadImages = async () => {
     console.log('HeroBanner: Starting to load images...');
@@ -87,49 +81,76 @@ export default function HeroBanner() {
     return () => clearInterval(interval);
   }, [images]);
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <section id="home" className="relative overflow-hidden bg-white">
+        {/* Banner Carousel */}
+        <div className="relative h-[280px] bg-gray-100">
+          {!isLoading && images.length > 0 && (
+            <>
+              <div className="absolute inset-0">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-1000 ${
+                      index === currentImage ? 'opacity-100' : 'opacity-0'
+                    }`}>
+                    <img
+                      src={image}
+                      alt={`Road Safety ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Dots */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImage(index)}
+                    className={`transition-all duration-300 ${
+                      index === currentImage ? 'w-8 h-2' : 'w-2 h-2'
+                    }`}>
+                    <div className={`h-full rounded-full ${
+                      index === currentImage ? 'bg-primary' : 'bg-white/60'
+                    }`}></div>
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Title and Tagline Below Banner */}
+        <div className="bg-white py-6 px-4 text-center">
+          <h1 className="text-3xl font-bold text-primary mb-3">
+            Safety Research Foundation
+          </h1>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Creating a culture of road safety through education, research, and community engagement.
+          </p>
+        </div>
+
+        {/* Blue Text Section */}
+        <div className="bg-primary py-8 px-6">
+          <p className="text-white text-sm leading-relaxed text-justify">
+            Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop Layout
   return (
     <section id="home" className="relative overflow-hidden bg-white mt-4">
       <div className="w-full">
         <div className="relative">
-          {/* Left Side - Primary Panel with Text (hidden) */}
-          <div className="hidden">
-            {/* Decorative Elements */}
-            <div className="absolute top-4 left-4 w-12 h-12 border-4 border-white/20 rounded-lg"></div>
-            <div className="absolute bottom-4 right-4 w-16 h-16 border-4 border-white/20 rounded-full"></div>
-
-
-
-            {/* Subtitle */}
-            <p className="text-sm lg:text-base text-white/90 font-semibold mb-3 text-justify animate-fade-in-up hero-banner-text" style={{ animationDelay: '0.4s' }}>
-              Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
-            </p>
-
-            {/* Spacer to maintain banner height */}
-            <div className="h-16 hero-banner-text-spacer"></div>
-
-            {/* Bottom Stats */}
-            {/* <div className="mt-4 grid grid-cols-3 gap-2 animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-              <div className="text-center">
-                <div className="text-xl font-black text-white">1L+</div>
-                <div className="text-[9px] text-white/80 font-medium">Students Reached</div>
-              </div>
-              <div className="text-center border-x border-white/20">
-                <div className="text-xl font-black text-white">2k+</div>
-                <div className="text-[9px] text-white/80 font-medium">Parents</div>
-              </div>
-              <div className="text-center">
-                <div className="text-xl font-black text-white">200+</div>
-                <div className="text-[9px] text-white/80 font-medium">Schools</div>
-              </div>
-               <div className="text-center">
-                <div className="text-xl font-black text-white">1500+</div>
-                <div className="text-[9px] text-white/80 font-medium">School Bus Drivers</div>
-              </div>
-            </div> */}
-          </div>
-
-          {/* Right Side - Image Carousel */}
-          <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px] bg-gray-100 hero-banner-carousel">
+          {/* Image Carousel */}
+          <div className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white">
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">

@@ -179,9 +179,9 @@ const PledgePage = () => {
           <div className="mt-12">
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Sample Pledge Certificate</h3>
             <div className="bg-white rounded-2xl shadow-xl p-4 border-2 border-dashed border-primary">
-              <img 
-                src={sampleCertificate} 
-                alt="Sample Road Safety Pledge Certificate" 
+              <img
+                src={sampleCertificate}
+                alt="Sample Road Safety Pledge Certificate"
                 className="w-full h-auto rounded-lg"
               />
             </div>
