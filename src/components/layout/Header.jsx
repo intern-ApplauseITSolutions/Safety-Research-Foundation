@@ -132,47 +132,9 @@ export default function Header() {
                   About
                 </NavLink>
 
-                {/* Mobile Our Focus Area Dropdown */}
-                <div>
-                  <NavLink
-                    to="/focus"
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      setMobileDropdown(null);
-                    }}
-                    className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'} flex items-center gap-1 w-full justify-between`}
-                  >
-                    <span>Focus Area</span>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setMobileDropdown(mobileDropdown === 'focus' ? null : 'focus');
-                      }}
-                      className="p-1"
-                    >
-                      <ChevronDown size={16} className={`transition-transform ${mobileDropdown === 'focus' ? 'rotate-180' : ''}`} />
-                    </button>
-                  </NavLink>
-                  {mobileDropdown === 'focus' && (
-                    <div className="ml-4 mt-2 flex flex-col gap-2">
-                      <NavLink
-                        to="/core-intervention"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="text-brand-black hover:text-primary transition py-1"
-                      >
-                        Core Intervention
-                      </NavLink>
-                      <NavLink
-                        to="/current-project"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="text-brand-black hover:text-primary transition py-1"
-                      >
-                        Current Project
-                      </NavLink>
-                    </div>
-                  )}
-                </div>
+                <NavLink to="/focus" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
+                  Our Approach
+                </NavLink>
 
                 <NavLink to="/events" onClick={() => setIsMenuOpen(false)} className={({ isActive }) => `font-medium transition pb-1 border-b-2 border-dashed ${isActive ? 'text-primary border-primary' : 'text-brand-black hover:text-primary border-transparent hover:border-primary/30'}`}>
                   Spotlight

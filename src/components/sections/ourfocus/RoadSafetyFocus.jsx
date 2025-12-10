@@ -132,12 +132,12 @@ const RoadSafetyFocus = () => {
                 </div>
                 <h4 className="text-xl font-bold text-brand-black text-center mb-4">Engineering</h4>
                 <p className="text-gray-600 text-center leading-relaxed mb-4">
-                  Scientific approach to road safety through data analysis, crash investigation, and
+                  Scientific approach to road safety through data analysis, crash investigation, and infrastructure improvements.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-2">
                   <li className="flex items-start">
                     <span className="text-primary mr-2">•</span>
-                    <span>infrastructure improvements.
+                    <span>
                       Road safety audits and assessments
                     </span>
                   </li>

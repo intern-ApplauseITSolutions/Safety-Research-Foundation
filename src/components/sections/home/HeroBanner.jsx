@@ -22,6 +22,7 @@ export default function HeroBanner() {
   const [currentImage, setCurrentImage] = useState(0);
   const [images, setImages] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,10 +31,10 @@ export default function HeroBanner() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -43,6 +44,20 @@ export default function HeroBanner() {
     setIsLoading(false);
     setCurrentImage(0);
   }, [isMobile]);
+
+  // Media query for 2560x1140 - increase banner height
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media screen and (min-width: 2500px) and (max-width: 2600px) {
+        .hero-banner-carousel {
+          height: 1100px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   const loadImages = async () => {
     console.log('HeroBanner: Starting to load images...');
@@ -71,31 +86,44 @@ export default function HeroBanner() {
   };
 
 
-  // Image carousel effect
+  // Image carousel effect with pause on hover
   useEffect(() => {
-    if (images.length === 0) return;
+    if (images.length === 0 || isPaused) return;
 
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, slideDuration);
     return () => clearInterval(interval);
-  }, [images]);
+  }, [images, isPaused]);
 
   // Mobile Layout
   if (isMobile) {
     return (
       <section id="home" className="relative overflow-hidden bg-white">
-        {/* Banner Carousel */}
-        <div className="relative h-[280px] bg-gray-100">
+        {/* Title and Tagline First */}
+        <div className="bg-white py-6 px-4 text-center">
+          <h1 className="text-3xl font-bold text-primary mb-3">
+            Safety Research Foundation
+          </h1>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Creating a culture of road safety through education, research, and community engagement.
+          </p>
+        </div>
+
+        {/* Banner Carousel Below */}
+        <div
+          className="relative h-[280px] bg-gray-100"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {!isLoading && images.length > 0 && (
             <>
               <div className="absolute inset-0">
                 {images.map((image, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-1000 ${
-                      index === currentImage ? 'opacity-100' : 'opacity-0'
-                    }`}>
+                    className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImage ? 'opacity-100' : 'opacity-0'
+                      }`}>
                     <img
                       src={image}
                       alt={`Road Safety ${index + 1}`}
@@ -104,34 +132,22 @@ export default function HeroBanner() {
                   </div>
                 ))}
               </div>
-              
+
               {/* Dots */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
                 {images.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImage(index)}
-                    className={`transition-all duration-300 ${
-                      index === currentImage ? 'w-8 h-2' : 'w-2 h-2'
-                    }`}>
-                    <div className={`h-full rounded-full ${
-                      index === currentImage ? 'bg-primary' : 'bg-white/60'
-                    }`}></div>
+                    className={`transition-all duration-300 ${index === currentImage ? 'w-8 h-2' : 'w-2 h-2'
+                      }`}>
+                    <div className={`h-full rounded-full ${index === currentImage ? 'bg-primary' : 'bg-white/60'
+                      }`}></div>
                   </button>
                 ))}
               </div>
             </>
           )}
-        </div>
-
-        {/* Title and Tagline Below Banner */}
-        <div className="bg-white py-6 px-4 text-center">
-          <h1 className="text-3xl font-bold text-primary mb-3">
-            Safety Research Foundation
-          </h1>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            Creating a culture of road safety through education, research, and community engagement.
-          </p>
         </div>
 
         {/* Blue Text Section */}
@@ -150,7 +166,11 @@ export default function HeroBanner() {
       <div className="w-full">
         <div className="relative">
           {/* Image Carousel */}
-          <div className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white">
+          <div
+            className="relative h-[450px] md:h-[500px] lg:h-[550px] bg-white hero-banner-carousel"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
             {/* Loading State */}
             {isLoading && (
               <div className="absolute inset-0 bg-gray-100 flex items-center justify-center">
@@ -196,21 +216,6 @@ export default function HeroBanner() {
                   ))}
 
                   {/* Subtle Overlay - Removed bluish gradient */}
-                </div>
-
-                {/* Scroll Down Button */}
-                <div className="absolute bottom-24 left-[60%] -translate-x-1/2 z-10">
-                  <button
-                    onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-                    className="flex flex-col items-center gap-2 text-green-200 hover:text-blue-600 transition-colors duration-300 group"
-                  >
-                    <div className="animate-bounce">
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                    </div>
-                    <span className="text-sm font-semibold">Scroll Down</span>
-                  </button>
                 </div>
 
                 {/* Progress Indicators - Dots on Right Bottom */}

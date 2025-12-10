@@ -328,7 +328,7 @@ Road crashes in India claim over 500 lives every day—many involving preventabl
               </p>
                <p className="mb-4">Our work focuses on strengthening safe mobility for all—particularly children, pedestrians, two-wheeler riders, and public transport users. Through awareness programs, school safety initiatives, community engagement, technical audits, and support to authorities in improving blackspots, SRF aims to build a culture of responsibility and save lives through evidence-based, scalable, and sustainable road safety interventions.</p>
                 <p className="font-semibold text-primary">
-               SRF is a nonprofit dedicated to making India’s roads safer through research-based solutions, community engagement, and technical interventions. Our work prioritizes children, vulnerable road users, and safer mobility systems to reduce preventable crashes and save lives.
+               SRF is a nonprofit organization dedicated to making India’s roads safer through research-based solutions, community engagement, and technical interventions. Our work prioritizes children, vulnerable road users, and safer mobility systems to reduce preventable crashes and save lives.
               </p>
             </div>
           </div>
@@ -336,7 +336,7 @@ Road crashes in India claim over 500 lives every day—many involving preventabl
           {/* Right Side Content - Events */}
           <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 border-2 border-dashed border-brand-black hover:border-primary hover:shadow-xl transition-all duration-300">
             <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-brand-black mb-4 sm:mb-6">
-              Recent & Upcoming Events
+              Recent Events
             </h3>
             <div 
               ref={scrollContainerRef}

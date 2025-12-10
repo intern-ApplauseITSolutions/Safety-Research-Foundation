@@ -51,7 +51,7 @@ export default function TechnicalExpertise() {
               </p>
               
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                JPRI since 2011 has been instrumental in setting up of <span className="font-semibold text-primary">Road Accident Sampling System, India (RASSI)</span> a one of its kind initiatives to collect crash data across multiple locations and analysis for India specific conditions.
+                JPRI since 2011 has been instrumental in setting up of <span className="font-semibold text-primary">Road Accident Sampling System, India (RASSI)</span> a one of its kind initiatives to collect crash data across multiple locations and do analysis for India specific conditions.
               </p>
 
               <p className="text-lg text-gray-700 leading-relaxed">

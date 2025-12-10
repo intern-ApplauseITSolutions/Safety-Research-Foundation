@@ -74,8 +74,6 @@ function TranslationReset() {
 }
 
 function App() {
-  // No need for click handler since we're using automatic reload
-
   return (
     <Router
       future={{
@@ -86,7 +84,7 @@ function App() {
       <TranslationReset />
       <div className="min-h-screen bg-white">
         <Header />
-        <main className={location.pathname === '/' ? 'pt-20' : 'pt-20'}>
+        <main className="pt-20">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
