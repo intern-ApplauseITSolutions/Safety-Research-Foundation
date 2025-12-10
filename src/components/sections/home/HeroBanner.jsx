@@ -50,7 +50,7 @@ export default function HeroBanner() {
     style.innerHTML = `
       @media screen and (min-width: 2500px) and (max-width: 2600px) {
         .hero-banner-carousel {
-          height: 1000px !important;
+          height: 1100px !important;
         }
       }
     `;
