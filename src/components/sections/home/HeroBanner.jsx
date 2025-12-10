@@ -45,11 +45,11 @@ export default function HeroBanner() {
     setCurrentImage(0);
   }, [isMobile]);
 
-  // Media query for 2560x1140 - increase banner height
+  // Media query for large screens (2560px and above)
   useEffect(() => {
     const style = document.createElement('style');
     style.innerHTML = `
-      @media screen and (min-width: 2500px) and (max-width: 2600px) {
+      @media screen and (min-width: 2500px) {
         .hero-banner-carousel {
           height: 1100px !important;
         }
