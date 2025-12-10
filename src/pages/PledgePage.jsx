@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Share2, PenTool, Users, Calendar, Award, Heart, CheckCircle, Copy, Facebook, Twitter, Linkedin, X } from 'lucide-react';
 import GoogleTranslate from '../components/common/GoogleTranslate';
+import sampleCertificate from '../assets/images/Road Safety Pledge.png';
 
 const PledgePage = () => {
   const [showShareModal, setShowShareModal] = useState(false);
@@ -163,20 +164,32 @@ const PledgePage = () => {
             {/* Take Pledge Button */}
             <button
               onClick={() => setShowPledgeForm(true)}
-              className="group bg-primary text-white px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg md:text-xl hover:bg-primary/90 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 md:gap-4"
+              className="group bg-primary text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-primary/90 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <PenTool className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-200" />
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl">Take Pledge</span>
+              <PenTool className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span>Take Pledge</span>
             </button>
 
             {/* Share Pledge Button */}
             <button
               onClick={() => setShowShareModal(true)}
-              className="group bg-white text-primary border-2 border-primary px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg md:text-xl hover:bg-primary hover:text-white hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 md:gap-4"
+              className="group bg-white text-primary border-2 border-primary px-6 py-3 rounded-lg font-semibold text-base hover:bg-primary hover:text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <Share2 className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:scale-110 transition-transform duration-200" />
-              <span className="text-sm sm:text-base md:text-lg lg:text-xl">Share Pledge</span>
+              <Share2 className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span>Share Pledge</span>
             </button>
+          </div>
+
+          {/* Sample Certificate */}
+          <div className="mt-12">
+            <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Sample Pledge Certificate</h3>
+            <div className="bg-white rounded-2xl shadow-xl p-4 border-2 border-dashed border-primary">
+              <img 
+                src={sampleCertificate} 
+                alt="Sample Road Safety Pledge Certificate" 
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </section>

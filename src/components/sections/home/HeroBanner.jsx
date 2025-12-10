@@ -2,10 +2,15 @@ import { Shield, ArrowRight, AlertCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
-// Single banner (1440x550)
-import singleBanner from '../../../assets/images/Banner-2.png';
+// Static imports as fallback
+import img1 from '../../../assets/images/Banner-2.png';
+import img2 from '../../../assets/images/IMG_4907.jpg';
+import img3 from '../../../assets/images/DSC_9725.JPG';
+import img4 from '../../../assets/images/DSC_9071.JPG';
+import img5 from '../../../assets/images/DSC_89081.JPG';
+import img6 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
 
-const staticImages = [singleBanner];
+const staticImages = [img1, img2, img3, img4, img5, img6];
 const slideDuration = 3000; // 3 seconds
 
 // Debug: Log static images
@@ -84,7 +89,7 @@ export default function HeroBanner() {
   }, [images]);
 
   return (
-    <section id="home" className="relative overflow-hidden bg-white mt-8">
+    <section id="home" className="relative overflow-hidden bg-white mt-4">
       <div className="w-full">
         <div className="relative">
           {/* Left Side - Primary Panel with Text (hidden) */}
@@ -174,7 +179,7 @@ export default function HeroBanner() {
                 </div>
 
                 {/* Progress Indicators - Dots on Right Bottom */}
-                <div className="absolute right-4 bottom-4 z-10 flex flex-col gap-3">
+                <div className="absolute right-4 bottom-4 z-10 flex flex-row gap-2">
                   {images.map((_, index) => (
                     <button
                       key={index}
