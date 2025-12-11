@@ -9,13 +9,15 @@ import img3 from '../../../assets/images/SRF banner-3.jpg';
 import img4 from '../../../assets/images/SRF banner-4.jpg';
 import img5 from '../../../assets/images/SRF banner-5.jpg';
 
-// Mobile banner images (old simple banners)
-import mobileImg1 from '../../../assets/images/banner/1.jpg';
-import mobileImg2 from '../../../assets/images/banner/2.jpg';
-import mobileImg3 from '../../../assets/images/banner/IMG_2239.jpg';
+// Mobile banner images (new)
+import mobileImg1 from '../../../assets/images/IMG_8270.JPG';
+import mobileImg2 from '../../../assets/images/IMG_4907.jpg';
+import mobileImg3 from '../../../assets/images/DSC_89081.JPG';
+import mobileImg4 from '../../../assets/images/DSC_9725.JPG';
+import mobileImg5 from '../../../assets/images/DSC_9071.JPG';
 
 const desktopImages = [img1, img2, img3, img4, img5];
-const mobileImages = [mobileImg1, mobileImg2, mobileImg3];
+const mobileImages = [mobileImg1, mobileImg2, mobileImg3, mobileImg4, mobileImg5];
 const slideDuration = 3000; // 3 seconds
 
 export default function HeroBanner() {
