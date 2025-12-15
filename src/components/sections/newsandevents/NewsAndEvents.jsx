@@ -1272,7 +1272,7 @@ const NewsAndEvents = ({ initialSection = 'events', initialMediaTab = 'videos' }
                       <p className="text-gray-600 text-sm mb-4 line-clamp-2">{event.excerpt}</p>
                       <button
                         onClick={() => handleReadMore(event.id)}
-                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200 font-medium text-sm"
+                        className="inline-flex items-center gap-2 text-primary mt-4 hover:text-primary/80 transition-colors duration-200 font-medium text-sm"
                       >
                         Read More
                         <ArrowRight className="w-3 h-3" />

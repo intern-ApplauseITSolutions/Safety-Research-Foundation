@@ -223,7 +223,7 @@ export default function TeamDetail() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }, 100);
             }}
-            className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors duration-200"
+            className="flex items-center gap-2 text-primary mt-4 hover:text-primary/80 transition-colors duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Team
