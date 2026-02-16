@@ -42,6 +42,21 @@ import parentAwareness1 from '../../../assets/images/ChildSafetySeatAwarenessSes
 import parentAwareness2 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220094106.jpg';
 import parentAwareness3 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251222103632_01.jpg';
 
+// Import Road Safety Mural images
+import mural1 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05638.JPG';
+import mural2 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05647.JPG';
+import mural3 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05661.JPG';
+import mural4 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05679.JPG';
+import mural5 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05682.JPG';
+import mural6 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05707.JPG';
+import mural7 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05709.JPG';
+import mural8 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05713.JPG';
+import mural9 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05732.JPG';
+import mural10 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05735.JPG';
+import mural11 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05749.JPG';
+import mural12 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05772.JPG';
+import mural13 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05920.JPG';
+
 // Import Road Safety Awareness Program images from St Joseph Boys High School
 import stJoseph1 from '../../../assets/images/RoadSafetyAwarenessProgram –01&02Sep2022/IMG_20220901_134547-scaled.jpg';
 import stJoseph2 from '../../../assets/images/RoadSafetyAwarenessProgram –01&02Sep2022/IMG_20220901_150535-1.jpg';
@@ -147,7 +162,7 @@ import roadSafety5 from '../../../assets/images/carousel-3.jpg';
 
 const eventsData = [
   {
-    id: 1,
+    id: 6,
     title: "Parent Awareness & Child Car Seat Safety Sessions",
     date: "20th – 21st December 2025",
     location: "Bengaluru",
@@ -174,7 +189,7 @@ Glimpses of Program`,
     featured: true
   },
   {
-    id: 2,
+    id: 4,
     title: "Road Safety Mural & Employee Engagement Initiative",
     date: "17th January 2026",
     location: "Bengaluru",
@@ -196,12 +211,12 @@ Key Highlights:
 The murals featured key road safety messages including helmet usage, pedestrian safety, traffic signal compliance, and safe driving practices. Participants expressed enthusiasm about contributing to road safety awareness through creative means, making the initiative both educational and enjoyable.
 
 Glimpses of Program`,
-    image: roadSafety1,
-    images: [roadSafety1, roadSafety2, roadSafety3],
+    image: mural1,
+    images: [mural1, mural2, mural3, mural4, mural5, mural6, mural7, mural8, mural9, mural10, mural11, mural12, mural13],
     featured: true
   },
   {
-    id: 3,
+    id: 5,
     title: "National Road Safety Month 2026 – Community Outreach",
     date: "16th – 17th January 2026",
     location: "Bengaluru",
@@ -234,7 +249,7 @@ Glimpses of Program`,
     featured: true
   },
   {
-    id: 4,
+    id: 7,
     title: "Driver & School Transport Staff Safety Training",
     date: "18th – 22nd November 2025",
     location: "Bengaluru",
@@ -268,7 +283,7 @@ Glimpses of Program`,
     featured: true
   },
   {
-    id: 5,
+    id: 1,
     title: "Safe School Zone Infrastructure Improvements",
     date: "1st – 3rd February 2026",
     location: "Bengaluru",
@@ -302,7 +317,7 @@ Glimpses of Program`,
     featured: true
   },
   {
-    id: 6,
+    id: 2,
     title: "School Zone Road Safety Audits in Bengaluru",
     date: "27th – 31st January 2026",
     location: "Bengaluru",
@@ -338,7 +353,7 @@ Glimpses of Program`,
     featured: true
   },
   {
-    id: 7,
+    id: 3,
     title: "Road Safety Awareness for School Children – Project BRACE",
     date: "27th – 31st January 2026",
     location: "Bengaluru",
