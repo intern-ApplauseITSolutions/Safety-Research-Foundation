@@ -9,6 +9,17 @@ import childSafety3 from '../../assets/images/ChildSafetySeatAwarenessSession/IM
 import childSafety4 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0006.jpg';
 import childSafety5 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0014.jpg';
 
+// Import new Project BRACE 2026 images
+import brace2026_1 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20260128092127.jpg';
+import brace2026_2 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20260128092225.jpg';
+import brace2026_3 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20260130152600_01.jpg';
+import safeSchoolZone1 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06101.JPG';
+import safeSchoolZone2 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06260.JPG';
+import safeSchoolZone3 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06262.JPG';
+import parentAwareness1 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG-20260128-WA0004.jpg';
+import parentAwareness2 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220094106.jpg';
+import parentAwareness3 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20251222103632_01.jpg';
+
 // Import Road Safety Awareness Program images from St Joseph Boys High School
 import stJoseph1 from '../../assets/images/RoadSafetyAwarenessProgram –01&02Sep2022/IMG_20220901_134547-scaled.jpg';
 import stJoseph2 from '../../assets/images/RoadSafetyAwarenessProgram –01&02Sep2022/IMG_20220901_150535-1.jpg';
@@ -124,6 +135,236 @@ const EventDetail = () => {
   const eventsData = [
     {
       id: 1,
+      title: "Parent Awareness & Child Car Seat Safety Sessions",
+      date: "20th – 21st December 2025",
+      location: "Bengaluru",
+      category: "Awareness Session",
+      content: "SRF conducted hands-on parent awareness sessions focusing on child car seat safety and seatbelt use. Practical demonstrations helped address misconceptions and encouraged safer travel practices for children.",
+      fullDescription: `SRF conducted hands-on parent awareness sessions focusing on child car seat safety and seatbelt use. Practical demonstrations helped address misconceptions and encouraged safer travel practices for children.
+
+The sessions included comprehensive demonstrations on proper installation techniques for child car seats, understanding different types of seats for various age groups, and the critical importance of seatbelt usage for child safety. Parents received hands-on training with their own vehicles, ensuring they could correctly install and use child safety seats.
+
+Key Topics Covered:
+- Proper installation of child car seats (ISOFIX and seatbelt-mounted)
+- Age-appropriate seat selection for different weight and height groups
+- Common mistakes in child car seat usage and how to avoid them
+- Importance of rear-facing seats for infants and toddlers
+- Seatbelt safety for older children
+- Legal requirements and safety standards
+
+The interactive format allowed parents to ask questions, practice installations, and gain confidence in protecting their children during travel. Many parents expressed gratitude for the practical, hands-on approach that made the learning experience memorable and immediately applicable.
+
+Glimpses of Program`,
+      image: parentAwareness1,
+      images: [parentAwareness1, parentAwareness2, parentAwareness3],
+      featured: true
+    },
+    {
+      id: 2,
+      title: "Road Safety Mural & Employee Engagement Initiative",
+      date: "17th January 2026",
+      location: "Bengaluru",
+      category: "Public Awareness",
+      content: "SRF, with support from Bosch India, organised a road safety mural painting activity involving students, employees, and traffic police. The initiative created a permanent visual reminder of road safety while strengthening community and corporate engagement.",
+      fullDescription: `SRF, with support from Bosch India, organised a road safety mural painting activity involving students, employees, and traffic police. The initiative created a permanent visual reminder of road safety while strengthening community and corporate engagement.
+
+This unique initiative brought together diverse stakeholders - school students, corporate employees, and traffic police personnel - to create vibrant murals depicting road safety messages. The collaborative art project not only beautified public spaces but also served as a lasting educational tool for the community.
+
+Key Highlights:
+- Collaborative mural painting with students, Bosch India employees, and traffic police
+- Permanent visual road safety reminders in high-traffic areas
+- Community engagement through creative expression
+- Corporate social responsibility partnership with Bosch India
+- Interactive learning about road safety through art
+- Strengthening bonds between community, corporates, and law enforcement
+
+The murals featured key road safety messages including helmet usage, pedestrian safety, traffic signal compliance, and safe driving practices. Participants expressed enthusiasm about contributing to road safety awareness through creative means, making the initiative both educational and enjoyable.
+
+Glimpses of Program`,
+      image: roadSafety1,
+      images: [roadSafety1, roadSafety2, roadSafety3],
+      featured: true
+    },
+    {
+      id: 3,
+      title: "National Road Safety Month 2026 – Community Outreach",
+      date: "16th – 17th January 2026",
+      location: "Bengaluru",
+      category: "Public Awareness",
+      content: "During National Road Safety Month, SRF led creative public awareness activities including street plays at traffic signals, community sessions, and school competitions. These high-visibility interventions promoted helmet use, pedestrian safety, and responsible road behaviour.",
+      fullDescription: `During National Road Safety Month, SRF led creative public awareness activities including street plays at traffic signals, community sessions, and school competitions. These high-visibility interventions promoted helmet use, pedestrian safety, and responsible road behaviour.
+
+The campaign utilized innovative approaches to reach diverse audiences across Bengaluru. Street plays performed at busy traffic signals captured the attention of commuters, while school competitions engaged young minds in road safety education. Community sessions provided platforms for interactive discussions on safe road practices.
+
+Key Activities:
+- Street plays (nukkad natak) at major traffic signals
+- Interactive community awareness sessions
+- School-level road safety competitions
+- Distribution of educational materials and safety gear
+- Engagement with traffic police and local authorities
+- Focus on helmet usage, pedestrian safety, and traffic rule compliance
+
+The creative approach made road safety messages memorable and impactful. Commuters stopped to watch street plays, students enthusiastically participated in competitions, and community members engaged in meaningful discussions about improving road safety in their neighborhoods.
+
+Impact:
+- Reached thousands of road users across multiple locations
+- Created awareness about National Road Safety Month
+- Encouraged behavioral change through creative engagement
+- Strengthened community participation in road safety initiatives
+
+Glimpses of Program`,
+      image: roadSafety4,
+      images: [roadSafety4, roadSafety5, roadSafety1],
+      featured: true
+    },
+    {
+      id: 4,
+      title: "Driver & School Transport Staff Safety Training",
+      date: "18th – 22nd November 2025",
+      location: "Bengaluru",
+      category: "School Program",
+      content: "As part of Project BRACE, SRF trained school bus drivers and support staff on defensive driving, danger zones, and emergency preparedness. The sessions reinforced legal compliance and strengthened safety within daily school transport operations.",
+      fullDescription: `As part of Project BRACE, SRF trained school bus drivers and support staff on defensive driving, danger zones, and emergency preparedness. The sessions reinforced legal compliance and strengthened safety within daily school transport operations.
+
+Recognizing that school transport staff play a critical role in child safety, SRF designed comprehensive training modules covering technical driving skills, safety protocols, and emergency response procedures. The training emphasized the special responsibility of transporting children and the need for heightened safety awareness.
+
+Training Modules:
+- Defensive driving techniques for urban environments
+- Understanding and avoiding danger zones around school buses
+- Emergency preparedness and evacuation procedures
+- Legal compliance - Motor Vehicle Act provisions for school transport
+- Child safety protocols during boarding and alighting
+- Vehicle maintenance and pre-trip inspection procedures
+- Communication with parents, schools, and authorities
+
+The hands-on training included practical demonstrations, scenario-based learning, and interactive discussions. Drivers and support staff appreciated the focus on real-world situations they encounter daily, making the training immediately applicable to their work.
+
+Impact:
+- Enhanced safety awareness among school transport staff
+- Improved understanding of legal requirements and compliance
+- Better emergency preparedness for school transport operations
+- Strengthened safety culture in school transport ecosystem
+
+Glimpses of Program`,
+      image: roadSafety2,
+      images: [roadSafety2, roadSafety3, roadSafety4],
+      featured: true
+    },
+    {
+      id: 5,
+      title: "Safe School Zone Infrastructure Improvements",
+      date: "1st – 3rd February 2026",
+      location: "Bengaluru",
+      category: "Safety Audit",
+      content: "Based on school zone audit findings, targeted infrastructure improvements were initiated, including safety signages and school zone markings. These interventions aim to improve visibility, reduce conflict points, and create safer, child-friendly environments around schools.",
+      fullDescription: `Based on school zone audit findings, targeted infrastructure improvements were initiated, including safety signages and school zone markings. These interventions aim to improve visibility, reduce conflict points, and create safer, child-friendly environments around schools.
+
+Following comprehensive road safety audits around school zones, SRF worked with authorities to implement evidence-based infrastructure improvements. The interventions focused on creating safer environments for children walking to and from school, addressing identified hazards and improving overall safety.
+
+Infrastructure Improvements:
+- Installation of school zone warning signages
+- Enhanced road markings for school zones
+- Improved pedestrian crossing facilities
+- Speed calming measures near school entrances
+- Better visibility improvements at conflict points
+- Child-friendly street design elements
+
+The improvements were based on detailed audit findings that identified specific safety concerns at each location. By addressing these concerns systematically, the project aims to reduce risks for children and create more walkable, child-friendly school environments.
+
+Expected Outcomes:
+- Reduced vehicle speeds in school zones
+- Improved visibility of school zones to drivers
+- Safer pedestrian crossings for children
+- Reduced conflict points between vehicles and pedestrians
+- Enhanced overall safety in school neighborhoods
+
+Glimpses of Program`,
+      image: safeSchoolZone1,
+      images: [safeSchoolZone1, safeSchoolZone2, safeSchoolZone3],
+      featured: true
+    },
+    {
+      id: 6,
+      title: "School Zone Road Safety Audits in Bengaluru",
+      date: "27th – 31st January 2026",
+      location: "Bengaluru",
+      category: "Safety Audit",
+      content: "SRF carried out on-ground road safety audits around school zones to identify pedestrian risks, unsafe crossings, and infrastructure gaps. The findings were shared with authorities to support safer school environments and child-friendly streets.",
+      fullDescription: `SRF carried out on-ground road safety audits around school zones to identify pedestrian risks, unsafe crossings, and infrastructure gaps. The findings were shared with authorities to support safer school environments and child-friendly streets.
+
+The comprehensive audits employed scientific methodologies to assess road safety conditions around schools. SRF's team of road safety experts conducted detailed site assessments, analyzing traffic patterns, infrastructure conditions, and potential hazards that could endanger children.
+
+Audit Methodology:
+- Systematic site assessments of school zone areas
+- Traffic volume and speed studies during school hours
+- Pedestrian movement pattern analysis
+- Infrastructure condition assessment
+- Identification of conflict points and hazards
+- Stakeholder consultations with schools and parents
+- Photographic documentation of safety concerns
+
+Key Findings:
+- Inadequate pedestrian crossing facilities near school entrances
+- Missing or faded school zone signages
+- High vehicle speeds in school zones
+- Insufficient traffic calming measures
+- Poor visibility at key crossing points
+- Infrastructure gaps affecting child safety
+
+The detailed audit reports were shared with traffic police, municipal authorities, and school administrations, providing evidence-based recommendations for improvements. The audits form the foundation for targeted interventions to create safer school zones.
+
+Glimpses of Program`,
+      image: roadSafety3,
+      images: [roadSafety3, roadSafety4, roadSafety5],
+      featured: true
+    },
+    {
+      id: 7,
+      title: "Road Safety Awareness for School Children – Project BRACE",
+      date: "27th – 31st January 2026",
+      location: "Bengaluru",
+      category: "School Program",
+      content: "Under Project BRACE, Safety Research Foundation conducted interactive road safety sessions across multiple Bengaluru schools, reaching thousands of students. The sessions strengthened awareness on pedestrian safety, helmet use, road signs, and safe road behaviour.",
+      fullDescription: `Under Project BRACE, Safety Research Foundation conducted interactive road safety sessions across multiple Bengaluru schools, reaching thousands of students. The sessions strengthened awareness on pedestrian safety, helmet use, road signs, and safe road behaviour.
+
+Project BRACE (Building Road Awareness for Child Education) represents SRF's flagship school-based road safety education initiative. The program reached multiple schools across Bengaluru, delivering age-appropriate, interactive sessions that engaged students in learning about road safety through demonstrations, activities, and discussions.
+
+Program Components:
+- Interactive presentations on road safety fundamentals
+- Pedestrian safety - safe crossing techniques and awareness
+- Importance of helmet use for two-wheeler riders
+- Understanding road signs and traffic signals
+- Safe behavior as passengers in vehicles
+- Bicycle safety rules and practices
+- Real-life examples and case studies
+
+The sessions were designed to be highly interactive, encouraging student participation through questions, demonstrations, and activities. Students learned not just the rules, but the reasons behind them, fostering a deeper understanding of road safety principles.
+
+Key Topics Covered:
+- Pedestrian rights and responsibilities
+- Safe road crossing techniques (zebra crossings, signals)
+- Helmet usage and its life-saving importance
+- Reading and understanding road signs
+- Safe behavior in school buses and other vehicles
+- Dangers of distracted walking and cycling
+- Being a responsible road user
+
+Impact:
+- Reached thousands of students across multiple schools
+- Enhanced road safety awareness among children
+- Encouraged students to share learnings with families
+- Created a foundation for lifelong safe road behavior
+- Strengthened school-community partnerships for road safety
+
+The program's success lies in its ability to make road safety education engaging and memorable for young learners, ensuring they carry these lessons throughout their lives.
+
+Glimpses of Program`,
+      image: brace2026_1,
+      images: [brace2026_1, brace2026_2, brace2026_3],
+      featured: true
+    },
+    {
+      id: 8,
       title: "Child Safety Seat Awareness Session",
       date: "11th January 2025",
       location: "Tuljabhavani Housing Society, Ravet, Pune",
