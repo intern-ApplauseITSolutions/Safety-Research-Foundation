@@ -10,6 +10,62 @@ export default function TwoWheelerOrganization() {
   const events = [
     {
       id: 1,
+      title: "Parent Awareness & Child Car Seat Safety Sessions",
+      date: "20th – 21st December 2025",
+      location: "Bengaluru",
+      category: "Awareness Session",
+      content: "SRF conducted hands-on parent awareness sessions focusing on child car seat safety and seatbelt use."
+    },
+    {
+      id: 2,
+      title: "Road Safety Mural & Employee Engagement Initiative",
+      date: "17th January 2026",
+      location: "Bengaluru",
+      category: "Public Awareness",
+      content: "SRF, with support from Bosch India, organised a road safety mural painting activity involving students, employees, and traffic police."
+    },
+    {
+      id: 3,
+      title: "National Road Safety Month 2026 – Community Outreach",
+      date: "16th – 17th January 2026",
+      location: "Bengaluru",
+      category: "Public Awareness",
+      content: "During National Road Safety Month, SRF led creative public awareness activities including street plays at traffic signals, community sessions, and school competitions."
+    },
+    {
+      id: 4,
+      title: "Driver & School Transport Staff Safety Training",
+      date: "18th – 22nd November 2025",
+      location: "Bengaluru",
+      category: "School Program",
+      content: "As part of Project BRACE, SRF trained school bus drivers and support staff on defensive driving, danger zones, and emergency preparedness."
+    },
+    {
+      id: 5,
+      title: "Safe School Zone Infrastructure Improvements",
+      date: "1st – 3rd February 2026",
+      location: "Bengaluru",
+      category: "Safety Audit",
+      content: "Based on school zone audit findings, targeted infrastructure improvements were initiated, including safety signages and school zone markings."
+    },
+    {
+      id: 6,
+      title: "School Zone Road Safety Audits in Bengaluru",
+      date: "27th – 31st January 2026",
+      location: "Bengaluru",
+      category: "Safety Audit",
+      content: "SRF carried out on-ground road safety audits around school zones to identify pedestrian risks, unsafe crossings, and infrastructure gaps."
+    },
+    {
+      id: 7,
+      title: "Road Safety Awareness for School Children – Project BRACE",
+      date: "27th – 31st January 2026",
+      location: "Bengaluru",
+      category: "School Program",
+      content: "Under Project BRACE, Safety Research Foundation conducted interactive road safety sessions across multiple Bengaluru schools, reaching thousands of students."
+    },
+    {
+      id: 8,
       title: "Child Safety Seat Awareness Session",
       date: "11th January 2025",
       location: "Tuljabhavani Housing Society, Ravet, Pune",
@@ -17,7 +73,7 @@ export default function TwoWheelerOrganization() {
       content: "On the occasion of National Road Safety Week, Safety Research Foundation (SRF) organized a Child Safety Seat Awareness session."
     },
     {
-      id: 2,
+      id: 9,
       title: "Road Safety Awareness Sessions",
       date: "27th November 2024",
       location: "Three Schools in Khadki, Pune",
@@ -25,7 +81,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation, in collaboration with Rotary Club Khadki, successfully conducted Road Safety Awareness sessions at three prominent schools."
     },
     {
-      id: 3,
+      id: 10,
       title: "Road Safety Awareness Program",
       date: "01 & 02 Sep 2022",
       location: "St Joseph Boys High School, Kirkee, Pune",
@@ -33,7 +89,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted 'Road Safety Awareness Program' for the students at St Joseph Boys High School."
     },
     {
-      id: 4,
+      id: 11,
       title: "Road Safety Awareness Program",
       date: "29th July 2022",
       location: "St Arnolds Central School Pune",
@@ -41,7 +97,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted a School Road safety awareness program for St Arnold's Central School Pune."
     },
     {
-      id: 5,
+      id: 12,
       title: "Road Safety Awareness Program",
       date: "22nd July 2022",
       location: "St Arnolds School Pune, Wadgaon Shari",
@@ -49,7 +105,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted a School Road safety awareness program for St Arnolds School Pune Wadgaon Shari."
     },
     {
-      id: 6,
+      id: 13,
       title: "Road Safety Awareness Program",
       date: "12th July 2022",
       location: "Apte Prashala Deccan Gymkhana Pune",
@@ -57,7 +113,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted a School Road safety awareness program for Apte Prashala."
     },
     {
-      id: 7,
+      id: 14,
       title: "Go Yellow Road Safety Awareness",
       date: "25th & 26th Feb 2022",
       location: "Pune University Chowk & Vimanagar Chowk",
@@ -65,7 +121,7 @@ export default function TwoWheelerOrganization() {
       content: "SRF team conducted a Road safety Awareness Program titled GO YELLOW on 25th Feb @Pune University Chowk & Vimanagar Chowk."
     },
     {
-      id: 8,
+      id: 15,
       title: "Webinar on Scientific Crash Investigation",
       date: "28th September 2021",
       location: "Online - Indian Chemical Council",
@@ -73,7 +129,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted an online session on Scientific Crash Investigation and Data Collection for Indian Chemical Council (ICC) employees."
     },
     {
-      id: 9,
+      id: 16,
       title: "Road Safety Audit: NH 48",
       date: "24th March 2021",
       location: "Katraj – Dehu Road Bypass, Pune",
@@ -81,7 +137,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation undertook Road Safety Audit of Katraj – Navale Section of NH 48."
     },
     {
-      id: 10,
+      id: 17,
       title: "Reflective Safety Jacket Distribution",
       date: "19th February 2021",
       location: "MIDC Buttibori Police Station, Nagpur",
@@ -89,7 +145,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation organized an event focused on Honoring the Police Personnel on duty."
     },
     {
-      id: 11,
+      id: 18,
       title: "Reflective Safety Jacket Distribution - Buttibori",
       date: "19th February 2021",
       location: "Buttibori Police Station, Nagpur",
@@ -97,7 +153,7 @@ export default function TwoWheelerOrganization() {
       content: "SRF team organized a safety Jacket distribution event at Buttibori Police Station, Nagpur."
     },
     {
-      id: 12,
+      id: 19,
       title: "Reflective Safety Jacket Distribution - Umred",
       date: "18th February 2021",
       location: "Umred Police Station, Nagpur",
@@ -105,7 +161,7 @@ export default function TwoWheelerOrganization() {
       content: "SRF team organized a safety Jacket distribution event at Umred Police Station, Nagpur."
     },
     {
-      id: 13,
+      id: 20,
       title: "Reflective Safety Jacket Distribution - Kalameshwar",
       date: "18th February 2021",
       location: "Kalameshwar Police Station, Nagpur",
@@ -113,7 +169,7 @@ export default function TwoWheelerOrganization() {
       content: "SRF team organized a safety Jacket distribution event at Kalameshwar Police Station, Nagpur."
     },
     {
-      id: 14,
+      id: 21,
       title: "Safety Mask Distribution Event - Pune",
       date: "11th September 2020",
       location: "Chaturshringi Police Station, Pune",
@@ -121,7 +177,7 @@ export default function TwoWheelerOrganization() {
       content: "SRF team organised a safety mask distribution event at Chaturshringi Police Station, Pune City."
     },
     {
-      id: 15,
+      id: 22,
       title: "Road Safety Webinar Series 3",
       date: "24th Aug 2020",
       location: "Online - Rotary Pimpri Pune",
@@ -129,7 +185,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted a webinar on What can we learn from real world traffic accidents?"
     },
     {
-      id: 16,
+      id: 23,
       title: "Road Safety Webinar Series 2",
       date: "16th Aug 2020",
       location: "Online - Engineering Students",
@@ -137,7 +193,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted a webinar on Crash Investigation and its Importance."
     },
     {
-      id: 17,
+      id: 24,
       title: "Safety Mask Distribution Event - Coimbatore",
       date: "15th August 2020",
       location: "Sulur Police Station, Coimbatore",
@@ -145,7 +201,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation organised an event focused on Honouring the Police Personnel on duty during COVID times."
     },
     {
-      id: 18,
+      id: 25,
       title: "Safety Mask Distribution Event - Ahmedabad",
       date: "15th August 2020",
       location: "I-traffic Police Station, Ahmedabad",
@@ -153,7 +209,7 @@ export default function TwoWheelerOrganization() {
       content: "SRF team participated in Independence Day ceremony and organised safety mask distribution event."
     },
     {
-      id: 19,
+      id: 26,
       title: "Road Safety Webinar Series 1",
       date: "9th Aug 2020",
       location: "Online - Engineering Students",
@@ -161,7 +217,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted a webinar on Crash Investigation and its Importance."
     },
     {
-      id: 20,
+      id: 27,
       title: "Road Safety Awareness Program - Chetan Dattaji Gaikwad High School",
       date: "24th Sep 2019",
       location: "Chetan Dattaji Gaikwad High School, Khadki, Pune",
@@ -169,7 +225,7 @@ export default function TwoWheelerOrganization() {
       content: "The Session on Traffic violations commonly seen on our roads and its eventualities, Pedestrian Responsibilities, Speeding and its repercussions."
     },
     {
-      id: 21,
+      id: 28,
       title: "Road Safety Awareness Program - Symbiosis Open Skills University",
       date: "05th Sep 2019",
       location: "Symbiosis Open Skills University, Pune",
@@ -177,7 +233,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted the Session focused on importance of good quality data collection and use of data in improving road safety."
     },
     {
-      id: 22,
+      id: 29,
       title: "Road Safety Awareness Program - NCL Junior College",
       date: "04th Oct 2018",
       location: "NCL Junior College, Pune",
@@ -185,7 +241,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted the Session with co-organizer Rotary Club of Khadki focused on Effects of Speeding, Pedestrian Behaviour on roads."
     },
     {
-      id: 23,
+      id: 30,
       title: "Road Safety Awareness Program - Loyola High School",
       date: "18th Aug 2018",
       location: "Loyola High School, Pune",
@@ -193,7 +249,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted the Session with co-organizer Rotary Club of Khadki focused on Effects of Speeding, Pedestrian Behaviour on roads."
     },
     {
-      id: 24,
+      id: 31,
       title: "Road Safety Awareness Program - Vidyanchal School",
       date: "20th Dec 2017",
       location: "Vidyanchal School, Pune",
@@ -201,7 +257,7 @@ export default function TwoWheelerOrganization() {
       content: "Safety Research Foundation conducted the Session with co-organizer Rotary Club of Khadki focused on Effects of Speeding, Pedestrian Behaviour on roads."
     },
     {
-      id: 25,
+      id: 32,
       title: "Road Safety Awareness Program - Manchester International School",
       date: "02nd Nov 2017",
       location: "Manchester International School, Coimbatore",
