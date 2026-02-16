@@ -6,42 +6,10 @@ export default function TwoWheelerOrganization() {
   const scrollContainerRef = useRef(null);
   const navigate = useNavigate();
 
-  // Comprehensive events data - all events for display
+  // Comprehensive events data - all events for display (sorted by date, most recent first)
   const events = [
     {
       id: 1,
-      title: "Parent Awareness & Child Car Seat Safety Sessions",
-      date: "20th – 21st December 2025",
-      location: "Bengaluru",
-      category: "Awareness Session",
-      content: "SRF conducted hands-on parent awareness sessions focusing on child car seat safety and seatbelt use."
-    },
-    {
-      id: 2,
-      title: "Road Safety Mural & Employee Engagement Initiative",
-      date: "17th January 2026",
-      location: "Bengaluru",
-      category: "Public Awareness",
-      content: "SRF, with support from Bosch India, organised a road safety mural painting activity involving students, employees, and traffic police."
-    },
-    {
-      id: 3,
-      title: "National Road Safety Month 2026 – Community Outreach",
-      date: "16th – 17th January 2026",
-      location: "Bengaluru",
-      category: "Public Awareness",
-      content: "During National Road Safety Month, SRF led creative public awareness activities including street plays at traffic signals, community sessions, and school competitions."
-    },
-    {
-      id: 4,
-      title: "Driver & School Transport Staff Safety Training",
-      date: "18th – 22nd November 2025",
-      location: "Bengaluru",
-      category: "School Program",
-      content: "As part of Project BRACE, SRF trained school bus drivers and support staff on defensive driving, danger zones, and emergency preparedness."
-    },
-    {
-      id: 5,
       title: "Safe School Zone Infrastructure Improvements",
       date: "1st – 3rd February 2026",
       location: "Bengaluru",
@@ -49,7 +17,7 @@ export default function TwoWheelerOrganization() {
       content: "Based on school zone audit findings, targeted infrastructure improvements were initiated, including safety signages and school zone markings."
     },
     {
-      id: 6,
+      id: 2,
       title: "School Zone Road Safety Audits in Bengaluru",
       date: "27th – 31st January 2026",
       location: "Bengaluru",
@@ -57,12 +25,44 @@ export default function TwoWheelerOrganization() {
       content: "SRF carried out on-ground road safety audits around school zones to identify pedestrian risks, unsafe crossings, and infrastructure gaps."
     },
     {
-      id: 7,
+      id: 3,
       title: "Road Safety Awareness for School Children – Project BRACE",
       date: "27th – 31st January 2026",
       location: "Bengaluru",
       category: "School Program",
       content: "Under Project BRACE, Safety Research Foundation conducted interactive road safety sessions across multiple Bengaluru schools, reaching thousands of students."
+    },
+    {
+      id: 4,
+      title: "Road Safety Mural & Employee Engagement Initiative",
+      date: "17th January 2026",
+      location: "Bengaluru",
+      category: "Public Awareness",
+      content: "SRF, with support from Bosch India, organised a road safety mural painting activity involving students, employees, and traffic police."
+    },
+    {
+      id: 5,
+      title: "National Road Safety Month 2026 – Community Outreach",
+      date: "16th – 17th January 2026",
+      location: "Bengaluru",
+      category: "Public Awareness",
+      content: "During National Road Safety Month, SRF led creative public awareness activities including street plays at traffic signals, community sessions, and school competitions."
+    },
+    {
+      id: 6,
+      title: "Parent Awareness & Child Car Seat Safety Sessions",
+      date: "20th – 21st December 2025",
+      location: "Bengaluru",
+      category: "Awareness Session",
+      content: "SRF conducted hands-on parent awareness sessions focusing on child car seat safety and seatbelt use."
+    },
+    {
+      id: 7,
+      title: "Driver & School Transport Staff Safety Training",
+      date: "18th – 22nd November 2025",
+      location: "Bengaluru",
+      category: "School Program",
+      content: "As part of Project BRACE, SRF trained school bus drivers and support staff on defensive driving, danger zones, and emergency preparedness."
     },
     {
       id: 8,
