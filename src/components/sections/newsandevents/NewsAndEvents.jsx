@@ -55,6 +55,12 @@ import infrastructure1 from '../../../assets/images/infrastructure improvements/
 import infrastructure2 from '../../../assets/images/infrastructure improvements/GVBG.jpeg';
 import infrastructure3 from '../../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 10.59.52 AM.jpeg';
 import infrastructure4 from '../../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 11.00.03 AM.jpeg';
+
+// Import National Road Safety Month images
+import nationalRoadSafety1 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC00056.JPG';
+import nationalRoadSafety2 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC00110.JPG';
+import nationalRoadSafety3 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC00122.JPG';
+import nationalRoadSafety4 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC00133.JPG';
 import parentAwareness4 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220081435.jpg';
 import parentAwareness5 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220082651.jpg';
 
@@ -250,8 +256,8 @@ Impact:
 - Strengthened community participation in road safety initiatives
 
 Glimpses of Program`,
-    image: roadSafety4,
-    images: [roadSafety4, roadSafety5, roadSafety1],
+    image: nationalRoadSafety1,
+    images: [nationalRoadSafety1, nationalRoadSafety2, nationalRoadSafety3, nationalRoadSafety4],
     featured: true
   },
   {
