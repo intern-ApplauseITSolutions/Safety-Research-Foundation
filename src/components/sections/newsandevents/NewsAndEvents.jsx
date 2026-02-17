@@ -35,6 +35,13 @@ import childSafety5 from '../../../assets/images/ChildSafetySeatAwarenessSession
 import schoolAudit1 from '../../../assets/images/school safety audit benguluru/IMG20260128092127.jpg';
 import schoolAudit2 from '../../../assets/images/school safety audit benguluru/IMG20260128092225.jpg';
 import schoolAudit3 from '../../../assets/images/school safety audit benguluru/IMG20260130152600_01.jpg';
+
+// Import Project BRACE images
+import projectBrace1 from '../../../assets/images/School safety awareness children/Image123.jpg';
+import projectBrace2 from '../../../assets/images/School safety awareness children/IMG20251217110048.jpg';
+import projectBrace3 from '../../../assets/images/School safety awareness children/IMG20251217121919.jpg';
+import projectBrace4 from '../../../assets/images/School safety awareness children/IMG20251217150241.jpg';
+import projectBrace5 from '../../../assets/images/School safety awareness children/IMG20251218111124.jpg';
 import safeSchoolZone1 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC06101.JPG';
 import safeSchoolZone2 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC06260.JPG';
 import safeSchoolZone3 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC06262.JPG';
@@ -388,8 +395,8 @@ Impact:
 The program's success lies in its ability to make road safety education engaging and memorable for young learners, ensuring they carry these lessons throughout their lives.
 
 Glimpses of Program`,
-    image: roadSafety1,
-    images: [roadSafety1, roadSafety2, roadSafety3],
+    image: projectBrace1,
+    images: [projectBrace1, projectBrace2, projectBrace3, projectBrace4, projectBrace5],
     featured: true
   },
   {
