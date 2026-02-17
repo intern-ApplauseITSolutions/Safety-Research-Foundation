@@ -56,12 +56,8 @@ import infrastructure2 from '../../../assets/images/infrastructure improvements/
 import infrastructure3 from '../../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 10.59.52 AM.jpeg';
 import infrastructure4 from '../../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 11.00.03 AM.jpeg';
 import parentAwareness1 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20260128-WA0004.jpg';
-import parentAwareness2 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220094106.jpg';
-import parentAwareness3 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251222103632_01.jpg';
 import parentAwareness4 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220081435.jpg';
 import parentAwareness5 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220082651.jpg';
-import parentAwareness6 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251221112359.jpg';
-import parentAwareness7 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251221112526.jpg';
 
 // Import Road Safety Mural images
 import mural1 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05638.JPG';
@@ -196,7 +192,7 @@ The interactive format allowed parents to ask questions, practice installations,
 
 Glimpses of Program`,
     image: parentAwareness1,
-    images: [parentAwareness1, parentAwareness2, parentAwareness3, parentAwareness4, parentAwareness5, parentAwareness6, parentAwareness7],
+    images: [parentAwareness1, parentAwareness4, parentAwareness5],
     featured: true
   },
   {
