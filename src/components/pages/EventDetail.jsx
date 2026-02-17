@@ -33,7 +33,6 @@ import infrastructure1 from '../../assets/images/infrastructure improvements/CXC
 import infrastructure2 from '../../assets/images/infrastructure improvements/GVBG.jpeg';
 import infrastructure3 from '../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 10.59.52 AM.jpeg';
 import infrastructure4 from '../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 11.00.03 AM.jpeg';
-import parentAwareness1 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG-20260128-WA0004.jpg';
 import parentAwareness4 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220081435.jpg';
 import parentAwareness5 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220082651.jpg';
 
@@ -348,8 +347,8 @@ Key Topics Covered:
 The interactive format allowed parents to ask questions, practice installations, and gain confidence in protecting their children during travel. Many parents expressed gratitude for the practical, hands-on approach that made the learning experience memorable and immediately applicable.
 
 Glimpses of Program`,
-      image: parentAwareness1,
-      images: [parentAwareness1, parentAwareness4, parentAwareness5],
+      image: parentAwareness4,
+      images: [parentAwareness4, parentAwareness5],
       featured: true
     },
     {
