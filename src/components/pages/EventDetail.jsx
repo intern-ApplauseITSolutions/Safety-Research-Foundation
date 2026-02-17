@@ -27,9 +27,12 @@ import driverTraining2 from '../../assets/images/driver and traning/WhatsApp Ima
 import driverTraining3 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.04 PM.jpeg';
 import driverTraining4 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.05 PM (1).jpeg';
 import driverTraining5 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.05 PM (2).jpeg';
-import safeSchoolZone1 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06101.JPG';
-import safeSchoolZone2 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06260.JPG';
-import safeSchoolZone3 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06262.JPG';
+
+// Import Safe School Zone Infrastructure Improvements images
+import infrastructure1 from '../../assets/images/infrastructure improvements/CXC.jpeg';
+import infrastructure2 from '../../assets/images/infrastructure improvements/GVBG.jpeg';
+import infrastructure3 from '../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 10.59.52 AM.jpeg';
+import infrastructure4 from '../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 11.00.03 AM.jpeg';
 import parentAwareness1 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG-20260128-WA0004.jpg';
 import parentAwareness2 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220094106.jpg';
 import parentAwareness3 from '../../assets/images/ChildSafetySeatAwarenessSession/IMG20251222103632_01.jpg';
@@ -185,8 +188,8 @@ Expected Outcomes:
 - Enhanced overall safety in school neighborhoods
 
 Glimpses of Program`,
-      image: safeSchoolZone1,
-      images: [safeSchoolZone1, safeSchoolZone2, safeSchoolZone3],
+      image: infrastructure1,
+      images: [infrastructure1, infrastructure2, infrastructure3, infrastructure4],
       featured: true
     },
     {
