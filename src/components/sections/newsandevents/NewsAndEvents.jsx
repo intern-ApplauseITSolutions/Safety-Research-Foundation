@@ -31,31 +31,25 @@ import childSafety3 from '../../../assets/images/ChildSafetySeatAwarenessSession
 import childSafety4 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0006.jpg';
 import childSafety5 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20250112-WA0014.jpg';
 
-// Import new Project BRACE 2026 images
-import brace2026_1 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20260128092127.jpg';
-import brace2026_2 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20260128092225.jpg';
-import brace2026_3 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20260130152600_01.jpg';
+// Import School Zone Road Safety Audits images
+import schoolAudit1 from '../../../assets/images/school safety audit benguluru/IMG20260128092127.jpg';
+import schoolAudit2 from '../../../assets/images/school safety audit benguluru/IMG20260128092225.jpg';
+import schoolAudit3 from '../../../assets/images/school safety audit benguluru/IMG20260130152600_01.jpg';
 import safeSchoolZone1 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC06101.JPG';
 import safeSchoolZone2 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC06260.JPG';
 import safeSchoolZone3 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC06262.JPG';
 import parentAwareness1 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG-20260128-WA0004.jpg';
 import parentAwareness2 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220094106.jpg';
 import parentAwareness3 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251222103632_01.jpg';
+import parentAwareness4 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220081435.jpg';
+import parentAwareness5 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251220082651.jpg';
+import parentAwareness6 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251221112359.jpg';
+import parentAwareness7 from '../../../assets/images/ChildSafetySeatAwarenessSession/IMG20251221112526.jpg';
 
 // Import Road Safety Mural images
 import mural1 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05638.JPG';
 import mural2 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05647.JPG';
 import mural3 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05661.JPG';
-import mural4 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05679.JPG';
-import mural5 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05682.JPG';
-import mural6 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05707.JPG';
-import mural7 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05709.JPG';
-import mural8 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05713.JPG';
-import mural9 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05732.JPG';
-import mural10 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05735.JPG';
-import mural11 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05749.JPG';
-import mural12 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05772.JPG';
-import mural13 from '../../../assets/images/ChildSafetySeatAwarenessSession/DSC05920.JPG';
 
 // Import Road Safety Awareness Program images from St Joseph Boys High School
 import stJoseph1 from '../../../assets/images/RoadSafetyAwarenessProgram –01&02Sep2022/IMG_20220901_134547-scaled.jpg';
@@ -185,7 +179,7 @@ The interactive format allowed parents to ask questions, practice installations,
 
 Glimpses of Program`,
     image: parentAwareness1,
-    images: [parentAwareness1, parentAwareness2, parentAwareness3],
+    images: [parentAwareness1, parentAwareness2, parentAwareness3, parentAwareness4, parentAwareness5, parentAwareness6, parentAwareness7],
     featured: true
   },
   {
@@ -212,7 +206,7 @@ The murals featured key road safety messages including helmet usage, pedestrian 
 
 Glimpses of Program`,
     image: mural1,
-    images: [mural1, mural2, mural3, mural4, mural5, mural6, mural7, mural8, mural9, mural10, mural11, mural12, mural13],
+    images: [mural1, mural2, mural3],
     featured: true
   },
   {
@@ -348,8 +342,8 @@ Key Findings:
 The detailed audit reports were shared with traffic police, municipal authorities, and school administrations, providing evidence-based recommendations for improvements. The audits form the foundation for targeted interventions to create safer school zones.
 
 Glimpses of Program`,
-    image: roadSafety3,
-    images: [roadSafety3, roadSafety4, roadSafety5],
+    image: schoolAudit1,
+    images: [schoolAudit1, schoolAudit2, schoolAudit3],
     featured: true
   },
   {
@@ -394,8 +388,8 @@ Impact:
 The program's success lies in its ability to make road safety education engaging and memorable for young learners, ensuring they carry these lessons throughout their lives.
 
 Glimpses of Program`,
-    image: brace2026_1,
-    images: [brace2026_1, brace2026_2, brace2026_3],
+    image: roadSafety1,
+    images: [roadSafety1, roadSafety2, roadSafety3],
     featured: true
   },
   {
