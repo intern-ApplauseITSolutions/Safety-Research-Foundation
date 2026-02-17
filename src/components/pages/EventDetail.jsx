@@ -20,6 +20,13 @@ import projectBrace2 from '../../assets/images/School safety awareness children/
 import projectBrace3 from '../../assets/images/School safety awareness children/IMG20251217121919.jpg';
 import projectBrace4 from '../../assets/images/School safety awareness children/IMG20251217150241.jpg';
 import projectBrace5 from '../../assets/images/School safety awareness children/IMG20251218111124.jpg';
+
+// Import Driver Training images
+import driverTraining1 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.04 PM (1).jpeg';
+import driverTraining2 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.04 PM (2).jpeg';
+import driverTraining3 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.04 PM.jpeg';
+import driverTraining4 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.05 PM (1).jpeg';
+import driverTraining5 from '../../assets/images/driver and traning/WhatsApp Image 2026-02-16 at 4.47.05 PM (2).jpeg';
 import safeSchoolZone1 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06101.JPG';
 import safeSchoolZone2 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06260.JPG';
 import safeSchoolZone3 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC06262.JPG';
@@ -375,8 +382,8 @@ Impact:
 - Strengthened safety culture in school transport ecosystem
 
 Glimpses of Program`,
-      image: roadSafety2,
-      images: [roadSafety2, roadSafety3, roadSafety4],
+      image: driverTraining1,
+      images: [driverTraining1, driverTraining2, driverTraining3, driverTraining4, driverTraining5],
       featured: true
     },
     {
