@@ -30,9 +30,9 @@ import driverTraining5 from '../../assets/images/driver and traning/WhatsApp Ima
 
 // Import Safe School Zone Infrastructure Improvements images
 import infrastructure1 from '../../assets/images/infrastructure improvements/CXC.jpeg';
-import infrastructure2 from '../../assets/images/infrastructure improvements/GVBG.jpeg';
-import infrastructure3 from '../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 10.59.52 AM.jpeg';
-import infrastructure4 from '../../assets/images/infrastructure improvements/WhatsApp Image 2026-02-04 at 11.00.03 AM.jpeg';
+import infrastructure2 from '../../assets/images/infrastructure improvements/3.png';
+import infrastructure3 from '../../assets/images/infrastructure improvements/2.png';
+import infrastructure4 from '../../assets/images/infrastructure improvements/1.jpeg';
 
 // Import National Road Safety Month images
 import nationalRoadSafety1 from '../../assets/images/ChildSafetySeatAwarenessSession/DSC00056.JPG';
