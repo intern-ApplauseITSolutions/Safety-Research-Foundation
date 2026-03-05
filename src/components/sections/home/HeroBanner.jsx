@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
 // Desktop banner images (new)
-import img1 from '../../../assets/images/shared image (18).jfif';
-import img2 from '../../../assets/images/DSC_8908.jfif';
-import img3 from '../../../assets/images/shared image (5).jfif';
+import img1 from '../../../assets/images/DSC_9071.JPG';
+import img2 from '../../../assets/images/DSC_89081.JPG';
+import img3 from '../../../assets/images/DSC_9725.JPG';
 import img4 from '../../../assets/images/IMG_8270.JPG';
 import img5 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
 
