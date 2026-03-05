@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 import { getAllBannerImages, refreshBannerImages } from '../../../utils/imageLoader';
 
 // Desktop banner images (new)
-import img1 from '../../../assets/images/SRF banner-1.jpg';
-import img2 from '../../../assets/images/SRF banner-2.jpg';
-import img3 from '../../../assets/images/SRF banner-3.jpg';
-import img4 from '../../../assets/images/SRF banner-4.jpg';
-import img5 from '../../../assets/images/SRF banner-5.jpg';
+import img1 from '../../../assets/images/shared image (18).jfif';
+import img2 from '../../../assets/images/DSC_8908.jfif';
+import img3 from '../../../assets/images/shared image (5).jfif';
+import img4 from '../../../assets/images/IMG_8270.JPG';
+import img5 from '../../../assets/images/5th Photo for Home page-SRF-Pledge_Sesh Sir (1).png';
 
 // Mobile banner images (new)
 import mobileImg1 from '../../../assets/images/IMG_8270.JPG';
@@ -102,16 +102,6 @@ export default function HeroBanner() {
   if (isMobile) {
     return (
       <section id="home" className="relative overflow-hidden bg-white">
-        {/* Title and Tagline First */}
-        <div className="bg-white py-6 px-4 text-center">
-          <h1 className="text-3xl font-bold text-primary mb-3">
-            Safety Research Foundation
-          </h1>
-          <p className="text-gray-600 text-sm leading-relaxed">
-            Creating a culture of road safety through education, research, and community engagement.
-          </p>
-        </div>
-
         {/* Banner Carousel Below */}
         <div
           className="relative h-[280px] bg-gray-100"
@@ -150,13 +140,6 @@ export default function HeroBanner() {
               </div>
             </>
           )}
-        </div>
-
-        {/* Blue Text Section */}
-        <div className="bg-primary py-8 px-6">
-          <p className="text-white text-sm leading-relaxed text-justify">
-            Our core focus is on empowering children and young road users to become responsible and aware road safety citizens. We work to improve driver behaviour, strengthen road safety awareness, and support accident-prevention strategies backed by scientific evidence. Through training programs, school-based interventions, technical studies, and public awareness campaigns, we aim to build a culture of safety, reduce risks, prevent crashes, and ultimately save lives.
-          </p>
         </div>
       </section>
     );
@@ -208,7 +191,12 @@ export default function HeroBanner() {
                       <img
                         src={image}
                         alt={`Road Safety Background ${index + 1}`}
-                        className="hero-banner-image w-full h-full object-fit"
+                        className={`hero-banner-image w-full h-full object-cover ${image.includes('DSC_8908')
+                          ? 'object-[center_15%]'
+                          : image.includes('5th Photo')
+                            ? 'object-bottom'
+                            : 'object-center'
+                          }`}
                         onError={(e) => {
                           console.warn(`Failed to load image ${index + 1}:`, image);
                           e.target.style.display = 'none';

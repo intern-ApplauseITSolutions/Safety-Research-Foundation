@@ -99,14 +99,13 @@ export default function LanguageTranslator() {
                 }}
             />
 
-            {/* Floating Button */}
+            {/* Floating Button - Bottom Right Round */}
             <div
                 ref={dropdownRef}
                 style={{
                     position: 'fixed',
-                    right: '0',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
+                    right: '24px',
+                    bottom: '28px',
                     zIndex: 99999,
                     display: 'flex',
                     flexDirection: 'column',
@@ -114,21 +113,20 @@ export default function LanguageTranslator() {
                 }}
                 className="notranslate"
             >
-                {/* Dropdown menu */}
+                {/* Dropdown menu - opens upward */}
                 {open && (
                     <div
                         style={{
                             position: 'absolute',
-                            right: '64px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
+                            right: '0',
+                            bottom: '70px',
                             background: 'white',
-                            borderRadius: '12px',
-                            boxShadow: '0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)',
+                            borderRadius: '14px',
+                            boxShadow: '0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12)',
                             overflow: 'hidden',
-                            minWidth: '170px',
+                            minWidth: '180px',
                             border: '1px solid rgba(0,0,0,0.07)',
-                            animation: 'gt-slideIn 0.18s ease',
+                            animation: 'gt-slideUp 0.2s ease',
                         }}
                     >
                         {/* Header */}
@@ -220,35 +218,38 @@ export default function LanguageTranslator() {
                     </div>
                 )}
 
-                {/* Main Floating Button */}
+                {/* Main Floating Button - Round with glow */}
                 <button
                     onClick={() => setOpen((prev) => !prev)}
                     title="Translate Language"
                     style={{
-                        width: '52px',
-                        height: '52px',
-                        borderRadius: '12px 0 0 12px',
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '50%',
                         background: open
-                            ? 'linear-gradient(135deg, #1d4ed8 0%, #0369a1 100%)'
-                            : 'linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%)',
-                        border: 'none',
+                            ? '#1e4a96'
+                            : '#2A62BC',
+                        border: '3px solid rgba(255,255,255,0.35)',
                         cursor: 'pointer',
-                        boxShadow: '0 4px 20px rgba(37,99,235,0.35)',
+                        boxShadow: open
+                            ? '0 0 0 6px rgba(42,98,188,0.3), 0 8px 28px rgba(42,98,188,0.5)'
+                            : '0 0 0 4px rgba(42,98,188,0.2), 0 6px 24px rgba(42,98,188,0.4)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        transition: 'all 0.2s ease',
+                        transition: 'all 0.25s ease',
                         gap: '2px',
                         padding: '0',
+                        animation: open ? 'none' : 'gt-pulse 2.5s infinite',
                     }}
                     onMouseEnter={(e) => {
-                        e.currentTarget.style.width = '56px';
-                        e.currentTarget.style.boxShadow = '0 6px 24px rgba(37,99,235,0.45)';
+                        e.currentTarget.style.transform = 'scale(1.1)';
+                        e.currentTarget.style.boxShadow = '0 0 0 8px rgba(42,98,188,0.25), 0 10px 32px rgba(42,98,188,0.55)';
                     }}
                     onMouseLeave={(e) => {
-                        e.currentTarget.style.width = '52px';
-                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(37,99,235,0.35)';
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = '0 0 0 4px rgba(42,98,188,0.2), 0 6px 24px rgba(42,98,188,0.4)';
                     }}
                 >
                     {/* Globe icon SVG */}
@@ -268,7 +269,7 @@ export default function LanguageTranslator() {
                     </svg>
                     <span
                         style={{
-                            fontSize: '8px',
+                            fontSize: '12px',
                             color: 'rgba(255,255,255,0.9)',
                             fontWeight: '700',
                             fontFamily: 'system-ui, sans-serif',
@@ -286,6 +287,17 @@ export default function LanguageTranslator() {
         @keyframes gt-slideIn {
           from { opacity: 0; transform: translateY(-50%) translateX(10px); }
           to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+
+        @keyframes gt-slideUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gt-pulse {
+          0%   { box-shadow: 0 0 0 0px rgba(42,98,188,0.9), 0 0 0 0px rgba(42,98,188,0.5), 0 6px 24px rgba(42,98,188,0.6); }
+          70%  { box-shadow: 0 0 0 20px rgba(42,98,188,0), 0 0 0 10px rgba(42,98,188,0.1), 0 8px 28px rgba(42,98,188,0.4); }
+          100% { box-shadow: 0 0 0 0px rgba(42,98,188,0), 0 0 0 0px rgba(42,98,188,0), 0 6px 24px rgba(42,98,188,0.6); }
         }
         
         /* Force hide all Google Translate injections unconditionally */

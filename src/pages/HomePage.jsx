@@ -7,6 +7,7 @@ import CallToAction from '../components/sections/home/CallToAction';
 import TwoWheelerOrganization from '../components/sections/home/TwoWheelerOrganization';
 import Training from '../components/sections/home/Training';
 import RoadScene from '../components/sections/home/RoadScene';
+import CoreFocus from '../components/sections/home/CoreFocus';
 import Testimonials from '../components/sections/Testimonials';
 import AboutPreview from '../components/sections/home/AboutPreview';
 import FocusAreasPreview from '../components/sections/home/FocusAreasPreview';
@@ -23,6 +24,7 @@ export default function HomePage() {
         <HeroBanner />
       </div>
       <RoadScene />
+      <CoreFocus />
       <TwoWheelerOrganization />
       <AboutPreview />
       <FocusAreasPreview />
