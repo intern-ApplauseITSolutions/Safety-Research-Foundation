@@ -5,6 +5,11 @@ const LANGUAGES = [
     { code: 'hi', label: 'Hindi', nativeLabel: 'हिन्दी', flag: '🇮🇳' },
     { code: 'ta', label: 'Tamil', nativeLabel: 'தமிழ்', flag: '🇮🇳' },
     { code: 'kn', label: 'Kannada', nativeLabel: 'ಕನ್ನಡ', flag: '🇮🇳' },
+    { code: 'bn', label: 'Bengali', nativeLabel: 'বাংলা', flag: '🇮🇳' },
+    { code: 'mr', label: 'Marathi', nativeLabel: 'मराठी', flag: '🇮🇳' },
+    { code: 'te', label: 'Telugu', nativeLabel: 'తెలుగు', flag: '🇮🇳' },
+    { code: 'gu', label: 'Gujarati', nativeLabel: 'ગુજરાતી', flag: '🇮🇳' },
+    { code: 'ml', label: 'Malayalam', nativeLabel: 'മലയാളം', flag: '🇮🇳' },
 ];
 
 export default function LanguageTranslator() {
@@ -32,7 +37,7 @@ export default function LanguageTranslator() {
             new window.google.translate.TranslateElement(
                 {
                     pageLanguage: 'en',
-                    includedLanguages: 'en,hi,ta,kn',
+                    includedLanguages: 'en,hi,ta,kn,bn,mr,te,gu,ml',
                     layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
                     autoDisplay: false,
                 },

@@ -17,6 +17,11 @@ export default function Header() {
     { code: 'hi', label: 'हिन्दी' },
     { code: 'ta', label: 'தமிழ்' },
     { code: 'kn', label: 'ಕನ್ನಡ' },
+    { code: 'bn', label: 'বাংলা' },
+    { code: 'mr', label: 'मराठी' },
+    { code: 'te', label: 'తెలుగు' },
+    { code: 'gu', label: 'ગુજરાતી' },
+    { code: 'ml', label: 'മലയാളം' },
   ];
 
   const getActiveLang = () => {
@@ -47,7 +52,7 @@ export default function Header() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: 'en',
-          includedLanguages: 'en,hi,ta,kn',
+          includedLanguages: 'en,hi,ta,kn,bn,mr,te,gu,ml',
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
           autoDisplay: false,
         },
@@ -239,8 +244,8 @@ export default function Header() {
                         key={lang.code}
                         onClick={() => selectLang(lang.code)}
                         className={`px-3 py-2 rounded-full text-sm font-semibold transition border ${getActiveLang() === lang.code
-                            ? 'bg-primary text-white border-primary'
-                            : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-primary/10 hover:text-primary'
+                          ? 'bg-primary text-white border-primary'
+                          : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-primary/10 hover:text-primary'
                           }`}
                       >
                         {lang.label}
