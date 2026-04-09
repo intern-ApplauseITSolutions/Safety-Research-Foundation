@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Briefcase, Calendar } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import OurProjects from '../components/sections/ourfocus/OurProjects';
-import NewsAndEvents from '../components/sections/newsandevents/NewsAndEvents';
+import NewsAndEvents_referance_UI from '../components/sections/newsandevents/NewsAndEvents_referance-UI';
 
 export default function EventsPage() {
   const location = useLocation();
@@ -48,7 +48,7 @@ export default function EventsPage() {
       {/* Tab Content */}
       <div>
         {activeTab === 'projects' && <OurProjects />}
-        {activeTab === 'events' && <NewsAndEvents initialSection={location.state?.section} initialMediaTab={location.state?.mediaTab} />}
+        {activeTab === 'events' && <NewsAndEvents_referance_UI initialSection={location.state?.section} initialMediaTab={location.state?.mediaTab} />}
       </div>
     </div>
   );

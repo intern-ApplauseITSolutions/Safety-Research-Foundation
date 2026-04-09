@@ -1,0 +1,27 @@
+{
+    "name": "safety-research-foundation/pledge-system",
+    "description": "Dynamic Pledge Management System for Safety Research Foundation",
+    "require": {
+        "phpmailer/phpmailer": "^6.8",
+        "mpdf/mpdf": "^6.1"
+    },
+    "config": {
+        "platform-check": false,
+        "allow-plugins": {
+            "*": true
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "SRF\\": "api/services/"
+        },
+        "files": [
+            "api/helpers/response.php",
+            "api/helpers/validator.php",
+            "api/config/database.php",
+            "api/config/cors.php"
+        ]
+    }
+}

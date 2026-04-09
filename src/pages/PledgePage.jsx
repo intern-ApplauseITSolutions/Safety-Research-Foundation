@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Share2, PenTool, Users, Calendar, Award, Heart, CheckCircle, Copy, Facebook, Twitter, Linkedin, X } from 'lucide-react';
-import sampleCertificate from '../assets/images/Road Safety Pledge.png';
+import { Shield, Share2, PenTool, Users, Calendar, Award, Heart, CheckCircle, Copy, Facebook, Twitter, Linkedin, X, Mail, FileText, Download, AlertCircle } from 'lucide-react';
+import { pledgeService } from '../services/pledgeService';
 
 const PledgePage = () => {
   const [showShareModal, setShowShareModal] = useState(false);
@@ -18,13 +18,41 @@ const PledgePage = () => {
     mobile: '',
     language: ''
   });
-  const [pledgeCount, setPledgeCount] = useState(1247); // Example count
+  const [pledgeConfig, setPledgeConfig] = useState(null);
+  const [pledgeContent, setPledgeContent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [successDetails, setSuccessDetails] = useState(null);
+  const [statusMessage, setStatusMessage] = useState(null);
   const [otp, setOtp] = useState('');
+  const [showExistingCertificateForm, setShowExistingCertificateForm] = useState(false);
+  const [existingPledgeEmail, setExistingPledgeEmail] = useState('');
+  const [existingCertificateOtp, setExistingCertificateOtp] = useState('');
+  const [existingCertificateOtpSent, setExistingCertificateOtpSent] = useState(false);
+  const [existingCertificateLoading, setExistingCertificateLoading] = useState(false);
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  // Fetch pledge data
+  useEffect(() => {
+    const fetchPledgeData = async () => {
+      try {
+        setLoading(true);
+        const data = await pledgeService.getPledgeData();
+        setPledgeConfig(data.config);
+        setPledgeContent(data.content);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPledgeData();
   }, []);
 
 
@@ -36,37 +64,167 @@ const PledgePage = () => {
     }));
   };
 
-  const handlePledgeSubmit = (e) => {
-    e.preventDefault();
-    if (pledgeStep < 5) {
-      setPledgeStep(prev => prev + 1);
-    } else {
-      // Final submission with OTP
-      console.log('Pledge submitted:', pledgeData, 'OTP:', otp);
-      setShowPledgeForm(false);
-      setPledgeStep(1);
-      setShowSuccess(true);
-      setPledgeCount(prev => prev + 1);
+  const showStatus = (type, message) => {
+    setStatusMessage({ type, message });
+    if (window.__pledgeStatusTimer) {
+      window.clearTimeout(window.__pledgeStatusTimer);
+    }
+    window.__pledgeStatusTimer = window.setTimeout(() => {
+      setStatusMessage(null);
+    }, 3000);
+  };
 
-      // Reset form
-      setPledgeData({
-        title: '',
-        name: '',
-        gender: '',
-        dob: '',
-        pincode: '',
-        state: '',
-        district: '',
-        email: '',
-        mobile: '',
-        language: ''
+  const closeSuccessModal = () => {
+    setShowSuccess(false);
+    setSuccessDetails(null);
+  };
+
+  const handleExistingCertificateRequest = async (action) => {
+    const email = existingPledgeEmail.trim();
+
+    if (!email) {
+      showStatus('error', 'Enter your registered email address.');
+      return;
+    }
+
+    const otp = existingCertificateOtp.replace(/\D/g, '').trim();
+    if (otp.length !== 6) {
+      showStatus('error', 'Enter the 6-digit OTP sent to your registered email.');
+      return;
+    }
+
+    try {
+      setExistingCertificateLoading(true);
+      const result = await pledgeService.getExistingCertificate({
+        email,
+        otp,
+        configId: pledgeConfig?.id,
+        action
       });
-      setOtp('');
 
-      // Hide success message after 3 seconds
-      setTimeout(() => setShowSuccess(false), 3000);
+      if (action === 'send_email') {
+        showStatus('success', `Certificate sent to ${result.email}.`);
+      } else if (result.certificate_url) {
+        window.open(result.certificate_url, '_blank', 'noopener,noreferrer');
+        showStatus('success', 'Certificate download opened.');
+      }
+    } catch (error) {
+      showStatus('error', error.message);
+    } finally {
+      setExistingCertificateLoading(false);
     }
   };
+
+  const handleSendExistingCertificateOtp = async () => {
+    const email = existingPledgeEmail.trim();
+
+    if (!email) {
+      showStatus('error', 'Enter your registered email address.');
+      return;
+    }
+
+    try {
+      setExistingCertificateLoading(true);
+      await pledgeService.sendExistingCertificateOTP({
+        email,
+        configId: pledgeConfig?.id
+      });
+      setExistingCertificateOtp('');
+      setExistingCertificateOtpSent(true);
+      showStatus('success', `OTP sent to ${email}.`);
+    } catch (error) {
+      showStatus('error', error.message);
+    } finally {
+      setExistingCertificateLoading(false);
+    }
+  };
+
+  const handlePledgeSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (pledgeStep < 5) {
+      setPledgeStep(prev => prev + 1);
+      
+      // When reaching OTP step, send OTP
+      if (pledgeStep === 4) {
+        try {
+          setLoading(true);
+          await pledgeService.sendOTP(pledgeData.email, pledgeData.name, pledgeData.mobile);
+          showStatus('success', 'OTP sent to your email address.');
+          setLoading(false);
+        } catch (error) {
+          setLoading(false);
+          showStatus('error', 'Error sending OTP: ' + error.message);
+          return;
+        }
+      }
+    } else {
+      // Final submission with OTP verification
+      try {
+        setLoading(true);
+        
+        // First verify OTP
+        await pledgeService.verifyOTP(pledgeData.email, otp);
+        
+        // Then submit pledge
+        const submissionData = {
+          config_id: pledgeConfig.id,
+          ...pledgeData
+        };
+        
+        const result = await pledgeService.submitPledge(submissionData);
+        
+        setShowPledgeForm(false);
+        setPledgeStep(1);
+        setShowSuccess(true);
+        setSuccessDetails({
+          email: pledgeData.email,
+          certificateUrl: result.certificate_url,
+          emailSent: result.email_sent
+        });
+        
+        // Update pledge count
+        setPledgeConfig(prev => ({ ...prev, pledge_count: prev.pledge_count + 1 }));
+
+        // Reset form
+        setPledgeData({
+          title: '',
+          name: '',
+          gender: '',
+          dob: '',
+          pincode: '',
+          state: '',
+          district: '',
+          email: '',
+          mobile: '',
+          language: ''
+        });
+        setOtp('');
+        setLoading(false);
+
+
+
+      } catch (error) {
+        setLoading(false);
+        showStatus('error', 'Error: ' + error.message);
+      }
+    }
+  };
+
+  const selectedLanguage = pledgeData.language || 'English';
+  const selectedPledgeContent =
+    pledgeContent?.[selectedLanguage] ||
+    pledgeContent?.English ||
+    pledgeContent?.Hindi ||
+    null;
+  const selectedPledgeTitle = selectedPledgeContent?.pledge_title || pledgeConfig?.title || '';
+  const secondaryPledgeTitle =
+    selectedLanguage === 'Hindi'
+      ? pledgeContent?.English?.pledge_title
+      : pledgeContent?.Hindi?.pledge_title;
+  const selectedPledgeHeading = selectedLanguage === 'Hindi' ? 'मैं शपथ लेता/लेती हूं:' : 'I pledge to:';
+  const selectedPledgeReadLabel = selectedLanguage === 'Hindi' ? 'प्रतिज्ञा पढ़िए' : 'Read Pledge';
+  const selectedOtpLabel = selectedLanguage === 'Hindi' ? 'कृपया OTP दर्ज करें' : 'Please Enter OTP';
 
   const states = [
     'ANDAMAN & NICOBAR ISLANDS', 'ANDHRA PRADESH', 'ARUNACHAL PRADESH', 'ASSAM', 'BIHAR',
@@ -117,20 +275,132 @@ const PledgePage = () => {
   };
 
   const shareUrl = window.location.href;
-  const shareText = "Join me in taking the Road Safety Pledge 2025-26! Let's make Indian roads safer for everyone. 🚗🛡️";
+  const shareText = `Join me in taking the ${pledgeConfig?.title || 'Road Safety Pledge'}! Let's make Indian roads safer for everyone. 🚗🛡️`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(shareUrl);
-    alert('Link copied to clipboard!');
+    showStatus('success', 'Link copied to clipboard.');
   };
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Unable to load pledge data</h2>
+          <p className="text-gray-600">{error}</p>
+        </div>
+      </div>
+    );
+  }
+
+  // No pledge configuration
+  if (!pledgeConfig) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">No active pledge campaign</h2>
+          <p className="text-gray-600">Please check back later for new pledge campaigns.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-0">
-      {/* Success Message */}
-      {showSuccess && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2">
-          <CheckCircle className="w-5 h-5" />
-          Thank you for taking the pledge!
+      {statusMessage && (
+        <div className={`fixed top-4 right-4 z-[120] flex items-center gap-2 rounded-lg px-4 py-3 text-white shadow-lg ${statusMessage.type === 'error' ? 'bg-red-600' : 'bg-green-600'}`}>
+          {statusMessage.type === 'error' ? <AlertCircle className="h-5 w-5" /> : <CheckCircle className="h-5 w-5" />}
+          <span>{statusMessage.message}</span>
+        </div>
+      )}
+
+      {showSuccess && successDetails && (
+        <div className="fixed inset-0 z-[130] flex items-center justify-center bg-slate-950/55 p-4">
+          <div className="w-full max-w-lg rounded-3xl bg-white shadow-2xl ring-1 ring-slate-200">
+            <div className="rounded-t-3xl bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-6 text-white">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-2xl bg-white/15 p-3">
+                    <CheckCircle className="h-8 w-8" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold">Congratulations!</h3>
+                    <p className="mt-1 text-sm text-white/85">Your pledge has been submitted successfully.</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeSuccessModal}
+                  className="rounded-full p-1 text-white/85 transition hover:bg-white/10 hover:text-white"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-4 px-6 py-6 text-slate-700">
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="flex items-start gap-3">
+                  <Mail className="mt-0.5 h-5 w-5 text-emerald-600" />
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">Certificate Email</p>
+                    <p className="text-sm break-all">{successDetails.email}</p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      {successDetails.emailSent ? 'The certificate PDF has been sent to this email address.' : 'Certificate was generated, but email delivery could not be confirmed.'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 p-4">
+                <div className="flex items-start gap-3">
+                  <FileText className="mt-0.5 h-5 w-5 text-sky-600" />
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900">Certificate Download</p>
+                    <a
+                      href={successDetails.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-flex break-all text-sm text-sky-700 underline underline-offset-2"
+                    >
+                      {successDetails.certificateUrl}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-sm text-slate-600">Thank you for being a Safety Ambassador.</p>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={successDetails.certificateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 font-semibold text-white transition hover:bg-primary/90 sm:w-auto"
+                >
+                  <Download className="h-4 w-4" />
+                  Download Certificate
+                </a>
+                <button
+                  type="button"
+                  onClick={closeSuccessModal}
+                  className="w-full rounded-xl bg-slate-100 px-4 py-3 font-semibold text-slate-700 transition hover:bg-slate-200 sm:w-auto"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
@@ -143,11 +413,10 @@ const PledgePage = () => {
             <Shield className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white" />
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-            Road Safety Pledge 2025-26
+            {pledgeConfig.title}
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2">
-            Join thousands of Indians in our commitment to make roads safer for everyone.
-            Your pledge matters, your actions save lives.
+            {pledgeConfig.description}
           </p>
         </div>
       </section>
@@ -178,13 +447,13 @@ const PledgePage = () => {
           {/* Sample Certificate */}
           <div className="mt-12">
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-6">Sample Pledge Certificate</h3>
-            <div className="bg-white rounded-2xl shadow-xl p-4 border-2 border-dashed border-primary">
-              <img
-                src={sampleCertificate}
-                alt="Sample Road Safety Pledge Certificate"
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
+              <div className="bg-white rounded-2xl shadow-xl p-4 border-2 border-dashed border-primary">
+                <img
+                    src="/src/assets/images/Road Safety Pledge.png"
+                    alt="Road Safety Pledge Certificate"
+                    className="w-full h-auto rounded-lg"
+                  />
+              </div>
           </div>
         </div>
       </section>
@@ -286,28 +555,113 @@ const PledgePage = () => {
 
                 <div className="space-y-3 sm:space-y-4 mt-6 sm:mt-8">
                   <button
-                    onClick={() => setPledgeStep(2)}
+                    onClick={() => {
+                      setShowExistingCertificateForm(false);
+                      setExistingCertificateOtpSent(false);
+                      setExistingCertificateOtp('');
+                      setPledgeStep(2);
+                    }}
                     className="w-full bg-primary text-white px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-left"
                   >
                     <div className="text-base sm:text-lg">शपथ लीजिये</div>
                     <div className="text-xs sm:text-sm opacity-90">Take Pledge</div>
                   </button>
 
-                  <button className="w-full bg-gray-100 text-gray-700 px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors text-left">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowExistingCertificateForm((prev) => {
+                        const next = !prev;
+                        if (!next) {
+                          setExistingCertificateOtpSent(false);
+                          setExistingCertificateOtp('');
+                        }
+                        return next;
+                      });
+                    }}
+                    className="w-full bg-gray-100 text-gray-700 px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors text-left"
+                  >
                     <div className="text-xs sm:text-sm leading-tight">यदि प्रतिज्ञा पहले ही ले ली है तो वचनबद्धता का प्रमाण-पत्र प्राप्त करें</div>
-                    <div className="text-xs opacity-70 mt-1">If already taken Pledge, Get the Certificate of Commitment</div>
+                    <div className="text-xs opacity-70 mt-1">{showExistingCertificateForm ? 'Hide certificate options' : 'If already taken Pledge, Get the Certificate of Commitment'}</div>
                   </button>
 
+                  {showExistingCertificateForm && (
+                    <>
+                  <div className="rounded-lg border border-gray-200 bg-white p-3 sm:p-4 text-left">
+                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
+                      Registered Email Address
+                    </label>
+                    <input
+                      type="email"
+                      value={existingPledgeEmail}
+                          onChange={(e) => {
+                            setExistingPledgeEmail(e.target.value);
+                            setExistingCertificateOtp('');
+                            setExistingCertificateOtpSent(false);
+                          }}
+                      className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-primary focus:ring-2 focus:ring-primary"
+                      placeholder="Enter your registered email"
+                      disabled={existingCertificateLoading}
+                    />
+                        <p className="mt-2 text-xs text-gray-500">
+                          Use the same email address used when you submitted the pledge.
+                        </p>
+                        <button
+                          type="button"
+                          onClick={handleSendExistingCertificateOtp}
+                          disabled={existingCertificateLoading}
+                          className="mt-3 inline-flex rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700 disabled:opacity-60"
+                        >
+                          {existingCertificateLoading ? 'Sending OTP...' : existingCertificateOtpSent ? 'Resend OTP' : 'Send OTP'}
+                        </button>
+                      </div>
+
+                      {existingCertificateOtpSent && (
+                        <>
+                          <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 sm:p-4 text-left">
+                            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
+                              Enter OTP
+                            </label>
+                            <input
+                              type="text"
+                              value={existingCertificateOtp}
+                              onChange={(e) => setExistingCertificateOtp(e.target.value.replace(/\D/g, ''))}
+                              maxLength="6"
+                              inputMode="numeric"
+                              pattern="[0-9]{6}"
+                              className="w-full rounded-lg border border-gray-300 px-3 py-2 text-center text-lg tracking-widest focus:border-primary focus:ring-2 focus:ring-primary"
+                              placeholder="000000"
+                              disabled={existingCertificateLoading}
+                            />
+                            <p className="mt-2 text-xs text-gray-500">
+                              Enter the OTP sent to your registered email to access the certificate.
+                            </p>
+                          </div>
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button className="bg-blue-100 text-blue-700 px-3 sm:px-4 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors">
+                    <button
+                      type="button"
+                      onClick={() => handleExistingCertificateRequest('send_email')}
+                      disabled={existingCertificateLoading}
+                      className="bg-blue-100 text-blue-700 px-3 sm:px-4 py-3 rounded-lg font-medium hover:bg-blue-200 transition-colors disabled:opacity-60"
+                    >
                       <div className="text-xs sm:text-sm leading-tight">प्रमाणपत्र अपने ई-मेल | मोबाइल पर भेजें</div>
-                      <div className="text-xs opacity-70 mt-1">Send certificate to your Email</div>
+                      <div className="text-xs opacity-70 mt-1">{existingCertificateLoading ? 'Processing...' : 'Send certificate to your Email'}</div>
                     </button>
-                    <button className="bg-green-100 text-green-700 px-3 sm:px-4 py-3 rounded-lg font-medium hover:bg-green-200 transition-colors">
+                    <button
+                      type="button"
+                      onClick={() => handleExistingCertificateRequest('download')}
+                      disabled={existingCertificateLoading}
+                      className="bg-green-100 text-green-700 px-3 sm:px-4 py-3 rounded-lg font-medium hover:bg-green-200 transition-colors disabled:opacity-60"
+                    >
                       <div className="text-xs sm:text-sm">प्रमाणपत्र डाउनलोड</div>
-                      <div className="text-xs opacity-70 mt-1">Download Certificate</div>
+                      <div className="text-xs opacity-70 mt-1">{existingCertificateLoading ? 'Processing...' : 'Download Certificate'}</div>
                     </button>
                   </div>
+                        </>
+                      )}
+                    </>
+                  )}
                 </div>
               </div>
             )}
@@ -317,8 +671,14 @@ const PledgePage = () => {
               <div className="px-2 sm:px-4">
                 <div className="text-center mb-4 sm:mb-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                    <div className="text-base sm:text-lg">सड़क सुरक्षा शपथ 2024</div>
-                    <div className="text-sm sm:text-base text-gray-600">Road Safety Pledge 2024</div>
+                    {selectedPledgeTitle && (
+                      <>
+                        <div className="text-base sm:text-lg">{selectedPledgeTitle}</div>
+                        {secondaryPledgeTitle && (
+                          <div className="text-sm sm:text-base text-gray-600">{secondaryPledgeTitle}</div>
+                        )}
+                      </>
+                    )}
                   </h3>
                   <p className="text-gray-600 text-sm sm:text-base">
                     <div className="text-sm sm:text-base">बुनियादी ब्योरा दर्ज कीजिये</div>
@@ -509,10 +869,10 @@ const PledgePage = () => {
                   </div>
 
                   <div className="bg-blue-50 p-3 sm:p-4 rounded-lg mt-4">
-                    <p className="text-xs sm:text-sm text-blue-800">
+                    <div className="text-xs sm:text-sm text-blue-800">
                       <div className="font-medium">प्रमाणपत्र की प्रतिलिपि ईमेल द्वारा भेजी जाएगी</div>
-                      <div className="text-xs opacity-80">A copy of Certificate issued will be sent to Email</div>
-                    </p>
+                      <div className="text-xs opacity-80">A copy of certificate will be sent to your email address.</div>
+                    </div>
                   </div>
 
                   <div className="bg-green-50 p-3 sm:p-4 rounded-lg">
@@ -595,8 +955,14 @@ const PledgePage = () => {
               <div className="px-2 sm:px-4">
                 <div className="text-center mb-4 sm:mb-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                    <div className="text-base sm:text-lg">सड़क सुरक्षा शपथ 2024</div>
-                    <div className="text-sm sm:text-base text-gray-600">Road Safety Pledge 2024</div>
+                    {selectedPledgeTitle && (
+                      <>
+                        <div className="text-base sm:text-lg">{selectedPledgeTitle}</div>
+                        {secondaryPledgeTitle && (
+                          <div className="text-sm sm:text-base text-gray-600">{secondaryPledgeTitle}</div>
+                        )}
+                      </>
+                    )}
                   </h3>
                   <p className="text-gray-600 text-sm sm:text-base">
                     प्रतिज्ञा पढ़िये | Read Pledge
@@ -604,16 +970,11 @@ const PledgePage = () => {
                 </div>
 
                 <div className="bg-gray-50 p-3 sm:p-4 md:p-6 rounded-lg mb-4 sm:mb-6 max-h-60 sm:max-h-80 overflow-y-auto">
-                  <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">I pledge to:</h4>
+                  <h4 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">{selectedPledgeHeading}</h4>
                   <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm leading-relaxed">
-                    <li>• I will always wear a helmet while riding a two-wheeler and ensure my pillion rider does the same.</li>
-                    <li>• I will buckle up my seatbelt every time I am in a car, whether driving or as a passenger.</li>
-                    <li>• I will ensure the safety of children by using proper child safety seats and encourage others to do the same.</li>
-                    <li>• I will never drive under the influence of alcohol or drugs and motivate others to avoid drinking and driving.</li>
-                    <li>• I will follow all traffic signals and road rules carefully and drive within speed limits.</li>
-                    <li>• I will assist those in need during road emergencies and act as a Good Samaritan.</li>
-                    <li>• I will promote road safety in my family, school, workplace, and community to inspire responsible behaviour on the roads.</li>
-                    <li>• I commit to being a Safety Ambassador, spreading awareness, and working towards making our roads safer for everyone.</li>
+                    {selectedPledgeContent?.pledge_points?.map((point, index) => (
+                      <li key={index}>• {point}</li>
+                    ))}
                   </ul>
                 </div>
 
@@ -642,12 +1003,18 @@ const PledgePage = () => {
               <div className="px-2 sm:px-4">
                 <div className="text-center mb-4 sm:mb-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-                    <div className="text-base sm:text-lg">सड़क सुरक्षा शपथ 2024</div>
-                    <div className="text-sm sm:text-base text-gray-600">Road Safety Pledge 2024</div>
+                    {selectedPledgeTitle && (
+                      <>
+                        <div className="text-base sm:text-lg">{selectedPledgeTitle}</div>
+                        {secondaryPledgeTitle && (
+                          <div className="text-sm sm:text-base text-gray-600">{secondaryPledgeTitle}</div>
+                        )}
+                      </>
+                    )}
                   </h3>
-                  <p className="text-gray-600 text-sm sm:text-base">Please Enter OTP</p>
+                  <p className="text-gray-600 text-sm sm:text-base">{selectedOtpLabel}</p>
                   <p className="text-xs sm:text-sm text-gray-500 mt-2 break-all">
-                    OTP sent to {pledgeData.mobile} and {pledgeData.email}
+                    OTP sent to {pledgeData.email}
                   </p>
                 </div>
 
@@ -659,18 +1026,34 @@ const PledgePage = () => {
                     <input
                       type="text"
                       value={otp}
-                      onChange={(e) => setOtp(e.target.value)}
+                      onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
                       required
                       maxLength="6"
+                      inputMode="numeric"
+                      pattern="[0-9]{6}"
                       className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-center text-lg sm:text-xl md:text-2xl tracking-widest"
                       placeholder="000000"
+                      disabled={loading}
                     />
                   </div>
 
                   <div className="text-center">
                     <button
                       type="button"
-                      className="text-primary hover:text-primary/80 text-xs sm:text-sm underline"
+                      onClick={async () => {
+                        try {
+                          setLoading(true);
+                          setOtp('');
+                          await pledgeService.sendOTP(pledgeData.email, pledgeData.name, pledgeData.mobile);
+                          showStatus('success', 'OTP resent successfully.');
+                        } catch (error) {
+                          showStatus('error', 'Error resending OTP: ' + error.message);
+                        } finally {
+                          setLoading(false);
+                        }
+                      }}
+                      className="text-primary hover:text-primary/80 text-xs sm:text-sm underline disabled:opacity-50"
+                      disabled={loading}
                     >
                       Resend OTP
                     </button>
@@ -681,14 +1064,16 @@ const PledgePage = () => {
                       type="button"
                       onClick={() => setPledgeStep(4)}
                       className="w-full sm:flex-1 bg-gray-200 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-300 transition-colors text-sm sm:text-base"
+                      disabled={loading}
                     >
                       Back
                     </button>
                     <button
                       type="submit"
-                      className="w-full sm:flex-1 bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary/90 transition-colors text-sm sm:text-base"
+                      className="w-full sm:flex-1 bg-primary text-white px-4 py-3 rounded-lg hover:bg-primary/90 transition-colors text-sm sm:text-base disabled:opacity-50"
+                      disabled={loading}
                     >
-                      Submit Pledge
+                      {loading ? 'Verifying...' : 'Submit Pledge'}
                     </button>
                   </div>
                 </form>

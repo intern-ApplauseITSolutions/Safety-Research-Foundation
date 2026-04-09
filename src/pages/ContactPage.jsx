@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactUs from '../components/sections/contactus/ContactUs';
+import DynamicContact from '../components/sections/contactus/DynamicContact';
 
 export default function ContactPage() {
   // Scroll to top when component mounts
@@ -9,7 +9,7 @@ export default function ContactPage() {
 
   return (
     <div>
-      <ContactUs />
+      <DynamicContact />
     </div>
   );
 }
